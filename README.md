@@ -7,7 +7,7 @@ ED2 - 2017.3
 - [ ] QuickSort (Recursivo) - TWEET
 - [ ] Contabilizar Num. Comparações
 - [ ] Contabilizar Num. Copias de Registros
-- [y] Tempo Total Execução
+- [v] Tempo Total Execução
 - [ ] Importar Elementos Aleatoriamente
 - [ ] ANALISE CENARIO I -  Graficos, Tabelas, Conclusões
 
