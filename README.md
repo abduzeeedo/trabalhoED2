@@ -9,7 +9,7 @@ ED2 - 2017.3
 - [ ] Contabilizar Num. Copias de Registros
 - [ ] Tempo Total Execução
 - [ ] Importar Elementos Aleatoriamente
-- [ ] ANALISE CENARIO I
+- [ ] ANALISE CENARIO I -  Graficos, Tabelas, Conclusões
 
 # CENARIO II
 - [ ] QuickSort (Recursivo) - TWEETID
@@ -18,4 +18,25 @@ ED2 - 2017.3
 - [ ] Comparar Num. Comparações
 - [ ] Comparar Num. Copias de Registros
 - [ ] Comparar Tempo Total Execução
-- [ ] Conclusões Finais Pedidas
+- [ ] ANALISE CENARIO II -  Graficos, Tabelas, Conclusões Pedidas
+
+# CENARIO III
+- [ ] Insertion Sort - TWEETID
+- [ ] Merge Sort - TWEETID
+- [ ] Heap Sort - TWEETID
+- [ ] PedroSort (outro qqr ñ visto em sala) - TWEETID
+- [ ] Relatorio do PedroSort com fonte
+- [ ] Comparar Num. Comparações
+- [ ] Comparar Num. Copias de Registros
+- [ ] Comparar Tempo Total Execução
+- [ ] ANALISE CENARIO III -  Graficos, Tabelas, Conclusões Pedidas
+
+# CENARIO IV
+- [ ] Endereçamento - Sondagem Linear (TWEETID)
+- [ ] Endereçamento - Sondagem Quadrática (TWEETID)
+- [ ] Endereçamento - Duplo Hash (TWEETID)
+- [ ] Encadeamento Separado (TWEETID)
+- [ ] Encadeamento Coalescido (TWEETID)
+- [ ] Comparar em Num de Comparações de Chaves
+- [ ] Comparar em Gasto de Mem
+- [ ] ANALISE CENARIO IV -  Graficos, Tabelas, Conclusões Pedidas
