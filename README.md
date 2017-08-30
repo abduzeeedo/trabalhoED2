@@ -40,3 +40,5 @@ ED2 - 2017.3
 - [ ] Comparar em Num de Comparações de Chaves
 - [ ] Comparar em Gasto de Mem
 - [ ] ANALISE CENARIO IV -  Graficos, Tabelas, Conclusões Pedidas
+
+# IMPLEMENTAÇÃO PALAVRAS DO MOMENTO
