@@ -1,7 +1,10 @@
 # TrabalhoED2
 ED2 - 2017.3
+# PREPARAÇAO
+- [ ] Preparação das Classes
+- [ ] Inserção Dados via TXT
 
-# CENARIO I
+# CENARIO I - Bellotti
 - [ ] QuickSort (Recursivo) - USERID
 - [ ] QuickSort (Recursivo) - TWEETID
 - [ ] QuickSort (Recursivo) - TWEET
@@ -11,7 +14,7 @@ ED2 - 2017.3
 - [ ] Importar Elementos Aleatoriamente
 - [ ] ANALISE CENARIO I -  Graficos, Tabelas, Conclusões
 
-# CENARIO II
+# CENARIO II - Bruno
 - [ ] QuickSort (Recursivo) - TWEETID
 - [ ] QuickSort (MEDIANA) - TWEETID
 - [ ] QuickSort (Inserção) - TWEETID
@@ -20,7 +23,7 @@ ED2 - 2017.3
 - [ ] Comparar Tempo Total Execução
 - [ ] ANALISE CENARIO II -  Graficos, Tabelas, Conclusões Pedidas
 
-# CENARIO III
+# CENARIO III -  Diogo
 - [ ] Insertion Sort - TWEETID
 - [ ] Merge Sort - TWEETID
 - [ ] Heap Sort - TWEETID
@@ -31,7 +34,7 @@ ED2 - 2017.3
 - [ ] Comparar Tempo Total Execução
 - [ ] ANALISE CENARIO III -  Graficos, Tabelas, Conclusões Pedidas
 
-# CENARIO IV
+# CENARIO IV - Rafael
 - [ ] Endereçamento - Sondagem Linear (TWEETID)
 - [ ] Endereçamento - Sondagem Quadrática (TWEETID)
 - [ ] Endereçamento - Duplo Hash (TWEETID)
