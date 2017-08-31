@@ -1,39 +1,31 @@
 #include "tweets.h"
 #include <string>
 #include <stdlib.h>
+using namespace std;
 
-tweets::tweets(int uid, int tid, const std::string& tw, const std::string& da)
+tweets::tweets(int uid, int tid, char tw, char da)
 {
     userID = uid;
     tweetID = tid;
     tweet = tw;
     date = da;
 }
-
-void tweets::addTweet(int uid, int tid, const std::string& tw, const std::string& da)
-{
-    userID = uid;
-    tweetID = tid;
-    tweet = tw;
-    date = da;
-}
-
-int tweets::getuserID()
+int tweets::getUserID()
 {
     return userID;
 }
 
-int tweets::gettweetID()
+int tweets::getTweetID()
 {
     return tweetID;
 }
 
-std::string tweets::getTweet()
+char* tweets::getTweet()
 {
     return tweet;
 }
 
-std::string tweets::getDate()
+char* tweets::getDate()
 {
     return date;
 }
