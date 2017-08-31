@@ -5,7 +5,7 @@
 #include "tweets.h"
 
 using namespace std;
-
+/*
 tweets* importarTweets(const char* filename)
 {
     string line;
@@ -40,6 +40,7 @@ tweets* importarTweets(const char* filename)
     }
     return vetor;
 }
+*/
 
 int main()
 {
