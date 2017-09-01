@@ -5,42 +5,6 @@
 #include "tweets.h"
 
 using namespace std;
-/*
-tweets* importarTweets(const char* filename)
-{
-    string line;
-    ifstream myfile(filename); //abre arquivo
-    int tam = 10;
-    tweets *vetor[tam];
-
-    if (!myfile.is_open())
-    {
-        cout<<"Problema em abrir o arquivo"<<endl;
-    }
-    else
-    {
-        int userid, tweetid, tweet, date;
-        while ( true )
-        {
-            getline (myfile,line);     //pega linha
-            if(myfile.eof())           //encontra fim do arquivo
-            {
-                break;
-            }
-            else
-            {
-                for(int i=0;i<tam;i++)
-                {
-                    sscanf(line.c_str(), "%d %d", &v1, &v2);
-                    vetor[i]->addTweet(v1,v2);   //adiciona ao vetor
-                }
-            }
-        }
-        myfile.close();
-    }
-    return vetor;
-}
-*/
 
 int main()
 {
