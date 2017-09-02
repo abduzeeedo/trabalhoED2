@@ -1,23 +1,12 @@
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-||    MENU DE COMANDOS DO PROJETO DE TEORIA DOS GRAFOS         ||
+||    MENU DE COMANDOS DO PROJETO DE ESTRUTURA DE DADOS 2      ||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||  DIGITE NO CONSOLE O CODIGO DA INSTRUCAO - GUIA DE CODIGOS: ||
 || 0 -  Imprime este Menu (Para fins de Consulta)              ||
-|| 1 -  Imprime o grau de um no (pelo Indice do No);           ||
-|| 2 -  Imprime o grau do grafo (Grafo criado pelo txt);       ||
-|| 3 -  Verificar a adjencia entre nos;			       ||
-|| 4 -  Imprime os Adjacentes de um no;                        ||
-|| 5 -  Retorna o Grupo Induzido de um conjunto de nos;        ||
-|| 6 -  Verifica se o Grafo e K-regular;                       ||
-|| 7 -  Retorna o Grafo complementar a um Grafo G ;            ||
-|| 8 -  Verifica se o Grafo e completo;                        ||  
-|| 9 -  Verifica se o Grafo e bipartido;                       ||
-|| 10 - Verifica se o Grafo e conexo;                          ||
-|| 11 - Verifica se um no e de articulacao;                    ||
-|| 12 - Verifica se uma aresta e ponte;                        ||
-|| 13 - Imprime o Grafo Passado por txt                        ||
-|| 14 - Algoritmo Construtivo Guloso                           ||
-|| 15 - Algoritmo Construtivo Guloso com Fator Aleatório       ||
-|| 16 - Algoritmo Construtivo Guloso com Fator Aleatório Ajust.||
+|| 1 -  Faz o QuickSort no vetor de tweets                     ||
+|| 2 -  Faz o InsertionSort no vetor de tweets                 ||
+|| 3 -  Faz o MergeSort no vetor de tweets			               ||
+|| 4 -  Faz o HeapSort no vetor de tweets                      ||
+|| 5 -  Faz o BubbleSort no vetor de tweets                    ||
 || -1 - Encerra a execucao do projeto                          ||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
