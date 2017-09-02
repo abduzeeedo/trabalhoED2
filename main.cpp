@@ -1,25 +1,24 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
-#include "stdlib.h"
 #include "tweets.h"
 #include "QuickSort.h"
+#include "BubbleSort.h"
 #include "InsertionSort.h"
 
 using namespace std;
 
 //Funcao usada para pegar as linhas do arquivo do Menu
-std::string parseart(std::ifstream& File)
+string parseart(ifstream& File)
 {
-	std::string parsedfile;
+	string parsedfile;
 
 	if (File)
 	{
 		while (File.good())
 		{
-			std::string tmpline;
-			std::getline(File, tmpline);
+			string tmpline;
+			getline(File, tmpline);
 			tmpline += "\n";
 
 			parsedfile += tmpline;
@@ -35,9 +34,9 @@ std::string parseart(std::ifstream& File)
 //Funcao de Impressao de Menu
 void imprimeMenu()
 {
-	std::ifstream leitor("menu.txt"); //Le o menu to txt
-	std::string art = parseart(leitor);
-	std::cout << art << std::endl; //Imprime o menu
+	ifstream leitor("menu.txt"); //Le o menu to txt
+	string art = parseart(leitor);
+	cout << art << endl; //Imprime o menu
 
 	leitor.close();
 }
@@ -46,18 +45,19 @@ void imprimeMenu()
 void codigoFuncao() {
 	char code = -2;
 	while (code == -2) {
-		cout << "Insira o Codigo de FunÁ„o: (-1 para Encerrar ExecuÁ„o)" << endl;
+		cout << "Insira o Codigo de Fun√ß√£o: (-1 para Encerrar Execu√ß√£o)" << endl;
 		cin >> code;
 	}
 }
 
+
 int main()
 {
-
 	//imprimeMenu(); // Funcao para imprimir o Menu no Console
 
 	// Instanciando 7 tweets para teste
 	tweets* vetor[7];
+	int tam = sizeof(vetor) / sizeof(vetor[0]);
 	int id1 = 11;
 	int tid1 = 121;
 	string t = "teste de tweet1";
@@ -70,36 +70,41 @@ int main()
 	vetor[5] = new tweets(64, 189, t, d);
 	vetor[6] = new tweets(54, 28, t, d);
 
-	tweets* vetorResult[7];
+	// Come√ßo das fun√ßoes apenas para testes de ordenacao
+	cout << "Antes de ordenar:" << endl;
 
-	free(vetorResult);
-	
-	/* ComeÁo das funÁoes apenas para testes do quicksort */
-	cout << "antes de ordenar" << endl;
 	for (int k = 0; k < 7; k++)
 	{
-		cout << vetor[k]->getTweetID() << endl;
+		cout << "["<<vetor[k]->getTweetID()<<"]";
 	}
 	
-	//QuickSort qs; //Chama a classe
-	//qs.quicksort(vetor, 0, 6); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
+	/* Deixar somente uma ordena√ßao sem estar comentada, se n√£o todas as outras ir√£o pegar o vetor j√° ordenado pela primeira para ordenar */
 
-	int tam = sizeof(vetor) / sizeof(vetor[0]);
-	InsertionSort qs; //Chama a classe
-	qs.insertionsort(vetor, tam); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
+	/*QuickSort*/
+	QuickSort ordena; //Chama a classe
+	ordena.quicksort(vetor, 0, 6); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
 
-	cout << "depois de ordenar" << endl;
+	/*InsertionSort*/
+	//InsertionSort ordena; //Chama a classe
+	//ordena.insertionsort(vetor, tam); //Faz o insertionsort. Passar o tamanho total, nao tamanho-1
+
+	/*BubbleSort*/
+	//BubbleSort ordena; //Chama a classe
+	//ordena.bubblesort(vetor, 7); //Faz o bubblesort. Passar o tamanho total, nao tamanho-1
+
+	cout << endl<< "Depois de ordenar:" << endl;
 	for (int p = 0; p < 7; p++)
 	{
-		cout << vetor[p]->getTweetID() << endl;
+		cout << "[" << vetor[p]->getTweetID() << "]";
 	}
 
-	cout << "numero de trocas: " << qs.getNumTrocas() << endl;
-	cout << "numero de comparacoes: " << qs.getNumComparacoes() << endl;
-	cout << "tempo gasto: " << qs.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaÁao est· muito rapida com poucos elementos, tenho que testar com mais.
-														   /* Fim das funÁoes apenas para testes do quicksort */
-	//codigoFuncao(); //Seleciona a funcao ou encerra a execuÁ„o;
+	cout << endl << endl;
+	cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
+	cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
+	cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena√ßao est√° muito rapida com poucos elementos, tenho que testar com mais.
+	// Fim das fun√ßoes apenas para testes de ordenacao
 
+	//codigoFuncao(); //Seleciona a funcao ou encerra a execu√ß√£o;
 	system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
 	return 0;
 }
