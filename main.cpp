@@ -5,6 +5,7 @@
 #include "stdlib.h"
 #include "tweets.h"
 #include "QuickSort.h"
+#include "InsertionSort.h"
 
 using namespace std;
 
@@ -69,15 +70,23 @@ int main()
 	vetor[5] = new tweets(64, 189, t, d);
 	vetor[6] = new tweets(54, 28, t, d);
 
+	tweets* vetorResult[7];
+
+	free(vetorResult);
+	
 	/* Começo das funçoes apenas para testes do quicksort */
 	cout << "antes de ordenar" << endl;
 	for (int k = 0; k < 7; k++)
 	{
 		cout << vetor[k]->getTweetID() << endl;
 	}
+	
+	//QuickSort qs; //Chama a classe
+	//qs.quicksort(vetor, 0, 6); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
 
-	QuickSort qs; //Chama a classe
-	qs.quicksort(vetor, 0, 6); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
+	int tam = sizeof(vetor) / sizeof(vetor[0]);
+	InsertionSort qs; //Chama a classe
+	qs.insertionsort(vetor, tam); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
 
 	cout << "depois de ordenar" << endl;
 	for (int p = 0; p < 7; p++)
@@ -89,8 +98,8 @@ int main()
 	cout << "numero de comparacoes: " << qs.getNumComparacoes() << endl;
 	cout << "tempo gasto: " << qs.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos, tenho que testar com mais.
 														   /* Fim das funçoes apenas para testes do quicksort */
-	codigoFuncao(); //Seleciona a funcao ou encerra a execução;
+	//codigoFuncao(); //Seleciona a funcao ou encerra a execução;
 
-	//system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
+	system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
 	return 0;
 }
