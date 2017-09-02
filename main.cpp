@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "stdlib.h"
 #include "tweets.h"
 #include "QuickSort.h"
 
@@ -32,8 +31,6 @@ int main()
 		
 	QuickSort qs; //Chama a classe
 	qs.quicksort(vetor, 0, 6); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
-	int trocas = qs.getNumTrocas();
-	int comp = qs.getNumComparacoes();
 
 	cout << "depois de ordenar" << endl;
 	for (int p = 0; p < 7; p++)
@@ -41,10 +38,11 @@ int main()
 		cout << vetor[p]->getTweetID() << endl;
 	}
 
-	cout << "numero de trocas: " << trocas << endl;
-	cout << "numero de comparacoes: " << comp << endl;
+	cout << "numero de trocas: " << qs.getNumTrocas() << endl;
+	cout << "numero de comparacoes: " << qs.getNumComparacoes() << endl;
+	cout << "tempo gasto: " << qs.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos, tenho que testar com mais.
 	/* Fim das funçoes apenas para testes do quicksort */
 
-	//system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
+	system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
 	return 0;
 }
