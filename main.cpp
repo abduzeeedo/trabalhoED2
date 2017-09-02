@@ -41,10 +41,11 @@ void imprimeMenu()
 	leitor.close();
 }
 
-void code() {
-	char code = -1;
-	while (code == -1) {
-		cout << "Insira algo para encerrar" << endl;
+//Metodo que seleciona a funcao a ser executada e finaliza execucao
+void codigoFuncao() {
+	char code = -2;
+	while (code == -2) {
+		cout << "Insira o Codigo de Função: (-1 para Encerrar Execução)" << endl;
 		cin >> code;
 	}
 }
@@ -52,7 +53,8 @@ void code() {
 int main()
 {
 
-	imprimeMenu();
+	//imprimeMenu(); // Funcao para imprimir o Menu no Console
+
 	// Instanciando 7 tweets para teste
 	tweets* vetor[7];
 	int id1 = 11;
@@ -87,7 +89,8 @@ int main()
 	cout << "numero de comparacoes: " << qs.getNumComparacoes() << endl;
 	cout << "tempo gasto: " << qs.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos, tenho que testar com mais.
 														   /* Fim das funçoes apenas para testes do quicksort */
-	code();
+	codigoFuncao(); //Seleciona a funcao ou encerra a execução;
+
 	//system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
 	return 0;
 }
