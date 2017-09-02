@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include "tweets.h"
 #include "QuickSort.h"
 #include "BubbleSort.h"
@@ -90,7 +91,7 @@ int main()
 
 	/*BubbleSort*/
 	//BubbleSort ordena; //Chama a classe
-	//ordena.bubblesort(vetor, 7); //Faz o bubblesort. Passar o tamanho total, nao tamanho-1
+	//ordena.bubblesort(vetor, tam); //Faz o bubblesort. Passar o tamanho total, nao tamanho-1
 
 	cout << endl<< "Depois de ordenar:" << endl;
 	for (int p = 0; p < 7; p++)
