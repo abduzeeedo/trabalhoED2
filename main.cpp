@@ -1,13 +1,58 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include "stdlib.h"
 #include "tweets.h"
 #include "QuickSort.h"
 
 using namespace std;
 
+//Funcao usada para pegar as linhas do arquivo do Menu
+std::string parseart(std::ifstream& File)
+{
+	std::string parsedfile;
+
+	if (File)
+	{
+		while (File.good())
+		{
+			std::string tmpline;
+			std::getline(File, tmpline);
+			tmpline += "\n";
+
+			parsedfile += tmpline;
+		}
+		return parsedfile;
+	}
+	else
+	{
+		cout << "ERRO AO LER O ARQUIVO DE MENU" << endl;
+	}
+}
+
+//Funcao de Impressao de Menu
+void imprimeMenu()
+{
+	std::ifstream leitor("menu.txt"); //Le o menu to txt
+	std::string art = parseart(leitor);
+	std::cout << art << std::endl; //Imprime o menu
+
+	leitor.close();
+}
+
+void code() {
+	char code = -1;
+	while (code == -1) {
+		cout << "Insira algo para encerrar" << endl;
+		cin >> code;
+	}
+}
+
 int main()
 {
+
+	imprimeMenu();
 	// Instanciando 7 tweets para teste
 	tweets* vetor[7];
 	int id1 = 11;
@@ -22,13 +67,13 @@ int main()
 	vetor[5] = new tweets(64, 189, t, d);
 	vetor[6] = new tweets(54, 28, t, d);
 
-	/* ComeÃ§o das funÃ§oes apenas para testes do quicksort */
+	/* Começo das funçoes apenas para testes do quicksort */
 	cout << "antes de ordenar" << endl;
 	for (int k = 0; k < 7; k++)
 	{
 		cout << vetor[k]->getTweetID() << endl;
 	}
-		
+
 	QuickSort qs; //Chama a classe
 	qs.quicksort(vetor, 0, 6); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
 
@@ -40,9 +85,9 @@ int main()
 
 	cout << "numero de trocas: " << qs.getNumTrocas() << endl;
 	cout << "numero de comparacoes: " << qs.getNumComparacoes() << endl;
-	cout << "tempo gasto: " << qs.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaÃ§ao estÃ¡ muito rapida com poucos elementos, tenho que testar com mais.
-	/* Fim das funÃ§oes apenas para testes do quicksort */
-
-	system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
+	cout << "tempo gasto: " << qs.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos, tenho que testar com mais.
+														   /* Fim das funçoes apenas para testes do quicksort */
+	code();
+	//system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
 	return 0;
 }
