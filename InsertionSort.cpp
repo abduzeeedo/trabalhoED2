@@ -45,10 +45,9 @@ void InsertionSort::insertionsort(tweets* vet[], int tam)
 		j = i - 1;
 
 		/* Move os elementos anteriores a chave que sao maiores que ela 1 posicao a frente da sua posicao atual*/
-		while (j >= 0 && vet[j]->getTweetID() > chave->getTweetID())
+		while (j >= 0 && (vet[j]->getTweetID() > chave->getTweetID() && numCompar++))
 		{
 			vet[j + 1] = vet[j];
-			numCompar++;
 			numTrocas++;
 			j--;
 		}
