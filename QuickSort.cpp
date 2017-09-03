@@ -66,26 +66,23 @@ int QuickSort::particiona(tweets* vet[], int inicio, int fim)
 	//Caminhando no vetor enquanto os ponteiros nao se cruzam
 	while (esq != dir)
 	{
-		if (vet[esq]->getTweetID() <= pivo)
+		if (vet[esq]->getTweetID() <= pivo && numCompar++)
 		{
 			esq++;//Caminha da esquerda para a direita
-			numCompar++;
 		}
 		else
 		{
-			while ((esq != dir) && (pivo < vet[dir]->getTweetID()))
+			while ((esq != dir) && (pivo < vet[dir]->getTweetID() && numCompar++))
 				{
-					numCompar++;
 					dir--; //Caminha da direita para a esquerda
 				}
 			troca(vet[esq], vet[dir]); //Faz a troca
 		}
 	}
 
-	if (vet[esq]->getTweetID() > pivo)
+	if (vet[esq]->getTweetID() > pivo && numCompar++)
 	{
 		esq--; //Volta
-		numCompar++;
 	}
 
 	troca(vet[inicio], vet[esq]); //Se mudar o pivo, nao esquecer de mudar o pivo (vet[inicio]) nessa troca tambem
