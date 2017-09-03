@@ -16,7 +16,7 @@ tweets* gerTexto::carregarTweets(string nome){
     arquivo.open(nome, in);
     if(arquivo.is_open()){
         //obtem o numero de linhas do arquivo
-        aquivo.clear();
+        arquivo.clear();
         while(arquivo.good()){
             num_linhas++;
         }
@@ -26,7 +26,7 @@ tweets* gerTexto::carregarTweets(string nome){
             espacos = 0;
             indBuffer = 0;
             getline(arquivo, linha);
-            for(int i=0; i<linha.len();i++){
+            for(int i=0; i<linha.length();i++){
                 if(linha[i]!='\t' && linha[i]!='\n'){
                     buffer[indBuffer] = linha[i];
                     indBuffer++;

@@ -8,10 +8,10 @@ class tweets
     private:
         int userID;
         int tweetID;
-        std::string tweet;
-        std::string date;
+        char* tweet[];
+        char* date[];
     public:
-        tweets(int uid, int tid, const std::string& tw, const std::string& data);
+        tweets(int uid, int tid, char tw, char da);
         int getuserID();
         int gettweetID();
         std::string getTweet();
