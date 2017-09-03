@@ -12,21 +12,21 @@
 using namespace std;
 
 //Funcao usada para pegar as linhas do arquivo do Menu
-std::string parseart(std::ifstream& File)
+std::string analisaLinhas(std::ifstream& File)
 {
-	std::string parsedfile;
+	std::string arquivoVerif;
 
 	if (File)
 	{
 		while (File.good())
 		{
-			std::string tmpline;
-			std::getline(File, tmpline);
-			tmpline += "\n";
+			std::string linhaTemp;
+			std::getline(File, linhaTemp);
+			linhaTemp += "\n";
 
-			parsedfile += tmpline;
+			arquivoVerif += linhaTemp;
 		}
-		return parsedfile;
+		return arquivoVerif;
 	}
 	else
 	{
@@ -39,13 +39,14 @@ std::string parseart(std::ifstream& File)
 void imprimeMenu()
 {
 	std::ifstream leitor("menu.txt"); //Le o menu to txt
-	std::string art = parseart(leitor);
+	std::string art = analisaLinhas(leitor);
 	std::cout << art << std::endl; //Imprime o menu
 
 	leitor.close();
 }
 
-void imprimeVetor(tweets* vet[], int tam) {
+//Funcao usada para imprimir todos os TweetID`s 
+void imprimeTIDVetor(tweets* vet[], int tam) {
 	cout << "Vetor: ";
 	for (int k = 0; k < tam; k++)
 	{
@@ -54,18 +55,18 @@ void imprimeVetor(tweets* vet[], int tam) {
 	cout << endl;
 }
 
-//Chama o quickSort passando o tipo por Parametro
+//Chama o QuickSort passando o tipo por Parametro
 void tiposQuickSort(tweets* vet[], int tam, char tipo) {
 
 	/*QuickSort*/
-	imprimeVetor(vet, tam);
+	imprimeTIDVetor(vet, tam);
 	cout << endl;
 
 	QuickSort ordena; //Chama a classes
 	ordena.quicksort(vet, 0, tam - 1, tipo); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final.
 
 	cout << "Depois de Ordenar:" << endl;
-	imprimeVetor(vet, tam);
+	imprimeTIDVetor(vet, tam);
 	cout << endl;
 
 	//Resultado das Operações
@@ -74,18 +75,18 @@ void tiposQuickSort(tweets* vet[], int tam, char tipo) {
 	cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos, tenho que testar com mais
 }
 
-//Metodo que seleciona a funcao a ser executada e finaliza execucao
+//Metodo que seleciona via codigo de comando a funcao a ser executada e finaliza execucao
 void codigoFuncao(tweets* vet[], int tam) {
 	string code;
 	while (true) {
 		cout << endl << "Insira o Codigo de Funcao: (-1 para Encerrar Execução)" << endl;
 		cin >> code;
 		if (code == "-1") {
-			return;
+			return;//Finaliza a Execucao
 		}
 
 		if (code == "0") {
-			imprimeMenu();
+			imprimeMenu();//Imprime o Menu (via arquivo txt)
 		}
 
 		if (code == "1") {
@@ -122,14 +123,14 @@ void codigoFuncao(tweets* vet[], int tam) {
 		if (code == "6") {
 			/*InsertionSort*/
 			cout << "Antes de Ordenar via InsertionSort:" << endl;
-			imprimeVetor(vet, tam);
+			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
 			InsertionSort ordena; //Chama a classe
 			ordena.insertionsort(vet, 0, tam); //Faz o insertionsort. Passar 0 para ordenar desde o inicio e o tamanho total, nao tamanho-1
 
 			cout << "Depois de Ordenar:" << endl;
-			imprimeVetor(vet, tam);
+			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
 			//Resultado das Operações
@@ -141,7 +142,7 @@ void codigoFuncao(tweets* vet[], int tam) {
 		if (code == "7") {
 			/*MergeSort*/
 			cout << "Antes de Ordenar via MergeSort:" << endl;
-			imprimeVetor(vet, tam);
+			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
 			
@@ -149,7 +150,7 @@ void codigoFuncao(tweets* vet[], int tam) {
 			ordena.mergesort(vet, 0, tam - 1); //Faz o mergesort. Passar sempre 0 como inicio e tamanho-1 como final
 
 			cout << "Depois de Ordenar:" << endl;
-			imprimeVetor(vet, tam);
+			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
 			//Resultado das Operações
@@ -164,14 +165,14 @@ void codigoFuncao(tweets* vet[], int tam) {
 		if (code == "9") {
 			/*BubbleSort*/
 			cout << "Antes de Ordenar via BubbleSort:" << endl;
-			imprimeVetor(vet, tam);
+			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
 			BubbleSort ordena; //Chama a classe
 			ordena.bubblesort(vet, tam); //Faz o bubblesort. Passar o tamanho total, nao tamanho-1
 
 			cout << "Depois de Ordenar:" << endl;
-			imprimeVetor(vet, tam);
+			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
 			//Resultado das Operações
@@ -203,6 +204,5 @@ int main()
 	vetor[6] = new tweets(54, 28, t, d);
 
 	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execução;
-	//system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
 	return 0;
 }
