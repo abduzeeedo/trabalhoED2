@@ -11,6 +11,7 @@
 
 using namespace std;
 
+
 //Funcao usada para pegar as linhas do arquivo do Menu
 std::string analisaLinhas(std::ifstream& File)
 {
@@ -35,6 +36,15 @@ std::string analisaLinhas(std::ifstream& File)
 	}
 }
 
+//função para converter um int para String, usada na escrita de dados em arquivo txt
+string toString(int i)
+{
+	stringstream ss;
+	ss << i;
+	string retorno = ss.str();
+	return retorno;
+}
+
 //Funcao de Impressao de Menu
 void imprimeMenu()
 {
@@ -55,9 +65,16 @@ void imprimeTIDVetor(tweets* vet[], int tam) {
 	cout << endl;
 }
 
+void salvarTxt(string salvar) {
+	ofstream arquivo;
+	arquivo.open("saida.txt");
+	arquivo << salvar << endl;
+	arquivo.close();
+}
+
 //Chama o QuickSort passando o tipo por Parametro
 void tiposQuickSort(tweets* vet[], int tam, char tipo) {
-
+	string salvar;
 	/*QuickSort*/
 	imprimeTIDVetor(vet, tam);
 	cout << endl;
@@ -69,7 +86,12 @@ void tiposQuickSort(tweets* vet[], int tam, char tipo) {
 	imprimeTIDVetor(vet, tam);
 	cout << endl;
 
-	//Resultado das Operações
+	//Resultado das Operações e escrita em txt
+	salvar = "Algoritmo QuickSort Recursivo:\n";
+	salvar = salvar + "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n" + "Numero de comparacoes: " + toString(ordena.getNumComparacoes());
+	salvar = salvar + "\nTempo gasto: " + toString(ordena.getTempoGasto()) + "\n";
+	salvarTxt(salvar);
+
 	cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 	cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
 	cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos, tenho que testar com mais
@@ -181,6 +203,7 @@ void codigoFuncao(tweets* vet[], int tam) {
 			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos
 		}
 	}
+	
 }
 
 int main()
