@@ -45,10 +45,16 @@ void imprimeMenu()
 
 //Metodo que seleciona a funcao a ser executada e finaliza execucao
 void codigoFuncao() {
-	char code = -2;
-	while (code == -2) {
+	string code;
+	while (true) {
 		cout << "Insira o Codigo de Função: (-1 para Encerrar Execução)" << endl;
 		cin >> code;
+		if (code == "-1") {
+			return;
+		}
+		if (code == "0") {
+			imprimeMenu();
+		}
 	}
 }
 
@@ -83,12 +89,12 @@ int main()
 	/* Deixar somente uma ordenaçao sem estar comentada, se não todas as outras irão pegar o vetor já ordenado pela primeira para ordenar */
 
 	/*QuickSort*/
-	QuickSort ordena; //Chama a classe
-	ordena.quicksort(vetor, 0, 6, 'r'); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
+	//QuickSort ordena; //Chama a classes
+	//ordena.quicksort(vetor, 0, 6, 'r'); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final
 
 	/*InsertionSort*/
-	//InsertionSort ordena; //Chama a classe
-	//ordena.insertionsort(vetor, tam); //Faz o insertionsort. Passar o tamanho total, nao tamanho-1
+	InsertionSort ordena; //Chama a classe
+	ordena.insertionsort(vetor, 0, 7); //Faz o insertionsort. Passar 0 para ordenar desde o inicio e o tamanho total, nao tamanho-1
 
 	/*BubbleSort*/
 	//BubbleSort ordena; //Chama a classe
@@ -106,7 +112,7 @@ int main()
 	cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos, tenho que testar com mais.
 	// Fim das funçoes apenas para testes de ordenacao
 
-	//codigoFuncao(); //Seleciona a funcao ou encerra a execução;
-	system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
+	codigoFuncao(); //Seleciona a funcao ou encerra a execução;
+	//system("pause"); //coloquei isso pq se nao fica sumindo a janela no visual studio, pode tirar
 	return 0;
 }
