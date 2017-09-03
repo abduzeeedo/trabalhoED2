@@ -12,47 +12,42 @@ Hashing::Hashing(int tamanho)
     }
 }
 //Funcoes de hashing
-int Hashing::divisao(int chave)
-{
-    return chave % m;
+int Hashing::divisao(int chave){
+    return chave%m;
 }
-int Hashing::enlacamento(int chave)
-{
+int Hashing::enlacamento(int chave){
     string str = to_string(chave);
     int enlacamento = 0;
-    for (int i = 0; i < str.length(); i++)
-    {
-        enlacamento += atoi(str.substr(i, i +).c_str());
+    for(int i = 0; i<str.length(); i++){
+        enlacamento+=atoi(str.substr(i, i+1).c_str());
     }
-    return enlacamento % m;
+    return enlacamento%m;
 }
-void addVetor(int chave, int hashingFunc, int tratColis)
+void Hashing::addVetor(int chave, int hashingFunc, int tratColis)
 {
-    int posicao = 0.0;
-    if (hashingFunc == 1)
-        posicao = divisao(chave);
-    else if (hashingFunc == 2)
-        posicao = enlacamento(chave);
-    if (table[posicao] == INF)
-        table[posicao] = chave;
-    else
-    {
-        switch (tratColis)
-        {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        default:
-            break;
+        int posicao = 0.0;
+        if(hashingFunc == 1)
+            posicao = divisao(chave);
+        else if(hashingFunc == 2)
+            posicao = enlacamento(chave);
+        if(table[posicao]==INF)
+            table[posicao] = chave;
+        else{
+            switch(tratColis){
+                case 1:
+                break;
+                case 2:
+                break;
+                case 3:
+                break;
+                case 4:
+                break;
+                case 5:
+                break;
+                default:
+                break;
+            }
         }
-    }
 }
 
 Hashing::~Hashing()

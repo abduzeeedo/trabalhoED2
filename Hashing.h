@@ -10,7 +10,7 @@ class Hashing
 {
 private:
     int m;
-    int* table;
+    static int* table;
     int divisao(int chave);
     int enlacamento(int chave);
 public:
