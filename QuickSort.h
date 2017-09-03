@@ -16,9 +16,6 @@ public:
 	QuickSort();
 	~QuickSort();
 	void quicksort(tweets* vetor[], int ini, int fim, char tipo);
-	int medianOf3(tweets* vet[], int left, int right);
-	void QuickSortRandomAndMedian(tweets* vet[], int start, int end);
-	int RandomAndMedianPartition(tweets* vet[], int p, int r);
 	int getNumTrocas();
 	int getNumComparacoes();
 	double getTempoGasto();
