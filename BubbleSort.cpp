@@ -1,10 +1,10 @@
 #include "BubbleSort.h"
 
 /*
-Implementei o BubbleSort para usar como o "Meusort" no cen·rio 3 do trabalho.
-Motivo: um dos mais simples e populares metodos de ordenaÁao
+Implementei o BubbleSort para usar como o "Meusort" no cen√°rio 3 do trabalho.
+Motivo: um dos mais simples e populares metodos de ordena√ßao
 
-Se quiserem usar outro, sÛ falar. De qualquer maneira, esse j· ta pronto.
+Se quiserem usar outro, s√≥ falar. De qualquer maneira, esse j√° ta pronto.
 */
 
 //Construtor
@@ -58,7 +58,7 @@ void BubbleSort::bubblesort(tweets* vet[], int tam)
 	for (int i = 0; i < tam - 1; i++)
 		for (int j = 0; j < tam - i - 1; j++)
 		{
-			if (vet[j]->getTweetID() > vet[j + 1]->getTweetID() && numCompar++)
+			if (vet[j]->getTweetID() > vet[j + 1]->getTweetID() && ++numCompar)
 			{
 				troca(vet[j], vet[j + 1]);
 			}
