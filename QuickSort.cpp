@@ -4,7 +4,7 @@ using namespace std;
 /*
 ainda falta:
 escrever mais comentarios
-implementar a funcao para ler do arquivo entrada.txt para fazer a ordenaÃ§ao aleatoria dos tweets
+implementar a funcao para ler do arquivo entrada.txt para fazer a ordenaçao aleatoria dos tweets
 implementar a funcao para escrever os resultados no arquivo saida.txt
 alterar o codigo para funcionar no numero N de vezes lidos da entrada.txt
 */
@@ -69,13 +69,15 @@ int QuickSort::particiona(tweets* vet[], int inicio, int fim)
 		if (vet[esq]->getTweetID() <= pivo && numCompar++)
 		{
 			esq++;//Caminha da esquerda para a direita
+			numCompar++;
 		}
 		else
 		{
 			while ((esq != dir) && (pivo < vet[dir]->getTweetID() && numCompar++))
-				{
-					dir--; //Caminha da direita para a esquerda
-				}
+			{
+				numCompar++;
+				dir--; //Caminha da direita para a esquerda
+			}
 			troca(vet[esq], vet[dir]); //Faz a troca
 		}
 	}
@@ -83,22 +85,25 @@ int QuickSort::particiona(tweets* vet[], int inicio, int fim)
 	if (vet[esq]->getTweetID() > pivo && numCompar++)
 	{
 		esq--; //Volta
+		numCompar++;
 	}
 
 	troca(vet[inicio], vet[esq]); //Se mudar o pivo, nao esquecer de mudar o pivo (vet[inicio]) nessa troca tambem
-	return (esq); //Retorna a posiÃ§ao ordenada
+	return (esq); //Retorna a posiçao ordenada
 }
 
 //Algoritmo do quicksort recursivo
-void QuickSort::quicksort(tweets* vet[], int ini, int fim)
+void QuickSort::quicksort(tweets* vet[], int ini, int fim, char tipo)
 {
 	clock_t relogio;
 	relogio = clock();
-	if (ini < fim) 
-	{
-		int part = particiona(vet, ini, fim);
-		quicksort(vet, ini, part-1);
-		quicksort(vet, part+1, fim);
+	if (tipo == 'r'){
+		if (ini < fim)
+		{
+			int part = particiona(vet, ini, fim);
+			quicksort(vet, ini, part - 1, 'r');
+			quicksort(vet, part + 1, fim, 'r');
+		}
 	}
 	tempoGasto = (clock() - relogio) / (double)CLOCKS_PER_SEC;
 }
