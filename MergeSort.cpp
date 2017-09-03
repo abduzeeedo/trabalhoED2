@@ -29,12 +29,12 @@ double MergeSort::getTempoGasto()
 	return tempoGasto;
 }
 
-void MergeSort::intercala(tweets *vet[], int ini, int meio, int fim)
+void MergeSort::intercala(Tweet *vet[], int ini, int meio, int fim)
 {
-		tweets ** vetAux = (tweets**)malloc(sizeof(tweets*) * (fim - ini + 1)); //Aloca um vetor auxiliar para ordenaçao
-		int posAux = 0; //Variavel para controlar a posiçao no vetor auxiliar
-		int i = ini; //Começo do vetor particionado
-		int j = meio + 1; //Fim do vetor particionado. (O fim recebido por parametro é o fim do vetor original)
+		Tweet ** vetAux = (Tweet**)malloc(sizeof(Tweet*) * (fim - ini + 1)); //Aloca um vetor auxiliar para ordenaï¿½ao
+		int posAux = 0; //Variavel para controlar a posiï¿½ao no vetor auxiliar
+		int i = ini; //Comeï¿½o do vetor particionado
+		int j = meio + 1; //Fim do vetor particionado. (O fim recebido por parametro ï¿½ o fim do vetor original)
 
 		while (i < meio + 1 && j < fim + 1)
 		{
@@ -69,14 +69,14 @@ void MergeSort::intercala(tweets *vet[], int ini, int meio, int fim)
 		free(vetAux);
 }
 
-void MergeSort::mergesort(tweets *array[], int inicio, int fim)
+void MergeSort::mergesort(Tweet *array[], int inicio, int fim)
 {
 	clock_t relogio;
 	relogio = clock();
 	if (inicio < fim)
 	{
 		int meio = (inicio + fim) / 2;
-		//Chama a funçao recursivamente para as duas metades do vetor
+		//Chama a funï¿½ao recursivamente para as duas metades do vetor
 		mergesort(array, inicio, meio);
 		mergesort(array, meio + 1, fim);
 		//Intercala as duas metades ordenadas

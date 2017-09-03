@@ -1,4 +1,4 @@
-#include "tweets.h"
+#include "Tweet.h"
 #include <iostream>
 #include <ctime>
 
@@ -14,5 +14,5 @@ public:
 	int getNumTrocas();
 	int getNumComparacoes();
 	double getTempoGasto();
-	void insertionsort(tweets* vetor[], int tam);
+	void insertionsort(Tweet* vetor[], int tam);
 };

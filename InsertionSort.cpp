@@ -31,13 +31,13 @@ double InsertionSort::getTempoGasto()
 	return tempoGasto;
 }
 
-void InsertionSort::insertionsort(tweets* vet[], int inicio, int fim)
+void InsertionSort::insertionsort(Tweet* vet[], int inicio, int fim)
 {
 	clock_t relogio;
 	relogio = clock();
 
 	int i, j;
-	tweets* chave; //chave auxiliar
+	Tweet* chave; //chave auxiliar
 
 	for (i = inicio+1; i < fim; i++) //comeca da posicao inicio e termina na posicao fim
 	{

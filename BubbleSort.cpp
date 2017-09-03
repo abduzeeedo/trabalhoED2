@@ -39,11 +39,11 @@ double BubbleSort::getTempoGasto()
 }
 
 //Nao usei o std::swap para poder adicionar o de numero de trocas
-void BubbleSort::troca(tweets* &t1, tweets* &t2)
+void BubbleSort::troca(Tweet* &t1, Tweet* &t2)
 {
 	if (t1 != t2) //Nao troca se t1 e t2 sao iguais, ja que nao precisa
 	{
-		tweets* aux = t1;
+		Tweet* aux = t1;
 		t1 = t2;
 		t2 = aux;
 		numTrocas++;
@@ -51,7 +51,7 @@ void BubbleSort::troca(tweets* &t1, tweets* &t2)
 }
 
 //Algoritmo BubbleSort
-void BubbleSort::bubblesort(tweets* vet[], int tam)
+void BubbleSort::bubblesort(Tweet* vet[], int tam)
 {
 	clock_t relogio;
 	relogio = clock();

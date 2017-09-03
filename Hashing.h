@@ -5,12 +5,11 @@
 #include <iostream>
 #include "math.h"
 
-using namespace std;
 class Hashing
 {
 private:
     int m;
-    static int* table;
+    int* table;
     int divisao(int chave);
     int enlacamento(int chave);
 public:

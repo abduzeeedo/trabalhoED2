@@ -1,21 +1,21 @@
-#include "tweets.h"
+#include "Tweet.h"
 #include <iostream>
 #include <ctime>
 
 class QuickSort
 {
 private:
-	int particiona(tweets* vetor[], int inicio, int fim);
-	int particionaMediana(tweets* vetor[], int inicio, int fim);
-	int mediana(tweets* vet[], int numVal, int inicio, int fim);
-	void troca(tweets* &t1, tweets* &t2);
+	int particiona(Tweet* vetor[], int inicio, int fim);
+	int particionaMediana(Tweet* vetor[], int inicio, int fim);
+	int mediana(Tweet* vet[], int numVal, int inicio, int fim);
+	void troca(Tweet* &t1, Tweet* &t2);
 	int numTrocas;
 	int numCompar;
 	double tempoGasto;
 public:
 	QuickSort();
 	~QuickSort();
-	void quicksort(tweets* vetor[], int ini, int fim, char tipo);
+	void quicksort(Tweet* vetor[], int ini, int fim, char tipo);
 	int getNumTrocas();
 	int getNumComparacoes();
 	double getTempoGasto();

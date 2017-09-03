@@ -5,7 +5,7 @@ using namespace std;
 /*
 ainda falta:
 escrever mais comentarios
-implementar a funcao para ler do arquivo entrada.txt para fazer a ordenaçao aleatoria dos tweets
+implementar a funcao para ler do arquivo entrada.txt para fazer a ordenaï¿½ao aleatoria dos Tweet
 implementar a funcao para escrever os resultados no arquivo saida.txt
 alterar o codigo para funcionar no numero N de vezes lidos da entrada.txt
 */
@@ -41,13 +41,13 @@ double QuickSort::getTempoGasto()
 }
 
 //Nao usei o std::swap para poder adicionar o de numero de trocas
-void QuickSort::troca(tweets* &t1, tweets* &t2)
+void QuickSort::troca(Tweet* &t1, Tweet* &t2)
 {
 	if (t1 != t2) //Nao troca se t1 e t2 sao iguais, ja que nao precisa
 	{
 		//uso isso so pra testar, nao precisa. vou tirar quando tiver tudo pronto 100%
 		//cout << "trocando " << t1->getTweetID() << " por " << t2->getTweetID() << endl;
-		tweets* aux = t1;
+		Tweet* aux = t1;
 		t1 = t2;
 		t2 = aux;
 		numTrocas++;
@@ -55,7 +55,7 @@ void QuickSort::troca(tweets* &t1, tweets* &t2)
 }
 
 //Algoritmo de particionamento do vetor
-int QuickSort::particiona(tweets* vet[], int inicio, int fim)
+int QuickSort::particiona(Tweet* vet[], int inicio, int fim)
 {
 	//Seleciona o primeiro elemento do vetor como pivo (caso precise mudar o pivo, tem que mudar aqui e ali em baixo)
 	int pivo = vet[inicio]->getTweetID();
@@ -87,11 +87,11 @@ int QuickSort::particiona(tweets* vet[], int inicio, int fim)
 	}
 
 	troca(vet[inicio], vet[esq]); //Se mudar o pivo, nao esquecer de mudar o pivo (vet[inicio]) nessa troca tambem
-	return (esq); //Retorna a posiçao ordenada
+	return (esq); //Retorna a posiï¿½ao ordenada
 }
 
 //Algoritmo do quicksort recursivo
-void QuickSort::quicksort(tweets* vet[], int ini, int fim, char tipo)
+void QuickSort::quicksort(Tweet* vet[], int ini, int fim, char tipo)
 {
 	clock_t relogio;
 	relogio = clock();
@@ -117,7 +117,7 @@ void QuickSort::quicksort(tweets* vet[], int ini, int fim, char tipo)
 // BRUNO DAQUI PRA BAIXO
 
 /* BACKUP FUNCIONAL SEM O ULTIMO ELEMENTO
-void QuickSort::QuickSortRandomAndMedian(tweets* vet[], int start, int end) {
+void QuickSort::QuickSortRandomAndMedian(Tweet* vet[], int start, int end) {
 	int q;
 	if (end - start<2) return;
 	q = RandomAndMedianPartition(vet, start, end);
@@ -125,7 +125,7 @@ void QuickSort::QuickSortRandomAndMedian(tweets* vet[], int start, int end) {
 	QuickSortRandomAndMedian(vet, q, end);
 }
 
-int QuickSort::RandomAndMedianPartition(tweets* vet[], int p, int r) {
+int QuickSort::RandomAndMedianPartition(Tweet* vet[], int p, int r) {
 	int t;
 	int x = vet[t = ((rand() % (r - p)) / 2) + p + (r - p) / 4]->getTweetID();
 	int y = vet[t + 1]->getTweetID();
@@ -142,7 +142,7 @@ int QuickSort::RandomAndMedianPartition(tweets* vet[], int p, int r) {
 }
 */
 
-int QuickSort::particionaMediana(tweets* vet[], int inicio, int fim)
+int QuickSort::particionaMediana(Tweet* vet[], int inicio, int fim)
 {
 	//Seleciona o primeiro elemento do vetor como pivo (caso precise mudar o pivo, tem que mudar aqui e ali em baixo)
 	int pivo = mediana(vet, 3, inicio, fim);
@@ -177,10 +177,10 @@ int QuickSort::particionaMediana(tweets* vet[], int inicio, int fim)
 	}
 
 	troca(vet[inicio], vet[esq]); //Se mudar o pivo, nao esquecer de mudar o pivo (vet[inicio]) nessa troca tambem
-	return (esq); //Retorna a posiçao ordenada
+	return (esq); //Retorna a posiï¿½ao ordenada
 }
 
-int QuickSort::mediana(tweets* vet[], int numVal, int inicio, int fim) {
+int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
 
 	if (numVal == 3) {
 

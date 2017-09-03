@@ -1,16 +1,17 @@
-#include "gerTexto.h"
+#include "GerTexto.h"
+using namespace std;
 
-gerTexto::gerTexto(){
+GerTexto::GerTexto(){
 
 }
 
-gerTexto::~gerTexto(){
+GerTexto::~GerTexto(){
     
 }
-tweets* gerTexto::carregarTweets(string nome){
+Tweet* GerTexto::carregarTweets(string nome){
     string linha, buffer, userId, tweetId, tweet, date;
     int tamanho =0;
-    tweets* conjunto;
+    Tweet* conjunto[];
     fstream arquivo;
     int indBuffer =0, espacos = 0, num_linhas = 0, indTweets = 0;
     arquivo.open(nome, in);
@@ -20,7 +21,7 @@ tweets* gerTexto::carregarTweets(string nome){
         while(arquivo.good()){
             num_linhas++;
         }
-        conjunto = new tweets[num_linhas];
+        conjunto = new Tweet[num_linhas];
         arquivo.clear();
         while(arquivo.good()){
             espacos = 0;
@@ -49,7 +50,7 @@ tweets* gerTexto::carregarTweets(string nome){
                     indBuffer=0;
                     buffer.clear();
                 }
-                conjunto[indTweets] = new tweets(stoi(userId,10), stoi(tweetId, 10), tweet.c_str(), date.c_str());
+                conjunto[indTweets] = new Tweet(stoi(userId,10), stoi(tweetId, 10), tweet.c_str(), date.c_str());
                 indTweets++;
 
             }

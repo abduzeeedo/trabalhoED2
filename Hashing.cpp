@@ -1,4 +1,5 @@
 #include "Hashing.h"
+using namespace std;
 
 #define INF -10000
 Hashing::Hashing(int tamanho)
