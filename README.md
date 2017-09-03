@@ -6,28 +6,28 @@ ED2 - 2017.3
 
 # CENARIO I - Bellotti
 - [ ] QuickSort (Recursivo) - USERID
-- [ ] QuickSort (Recursivo) - TWEETID
+- [x] QuickSort (Recursivo) - TWEETID
 - [ ] QuickSort (Recursivo) - TWEET
-- [ ] Contabilizar Num. Comparações
-- [ ] Contabilizar Num. Copias de Registros
-- [ ] Tempo Total Execução
+- [x] Contabilizar Num. Comparações
+- [x] Contabilizar Num. Copias de Registros
+- [x] Tempo Total Execução
 - [ ] Importar Elementos Aleatoriamente
 - [ ] ANALISE CENARIO I -  Graficos, Tabelas, Conclusões
 
 # CENARIO II - Bruno
-- [ ] QuickSort (Recursivo) - TWEETID
+- [x] QuickSort (Recursivo) - TWEETID
 - [ ] QuickSort (MEDIANA) - TWEETID
-- [ ] QuickSort (Inserção) - TWEETID
+- [x] QuickSort (Inserção) - TWEETID
 - [ ] Comparar Num. Comparações
 - [ ] Comparar Num. Copias de Registros
 - [ ] Comparar Tempo Total Execução
 - [ ] ANALISE CENARIO II -  Graficos, Tabelas, Conclusões Pedidas
 
 # CENARIO III -  Diogo
-- [ ] Insertion Sort - TWEETID
-- [ ] Merge Sort - TWEETID
+- [x] Insertion Sort - TWEETID
+- [x] Merge Sort - TWEETID
 - [ ] Heap Sort - TWEETID
-- [ ] PedroSort (outro qqr ñ visto em sala) - TWEETID
+- [x] BubbleSort (outro qqr ñ visto em sala) - TWEETID
 - [ ] Relatorio do PedroSort com fonte
 - [ ] Comparar Num. Comparações
 - [ ] Comparar Num. Copias de Registros
@@ -45,3 +45,8 @@ ED2 - 2017.3
 - [ ] ANALISE CENARIO IV -  Graficos, Tabelas, Conclusões Pedidas
 
 # IMPLEMENTAÇÃO PALAVRAS DO MOMENTO
+
+# Perguntar Vania:
+- O que significa o "Para cada Tipo de Dado" no Cenario 1
+- Perguntar se pode ter 1 arquivo saida.txt pra cada algoritmo
+- Perguntar se o Tweet e Date podem ser string
