@@ -1,5 +1,4 @@
 #include "Hashing.h"
-using namespace std;
 
 #define INF -10000
 Hashing::Hashing(int tamanho)
@@ -24,6 +23,20 @@ int Hashing::enlacamento(int chave){
     }
     return enlacamento%m;
 }
+int Hashing::sondLinear(int chave){
+}
+int Hashing::sondQuadratica(int chave){
+
+}
+int Hashing::duploHash(int chave){
+
+}
+int Hashing::encadSeparado(int chave){
+
+}
+int Hashing::encadCol(int chave){
+
+}
 void Hashing::addVetor(int chave, int hashingFunc, int tratColis)
 {
         int posicao = 0.0;
@@ -36,17 +49,23 @@ void Hashing::addVetor(int chave, int hashingFunc, int tratColis)
         else{
             switch(tratColis){
                 case 1:
+                posicao = sondLinear(chave);
                 break;
                 case 2:
+                posicao = sondQuadratica(chave);
                 break;
                 case 3:
+                posicao = duploHash(chave);
                 break;
                 case 4:
+                posicao = encadSeparado();
                 break;
                 case 5:
+                posicao = encadCol(chave);
                 break;
                 default:
                 break;
+                table[posicao] = chave;
             }
         }
 }
