@@ -1,20 +1,18 @@
 #include "Tweet.h"
-#include <string>
-#include <stdlib.h>
-using namespace std;
+
 
 // Construtor sobrecarregado para poder utilizar dois tipos de inicialização
 Tweet::Tweet()
 {
 }
-Tweet::Tweet(int uid, int tid, char tw[], char da[])
+Tweet::Tweet(int uid, int tid, string tw, string da)
 {
     userID = uid;
     tweetID = tid;
     tweetText = tw;
     date = da;
 }
-void Tweet::addTweet(int uid, int tid, char tw[], char da[])
+void Tweet::addTweet(int uid, int tid, string tw, string da)
 {
     userID = uid;
     tweetID = tid;
@@ -30,13 +28,12 @@ int Tweet::getTweetID()
 {
     return tweetID;
 }
-
-char *Tweet::getTweetText()
+string Tweet::getTweetText()
 {
     return tweetText;
 }
 
-char *Tweet::getDate()
+string Tweet::getDate()
 {
     return date;
 }

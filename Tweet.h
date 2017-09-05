@@ -1,23 +1,26 @@
 #ifndef TWEET_H
 #define TWEET_H
-#include <string>
 
+#include <string>
+#include <stdlib.h>
+
+using namespace std;
 
 class Tweet
 {
     private:
         int userID;
         int tweetID;
-        char* tweetText;
-        char* date;
+        string tweetText;
+        string date;
     public:
         Tweet();
-        Tweet(int uid, int tid, char tw[], char da[]);
-        void addTweet(int uid, int tid, char tw[], char da[]);
+        Tweet(int uid, int tid, string tw, string da);
+        void addTweet(int uid, int tid, string tw, string da);
         int getUserID();
         int getTweetID();
-        char* getTweetText();
-        char* getDate();
+        string getTweetText();
+        string getDate();
         virtual ~Tweet();
 };
 

@@ -1,9 +1,12 @@
 #ifndef HASHING_H
 #define HASHING_H
 
+
 #include <string>
 #include <iostream>
 #include "math.h"
+
+using namespace std;
 
 class Hashing
 {

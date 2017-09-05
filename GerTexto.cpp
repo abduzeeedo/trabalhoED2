@@ -1,5 +1,4 @@
 #include "GerTexto.h"
-using namespace std;
 
 GerTexto::GerTexto(){
 
@@ -11,10 +10,10 @@ GerTexto::~GerTexto(){
 Tweet* GerTexto::carregarTweets(string nome){
     string linha, buffer, userId, tweetId, tweet, date;
     int tamanho =0;
-    Tweet* conjunto[];
+    Tweet* conjunto;
     fstream arquivo;
     int indBuffer =0, espacos = 0, num_linhas = 0, indTweets = 0;
-    arquivo.open(nome, in);
+    arquivo.open(nome, std::fstream::in);
     if(arquivo.is_open()){
         //obtem o numero de linhas do arquivo
         arquivo.clear();
@@ -50,7 +49,11 @@ Tweet* GerTexto::carregarTweets(string nome){
                     indBuffer=0;
                     buffer.clear();
                 }
-                conjunto[indTweets] = new Tweet(stoi(userId,10), stoi(tweetId, 10), tweet.c_str(), date.c_str());
+                conjunto[indTweets] = new Tweet(stoi(userId), stoi(tweetId), tweet, date);
+                date.clear();
+                userId.clear();
+                tweetId.clear();
+                tweet.clear();
                 indTweets++;
 
             }

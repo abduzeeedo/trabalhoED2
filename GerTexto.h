@@ -6,6 +6,8 @@
 #include "Tweet.h"
 #include <fstream>
 
+using namespace std;
+
 class GerTexto
 {
   private:

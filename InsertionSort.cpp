@@ -31,7 +31,7 @@ double InsertionSort::getTempoGasto()
 	return tempoGasto;
 }
 
-void InsertionSort::insertionsort(Tweet* vet[], int inicio, int fim)
+void InsertionSort::insertionsort(Tweet vet[], int inicio, int fim)
 {
 	clock_t relogio;
 	relogio = clock();

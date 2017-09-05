@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 #include "stdlib.h"
-#include "tweets.h"
+#include "Tweet.h"
 #include "QuickSort.h"
 #include "InsertionSort.h"
 #include "MergeSort.h"
@@ -13,16 +13,16 @@ using namespace std;
 
 
 //Funcao usada para pegar as linhas do arquivo do Menu
-std::string analisaLinhas(std::ifstream& File)
+string analisaLinhas(ifstream& File)
 {
-	std::string arquivoVerif;
+	string arquivoVerif;
 
 	if (File)
 	{
 		while (File.good())
 		{
-			std::string linhaTemp;
-			std::getline(File, linhaTemp);
+			string linhaTemp;
+			getline(File, linhaTemp);
 			linhaTemp += "\n";
 
 			arquivoVerif += linhaTemp;
@@ -36,7 +36,7 @@ std::string analisaLinhas(std::ifstream& File)
 	}
 }
 
-//função para converter um int para String, usada na escrita de dados em arquivo txt
+//funï¿½ï¿½o para converter um int para String, usada na escrita de dados em arquivo txt
 string toString(int i)
 {
 	stringstream ss;
@@ -48,15 +48,15 @@ string toString(int i)
 //Funcao de Impressao de Menu
 void imprimeMenu()
 {
-	std::ifstream leitor("menu.txt"); //Le o menu to txt
-	std::string art = analisaLinhas(leitor);
-	std::cout << art << std::endl; //Imprime o menu
+	ifstream leitor("menu.txt"); //Le o menu to txt
+	string art = analisaLinhas(leitor);
+	cout << art << endl; //Imprime o menu
 
 	leitor.close();
 }
 
 //Funcao usada para imprimir todos os TweetID`s 
-void imprimeTIDVetor(tweets* vet[], int tam) {
+void imprimeTIDVetor(Tweet* vet[], int tam) {
 	cout << "Vetor: ";
 	for (int k = 0; k < tam; k++)
 	{
@@ -73,7 +73,7 @@ void salvarTxt(string salvar) {
 }
 
 //Chama o QuickSort passando o tipo por Parametro
-void tiposQuickSort(tweets* vet[], int tam, char tipo) {
+void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
 	string salvar;
 	/*QuickSort*/
 	imprimeTIDVetor(vet, tam);
@@ -86,7 +86,7 @@ void tiposQuickSort(tweets* vet[], int tam, char tipo) {
 	imprimeTIDVetor(vet, tam);
 	cout << endl;
 
-	//Resultado das Operações e escrita em txt
+	//Resultado das Operaï¿½ï¿½es e escrita em txt
 	salvar = "Algoritmo QuickSort Recursivo:\n";
 	salvar = salvar + "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n" + "Numero de comparacoes: " + toString(ordena.getNumComparacoes());
 	salvar = salvar + "\nTempo gasto: " + toString(ordena.getTempoGasto()) + "\n";
@@ -94,14 +94,14 @@ void tiposQuickSort(tweets* vet[], int tam, char tipo) {
 
 	cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 	cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-	cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos, tenho que testar com mais
+	cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaï¿½ao estï¿½ muito rapida com poucos elementos, tenho que testar com mais
 }
 
 //Metodo que seleciona via codigo de comando a funcao a ser executada e finaliza execucao
-void codigoFuncao(tweets* vet[], int tam) {
+void codigoFuncao(Tweet* vet[], int tam) {
 	string code;
 	while (true) {
-		cout << endl << "Insira o Codigo de Funcao: (-1 para Encerrar Execução)" << endl;
+		cout << endl << "Insira o Codigo de Funcao: (-1 para Encerrar Execuï¿½ï¿½o)" << endl;
 		cin >> code;
 		if (code == "-1") {
 			return;//Finaliza a Execucao
@@ -133,13 +133,13 @@ void codigoFuncao(tweets* vet[], int tam) {
 		}
 
 		if (code == "4") {
-			cout << "Antes de Ordenar via QuickSort Recursivo com Inserção com m=10:" << endl;
-			tiposQuickSort(vet, tam, 'i');//Tipo 'M': QuickSort Recursivo com Inserção com m=10
+			cout << "Antes de Ordenar via QuickSort Recursivo com Inserï¿½ï¿½o com m=10:" << endl;
+			tiposQuickSort(vet, tam, 'i');//Tipo 'M': QuickSort Recursivo com Inserï¿½ï¿½o com m=10
 		}
 
 		if (code == "5") {
-			cout << "Antes de Ordenar via QuickSort Recursivo com Inserção com m=100:" << endl;
-			tiposQuickSort(vet, tam, 'I');//Tipo 'M': QuickSort Recursivo com Inserção com m=100
+			cout << "Antes de Ordenar via QuickSort Recursivo com Inserï¿½ï¿½o com m=100:" << endl;
+			tiposQuickSort(vet, tam, 'I');//Tipo 'M': QuickSort Recursivo com Inserï¿½ï¿½o com m=100
 		}
 
 		if (code == "6") {
@@ -149,16 +149,16 @@ void codigoFuncao(tweets* vet[], int tam) {
 			cout << endl;
 
 			InsertionSort ordena; //Chama a classe
-			ordena.insertionsort(vet, 0, tam); //Faz o insertionsort. Passar 0 para ordenar desde o inicio e o tamanho total, nao tamanho-1
+			// ordena.insertionsort(vet, 0, tam); //Faz o insertionsort. Passar 0 para ordenar desde o inicio e o tamanho total, nao tamanho-1
 
 			cout << "Depois de Ordenar:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
-			//Resultado das Operações
+			//Resultado das Operaï¿½ï¿½es
 			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos, tenho que testar com mais
+			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaï¿½ao estï¿½ muito rapida com poucos elementos, tenho que testar com mais
 		}
 
 		if (code == "7") {
@@ -175,10 +175,10 @@ void codigoFuncao(tweets* vet[], int tam) {
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
-			//Resultado das Operações
+			//Resultado das Operaï¿½ï¿½es
 			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos
+			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaï¿½ao estï¿½ muito rapida com poucos elementos
 		}
 		if (code == "8") {
 			/*HeapSort*/
@@ -197,10 +197,10 @@ void codigoFuncao(tweets* vet[], int tam) {
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
-			//Resultado das Operações
+			//Resultado das Operaï¿½ï¿½es
 			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaçao está muito rapida com poucos elementos
+			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordenaï¿½ao estï¿½ muito rapida com poucos elementos
 		}
 	}
 	
@@ -211,21 +211,21 @@ int main()
 
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
-	// Instanciando 7 tweets para teste
-	tweets* vetor[7];
+	// Instanciando 7 Tweet para teste
+	Tweet* vetor[7];
 	int tam = sizeof(vetor) / sizeof(vetor[0]);
 	int id1 = 11;
 	int tid1 = 121;
 	string t = "teste de tweet1";
 	string d = "2017-08-30 16:31:42";
-	vetor[0] = new tweets(id1, tid1, t, d);
-	vetor[1] = new tweets(50, 14, t, d);
-	vetor[2] = new tweets(98, 41, t, d);
-	vetor[3] = new tweets(47, 98, t, d);
-	vetor[4] = new tweets(26, 16, t, d);
-	vetor[5] = new tweets(64, 189, t, d);
-	vetor[6] = new tweets(54, 28, t, d);
+	vetor[0] = new Tweet(id1, tid1, t, d);
+	vetor[1] = new Tweet(50, 14, t, d);
+	vetor[2] = new Tweet(98, 41, t, d);
+	vetor[3] = new Tweet(47, 98, t, d);
+	vetor[4] = new Tweet(26, 16, t, d);
+	vetor[5] = new Tweet(64, 189, t, d);
+	vetor[6] = new Tweet(54, 28, t, d);
 
-	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execução;
+	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execuï¿½ï¿½o;
 	return 0;
 }
