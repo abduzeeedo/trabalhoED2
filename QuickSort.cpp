@@ -57,37 +57,33 @@ void QuickSort::troca(Tweet* &t1, Tweet* &t2)
 //Algoritmo de particionamento do vetor
 int QuickSort::particiona(Tweet* vet[], int inicio, int fim)
 {
-	//Seleciona o primeiro elemento do vetor como pivo (caso precise mudar o pivo, tem que mudar aqui e ali em baixo)
-	int pivo = vet[inicio]->getTweetID();
-	//Pega o elemento imediatamente a direita do pivo, para caminhar da esquerda para direita. Caso precise mudar o pivo, tem que mudar esse calculo tbm
-	int esq = inicio + 1;
-	//Pega o ultimo elemento do vetor para caminhar da direita para esquerda
-	int dir = fim;
+	/*
+	Posicao do vetor, a formula para calcular a posiçao é (inicio + ((posicao)%(fim-inicio+1))). No caso, posicao = (inicio + fim) / 2), metade do vetor
+	Exemplo, caso queira passar a posicao 3 do vetor como pivo int pospiv = inicio + (3 % (fim - inicio + 1));
+	Pode alterar tambem para ficar como parametro recebido da funcao exemplo indPivo (indice do vetor que deve ser usado como pivo), nesse caso ficaria
+	int pospiv = inicio + (indPivo % (fim - inicio + 1))
+	*/
+	int pospiv = inicio + (((inicio + fim) / 2) % (fim - inicio + 1));
+	int pivo = vet[pospiv]->getTweetID(); //Pega o tweetID da posicao que foi pedida e coloca ela como pivo
+	troca(vet[pospiv], vet[fim]); // Coloca o pivo como o ultimo elemento do vetor
+	pospiv = fim; //Volta a posicao do pivo como sendo o inicio do vetor que vai ser particionado
 
-	//Caminhando no vetor enquanto os ponteiros nao se cruzam
-	while (esq != dir)
+	//Variaveis para percorrer no vetor particionado
+	int i = inicio - 1; //Comeca antes do inicio pq na primeira troca ele ja vai virar o inicio
+	int j = inicio; //Anda do comeco ate o fim-1 do vetor
+
+	while(j <= fim-1) //Ele nao vai ate o fim do vetor pois o ultimo elemento eh o pivo que foi jogado para o final no comeco da execucao
 	{
-		if (vet[esq]->getTweetID() <= pivo && ++numCompar)
+		if ((vet[j]->getTweetID() <= pivo) && ++numCompar)
 		{
-			esq++;//Caminha da esquerda para a direita
+			i++;
+			troca(vet[i], vet[j]);
 		}
-		else
-		{
-			while ((esq != dir) && (pivo < vet[dir]->getTweetID() && ++numCompar))
-			{
-				dir--; //Caminha da direita para a esquerda
-			}
-			troca(vet[esq], vet[dir]); //Faz a troca
-		}
+		j++;
 	}
 
-	if (vet[esq]->getTweetID() > pivo && ++numCompar)
-	{
-		esq--; //Volta
-	}
-
-	troca(vet[inicio], vet[esq]); //Se mudar o pivo, nao esquecer de mudar o pivo (vet[inicio]) nessa troca tambem
-	return (esq); //Retorna a posi�ao ordenada
+	troca(vet[i + 1], vet[pospiv]);
+	return i + 1;
 }
 
 //Algoritmo do quicksort recursivo
