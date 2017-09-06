@@ -8,6 +8,7 @@
 //#include "InsertionSort.h"
 #include "MergeSort.h"
 #include "BubbleSort.h"
+#include "GerTexto.h"
 
 using namespace std;
 
@@ -210,7 +211,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 int main()
 {
 
-	imprimeMenu(); // Funcao para imprimir o Menu no Console
+	// imprimeMenu(); // Funcao para imprimir o Menu no Console
 
 	// Instanciando 7 Tweet para teste
 	Tweet* vetor[7];
@@ -226,7 +227,9 @@ int main()
 	vetor[4] = new Tweet(26, 16, t, d);
 	vetor[5] = new Tweet(64, 189, t, d);
 	vetor[6] = new Tweet(54, 28, t, d);
-
+	GerTexto* ger = new GerTexto();
+	Tweet* tw = ger->carregarTweet("tw.txt");
+	tw->printTweet();
 	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execu��o;
 	return 0;
 }

@@ -12,7 +12,7 @@ class GerTexto
 {
   private:
   public:
-    Tweet* carregarTweets(string nome);
+    Tweet* carregarTweet(string nome);
     GerTexto();
     ~GerTexto();
 };

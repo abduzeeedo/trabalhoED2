@@ -23,19 +23,32 @@ int Tweet::getUserID()
 {
     return userID;
 }
-
+void Tweet::setUserID(int uid){
+    userID = uid;
+}
 int Tweet::getTweetID()
 {
     return tweetID;
 }
+void Tweet::setTweetID(int tid){
+    tweetID = tid;
+}
 string Tweet::getTweetText()
 {
     return tweetText;
+}
+void Tweet::setTweetText(string tw){
+    tweetText = tw;
 }
 
 string Tweet::getDate()
 {
     return date;
 }
-
+void Tweet::setDate(string da){
+    date = da;
+}
+void Tweet::printTweet(){
+    cout << userID << " " << tweetID << " " << tweetText << " " << date;
+}
 Tweet::~Tweet() {}

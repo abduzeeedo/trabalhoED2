@@ -3,6 +3,7 @@
 
 #include <string>
 #include <stdlib.h>
+#include <iostream>
 
 using namespace std;
 
@@ -21,6 +22,11 @@ class Tweet
         int getTweetID();
         string getTweetText();
         string getDate();
+        void setUserID(int uid);
+        void setTweetID(int tid);
+        void setTweetText(string tw);
+        void setDate(string date);
+        void printTweet();
         virtual ~Tweet();
 };
 
