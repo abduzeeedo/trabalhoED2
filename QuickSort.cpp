@@ -66,7 +66,7 @@ int QuickSort::particiona(Tweet* vet[], int inicio, int fim)
 	int pospiv = inicio + (((inicio + fim) / 2) % (fim - inicio + 1));
 	int pivo = vet[pospiv]->getTweetID(); //Pega o tweetID da posicao que foi pedida e coloca ela como pivo
 	troca(vet[pospiv], vet[fim]); // Coloca o pivo como o ultimo elemento do vetor
-	pospiv = fim; //Volta a posicao do pivo como sendo o inicio do vetor que vai ser particionado
+	pospiv = fim; //Volta a posicao do pivo como sendo o fim do vetor que vai ser particionado
 
 	//Variaveis para percorrer no vetor particionado
 	int i = inicio - 1; //Comeca antes do inicio pq na primeira troca ele ja vai virar o inicio
@@ -82,7 +82,7 @@ int QuickSort::particiona(Tweet* vet[], int inicio, int fim)
 		j++;
 	}
 
-	troca(vet[i + 1], vet[pospiv]);
+	troca(vet[i + 1], vet[pospiv]); //Coloca o elemento ja ordenado na ultima posicao do vetor particionado
 	return i + 1;
 }
 
