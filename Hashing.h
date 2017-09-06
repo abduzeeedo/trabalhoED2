@@ -14,7 +14,7 @@ private:
     int m;
     int* table;
     int divisao(int chave);
-    int enlacamento(int chave, int hashingFunc);
+    int enlacamento(int chave);
     void sondLinear(int chave, int hashingFunc);
     void sondQuadratica(int chave, int hashingFunc);
     void duploHash(int chave, int hashingFunc);

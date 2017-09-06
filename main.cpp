@@ -5,7 +5,7 @@
 #include "stdlib.h"
 #include "Tweet.h"
 #include "QuickSort.h"
-#include "InsertionSort.h"
+//#include "InsertionSort.h"
 #include "MergeSort.h"
 #include "BubbleSort.h"
 
@@ -144,7 +144,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 		if (code == "6") {
 			/*InsertionSort*/
-			cout << "Antes de Ordenar via InsertionSort:" << endl;
+			/*cout << "Antes de Ordenar via InsertionSort:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
@@ -159,6 +159,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
 			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos, tenho que testar com mais
+			*/
 		}
 
 		if (code == "7") {

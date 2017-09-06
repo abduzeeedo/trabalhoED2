@@ -54,79 +54,81 @@ void Hashing::sondLinear(int chave, int hashingFunc)
             }
         }
     }
-    void Hashing::sondQuadratica(int chave, int hashingFunc)
+}
+void Hashing::sondQuadratica(int chave, int hashingFunc)
+{
+    int posicao = 0;
+    int i = 0, it = 0;
+    int hk;
+    bool posicaovazia = false;
+    if (hashingFunc == 1)
+        hk = divisao(chave);
+    else if (hashingFunc == 2)
+        hk = enlacamento(chave);
+    while (!posicaovazia || it < 2)
     {
-        int posicao = 0;
-        int i = 0, it = 0;
-        int hk;
-        bool posicaovazia = false;
-        if (hashingFunc == 1)
-            hk = divisao(chave);
-        else if (hashingFunc == 2)
-            hk = enlacamento(chave);
-        while (!posicaovazia || it < 2)
-        {
-            posicao = (hk + i*i) % m;
-            if (table[posicao] == INF)
-            {
-                posicaovazia == true;
-                table[posicao] = chave;
-            }
-            else
-            {
-                i++;
-                if (i >= m)
-                {
-                    i = 0;
-                    it++;
-                }
-            }
-    }
-    void Hashing::duploHash(int chave, int hashingFunc)
-    {
-    }
-    void Hashing::encadSeparado(int chave, int hashingFunc)
-    {
-    }
-    void Hashing::encadCol(int chave, int hashingFunc)
-    {
-    }
-    void Hashing::addVetor(int chave, int hashingFunc, int tratColis)
-    {
-        int posicao = 0.0;
-        if (hashingFunc == 1)
-            posicao = divisao(chave);
-        else if (hashingFunc == 2)
-            posicao = enlacamento(chave);
+        posicao = (hk + i * i) % m;
         if (table[posicao] == INF)
+        {
+            posicaovazia == true;
             table[posicao] = chave;
+        }
         else
         {
-            switch (tratColis)
+            i++;
+            if (i >= m)
             {
-            case 1:
-                posicao = sondLinear(chave);
-                break;
-            case 2:
-                posicao = sondQuadratica(chave);
-                break;
-            case 3:
-                posicao = duploHash(chave);
-                break;
-            case 4:
-                posicao = encadSeparado();
-                break;
-            case 5:
-                posicao = encadCol(chave);
-                break;
-            default:
-                break;
-                table[posicao] = chave;
+                i = 0;
+                it++;
             }
         }
     }
-
-    Hashing::~Hashing()
+}
+void Hashing::duploHash(int chave, int hashingFunc)
+{
+}
+void Hashing::encadSeparado(int chave, int hashingFunc)
+{
+}
+void Hashing::encadCol(int chave, int hashingFunc)
+{
+}
+void Hashing::addVetor(int chave, int hashingFunc, int tratColis)
+{
+    int posicao = 0.0;
+    if (hashingFunc == 1)
+        posicao = divisao(chave);
+    else if (hashingFunc == 2)
+        posicao = enlacamento(chave);
+    if (table[posicao] == INF)
+        table[posicao] = chave;
+    else
     {
-        delete[] table;
+        switch (tratColis)
+        {
+        case 1:
+            sondLinear(chave, hashingFunc);
+            break;
+        case 2:
+            sondQuadratica(chave, hashingFunc);
+            break;
+        case 3:
+            duploHash(chave, hashingFunc);
+            break;
+        case 4:
+            encadSeparado(chave, hashingFunc);
+            break;
+        case 5:
+            encadCol(chave, hashingFunc);
+            break;
+        default:
+            break;
+            table[posicao] = chave;
+        }
     }
+}
+
+Hashing::~Hashing()
+{
+    delete[] table;
+}

@@ -49,7 +49,7 @@ Tweet* GerTexto::carregarTweets(string nome){
                     indBuffer=0;
                     buffer.clear();
                 }
-                conjunto[indTweets] = new Tweet(stoi(userId), stoi(tweetId), tweet, date);
+                conjunto[indTweets] = Tweet(stoi(userId), stoi(tweetId), tweet, date);
                 date.clear();
                 userId.clear();
                 tweetId.clear();
