@@ -5,8 +5,7 @@
 class QuickSort
 {
 private:
-	int particiona(Tweet* vetor[], int inicio, int fim);
-	int particionaMediana(Tweet* vetor[], int inicio, int fim);
+	int particiona(Tweet* vetor[], int inicio, int fim, int pos);
 	int mediana(Tweet* vet[], int numVal, int inicio, int fim);
 	void troca(Tweet* &t1, Tweet* &t2);
 	int numTrocas;

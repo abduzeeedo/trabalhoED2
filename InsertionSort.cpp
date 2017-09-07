@@ -31,7 +31,7 @@ double InsertionSort::getTempoGasto()
 	return tempoGasto;
 }
 
-void InsertionSort::insertionsort(Tweet vet[], int inicio, int fim)
+void InsertionSort::insertionsort(Tweet* vet[], int inicio, int fim)
 {
 	clock_t relogio;
 	relogio = clock();
@@ -39,7 +39,7 @@ void InsertionSort::insertionsort(Tweet vet[], int inicio, int fim)
 	int i, j;
 	Tweet* chave; //chave auxiliar
 
-	for (i = inicio+1; i < fim; i++) //comeca da posicao inicio e termina na posicao fim
+	for (i = inicio + 1; i < fim; i++) //comeca da posicao inicio e termina na posicao fim
 	{
 		chave = vet[i]; //salva o valor atual do vet[i] na chave auxiliar
 		j = i - 1;
@@ -55,5 +55,5 @@ void InsertionSort::insertionsort(Tweet vet[], int inicio, int fim)
 		numTrocas++;
 	}
 
-	tempoGasto = (clock() - relogio) / (double)CLOCKS_PER_SEC;
+	tempoGasto += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 }

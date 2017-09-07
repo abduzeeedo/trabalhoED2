@@ -14,5 +14,5 @@ public:
 	int getNumTrocas();
 	int getNumComparacoes();
 	double getTempoGasto();
-	void insertionsort(Tweet vetor[], int tam, int inicio, int fim);
+	void insertionsort(Tweet* vetor[], int inicio, int fim);
 };

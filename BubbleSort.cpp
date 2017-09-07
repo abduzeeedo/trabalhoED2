@@ -1,10 +1,9 @@
 #include "BubbleSort.h"
 
 /*
-Implementei o BubbleSort para usar como o "Meusort" no cen√°rio 3 do trabalho.
-Motivo: um dos mais simples e populares metodos de ordena√ßao
-
-Se quiserem usar outro, s√≥ falar. De qualquer maneira, esse j√° ta pronto.
+Implementei o BubbleSort para usar como o "Meusort" no cen·rio 3 do trabalho.
+Motivo: um dos mais simples e populares metodos de ordenaÁao
+Se quiserem usar outro, sÛ falar. De qualquer maneira, esse j· ta pronto.
 */
 
 //Construtor
@@ -63,5 +62,5 @@ void BubbleSort::bubblesort(Tweet* vet[], int tam)
 				troca(vet[j], vet[j + 1]);
 			}
 		}
-	tempoGasto = (clock() - relogio) / (double)CLOCKS_PER_SEC;
+	tempoGasto += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 }
