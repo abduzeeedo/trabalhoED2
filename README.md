@@ -5,9 +5,8 @@ ED2 - 2017.3
 - [ ] Inserção Dados via TXT
 
 # CENARIO I - Bellotti
-- [ ] QuickSort (Recursivo) - USERID
-- [x] QuickSort (Recursivo) - TWEETID
-- [ ] QuickSort (Recursivo) - TWEET
+- [ ] QuickSort (Recursivo) - TWEETID (vetor de int)
+- [x] QuickSort (Recursivo) - TWEET
 - [x] Contabilizar Num. Comparações
 - [x] Contabilizar Num. Copias de Registros
 - [x] Tempo Total Execução
