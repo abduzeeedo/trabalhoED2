@@ -15,11 +15,11 @@ ED2 - 2017.3
 
 # CENARIO II - Bruno
 - [x] QuickSort (Recursivo) - TWEETID
-- [ ] QuickSort (MEDIANA) - TWEETID
+- [x] QuickSort (MEDIANA) - TWEETID
 - [x] QuickSort (Inserção) - TWEETID
-- [ ] Comparar Num. Comparações
-- [ ] Comparar Num. Copias de Registros
-- [ ] Comparar Tempo Total Execução
+- [x] Comparar Num. Comparações
+- [x] Comparar Num. Copias de Registros
+- [x] Comparar Tempo Total Execução
 - [ ] ANALISE CENARIO II -  Graficos, Tabelas, Conclusões Pedidas
 
 # CENARIO III -  Diogo
@@ -28,9 +28,9 @@ ED2 - 2017.3
 - [ ] Heap Sort - TWEETID
 - [x] BubbleSort (outro qqr ñ visto em sala) - TWEETID
 - [ ] Relatorio do PedroSort com fonte
-- [ ] Comparar Num. Comparações
-- [ ] Comparar Num. Copias de Registros
-- [ ] Comparar Tempo Total Execução
+- [x] Comparar Num. Comparações
+- [x] Comparar Num. Copias de Registros
+- [x] Comparar Tempo Total Execução
 - [ ] ANALISE CENARIO III -  Graficos, Tabelas, Conclusões Pedidas
 
 # CENARIO IV - Rafael
