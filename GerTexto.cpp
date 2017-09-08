@@ -21,9 +21,7 @@ Tweet *GerTexto::carregarTweet(string nome)
         getline(arquivo, linha, '\t');
         tw->setTweetText(linha);
         getline(arquivo, linha);
-        tw->setTweetID(atoi(linha.c_str()));
-        
-        
+		tw->setDate(linha);
     }
 return tw;
 }
