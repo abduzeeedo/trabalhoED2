@@ -1,11 +1,11 @@
 # TrabalhoED2
 ED2 - 2017.3
 # PREPARAÇAO
-- [ ] Preparação das Classes
-- [ ] Inserção Dados via TXT
+- [x] Preparação das Classes
+- [x] Inserção Dados via TXT
 
 # CENARIO I - Bellotti
-- [ ] QuickSort (Recursivo) - TWEETID (vetor de int)
+- [x] QuickSort (Recursivo) - TWEETID (vetor de int)
 - [x] QuickSort (Recursivo) - TWEET
 - [x] Contabilizar Num. Comparações
 - [x] Contabilizar Num. Copias de Registros
