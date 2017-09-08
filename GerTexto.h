@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Tweet.h"
 #include <fstream>
 
@@ -13,6 +14,7 @@ class GerTexto
   private:
   public:
     Tweet* carregarTweet(string nome);
+	  vector<Tweet*> carregaTweets(string nomeArquivo, int numTweets);
     GerTexto();
     ~GerTexto();
 };
