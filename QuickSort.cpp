@@ -47,8 +47,6 @@ void QuickSort::troca(Tweet* &t1, Tweet* &t2)
 {
 	if (t1 != t2) //Nao troca se t1 e t2 sao iguais, ja que nao precisa
 	{
-		//uso isso so pra testar, nao precisa. vou tirar quando tiver tudo pronto 100%
-		//cout << "trocando " << t1->getTweetID() << " por " << t2->getTweetID() << endl;
 		Tweet* aux = t1;
 		t1 = t2;
 		t2 = aux;
@@ -75,7 +73,7 @@ int QuickSort::particiona(Tweet* vet[], int inicio, int fim, int pos)
 		pospiv = inicio + (pos % (fim - inicio + 1));
 	}
 
-	int pivo = vet[pospiv]->getTweetID(); //Pega o tweetID da posicao que foi pedida e coloca ela como pivo
+	long long int pivo = vet[pospiv]->getTweetID(); //Pega o tweetID da posicao que foi pedida e coloca ela como pivo
 	troca(vet[pospiv], vet[fim]); // Coloca o pivo como o ultimo elemento do vetor
 	pospiv = fim; //Volta a posicao do pivo como sendo o fim do vetor que vai ser particionado
 

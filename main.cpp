@@ -301,46 +301,15 @@ int main()
 	//string salvar;
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
-				   // Instanciando 7 Tweet para teste
-	Tweet* vetor[7];
-	int tam = sizeof(vetor) / sizeof(vetor[0]);
-	int id1 = 11;
-	int tid1 = 121;
-	string t = "teste de tweet1";
-	string d = "2017-08-30 16:31:42";
-	vetor[0] = new Tweet(id1, tid1, t, d);
-	vetor[1] = new Tweet(50, 14, t, d);
-	vetor[2] = new Tweet(98, 41, t, d);
-	vetor[3] = new Tweet(47, 98, t, d);
-	vetor[4] = new Tweet(26, 16, t, d);
-	vetor[5] = new Tweet(64, 189, t, d);
-	vetor[6] = new Tweet(54, 28, t, d);
-
-	GerTexto* ger2 = new GerTexto();
-	Tweet* tw [5];
-	tw[0] = ger2->carregarTweet("tw.txt");
-	tw[1] = ger2->carregarTweet("tw.txt");
-	tw[2] = ger2->carregarTweet("tw.txt");
-	tw[3] = ger2->carregarTweet("tw.txt");
-	tw[4] = ger2->carregarTweet("tw.txt");
-
-	tw[0]->printTweet();
-	tw[1]->printTweet();
-	tw[2]->printTweet();
-	tw[3]->printTweet();
-	tw[4]->printTweet();
-
-	cout << "\n\n" << endl;
-
-	/* Funcao para importar os tweets, esta funcionando porem ela retorna um std::vector<Tweets*> e todas nossas funcoes usam Tweet* vetor[]
-	possivelmente vai ter que passar tudo do std::vector para o vetor[] pois acho que nao tem outro jeito de fazer isso
-	O problema eh que isso vai demorar O(n), nao vai acrescentar nada nas ordenacoes porem o programa vai demorar para incializar*/
+	// Instanciando 7 Tweets para teste
+	const int tam = 7;
 	GerTexto* ger = new GerTexto();
-	vector<Tweet*> vTweets = ger->carregaTweets("tw.txt", 10); //Carrega os 10 primeiros tweets
-															   //Imprimindo os tweets para testar
-	for (int i = 0; i < vTweets.size(); i++)
+	Tweet* vetor[tam];
+	//Imprimindo os tweets para teste
+	for (int i = 0; i < tam; i++)
 	{
-		vTweets[i]->printTweet();
+		vetor[i] = ger->carregarTweet("tw.txt");
+		vetor[i]->printTweet();
 		cout << endl;
 	}
 
@@ -350,7 +319,7 @@ int main()
 	Para usar um for neste vetor, fica assim for (int i = 0; i < vEntrada.size(); i++)*/
 	vector<int> vEntrada = importaEntrada("entrada.txt");
 
-	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execu��o;
+	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");
 	return 0;
 }

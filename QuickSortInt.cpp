@@ -32,11 +32,11 @@ double QuickSortInt::getTempoGasto()
 }
 
 //Nao usei o std::swap para poder adicionar o de numero de trocas
-void QuickSortInt::troca(int &t1, int &t2)
+void QuickSortInt::troca(long long int &t1, long long int &t2)
 {
 	if (t1 != t2) //Nao troca se t1 e t2 sao iguais, ja que nao precisa
 	{
-		int aux = t1;
+		long long int aux = t1;
 		t1 = t2;
 		t2 = aux;
 		numTrocas++;
@@ -46,7 +46,7 @@ void QuickSortInt::troca(int &t1, int &t2)
 //Cria vetores de inteiros com tweet ids
 void QuickSortInt::criaVet(Tweet* vet[], int tam)
 {
-	int* vetInt = (int*)alloca(sizeof(int) * tam); //Melhor que malloc pois ja desaloca a memoria automaticamente quando sai da funcao
+	long long int* vetInt = (long long int*)alloca(sizeof(long long int) * tam); //Melhor que malloc pois ja desaloca a memoria automaticamente quando sai da funcao
 	for (int i = 0; i < tam; i++)
 	{
 		vetInt[i] = vet[i]->getTweetID();
@@ -62,10 +62,10 @@ void QuickSortInt::criaVet(Tweet* vet[], int tam)
 }
 
 //Algoritmo de particionamento do vetor
-int QuickSortInt::particionaint(int vet[], int inicio, int fim)
+int QuickSortInt::particionaint(long long int vet[], int inicio, int fim)
 {
 	int pospiv = inicio + (((inicio + fim) / 2) % (fim - inicio + 1));
-	int pivo = vet[pospiv]; //Coloca o pivo como o meio do vetor
+	long long int pivo = vet[pospiv]; //Coloca o pivo como o meio do vetor
 	troca(vet[pospiv], vet[fim]); // Coloca o pivo como o ultimo elemento do vetor
 	pospiv = fim; //Volta a posicao do pivo como sendo o fim do vetor que vai ser particionado
 
@@ -88,7 +88,7 @@ int QuickSortInt::particionaint(int vet[], int inicio, int fim)
 }
 
 //Algoritmo do quicksort recursivo
-void QuickSortInt::quicksortint(int vet[], int ini, int fim)
+void QuickSortInt::quicksortint(long long int vet[], int ini, int fim)
 {
 	clock_t relogio;
 	relogio = clock();

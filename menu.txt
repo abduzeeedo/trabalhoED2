@@ -1,4 +1,4 @@
-|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+﻿|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||    MENU DE COMANDOS DO PROJETO DE ESTRUTURA DE DADOS 2          ||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||  DIGITE NO CONSOLE O CODIGO DA INSTRUCAO - GUIA DE CODIGOS:     ||
@@ -6,8 +6,8 @@
 || 1 -  QuickSort Recursivo no vetor de tweets                     ||
 || 2 -  QuickSort com Mediana entre 3 valores no Vetor de tweets   ||
 || 3 -  QuickSort com Mediana entre 5 valores no Vetor de tweets   ||
-|| 4 -  QuickSort com Inserção com m=10 no Vetor de tweets         ||
-|| 5 -  QuickSort com Inserção com m=100 no Vetor de tweets        ||
+|| 4 -  QuickSort com Insercao com m=10 no Vetor de tweets         ||
+|| 5 -  QuickSort com Insercao com m=100 no Vetor de tweets        ||
 || 6 -  InsertionSort no vetor de tweets                           ||
 || 7 -  MergeSort no vetor de tweets		                   ||
 || 8 -  HeapSort no vetor de tweets                                ||
