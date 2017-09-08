@@ -223,7 +223,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Falta Implementar" << endl;
 		}
 		if (code == "9") { //Realiza BubbleSort
-						   /*BubbleSort*/
+			/*BubbleSort*/
 			cout << "Antes de Ordenar via BubbleSort:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
@@ -247,7 +247,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
 		}
 		if (code == "10") { //Realiza QuickSort em um vetor de inteiros (TweetID's)
-							/*Quicksort com vetor de inteiros*/
+			/*Quicksort com vetor de inteiros*/
 			QuickSortInt ordena;
 			cout << "Antes de Ordenar via QuickSort:" << endl;
 			imprimeTIDVetor(vet, tam);
@@ -255,8 +255,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Criando e ordenando vetor de inteiros com TweetID, isso pode demorar" << endl;
 			ordena.criaVet(vet, tam); //Essa funcao ja cria, ordena, imprime e desaloca o vetor de int com os tweetIDs
 
-									  //Salvando resultados em TXT
-			salvar += "Algoritmo InsertionSort:\n";
+			//Salvando resultados em TXT
+			salvar += "Algoritmo QuickSort com um Vetor de Inteiros:\n";
 			salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
@@ -272,6 +272,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 }
 
 //Funcao para ler os N numeros aleatorios do arquivo entrada.txt
+//ENTRADA: Arquivo .txt com dados de N numero aleatorios a serem inseridos
+//SAIDA: Vetor do tipo Vector onde cada posicao contem um nemero contido em uma linha do arquivo passado por parametro
 vector<int> importaEntrada(const char* nomeArquivo)
 {
 	int i = 0; //Variavel para controlar a posicao do vetor
@@ -301,14 +303,14 @@ int main()
 	//string salvar;
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
-				   // Instanciando 7 Tweets para teste
+	// Instanciando 7 Tweets para teste
 	const int tam = 7;
 	GerTexto* ger = new GerTexto();
 	Tweet* vetor[tam];
 	//Imprimindo os tweets para teste
 	for (int i = 0; i < tam; i++)
 	{
-		vetor[i] = ger->carregarTweet("tw.txt", i);
+		vetor[i] = ger->carregarTweet("tw.txt", i);//carrega os dados do txt no vetor de tweets. A variavel i é passada por parametro como seed do gerador de num Aleatorio
 		vetor[i]->printTweet();
 		cout << endl;
 	}
