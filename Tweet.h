@@ -11,7 +11,7 @@ class Tweet
 {
 private:
 	int userID;
-	int tweetID;
+	long long int tweetID;
 	string tweetText;
 	string date;
 public:
@@ -19,11 +19,11 @@ public:
 	Tweet(int uid, int tid, string tw, string da);
 	void addTweet(int uid, int tid, string tw, string da);
 	int getUserID();
-	int getTweetID();
+	long long int getTweetID();
 	string getTweetText();
 	string getDate();
 	void setUserID(int uid);
-	void setTweetID(int tid);
+	void setTweetID(long long int tid);
 	void setTweetText(string tw);
 	void setDate(string date);
 	void printTweet();

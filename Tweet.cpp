@@ -26,11 +26,11 @@ int Tweet::getUserID()
 void Tweet::setUserID(int uid) {
 	userID = uid;
 }
-int Tweet::getTweetID()
+long long int Tweet::getTweetID()
 {
 	return tweetID;
 }
-void Tweet::setTweetID(int tid) {
+void Tweet::setTweetID(long long int tid) {
 	tweetID = tid;
 }
 string Tweet::getTweetText()

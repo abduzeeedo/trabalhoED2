@@ -8,11 +8,12 @@ GerTexto::~GerTexto()
 {
 }
 
+//Carrega UM tweet aleatorio
 Tweet *GerTexto::carregarTweet(string nome)
 {
 	string linha;
 	int i=0;
-	int stop = rand() % 80;
+	int stop = rand() % 80; //TROCAR PARA SER UM NUMERO ALEATORIO COM SEED E TBM SE DER, RECEBER O NUMERO PRA USAR NO % POR PARAMETRO
 	Tweet *tw = new Tweet();
 	fstream arquivo;
 	arquivo.open(nome, std::fstream::in);
@@ -24,7 +25,7 @@ Tweet *GerTexto::carregarTweet(string nome)
 		getline(arquivo, linha, '\t');
 		tw->setUserID(stoi(linha));
 		getline(arquivo, linha, '\t');
-		tw->setTweetID(atoi(linha.c_str()));
+		tw->setTweetID(stoll(linha));
 		getline(arquivo, linha, '\t');
 		tw->setTweetText(linha);
 		getline(arquivo, linha);
@@ -33,7 +34,7 @@ Tweet *GerTexto::carregarTweet(string nome)
 	return tw;
 }
 
-//Carrega um vetor de tweets com numTweets tweets
+//Carrega um vetor de tweets com numTweets tweets, os tweets sao carregados em sequencia
 vector<Tweet*> GerTexto::carregaTweets(string nomeArquivo, int numTweets)
 {
 	fstream arquivo(nomeArquivo);
@@ -48,7 +49,7 @@ vector<Tweet*> GerTexto::carregaTweets(string nomeArquivo, int numTweets)
 			getline(arquivo, linha, '\t');
 			tw->setUserID(stoi(linha));
 			getline(arquivo, linha, '\t');
-			tw->setTweetID(atoi(linha.c_str()));
+			tw->setTweetID(stoll(linha));
 			getline(arquivo, linha, '\t');
 			tw->setTweetText(linha);
 			getline(arquivo, linha);
