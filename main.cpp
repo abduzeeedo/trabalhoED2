@@ -1,10 +1,11 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
 #include "stdlib.h"
 #include "Tweet.h"
 #include "QuickSort.h"
+#include "QuickSortInt.h"
 #include "InsertionSort.h"
 #include "MergeSort.h"
 #include "BubbleSort.h"
@@ -116,6 +117,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		if (code == "1") {
 			cout << "Antes de Ordenar via QuickSort Recursivo:" << endl;
 			tiposQuickSort(vet, tam, 'r'); //Tipo 'r': QuickSort Recursivo Padrao
+			imprimeTIDVetor(vet, tam);
 		}
 
 		if (code == "2") {
@@ -191,6 +193,20 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << endl;
 
 			//Resultado das Opera��es
+			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
+			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
+			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
+		}
+		if (code == "10") {
+			/*Quicksort com vetor de inteiros*/
+			QuickSortInt ordena;
+			cout << "Antes de Ordenar via QuickSort:" << endl;
+			imprimeTIDVetor(vet, tam);
+			cout << endl;
+			cout <<"Criando e ordenando vetor de inteiros com TweetID, isso pode demorar" << endl;
+			ordena.criaVet(vet, tam); //Essa funcao ja cria, ordena, imprime e desaloca o vetor de int com os tweetIDs
+			//Resultado das Opera��es
+			cout << endl<<endl;
 			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
 			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
