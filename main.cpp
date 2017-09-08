@@ -1,7 +1,8 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <vector>
 #include "stdlib.h"
 #include "Tweet.h"
 #include "QuickSort.h"
@@ -269,6 +270,31 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 }
 
+//Funcao para ler os N numeros aleatorios do arquivo entrada.txt
+vector<int> importaEntrada(const char* nomeArquivo)
+{
+	int i = 0; //Variavel para controlar a posicao do vetor
+	string linha; //Variavel para armazenar a linha no getline
+	ifstream arquivo(nomeArquivo); //Abre o arquivo
+	int N; //Tamanho do vetor
+	if (arquivo.is_open()) //Verifica se o arquivo esta aberto
+	{
+		getline(arquivo, linha); //Le a primeira linha do arquivo
+		N = stoi(linha); //Converte string para int
+		vector<int> vEntrada(N); //Cria o vetor com N posicoes lidas da primeira linha
+		while (!arquivo.eof()) //Continua lendo o arquivo
+		{
+			getline(arquivo, linha);
+			vEntrada[i] = stoi(linha); //Armazena na posicao i do vetor o numero lido da linha
+			i++;
+		}
+		arquivo.close(); //Fecha o arquivo
+		return vEntrada; //Retorna o vetor
+	}
+	else //Caso o arquivo nao esteja aberto, mostra um erro.
+		cout << "Erro ao abrir arquivo " << nomeArquivo << endl;
+}
+
 int main()
 {
 	//string salvar;
@@ -291,6 +317,13 @@ int main()
 	//GerTexto* ger = new GerTexto();
 	//Tweet* tw = ger->carregarTweet("tw.txt");
 	//tw->printTweet();
+	
+	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
+	esse numero eh o numero de tweets aleatorios que devem ser importados e instanciados
+	e depois, fazer a ordenacao deles
+	Para usar um for neste vetor, fica assim for (int i = 0; i < vEntrada.size(); i++)*/
+	vector<int> vEntrada = importaEntrada("entrada.txt");
+	
 	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execu��o;
 	salvarTxt(salvar, "saida.txt");
 	return 0;
