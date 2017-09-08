@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -9,15 +9,17 @@
 #include "InsertionSort.h"
 #include "MergeSort.h"
 #include "BubbleSort.h"
-//#include "GerTexto.h"
+#include "GerTexto.h"
 
+string salvar = "";
 using namespace std;
 
 
-//Funcao usada para pegar as linhas do arquivo do Menu
+//Funcao usada para pegar as linhas do arquivo do Menu. 
+//Entrada: Arquivo .txt com os dados do Menu -- Saída: String lida na linha analizada.
 string analisaLinhas(ifstream& File)
 {
-	string arquivoVerif;
+	string linhaVerif;
 
 	if (File)
 	{
@@ -27,9 +29,9 @@ string analisaLinhas(ifstream& File)
 			getline(File, linhaTemp);
 			linhaTemp += "\n";
 
-			arquivoVerif += linhaTemp;
+			linhaVerif += linhaTemp;
 		}
-		return arquivoVerif;
+		return linhaVerif;
 	}
 	else
 	{
@@ -39,7 +41,8 @@ string analisaLinhas(ifstream& File)
 }
 
 //fun��o para converter um int para String, usada na escrita de dados em arquivo txt
-string toString(int i)
+//Entrada: Numero Inteiro -- Saida: Representacao deste numero inteiro em uma String
+string toString(double i)
 {
 	stringstream ss;
 	ss << i;
@@ -48,6 +51,7 @@ string toString(int i)
 }
 
 //Funcao de Impressao de Menu
+//Entrada: Arquivo .txt do menu a ser impresso em tela  -- Saida: Impressao em tela do Menu de opcoes
 void imprimeMenu()
 {
 	ifstream leitor("menu.txt"); //Le o menu to txt
@@ -58,6 +62,7 @@ void imprimeMenu()
 }
 
 //Funcao usada para imprimir todos os TweetID`s 
+//Entrada: Vetor de objetos do tipo Tweet e tamanho de tal vetor. -- Saida: Impressao em tela de todos os TweetID`s deste vetor
 void imprimeTIDVetor(Tweet* vet[], int tam) {
 	cout << "Vetor: ";
 	for (int k = 0; k < tam; k++)
@@ -67,17 +72,27 @@ void imprimeTIDVetor(Tweet* vet[], int tam) {
 	cout << endl;
 }
 
-void salvarTxt(string salvar) {
+//Funcao Que salva uma string em um arquivo .txt
+//Entrada: String a ser salva e arquivo .txt onde os dados serao salvos. -- Saida: Escrita da string passada por parametro em um arquivo .txt (tambem passado por parametro)
+void salvarTxt(string salvar, string file) {
 	ofstream arquivo;
-	arquivo.open("saida.txt");
+	arquivo.open(file);
 	arquivo << salvar << endl;
-	arquivo.close();
+	//arquivo.close();
 }
 
 //Chama o QuickSort passando o tipo por Parametro
+//ENTRADA: Vetor de Objetos do tipo Tweet, tamanho de tal vetor e codigo "Tipo", referente ao tipo de quicksort a ser realizado
+//Tipo r: QuickSort Recursivo com Pivo Central
+//Tipo m: QuickSort Recursivo com Pivo sendo a Mediana entre 3 valores aleatorios do vetor
+//Tipo M: QuickSort Recursivo com Pivo sendo a Mediana entre 5 valores aleatorios do vetor
+//Tipo i: QuickSort Recursivo utilizando InsertionSort para particoes de tamanho menor ou igual a 10
+//Tipo I: QuickSort Recursivo utilizando InsertionSort para particoes de tamanho menor ou igual a 100
+//SAIDA: Cleber
+
 void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
-	
-	string salvar;
+
+	//string salvar;
 	imprimeTIDVetor(vet, tam);
 	cout << endl;
 
@@ -89,10 +104,24 @@ void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
 	cout << endl;
 
 	//Resultado das Opera��es e escrita em txt
-	salvar = "Algoritmo QuickSort Recursivo:\n";
-	salvar = salvar + "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n" + "Numero de comparacoes: " + toString(ordena.getNumComparacoes());
-	salvar = salvar + "\nTempo gasto: " + toString(ordena.getTempoGasto()) + "\n";
-	salvarTxt(salvar);
+	if (tipo == 'r')
+		salvar += "Algoritmo QuickSort Recursivo:\n";
+
+	if (tipo == 'm')
+		salvar += "Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:\n";
+
+	if (tipo == 'M')
+		salvar += "Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:\n";
+
+	if (tipo == 'i')
+		salvar += "Algoritmo QuickSort Recursivo com Insercao com m=10:\n";
+
+	if (tipo == 'I')
+		salvar += "Algoritmo QuickSort Recursivo com Insercao com m=100:\n";
+
+	salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
+	salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
+	salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
 
 	//Impressao dos Resultados em Tela
 	cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
@@ -117,7 +146,6 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		if (code == "1") {
 			cout << "Antes de Ordenar via QuickSort Recursivo:" << endl;
 			tiposQuickSort(vet, tam, 'r'); //Tipo 'r': QuickSort Recursivo Padrao
-			imprimeTIDVetor(vet, tam);
 		}
 
 		if (code == "2") {
@@ -150,6 +178,13 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Depois de Ordenar:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
+
+			//Salvando resultados em TXT
+			salvar += "Algoritmo InsertionSort:\n";
+			salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
+
 			//Resultado das Opera��es
 			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
@@ -169,6 +204,12 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Depois de Ordenar:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
+
+			//Salvando resultados em TXT
+			salvar += "Algoritmo MergeSort:\n";
+			salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
 
 			//Resultado das Opera��es
 			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
@@ -192,6 +233,12 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
 
+			//Salvando resultados em TXT
+			salvar += "Algoritmo BubbleSort:\n";
+			salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
+
 			//Resultado das Opera��es
 			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
@@ -203,10 +250,17 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Antes de Ordenar via QuickSort:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
-			cout <<"Criando e ordenando vetor de inteiros com TweetID, isso pode demorar" << endl;
+			cout << "Criando e ordenando vetor de inteiros com TweetID, isso pode demorar" << endl;
 			ordena.criaVet(vet, tam); //Essa funcao ja cria, ordena, imprime e desaloca o vetor de int com os tweetIDs
+
+			//Salvando resultados em TXT
+			salvar += "Algoritmo InsertionSort:\n";
+			salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
+
 			//Resultado das Opera��es
-			cout << endl<<endl;
+			cout << endl << endl;
 			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
 			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
@@ -217,7 +271,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 int main()
 {
-
+	//string salvar;
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
 	// Instanciando 7 Tweet para teste
@@ -238,5 +292,6 @@ int main()
 	//Tweet* tw = ger->carregarTweet("tw.txt");
 	//tw->printTweet();
 	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execu��o;
+	salvarTxt(salvar, "saida.txt");
 	return 0;
 }
