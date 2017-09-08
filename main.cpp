@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -89,11 +89,10 @@ void salvarTxt(string salvar, string file) {
 //Tipo M: QuickSort Recursivo com Pivo sendo a Mediana entre 5 valores aleatorios do vetor
 //Tipo i: QuickSort Recursivo utilizando InsertionSort para particoes de tamanho menor ou igual a 10
 //Tipo I: QuickSort Recursivo utilizando InsertionSort para particoes de tamanho menor ou igual a 100
-//SAIDA: Cleber
-
+//SAIDA: Realiza a Ordenaçao do vetor passado por parametro utilizando o tipo de quicksort tambem passado por parametro
+//Por fim, salva os dados da ordenacao em um arquivo .txt para fins de comparacao
 void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
 
-	//string salvar;
 	imprimeTIDVetor(vet, tam);
 	cout << endl;
 
@@ -104,7 +103,7 @@ void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
 	imprimeTIDVetor(vet, tam);
 	cout << endl;
 
-	//Resultado das Opera��es e escrita em txt
+	//"Armazena" os dados de saida pós ordenacao na String "saida", para ser posteriormente escrita em um arquivo .txt
 	if (tipo == 'r')
 		salvar += "Algoritmo QuickSort Recursivo:\n";
 
@@ -131,45 +130,47 @@ void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
 }
 
 //Metodo que seleciona via codigo de comando a funcao a ser executada e finaliza execucao
+//ENTRADA: Vetor de objetos do tipo Tweet e o tamanho deste vetor
+//SAIDA: Chamada de funcoes de acordo com o codigo inserido pelo usuario
 void codigoFuncao(Tweet* vet[], int tam) {
 	string code;
 	while (true) {
 		cout << endl << "Insira o Codigo de Funcao: (-1 para Encerrar Execucao)" << endl;
 		cin >> code;
 		if (code == "-1") {
-			return;//Finaliza a Execucao
+			return; //Finaliza a Execucao
 		}
 
 		if (code == "0") {
 			imprimeMenu();//Imprime o Menu (via arquivo txt)
 		}
 
-		if (code == "1") {
+		if (code == "1") { //Realiza QuickSort Recursivo Padrao, utilizando posicao média do vetor como pivo
 			cout << "Antes de Ordenar via QuickSort Recursivo:" << endl;
 			tiposQuickSort(vet, tam, 'r'); //Tipo 'r': QuickSort Recursivo Padrao
 		}
 
-		if (code == "2") {
+		if (code == "2") { //Realiza QuickSort Recursivo com Mediana entre 3 Valores
 			cout << "Antes de Ordenar via QuickSort Recursivo com Mediana entre 3 Valores:" << endl;
 			tiposQuickSort(vet, tam, 'm'); //Tipo 'm': QuickSort Recursivo com Mediana entre 3 valores
 		}
 
-		if (code == "3") {
+		if (code == "3") { //Realiza QuickSort Recursivo com Mediana entre 5 Valores
 			cout << "Antes de Ordenar via QuickSort Recursivo com Mediana entre 5 Valores:" << endl;
 			tiposQuickSort(vet, tam, 'M');//Tipo 'M': QuickSort Recursivo com Mediana entre 5 valores
 		}
 
-		if (code == "4") {
+		if (code == "4") { //Realiza QuickSort Recursivo com Insercao com m=10
 			cout << "Antes de Ordenar via QuickSort Recursivo com Insercao com m=10:" << endl;
 			tiposQuickSort(vet, tam, 'i');//Tipo 'M': QuickSort Recursivo com Inser��o com m=10
 		}
 
-		if (code == "5") {
+		if (code == "5") { //Realiza QuickSort Recursivo com Insercao com m=100
 			cout << "Antes de Ordenar via QuickSort Recursivo com Insercao com m=100:" << endl;
 			tiposQuickSort(vet, tam, 'I');//Tipo 'M': QuickSort Recursivo com Inser��o com m=100
 		}
 
-		if (code == "6") {
+		if (code == "6") { //Realiza InsertionSort
 			/*InsertionSort*/
 			cout << "Antes de Ordenar via InsertionSort:" << endl;
 			imprimeTIDVetor(vet, tam);
@@ -192,7 +193,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos, tenho que testar com mais
 		}
 
-		if (code == "7") {
+		if (code == "7") { //Realiza MergeSort
 			/*MergeSort*/
 			cout << "Antes de Ordenar via MergeSort:" << endl;
 			imprimeTIDVetor(vet, tam);
@@ -221,7 +222,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			/*HeapSort*/
 			cout << "Falta Implementar" << endl;
 		}
-		if (code == "9") {
+		if (code == "9") { //Realiza BubbleSort
 			/*BubbleSort*/
 			cout << "Antes de Ordenar via BubbleSort:" << endl;
 			imprimeTIDVetor(vet, tam);
@@ -245,7 +246,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
 			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
 		}
-		if (code == "10") {
+		if (code == "10") { //Realiza QuickSort em um vetor de inteiros (TweetID's)
 			/*Quicksort com vetor de inteiros*/
 			QuickSortInt ordena;
 			cout << "Antes de Ordenar via QuickSort:" << endl;
@@ -300,7 +301,7 @@ int main()
 	//string salvar;
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
-	// Instanciando 7 Tweet para teste
+				   // Instanciando 7 Tweet para teste
 	Tweet* vetor[7];
 	int tam = sizeof(vetor) / sizeof(vetor[0]);
 	int id1 = 11;
@@ -317,13 +318,13 @@ int main()
 	//GerTexto* ger = new GerTexto();
 	//Tweet* tw = ger->carregarTweet("tw.txt");
 	//tw->printTweet();
-	
+
 	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
 	esse numero eh o numero de tweets aleatorios que devem ser importados e instanciados
 	e depois, fazer a ordenacao deles
 	Para usar um for neste vetor, fica assim for (int i = 0; i < vEntrada.size(); i++)*/
 	vector<int> vEntrada = importaEntrada("entrada.txt");
-	
+
 	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execu��o;
 	salvarTxt(salvar, "saida.txt");
 	return 0;
