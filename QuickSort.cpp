@@ -40,7 +40,9 @@ double QuickSort::getTempoGasto()
 	return tempoGasto;
 }
 
-//Nao usei o std::swap para poder adicionar o de numero de trocas
+//Funcao que realiza a troca de posicao entre dois objetos do tipo Tweet
+//ENTRADA: 2 Objetos do tipo Tweet a serem trocados de posicao entre si
+//SAIDA: A troca de posicao entre os dois objetos
 void QuickSort::troca(Tweet* &t1, Tweet* &t2)
 {
 	if (t1 != t2) //Nao troca se t1 e t2 sao iguais, ja que nao precisa
@@ -55,6 +57,8 @@ void QuickSort::troca(Tweet* &t1, Tweet* &t2)
 }
 
 //Algoritmo de particionamento do vetor
+//ENTRADA: Vetor de objetos do tipo Tweet, posicao inicial e final deste vetor e indice da posicao onde o pivo sera posicionado
+//SAIDA: Vetor Particionado
 int QuickSort::particiona(Tweet* vet[], int inicio, int fim, int pos)
 {
 	int pospiv;
@@ -94,6 +98,13 @@ int QuickSort::particiona(Tweet* vet[], int inicio, int fim, int pos)
 }
 
 //Algoritmo do quicksort recursivo
+//ENTRADA: Vetor de objetos do tipo Tweet, posicao inicial e final deste vetor e codigo "tipo" que indica o tipo de quicksort a ser realizado
+//SAIDA: Vetor ordenado via QuickSort
+//Tipo r: QuickSort Recursivo com Pivo Central
+//Tipo m: QuickSort Recursivo com Pivo sendo a Mediana entre 3 valores aleatorios do vetor
+//Tipo M: QuickSort Recursivo com Pivo sendo a Mediana entre 5 valores aleatorios do vetor
+//Tipo i: QuickSort Recursivo utilizando InsertionSort para particoes de tamanho menor ou igual a 10
+//Tipo I: QuickSort Recursivo utilizando InsertionSort para particoes de tamanho menor ou igual a 100
 void QuickSort::quicksort(Tweet* vet[], int ini, int fim, char tipo)
 {
 	clock_t relogio;
@@ -163,6 +174,10 @@ void QuickSort::quicksort(Tweet* vet[], int ini, int fim, char tipo)
 	tempoGasto += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 }
 
+
+//Funcao que calcula a mediana entre 3 valores aleatorios
+//ENTRADA: Vetor de objetos do tipo Tweet, numero de valores a serem tomados para o calculo da mediana, posicao inicial e final do vetor passado por parametro
+//SAIDA: Retorna um inteiro que indica a posicao do vetor de Tweet`s referente a mediana calculada, para ser usado como pivo do quicksort recursivo.
 int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
 
 	int posMediana;//posicao a ser calculada e retornada da funcao
