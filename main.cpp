@@ -315,9 +315,18 @@ int main()
 	vetor[4] = new Tweet(26, 16, t, d);
 	vetor[5] = new Tweet(64, 189, t, d);
 	vetor[6] = new Tweet(54, 28, t, d);
-	//GerTexto* ger = new GerTexto();
-	//Tweet* tw = ger->carregarTweet("tw.txt");
-	//tw->printTweet();
+	
+	/* Funcao para importar os tweets, esta funcionando porem ela retorna um std::vector<Tweets*> e todas nossas funcoes usam Tweet* vetor[]
+	possivelmente vai ter que passar tudo do std::vector para o vetor[] pois acho que nao tem outro jeito de fazer isso
+	O problema eh que isso vai demorar O(n), nao vai acrescentar nada nas ordenacoes porem o programa vai demorar para incializar*/
+	GerTexto* ger = new GerTexto();
+	vector<Tweet*> vTweets = ger->carregaTweets("tw.txt",10); //Carrega os 10 primeiros tweets
+	//Imprimindo os tweets para testar
+	for (int i = 0; i < vTweets.size(); i++) 
+	{
+		vTweets[i]->printTweet();
+		cout << endl;
+	}
 
 	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
 	esse numero eh o numero de tweets aleatorios que devem ser importados e instanciados
