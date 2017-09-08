@@ -301,14 +301,14 @@ int main()
 	//string salvar;
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
-	// Instanciando 7 Tweets para teste
+				   // Instanciando 7 Tweets para teste
 	const int tam = 7;
 	GerTexto* ger = new GerTexto();
 	Tweet* vetor[tam];
 	//Imprimindo os tweets para teste
 	for (int i = 0; i < tam; i++)
 	{
-		vetor[i] = ger->carregarTweet("tw.txt");
+		vetor[i] = ger->carregarTweet("tw.txt", i);
 		vetor[i]->printTweet();
 		cout << endl;
 	}

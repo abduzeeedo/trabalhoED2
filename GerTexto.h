@@ -13,8 +13,9 @@ class GerTexto
 {
 private:
 public:
-	Tweet* carregarTweet(string nome);
+	Tweet* carregarTweet(string nome, int seed);
 	vector<Tweet*> carregaTweets(string nomeArquivo, int numTweets);
+	int numAle(unsigned int seed);
 	GerTexto();
 	~GerTexto();
 };
