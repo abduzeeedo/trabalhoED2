@@ -11,11 +11,11 @@ using namespace std;
 
 class GerTexto
 {
-  private:
-  public:
-    Tweet* carregarTweet(string nome);
-	  vector<Tweet*> carregaTweets(string nomeArquivo, int numTweets);
-    GerTexto();
-    ~GerTexto();
+private:
+public:
+	Tweet* carregarTweet(string nome);
+	vector<Tweet*> carregaTweets(string nomeArquivo, int numTweets);
+	GerTexto();
+	~GerTexto();
 };
 #endif

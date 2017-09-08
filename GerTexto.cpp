@@ -10,21 +10,27 @@ GerTexto::~GerTexto()
 
 Tweet *GerTexto::carregarTweet(string nome)
 {
-    string linha;
-    Tweet *tw = new Tweet();
-    fstream arquivo;
-    arquivo.open(nome, std::fstream::in);
-    if(arquivo.is_open()){
-        getline(arquivo, linha, '\t');
-        tw->setUserID(stoi(linha));
-        getline(arquivo, linha, '\t');
-        tw->setTweetID(atoi(linha.c_str()));
-        getline(arquivo, linha, '\t');
-        tw->setTweetText(linha);
-        getline(arquivo, linha);
+	string linha;
+	int i=0;
+	int stop = rand() % 80;
+	Tweet *tw = new Tweet();
+	fstream arquivo;
+	arquivo.open(nome, std::fstream::in);
+	if (arquivo.is_open()) {
+		while (i < stop) {
+			getline(arquivo, linha, '\n');
+			i++;
+		}
+		getline(arquivo, linha, '\t');
+		tw->setUserID(stoi(linha));
+		getline(arquivo, linha, '\t');
+		tw->setTweetID(atoi(linha.c_str()));
+		getline(arquivo, linha, '\t');
+		tw->setTweetText(linha);
+		getline(arquivo, linha);
 		tw->setDate(linha);
-    }
-return tw;
+	}
+	return tw;
 }
 
 //Carrega um vetor de tweets com numTweets tweets
@@ -54,5 +60,6 @@ vector<Tweet*> GerTexto::carregaTweets(string nomeArquivo, int numTweets)
 		return vTweets; //Retorna o vetor
 	}
 	else //Caso o arquivo nao esteja aberto, mostra um erro.
-		cout << "Erro ao abrir arquivo de tweets "<< nomeArquivo << endl;
+		cout << "Erro ao abrir arquivo de tweets " << nomeArquivo << endl;
+		
 }

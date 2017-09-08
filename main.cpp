@@ -171,7 +171,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		}
 
 		if (code == "6") { //Realiza InsertionSort
-			/*InsertionSort*/
+						   /*InsertionSort*/
 			cout << "Antes de Ordenar via InsertionSort:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
@@ -194,7 +194,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		}
 
 		if (code == "7") { //Realiza MergeSort
-			/*MergeSort*/
+						   /*MergeSort*/
 			cout << "Antes de Ordenar via MergeSort:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
@@ -223,7 +223,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Falta Implementar" << endl;
 		}
 		if (code == "9") { //Realiza BubbleSort
-			/*BubbleSort*/
+						   /*BubbleSort*/
 			cout << "Antes de Ordenar via BubbleSort:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
@@ -247,7 +247,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
 		}
 		if (code == "10") { //Realiza QuickSort em um vetor de inteiros (TweetID's)
-			/*Quicksort com vetor de inteiros*/
+							/*Quicksort com vetor de inteiros*/
 			QuickSortInt ordena;
 			cout << "Antes de Ordenar via QuickSort:" << endl;
 			imprimeTIDVetor(vet, tam);
@@ -255,7 +255,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Criando e ordenando vetor de inteiros com TweetID, isso pode demorar" << endl;
 			ordena.criaVet(vet, tam); //Essa funcao ja cria, ordena, imprime e desaloca o vetor de int com os tweetIDs
 
-			//Salvando resultados em TXT
+									  //Salvando resultados em TXT
 			salvar += "Algoritmo InsertionSort:\n";
 			salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
@@ -315,14 +315,30 @@ int main()
 	vetor[4] = new Tweet(26, 16, t, d);
 	vetor[5] = new Tweet(64, 189, t, d);
 	vetor[6] = new Tweet(54, 28, t, d);
-	
+
+	GerTexto* ger2 = new GerTexto();
+	Tweet* tw [5];
+	tw[0] = ger2->carregarTweet("tw.txt");
+	tw[1] = ger2->carregarTweet("tw.txt");
+	tw[2] = ger2->carregarTweet("tw.txt");
+	tw[3] = ger2->carregarTweet("tw.txt");
+	tw[4] = ger2->carregarTweet("tw.txt");
+
+	tw[0]->printTweet();
+	tw[1]->printTweet();
+	tw[2]->printTweet();
+	tw[3]->printTweet();
+	tw[4]->printTweet();
+
+	cout << "\n\n" << endl;
+
 	/* Funcao para importar os tweets, esta funcionando porem ela retorna um std::vector<Tweets*> e todas nossas funcoes usam Tweet* vetor[]
 	possivelmente vai ter que passar tudo do std::vector para o vetor[] pois acho que nao tem outro jeito de fazer isso
 	O problema eh que isso vai demorar O(n), nao vai acrescentar nada nas ordenacoes porem o programa vai demorar para incializar*/
 	GerTexto* ger = new GerTexto();
-	vector<Tweet*> vTweets = ger->carregaTweets("tw.txt",10); //Carrega os 10 primeiros tweets
-	//Imprimindo os tweets para testar
-	for (int i = 0; i < vTweets.size(); i++) 
+	vector<Tweet*> vTweets = ger->carregaTweets("tw.txt", 10); //Carrega os 10 primeiros tweets
+															   //Imprimindo os tweets para testar
+	for (int i = 0; i < vTweets.size(); i++)
 	{
 		vTweets[i]->printTweet();
 		cout << endl;
