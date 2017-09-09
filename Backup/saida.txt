@@ -1,0 +1,6 @@
+Algoritmo QuickSort Recursivo:
+Numero de trocas: 282
+Numero de comparacoes: 268
+Tempo gasto: 0.006
+
+
