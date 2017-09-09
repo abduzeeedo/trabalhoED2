@@ -1,4 +1,5 @@
 #include "HashStruct.h"
+//preenche todas as posicoes com -2
 HashStruct::HashStruct(int tam)
 {
     m = tam + 4;
@@ -10,6 +11,7 @@ HashStruct::HashStruct(int tam)
         tabela[i].prox = -2;
     }
 }
+//Funcoes de hahsing
 int HashStruct::divisao(int chave)
 {
     return chave % m;
@@ -24,6 +26,7 @@ int HashStruct::enlacamento(int chave)
     }
     return enlacamento % m;
 }
+//Tratamento de colisoes
 void HashStruct::encadCol(int chave)
 {
     int posicao = divisao(chave);
@@ -42,6 +45,7 @@ void HashStruct::encadCol(int chave)
             comparacoes++;
     }
 }
+//Inserir uma nova chave na tabela
 void HashStruct::inserir(int chave)
 {
     int posicao = 0;
@@ -63,6 +67,7 @@ void HashStruct::exibirTabela()
         cout << tabela[i].chave << " : " << tabela[i].prox << endl;
     }
 }
+//Salva os resultados em um arquivo com o nome passado como parametro
 void HashStruct::salvarArquivo(string nome)
 {
     GerTexto *ger = new GerTexto();
