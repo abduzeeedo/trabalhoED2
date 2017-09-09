@@ -86,13 +86,12 @@ void salvarTxt(string salvar, string file) {
 
 Tweet** setRand(Tweet** src, int tam, int tamVet, int seed) {
 	srand(seed);
-	int random = 0;
 	Tweet** dst = new Tweet*[tam];
 	for (int i = 0; i < tam; i++) {
-		random = rand() % tamVet;
+		int random = rand() % tamVet;
 		while (src[random]->getUso() == true) {
-			random = (random + 1) % tamVet;
 			//random = rand() % tamVet;
+			random = (random + 1) % tamVet;
 		}
 		Tweet* tw = new Tweet(src[random]->getUserID(), src[random]->getTweetID(), src[random]->getTweetText(), src[random]->getDate());
 		src[random]->setUso(true);
@@ -106,8 +105,8 @@ void limpaUso(Tweet** vetor, int tam)
 {
 	for (int i = 0; i < tam; i++)
 	{
-		if(vetor[i]->getUso() == true)
-		vetor[i]->setUso(false);
+		if (vetor[i]->getUso() == true)
+			vetor[i]->setUso(false);
 	}
 }
 
@@ -122,40 +121,34 @@ void limpaUso(Tweet** vetor, int tam)
 //Por fim, salva os dados da ordenacao em um arquivo .txt para fins de comparacao
 void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
 
-	imprimeTIDVetor(vet, tam);
-	cout << endl;
-
 	QuickSort ordena; //Chama a classes
 	ordena.quicksort(vet, 0, tam - 1, tipo); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final.
-
-	cout << "Depois de Ordenar:" << endl;
-	imprimeTIDVetor(vet, tam);
-	cout << endl;
 
 	//"Armazena" os dados de saida pós ordenacao na String "saida", para ser posteriormente escrita em um arquivo .txt
 	if (tipo == 'r')
 		salvar += "Algoritmo QuickSort Recursivo:\n";
+		cout << "Algoritmo QuickSort Recursivo." << endl;
 
 	if (tipo == 'm')
 		salvar += "Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:\n";
+		cout << "Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:\n" << endl;
 
 	if (tipo == 'M')
 		salvar += "Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:\n";
+		cout << "Algoritmo QuickSort Recursivo com Mediana entre 5 Valores." << endl;
 
 	if (tipo == 'i')
-		salvar += "Algoritmo QuickSort Recursivo com Insercao com m=10:\n";
+		salvar += "Algoritmo QuickSort Recursivo com Insercao com m=10.:\n";
+		cout << "Algoritmo QuickSort Recursivo com Insercao com m=10." << endl;
 
 	if (tipo == 'I')
 		salvar += "Algoritmo QuickSort Recursivo com Insercao com m=100:\n";
+		cout << "Algoritmo QuickSort Recursivo com Insercao com m=100" << endl;
 
 	salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
 	salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
 	salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
 
-	/*Impressao dos Resultados em Tela
-	cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
-	cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-	cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; */
 }
 
 //Metodo que seleciona via codigo de comando a funcao a ser executada e finaliza execucao
@@ -175,32 +168,32 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		}
 
 		if (code == "1") { //Realiza QuickSort Recursivo Padrao, utilizando posicao média do vetor como pivo
-			cout << "Antes de Ordenar via QuickSort Recursivo:" << endl;
 			tiposQuickSort(vet, tam, 'r'); //Tipo 'r': QuickSort Recursivo Padrao
+			cout << "Ordenou via QuickSort Recursivo." << endl;
 		}
 
 		if (code == "2") { //Realiza QuickSort Recursivo com Mediana entre 3 Valores
-			cout << "Antes de Ordenar via QuickSort Recursivo com Mediana entre 3 Valores:" << endl;
 			tiposQuickSort(vet, tam, 'm'); //Tipo 'm': QuickSort Recursivo com Mediana entre 3 valores
+			cout << "Ordenou via QuickSort Recursivo com Mediana entre 3 Valores." << endl;
 		}
 
 		if (code == "3") { //Realiza QuickSort Recursivo com Mediana entre 5 Valores
-			cout << "Antes de Ordenar via QuickSort Recursivo com Mediana entre 5 Valores:" << endl;
 			tiposQuickSort(vet, tam, 'M');//Tipo 'M': QuickSort Recursivo com Mediana entre 5 valores
+			cout << "Ordenou via QuickSort Recursivo com Mediana entre 5 Valores." << endl;
 		}
 
 		if (code == "4") { //Realiza QuickSort Recursivo com Insercao com m=10
-			cout << "Antes de Ordenar via QuickSort Recursivo com Insercao com m=10:" << endl;
 			tiposQuickSort(vet, tam, 'i');//Tipo 'M': QuickSort Recursivo com Inser��o com m=10
+			cout << "Ordenou via QuickSort Recursivo com Insercao com m=10." << endl;
 		}
 
 		if (code == "5") { //Realiza QuickSort Recursivo com Insercao com m=100
-			cout << "Antes de Ordenar via QuickSort Recursivo com Insercao com m=100:" << endl;
 			tiposQuickSort(vet, tam, 'I');//Tipo 'M': QuickSort Recursivo com Inser��o com m=100
+			cout << "Ordenou via QuickSort Recursivo com Insercao com m=100" << endl;
 		}
 
 		if (code == "6") { //Realiza InsertionSort
-						   /*InsertionSort*/
+			/*InsertionSort*/
 			InsertionSort ordena; //Chama a classe
 			ordena.insertionsort(vet, 0, tam); //Faz o insertionsort. Passar 0 para ordenar desde o inicio e o tamanho total, nao tamanho-1
 
@@ -210,15 +203,12 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
 
-			//Resultado das Opera��es
-			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
-			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos, tenho que testar com mais
+			cout << "Ordenou via InsertionSort." << endl;
+
 		}
 
 		if (code == "7") { //Realiza MergeSort
-						   /*MergeSort*/
-
+			/*MergeSort*/
 			MergeSort ordena; //Chama a classe 
 			ordena.mergesort(vet, 0, tam - 1); //Faz o mergesort. Passar sempre 0 como inicio e tamanho-1 como final
 
@@ -227,18 +217,16 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
-
-			//Resultado das Opera��es
-			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
-			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
+	
+			cout << "Ordenou via MergeSort:" << endl;
 		}
 		if (code == "8") {
 			/*HeapSort*/
 			cout << "Falta Implementar" << endl;
 		}
 		if (code == "9") { //Realiza BubbleSort
-						   /*BubbleSort*/
+			/*BubbleSort*/
+
 			BubbleSort ordena; //Chama a classe
 			ordena.bubblesort(vet, tam); //Faz o bubblesort. Passar o tamanho total, nao tamanho-1
 
@@ -248,14 +236,12 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
 
-			//Resultado das Opera��es
-			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
-			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
+			cout << "Ordenou via BubbleSort:" << endl;
 		}
 		if (code == "10") { //Realiza QuickSort em um vetor de inteiros (TweetID's)
-							/*Quicksort com vetor de inteiros*/
+			/*Quicksort com vetor de inteiros*/
 			QuickSortInt ordena;
+
 			cout << "Criando e ordenando vetor de inteiros com TweetID, isso pode demorar" << endl;
 			ordena.criaVet(vet, tam); //Essa funcao ja cria, ordena, imprime e desaloca o vetor de int com os tweetIDs
 
@@ -265,11 +251,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
 
-			//Resultado das Opera��es
-			cout << endl << endl;
-			cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
-			cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
+			cout << "Ordenou via QuickSort em vetor de Inteiros:" << endl;
 		}
 	}
 
@@ -302,21 +284,27 @@ vector<int> importaEntrada(const char* nomeArquivo)
 		cout << "Erro ao abrir arquivo " << nomeArquivo << endl;
 }
 
+
 void batchQS(Tweet** vetor, int tamVet) {
 	//vector<int> vEntrada = importaEntrada("entrada.txt");
-	int vEntrada[3] = { 50, 100, 150 };
+	limpaUso(vetor, tamVet);
+	int vEntrada[3] = { 100, 200, 300 };
 	Tweet** original;
 	QuickSort qs;
-	limpaUso(vetor, tamVet);
 	for (int k=1; k <= 5; k++){
+		limpaUso(vetor, tamVet);
 		for (int i = 0; i < 3; i++) {
+
+			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
 			salvar += "\n--------------------------------------------------------------------------------\n";
 			salvar += "Batch de QuickSort para N=" + toString(vEntrada[i]) + ": ";
 			salvar += "\n================================================================================\n";
-			original = setRand(vetor, vEntrada[i], tamVet, i + k);
 			
+			cout << "Instanciando Original..." << endl;
+			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			cout << "Ordenando Original por QuickSort Recursivo..." << endl;
 			qs.quicksort(original, 0, vEntrada[i]-1, 'r');
 	
 			salvar += "Algoritmo QuickSort Recursivo:\n";
@@ -327,7 +315,9 @@ void batchQS(Tweet** vetor, int tamVet) {
 			qs.limpaDados();
 			limpaUso(vetor, tamVet);
 	
+			cout << "Instanciando Original..." << endl;
 			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			cout << "Ordenando Original por QuickSort de Mediana m=3..." << endl;
 			qs.quicksort(original, 0, vEntrada[i]-1, 'm');
 	
 			salvar += "Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:\n";
@@ -339,7 +329,9 @@ void batchQS(Tweet** vetor, int tamVet) {
 			qs.limpaDados();
 			limpaUso(vetor, tamVet);
 	
+			cout << "Instanciando Original..." << endl;
 			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			cout << "Ordenando Original por QuickSort de Mediana m=3..." << endl;
 			qs.quicksort(original, 0, vEntrada[i]-1, 'M');
 	
 			salvar += "Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:\n";
@@ -351,8 +343,9 @@ void batchQS(Tweet** vetor, int tamVet) {
 			qs.limpaDados();
 			limpaUso(vetor, tamVet);
 	
-	
+			cout << "Instanciando Original..." << endl;
 			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			cout << "Ordenando Original por QuickSort de Insercao m=10..." << endl;
 			qs.quicksort(original, 0, vEntrada[i]-1, 'i');
 	
 			salvar += "Algoritmo QuickSort Recursivo com Insercao com m=10:\n";
@@ -364,7 +357,9 @@ void batchQS(Tweet** vetor, int tamVet) {
 			qs.limpaDados();
 			limpaUso(vetor, tamVet);
 
+			cout << "Instanciando Original..." << endl;
 			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			cout << "Ordenando Original por QuickSort com Insercao com m=1000..." << endl;
 			qs.quicksort(original, 0, vEntrada[i]-1, 'I');
 	
 			salvar += "Algoritmo QuickSort Recursivo com Insercao com m=100:\n";
@@ -374,34 +369,6 @@ void batchQS(Tweet** vetor, int tamVet) {
 
 			free(original);
 			qs.limpaDados();
-			limpaUso(vetor, tamVet);
-		}
-	}
-}
-
-void batchIS(Tweet** vetor, int tamVet)
-{
-	int vEntrada[3] = { 50, 100, 150 };
-	Tweet** original;
-	InsertionSort is;
-	limpaUso(vetor, tamVet);
-	for (int k = 1; k <= 5; k++) {
-		for (int i = 0; i < 3; i++) {
-			salvar += "\n================================================================================\n";
-			salvar += "Iteracao Numero " + toString(k);
-			salvar += "\n--------------------------------------------------------------------------------\n";
-			salvar += "Batch de InsertionSort para N=" + toString(vEntrada[i]) + ": ";
-			salvar += "\n================================================================================\n";
-			original = setRand(vetor, vEntrada[i], tamVet, i + k);
-
-			is.insertionsort(original, 0, vEntrada[i]);
-
-			salvar += "Algoritmo InsertionSort:\n";
-			salvar += "Numero de trocas: " + toString(is.getNumTrocas()) + "\n";
-			salvar += "Numero de comparacoes: " + toString(is.getNumComparacoes()) + "\n";
-			salvar += "Tempo gasto: " + toString(is.getTempoGasto()) + "\n\n";
-			free(original);
-			is.limpaDados();
 			limpaUso(vetor, tamVet);
 		}
 	}
@@ -482,10 +449,10 @@ int main()
 {
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
-	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
-	que indica o numero de tweets aleatorios que devem ser importados e instanciados
-	e depois, fazer a ordenacao deles
-	Para usar um for neste vetor, basta fazer for (int i = 0; i < vEntrada.size(); i++)*/
+	 /*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
+	 que indica o numero de tweets aleatorios que devem ser importados e instanciados
+	 e depois, fazer a ordenacao deles
+	 Para usar um for neste vetor, basta fazer for (int i = 0; i < vEntrada.size(); i++)*/
 	vector<int> vEntrada = importaEntrada("entrada.txt");
 
 	//Importa tweets do arquivo TXT
