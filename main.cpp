@@ -374,6 +374,34 @@ void batchQS(Tweet** vetor, int tamVet) {
 	}
 }
 
+void batchIS(Tweet** vetor, int tamVet)
+{
+	int vEntrada[3] = { 50, 100, 150 };
+	Tweet** original;
+	InsertionSort is;
+	limpaUso(vetor, tamVet);
+	for (int k = 1; k <= 5; k++) {
+		for (int i = 0; i < 3; i++) {
+			salvar += "\n================================================================================\n";
+			salvar += "Iteracao Numero " + toString(k);
+			salvar += "\n--------------------------------------------------------------------------------\n";
+			salvar += "Batch de InsertionSort para N=" + toString(vEntrada[i]) + ": ";
+			salvar += "\n================================================================================\n";
+			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+
+			is.insertionsort(original, 0, vEntrada[i]);
+
+			salvar += "Algoritmo InsertionSort:\n";
+			salvar += "Numero de trocas: " + toString(is.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(is.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(is.getTempoGasto()) + "\n\n";
+			free(original);
+			is.limpaDados();
+			limpaUso(vetor, tamVet);
+		}
+	}
+}
+
 void batchMS(Tweet** vetor, int tamVet)
 {
 	int vEntrada[3] = { 50, 100, 150 };
