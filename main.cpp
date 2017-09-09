@@ -90,13 +90,22 @@ Tweet** setRand(Tweet** src, int tam, int tamVet, int seed) {
 	for (int i = 0; i < tam; i++) {
 		int random = rand() % tamVet;
 		while (src[random]->getUso() == true) {
-			random = rand() % tam;
+			random = rand() % tamVet;
 		}
 		Tweet* tw = new Tweet(src[random]->getUserID(), src[random]->getTweetID(), src[random]->getTweetText(), src[random]->getDate());
 		src[random]->setUso(true);
 		dst[i] = tw;
 	}
 	return dst;
+}
+
+//Marca todos os tweets como nao usados
+void limpaUso(Tweet** vetor, int tam)
+{
+	for (int i = 0; i < tam; i++)
+	{
+		vetor[i]->setUso(false);
+	}
 }
 
 //Chama o QuickSort passando o tipo por Parametro
@@ -140,10 +149,10 @@ void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
 	salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
 	salvar += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
 
-	//Impressao dos Resultados em Tela
+	/*Impressao dos Resultados em Tela
 	cout << "Numero de trocas: " << ordena.getNumTrocas() << endl;
 	cout << "Numero de comparacoes: " << ordena.getNumComparacoes() << endl;
-	cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos, tenho que testar com mais
+	cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; */
 }
 
 //Metodo que seleciona via codigo de comando a funcao a ser executada e finaliza execucao
@@ -240,7 +249,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Falta Implementar" << endl;
 		}
 		if (code == "9") { //Realiza BubbleSort
-			/*BubbleSort*/
+						   /*BubbleSort*/
 			cout << "Antes de Ordenar via BubbleSort:" << endl;
 			imprimeTIDVetor(vet, tam);
 			cout << endl;
@@ -264,7 +273,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Tempo gasto: " << ordena.getTempoGasto() << endl; //Acho que o tempo sempre mostra 0 pois a ordena�ao est� muito rapida com poucos elementos
 		}
 		if (code == "10") { //Realiza QuickSort em um vetor de inteiros (TweetID's)
-			/*Quicksort com vetor de inteiros*/
+							/*Quicksort com vetor de inteiros*/
 			QuickSortInt ordena;
 			cout << "Antes de Ordenar via QuickSort:" << endl;
 			imprimeTIDVetor(vet, tam);
@@ -272,7 +281,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Criando e ordenando vetor de inteiros com TweetID, isso pode demorar" << endl;
 			ordena.criaVet(vet, tam); //Essa funcao ja cria, ordena, imprime e desaloca o vetor de int com os tweetIDs
 
-			//Salvando resultados em TXT
+									  //Salvando resultados em TXT
 			salvar += "Algoritmo QuickSort com um Vetor de Inteiros:\n";
 			salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
@@ -315,6 +324,68 @@ vector<int> importaEntrada(const char* nomeArquivo)
 		cout << "Erro ao abrir arquivo " << nomeArquivo << endl;
 }
 
+
+void batchQS(Tweet** vetor, int tamVet) {
+	//vector<int> vEntrada = importaEntrada("entrada.txt");
+	int vEntrada[3] = { 50, 100, 150 };
+	for (unsigned int i = 0; i < 3; i++) {
+		Tweet** original = setRand(vetor, vEntrada[i], tamVet, i+1);
+
+		QuickSort qs;
+		qs.quicksort(original, 0, vEntrada[i], 'r');
+
+		salvar += "Algoritmo QuickSort Recursivo:\n";
+		salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
+		salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
+		salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
+		free(original);
+		qs.limpaDados();
+
+		original = setRand(vetor, vEntrada[i], tamVet, i + 2);
+		qs.quicksort(original, 0, vEntrada[i], 'm');
+
+		salvar += "Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:\n";
+		salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
+		salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
+		salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
+
+		free(original);
+		qs.limpaDados();
+
+		original = setRand(vetor, vEntrada[i], tamVet, i + 3);
+		qs.quicksort(original, 0, vEntrada[i], 'M');
+
+		salvar += "Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:\n";
+		salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
+		salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
+		salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
+
+		free(original);
+		qs.limpaDados();
+
+		original = setRand(vetor, vEntrada[i], tamVet, i + 3);
+		qs.quicksort(original, 0, vEntrada[i], 'i');
+
+		salvar += "Algoritmo QuickSort Recursivo com Insercao com m=10:\n";
+		salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
+		salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
+		salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
+
+		free(original);
+		qs.limpaDados();
+
+		original = setRand(vetor, vEntrada[i], tamVet, i + 3);
+		qs.quicksort(original, 0, vEntrada[i], 'I');
+
+		salvar += "Algoritmo QuickSort Recursivo com Insercao com m=100:\n";
+		salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
+		salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
+		salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
+		free(original);
+		qs.limpaDados();
+	}
+}
+
 int main()
 {
 	//string salvar;
@@ -325,21 +396,25 @@ int main()
 	e depois, fazer a ordenacao deles
 	Para usar um for neste vetor, fica assim for (int i = 0; i < vEntrada.size(); i++)*/
 	vector<int> vEntrada = importaEntrada("entrada.txt");
-	
+
 	//Funcao para importar tweets. O tamVet eh o numero de tweets que vao ser importados
-	int tamVet = 100;
+	int tamVet = 500;
+	//int tam = 100;
 	GerTexto* ble = new GerTexto();
-	Tweet** array = ble->carregaTweets("training_set_tweets.txt", tamVet);
+	Tweet** array = ble->carregaTweets("test_set_tweets.txt", tamVet);
 	//for (int i = 0; i < tamVet; i++)
 	//array[i]->printTweet(); //Imprime um tweet so pra ver se ta importando certo
-	
-	Tweet** original = setRand(array, 20, tamVet, 1);
 
-	for (int i = 0; i < 20; i++)
-	original[i]->printTweet();
+	//Tweet** original = setRand(array, tam, tamVet, 1);
+
+	//for (int i = 0; i < tam; i++)
+	//	original[i]->printTweet();
 
 	//codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execucao;
-	codigoFuncao(original, 20);
+
+	batchQS(array, tamVet);
+
+	codigoFuncao(array, tamVet);
 	salvarTxt(salvar, "saida.txt");
 	return 0;
 }
