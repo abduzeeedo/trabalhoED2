@@ -1,7 +1,7 @@
 #include "HashEncad.h"
 HashEncad::HashEncad(int tam)
 {
-    m = 2*tam;
+    m = 2 * tam;
     cout << "M: " << m << endl;
     tabela = new ListaEncad[m];
     /*  for (int i = 0; i < m; i++)
@@ -11,11 +11,12 @@ HashEncad::HashEncad(int tam)
 
 HashEncad::~HashEncad()
 {
-    for(int i = 0; i< m;i++){
+    for (int i = 0; i < m; i++)
+    {
         tabela[i].inicio();
         while (!tabela[i].verificaNull())
         {
-           delete tabela[i];
+            delete tabela[i];
         }
     }
 }
@@ -115,8 +116,17 @@ void HashEncad::encadSeparado(int chave)
     if (!tabela[posicao].verificaVazio())
         tabela[posicao].addNo(chave);
 }
-void HashEncad::encadCol(int chav)
+void HashEncad::encadCol(int chave)
 {
+    int posicao = enlacamento(chave);
+    for (int i = m - 1; i >= 0; i++)
+    {
+        if (tabela[i].verificaVazio())
+        {
+            tabela[i].addNo(chave);
+            tabela[posicao].setProxLista(tabela[i]);
+        }
+    }
 }
 void HashEncad::inserir(int chave, int tratColis)
 {
@@ -147,6 +157,9 @@ void HashEncad::inserir(int chave, int tratColis)
             break;
         case 4:
             encadSeparado(chave);
+            break;
+        case 5:
+            encadCol(chave);
             break;
         default:
             break;

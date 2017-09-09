@@ -2,6 +2,7 @@
 #define NO_H
 
 #include <iostream>
+#include "ListaEncad.h"
 
 using namespace std;
 class No

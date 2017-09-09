@@ -8,6 +8,7 @@ class ListaEncad
   private:
     No* pri;
     No* it;
+    ListaEncad* proxLista;
   public:
     ListaEncad();
     ~ListaEncad();
@@ -18,6 +19,8 @@ class ListaEncad
     bool verificaUlt();
     bool verificaVazio();
     bool verificaNull();
+    void setProxLista(ListaEncad* proximaLista);
+    ListaEncad* getProxLista();
     
 };
 #endif
