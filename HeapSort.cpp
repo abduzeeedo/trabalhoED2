@@ -1,3 +1,5 @@
+
+
 #include "HeapSort.h"
 
 using namespace std;
@@ -40,7 +42,7 @@ void HeapSort::limpaDados() {
 }
 
  //Constroi um vetor Heap
-void constroiHeap(Tweet* vetor[], int tam, int indice_raiz)
+void HeapSort::constroiHeap(Tweet* vetor[], int tam, int indice_raiz)
 {
 	int ramificacao;
 	Tweet* valor;
@@ -66,7 +68,7 @@ void constroiHeap(Tweet* vetor[], int tam, int indice_raiz)
 
 
 //Realiza as trocas
-void heapsort(Tweet* vetor[], int tam)
+void HeapSort::heapsort(Tweet* vetor[], int tam)
 {
 	clock_t relogio;
 	relogio = clock();
@@ -88,3 +90,4 @@ void heapsort(Tweet* vetor[], int tam)
 	tempoGasto = (clock() - relogio) / (double)CLOCKS_PER_SEC;
 
 }
+
