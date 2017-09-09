@@ -4,6 +4,7 @@
 #include "ListaEncad.h"
 #include <string>
 #include <iostream>
+#include "math.h"
 #include "GerTexto.h"
 
 using namespace std;
@@ -13,6 +14,7 @@ private:
     ListaEncad* tabela;
     int m;
     int divisao(int chave);
+    int funcaoH2(int chave);
     int enlacamento(int chave); 
     
 public:

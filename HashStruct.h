@@ -20,6 +20,7 @@ private:
   lista *tabela;
   int m;
   int enlacamento(int chave);
+  int divisao(int chave);
   void encadCol(int chave);
 
 public:

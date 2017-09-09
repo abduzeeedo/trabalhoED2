@@ -3,7 +3,7 @@
 long long int comp = 0;
 HashEncad::HashEncad(int tam)
 {
-    m = 2 * tam;
+    m =tam+4;
     tabela = new ListaEncad[m];
     /*  for (int i = 0; i < m; i++)
         tabela[i] = new ListaEncad();
@@ -20,6 +20,10 @@ HashEncad::~HashEncad()
             delete tabela;
         }
     }
+}
+int HashEncad::funcaoH2(int chave)
+{
+    return chave % (2*m);
 }
 int HashEncad::divisao(int chave)
 {
@@ -40,7 +44,7 @@ int HashEncad::sondLinear(int chave)
     int posicao = 0;
     int i = 0, it = 0;
     int hk;
-    hk = enlacamento(chave);
+    hk = divisao(chave);
     posicao = hk;
     while (!tabela[posicao].verificaVazio() || it < 2)
     {
@@ -71,7 +75,7 @@ int HashEncad::sondQuadratica(int chave)
     int posicao = 0;
     int i = 0, it = 0;
     int hk;
-    hk = enlacamento(chave);
+    hk = divisao(chave);
     posicao = hk;
     while (!tabela[posicao].verificaVazio())
     {
@@ -98,11 +102,11 @@ int HashEncad::sondQuadratica(int chave)
 }
 void HashEncad::duploHash(int chave)
 {
-    int hk = enlacamento(chave);
+    int hk = divisao(chave);
     int posicao = hk;
-    int rk = divisao(chave);
+    int rk = funcaoH2(chave);
     int i = 0;
-    while (!tabela[posicao].verificaVazio() || i < 2 * m)
+    while (!tabela[posicao].verificaVazio())
     {
         comp++;
         posicao = (hk + i * rk) % m;
@@ -112,7 +116,7 @@ void HashEncad::duploHash(int chave)
 }
 void HashEncad::encadSeparado(int chave)
 {
-    int posicao = enlacamento(chave);
+    int posicao = divisao(chave);
     if (!tabela[posicao].verificaVazio())
     {
         comp++;
@@ -122,8 +126,8 @@ void HashEncad::encadSeparado(int chave)
 
 void HashEncad::inserir(int chave, int tratColis)
 {
-    int posicao = enlacamento(chave);
-
+    int posicao = divisao(chave);
+    cout << comp << " C: " << chave << endl;
     if (tabela[posicao].verificaVazio())
     {
         tabela[posicao].addNo(chave);
@@ -151,8 +155,6 @@ void HashEncad::inserir(int chave, int tratColis)
             break;
         case 4:
             encadSeparado(chave);
-            break;
-        default:
             break;
         }
     }

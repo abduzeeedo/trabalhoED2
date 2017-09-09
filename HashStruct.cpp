@@ -2,13 +2,17 @@
 long long int comparacoes  = 0;
 HashStruct::HashStruct(int tam)
 {
-    m = (int) 1.5 * tam;
+    m = tam + 4;
     tabela = new lista[m];
     for (int i = 0; i < m; i++)
     {
         tabela[i].posVazia = true;
         tabela[i].prox = -2;
     }
+}
+int HashStruct::divisao(int chave)
+{
+    return chave % m;
 }
 int HashStruct::enlacamento(int chave)
 {
@@ -22,7 +26,7 @@ int HashStruct::enlacamento(int chave)
 }
 void HashStruct::encadCol(int chave)
 {
-    int posicao = enlacamento(chave);
+    int posicao = divisao(chave);
     for (int i = m - 1; i >= 0; i--)
     {
         if (tabela[i].posVazia)
@@ -41,7 +45,7 @@ void HashStruct::encadCol(int chave)
 void HashStruct::inserir(int chave)
 {
     int posicao = 0;
-    posicao = enlacamento(chave);
+    posicao = divisao(chave);
     if (tabela[posicao].posVazia)
     {
         tabela[posicao].chave = chave;
