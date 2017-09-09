@@ -19,9 +19,11 @@ class HashStruct
 private:
   lista *tabela;
   int m;
+  long long int comparacoes;  
   int enlacamento(int chave);
   int divisao(int chave);
   void encadCol(int chave);
+
 
 public:
   HashStruct(int tam);

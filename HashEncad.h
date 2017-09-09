@@ -12,14 +12,16 @@ using namespace std;
 class HashEncad{
 private:
     ListaEncad* tabela;
-    int m;
+    int m, tratColis;
     int divisao(int chave);
     int funcaoH2(int chave);
     int enlacamento(int chave); 
+    long long int comparacoes;
+    
     
 public:
-    HashEncad(int tam);
-    void inserir(int chave, int tratColis);
+    HashEncad(int tam, int trat);
+    void inserir(int chave);
     int sondLinear(int chave);
     int sondQuadratica(int chave);
     void duploHash(int chave);

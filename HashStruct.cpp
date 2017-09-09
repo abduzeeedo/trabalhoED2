@@ -1,8 +1,8 @@
 #include "HashStruct.h"
-long long int comparacoes  = 0;
 HashStruct::HashStruct(int tam)
 {
     m = tam + 4;
+    comparacoes = 0;
     tabela = new lista[m];
     for (int i = 0; i < m; i++)
     {
@@ -63,13 +63,23 @@ void HashStruct::exibirTabela()
         cout << tabela[i].chave << " : " << tabela[i].prox << endl;
     }
 }
-void HashStruct::salvarArquivo(string nome){
-    string texto = "Comparacoes: " + to_string(comparacoes) + "\n";
-    GerTexto* ger = new GerTexto();
+void HashStruct::salvarArquivo(string nome)
+{
+    GerTexto *ger = new GerTexto();
+    string texto;
+    texto = "Encadeamento coalescido\n";
+    texto += "Tamanho da tabela: ";
+    texto += to_string(m);
+    texto += "\nComparacoes: ";
+    texto += to_string(comparacoes);
+    texto += "\n";
+    texto += "tamanho da tabela: ";
+    texto += to_string((float)sizeof(tabela) * 0.001);
+    texto += " KBytes\n";
     ger->salvarSaida(texto, nome);
     delete ger;
 }
 HashStruct::~HashStruct()
 {
-        delete tabela;
+    delete tabela;
 }
