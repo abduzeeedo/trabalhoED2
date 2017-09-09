@@ -1,0 +1,6 @@
+Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:
+Numero de trocas: 9
+Numero de comparacoes: 7
+Tempo gasto: 0
+
+

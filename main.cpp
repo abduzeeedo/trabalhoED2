@@ -304,16 +304,18 @@ int main()
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
 	// Instanciando 7 Tweets para teste
-	const int tam = 7;
+	const int tam = 20;
 	GerTexto* ger = new GerTexto();
 	Tweet* vetor[tam];
 	//Imprimindo os tweets para teste
 	for (int i = 0; i < tam; i++)
 	{
-		vetor[i] = ger->carregarTweet("tw.txt", i);//carrega os dados do txt no vetor de tweets. A variavel i é passada por parametro como seed do gerador de num Aleatorio
+		vetor[i] = ger->carregarTweet("training_set_tweets.txt", i);//carrega os dados do txt no vetor de tweets. A variavel i é passada por parametro como seed do gerador de num Aleatorio
 		vetor[i]->printTweet();
 		cout << endl;
 	}
+
+	Tweet* vetor2[tam];
 
 	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
 	esse numero eh o numero de tweets aleatorios que devem ser importados e instanciados

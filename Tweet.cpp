@@ -5,7 +5,7 @@
 Tweet::Tweet()
 {
 }
-Tweet::Tweet(int uid, int tid, string tw, string da)
+Tweet::Tweet(int uid, long long int tid, string tw, string da)
 {
 	userID = uid;
 	tweetID = tid;

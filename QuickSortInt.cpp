@@ -26,12 +26,15 @@ int QuickSortInt::getNumComparacoes()
 	return numCompar;
 }
 
+//Retorna o tempo gasto pela ordenacao
 double QuickSortInt::getTempoGasto()
 {
 	return tempoGasto;
 }
 
-//Nao usei o std::swap para poder adicionar o de numero de trocas
+//Funcao que realiza a troca de posicao entre dois inteiros
+//ENTRADA: 2 inteiros a serem trocados de posicao entre si
+//SAIDA: A troca de posicao entre os dois inteiros
 void QuickSortInt::troca(long long int &t1, long long int &t2)
 {
 	if (t1 != t2) //Nao troca se t1 e t2 sao iguais, ja que nao precisa
@@ -44,6 +47,8 @@ void QuickSortInt::troca(long long int &t1, long long int &t2)
 }
 
 //Cria vetores de inteiros com tweet ids
+//ENTRADA: Vetor de objetos do tipo Tweet e seu tamanho
+//SAIDA: Atribuicao dos TweetID`s dos objetos do tipo Tweet's para um vetor de inteiro, e a ordenacao desse vetor de inteiro via QuickSort
 void QuickSortInt::criaVet(Tweet* vet[], int tam)
 {
 	long long int* vetInt = (long long int*)alloca(sizeof(long long int) * tam); //Melhor que malloc pois ja desaloca a memoria automaticamente quando sai da funcao
@@ -51,14 +56,14 @@ void QuickSortInt::criaVet(Tweet* vet[], int tam)
 	{
 		vetInt[i] = vet[i]->getTweetID();
 	}
-	quicksortint(vetInt, 0, tam-1); //Faz a ordenacao do vetor de inteiros criado
-	//Imprime o vetor ordenado
+	quicksortint(vetInt, 0, tam - 1); //Faz a ordenacao do vetor de inteiros criado
+									  //Imprime o vetor ordenado
 	cout << "Depois de Ordenar:" << endl;
 	cout << "Vetor: ";
-		for (int k = 0; k < tam; k++)
-		{
-			cout << "[" << vetInt[k] << "]";
-		}
+	for (int k = 0; k < tam; k++)
+	{
+		cout << "[" << vetInt[k] << "]";
+	}
 }
 
 //Algoritmo de particionamento do vetor
@@ -69,7 +74,7 @@ int QuickSortInt::particionaint(long long int vet[], int inicio, int fim)
 	troca(vet[pospiv], vet[fim]); // Coloca o pivo como o ultimo elemento do vetor
 	pospiv = fim; //Volta a posicao do pivo como sendo o fim do vetor que vai ser particionado
 
-	//Variaveis para percorrer no vetor particionado
+				  //Variaveis para percorrer no vetor particionado
 	int i = inicio - 1; //Comeca antes do inicio pq na primeira troca ele ja vai virar o inicio
 	int j = inicio; //Anda do comeco ate o fim-1 do vetor
 

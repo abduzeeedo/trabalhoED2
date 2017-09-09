@@ -2,14 +2,6 @@
 #include "InsertionSort.h"
 using namespace std;
 
-/*
-ainda falta:
-escrever mais comentarios
-implementar a funcao para ler do arquivo entrada.txt para fazer a ordena�ao aleatoria dos Tweet
-implementar a funcao para escrever os resultados no arquivo saida.txt
-alterar o codigo para funcionar no numero N de vezes lidos da entrada.txt
-*/
-
 //Construtor
 QuickSort::QuickSort()
 {
@@ -35,6 +27,7 @@ int QuickSort::getNumComparacoes()
 	return numCompar;
 }
 
+//Retorna o tempo gasto pela ordenacao
 double QuickSort::getTempoGasto()
 {
 	return tempoGasto;
@@ -63,8 +56,6 @@ int QuickSort::particiona(Tweet* vet[], int inicio, int fim, int pos)
 	/*
 	Posicao do vetor, a formula para calcular a posiçao é (inicio + ((posicao)%(fim-inicio+1))). No caso, posicao = (inicio + fim) / 2), metade do vetor
 	Exemplo, caso queira passar a posicao 3 do vetor como pivo int pospiv = inicio + (3 % (fim - inicio + 1));
-	Pode alterar tambem para ficar como parametro recebido da funcao exemplo indPivo (indice do vetor que deve ser usado como pivo), nesse caso ficaria
-	int pospiv = inicio + (indPivo % (fim - inicio + 1))
 	*/
 	if (pos == -1) { //Pos com Codigo -1: Usa a posicao central do vetor como pivo
 		pospiv = inicio + (((inicio + fim) / 2) % (fim - inicio + 1));
@@ -77,7 +68,7 @@ int QuickSort::particiona(Tweet* vet[], int inicio, int fim, int pos)
 	troca(vet[pospiv], vet[fim]); // Coloca o pivo como o ultimo elemento do vetor
 	pospiv = fim; //Volta a posicao do pivo como sendo o fim do vetor que vai ser particionado
 
-				  //Variaveis para percorrer no vetor particionado
+	//Variaveis para percorrer no vetor particionado
 	int i = inicio - 1; //Comeca antes do inicio pq na primeira troca ele ja vai virar o inicio
 	int j = inicio; //Anda do comeco ate o fim-1 do vetor
 
@@ -118,7 +109,7 @@ void QuickSort::quicksort(Tweet* vet[], int ini, int fim, char tipo)
 	if (tipo == 'm') { //QuickSort Recursivo com Mediana de 3 valores
 		if (ini < fim)
 		{
-			int posMediana = mediana(vet, 3, ini, fim);
+			int posMediana = mediana(vet, 3, ini, fim); //posMediana recebe a posicao calculada na funcao Mediana com 3 valores
 			int part = particiona(vet, ini, fim, posMediana);
 			quicksort(vet, ini, part - 1, 'm');
 			quicksort(vet, part + 1, fim, 'm');
@@ -128,7 +119,7 @@ void QuickSort::quicksort(Tweet* vet[], int ini, int fim, char tipo)
 	if (tipo == 'M') { //QuickSort Recursivo com Mediana de 5 valores
 		if (ini < fim)
 		{
-			int posMediana = mediana(vet, 5, ini, fim);
+			int posMediana = mediana(vet, 5, ini, fim); //posMediana recebe a posicao calculada na funcao Mediana com 5 valores
 			int part = particiona(vet, ini, fim, posMediana);
 			quicksort(vet, ini, part - 1, 'm');
 			quicksort(vet, part + 1, fim, 'm');
@@ -138,7 +129,7 @@ void QuickSort::quicksort(Tweet* vet[], int ini, int fim, char tipo)
 	if (tipo == 'i') { //QuickSort Recursivo Hibrido (com Insertion para particoes de tamanho menor ou igual a 10)
 		if (ini < fim)
 		{
-			if (fim - ini <= 10) {
+			if (fim - ini <= 10) {//Se a subparticao possuir tamanho menor ou igual a 10, ordena via InsertionSort
 				InsertionSort ordena;
 				ordena.insertionsort(vet, ini, fim + 1);
 				numCompar = numCompar + ordena.getNumComparacoes();
@@ -155,7 +146,7 @@ void QuickSort::quicksort(Tweet* vet[], int ini, int fim, char tipo)
 	if (tipo == 'I') { //QuickSort Recursivo Hibrido (com Insertion para particoes de tamanho menor ou igual a 100)
 		if (ini < fim)
 		{
-			if (fim - ini <= 100) {
+			if (fim - ini <= 100) {//Se a subparticao possuir tamanho menor ou igual a 100, ordena via InsertionSort
 				InsertionSort ordena;
 				ordena.insertionsort(vet, ini, fim + 1);
 				numCompar = numCompar + ordena.getNumComparacoes();
@@ -183,6 +174,7 @@ int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
 	if (numVal == 3) { //para k=3
 		Tweet* vetor[3];
 		for (int i = 0; i < 3; i++) {
+			srand(i);
 			posRand = rand() % (fim - inicio); //Atribui a posicao randomica do vetor original
 			vetor[i] = new Tweet(posRand, vet[posRand]->getTweetID(), "", ""); //Atribui a USERID a posicao em si, e em tweetID o valor do tweetID contido nesta posicao
 		}
@@ -195,6 +187,7 @@ int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
 	if (numVal == 5) {//para k=5
 		Tweet* vetor[5];
 		for (int i = 0; i < 5; i++) {
+			srand(i);
 			posRand = rand() % (fim - inicio); //Atribui a posicao randomica do vetor original
 			vetor[i] = new Tweet(posRand, vet[posRand]->getTweetID(), "", ""); //Atribui a USERID a posicao em si, e em tweetID o valor do tweetID contido nesta posicao
 		}
@@ -203,7 +196,7 @@ int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
 		posMediana = vet[2]->getUserID();//pega o valor central do vetor (mediana) e atribui o userID, que é a posicao original do vetor de tweets
 		return posMediana;
 	}
-	
+
 	return inicio; //caso nao entre em nenhuma condicao, passa a posicao inicial como valor
 
 }

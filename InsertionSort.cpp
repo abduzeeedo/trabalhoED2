@@ -26,15 +26,19 @@ int InsertionSort::getNumComparacoes()
 	return numCompar;
 }
 
+//Retorna o tempo gasto pela ordenacao
 double InsertionSort::getTempoGasto()
 {
 	return tempoGasto;
 }
 
+//Algoritmo InsertionSort
+//ENTRADA: Vetor de objetos do tipo Tweet, a posicao inicial e final do intervalo a ser ordenado
+//SAIDA: Tal vetor ordenado via InsertionSort
 void InsertionSort::insertionsort(Tweet* vet[], int inicio, int fim)
 {
 	clock_t relogio;
-	relogio = clock();
+	relogio = clock();//Instancia um novo contador de tempo
 
 	int i, j;
 	Tweet* chave; //chave auxiliar

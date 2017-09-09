@@ -1,11 +1,5 @@
 #include "BubbleSort.h"
 
-/*
-Implementei o BubbleSort para usar como o "Meusort" no cenário 3 do trabalho.
-Motivo: um dos mais simples e populares metodos de ordenaçao
-Se quiserem usar outro, só falar. De qualquer maneira, esse já ta pronto.
-*/
-
 //Construtor
 BubbleSort::BubbleSort()
 {
@@ -37,7 +31,9 @@ double BubbleSort::getTempoGasto()
 	return tempoGasto;
 }
 
-//Nao usei o std::swap para poder adicionar o de numero de trocas
+//Realiza Troca de Posicoes entre 2 Objetos do tipo Tweet
+//ENTRADA: 2 Objetos do tipo Tweet
+//SAIDA: Dois objetos trocados de posicao entre si
 void BubbleSort::troca(Tweet* &t1, Tweet* &t2)
 {
 	if (t1 != t2) //Nao troca se t1 e t2 sao iguais, ja que nao precisa
@@ -50,6 +46,8 @@ void BubbleSort::troca(Tweet* &t1, Tweet* &t2)
 }
 
 //Algoritmo BubbleSort
+//ENTRADA: Vetor de objetos do tipo Tweet e seu tamanho
+//SAIDA: Tal vetor ordenado via BubbleSort
 void BubbleSort::bubblesort(Tweet* vet[], int tam)
 {
 	clock_t relogio;

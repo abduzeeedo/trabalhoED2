@@ -29,9 +29,10 @@ double MergeSort::getTempoGasto()
 	return tempoGasto;
 }
 
+//Funcao que "junta" subparticoes do vetor de tweets
 void MergeSort::intercala(Tweet *vet[], int ini, int meio, int fim)
 {
-	Tweet ** vetAux = (Tweet**)malloc(sizeof(Tweet*) * (fim - ini + 1)); //Aloca um vetor auxiliar para ordena�ao
+	Tweet ** vetAux = (Tweet**)malloc(sizeof(Tweet*) * (fim - ini + 1)); //Aloca um vetor auxiliar para ordenacao
 	int posAux = 0; //Variavel para controlar a posicao no vetor auxiliar
 	int i = ini; //Comeco do vetor particionado
 	int j = meio + 1; //Fim do vetor particionado. (O fim recebido por parametro eh o fim do vetor original)
@@ -65,6 +66,7 @@ void MergeSort::intercala(Tweet *vet[], int ini, int meio, int fim)
 	free(vetAux);
 }
 
+//Funcao de ordenacao por MergeSort Recursivo
 void MergeSort::mergesort(Tweet *vet[], int inicio, int fim)
 {
 	clock_t relogio;
