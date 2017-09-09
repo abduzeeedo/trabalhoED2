@@ -14,9 +14,9 @@ private:
 public:
 	QuickSort();//Construtor
 	~QuickSort();//Destrutor
+	void limpaDados();
 	void quicksort(Tweet* vetor[], int ini, int fim, char tipo);//Funcao de ordenacao por QuickSort Recursivo e suas variacoes
 	int getNumTrocas();//Retorna o numero de trocas do objeto
 	int getNumComparacoes();//Retorna o numero de comparacoes do objeto
 	double getTempoGasto();//Retorna o tempo gasto na execucao da ordenacao do objeto
-
 };

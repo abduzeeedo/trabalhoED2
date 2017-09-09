@@ -32,6 +32,11 @@ double QuickSort::getTempoGasto()
 {
 	return tempoGasto;
 }
+void QuickSort::limpaDados() {
+	numCompar = 0;
+	numTrocas = 0;
+	tempoGasto = 0;
+}
 
 //Funcao que realiza a troca de posicao entre dois objetos do tipo Tweet
 //ENTRADA: 2 Objetos do tipo Tweet a serem trocados de posicao entre si
