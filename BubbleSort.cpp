@@ -31,6 +31,13 @@ double BubbleSort::getTempoGasto()
 	return tempoGasto;
 }
 
+void BubbleSort::limpaDados()
+{
+	numTrocas = 0;
+	numCompar = 0;
+	tempoGasto = 0;
+}
+
 //Realiza Troca de Posicoes entre 2 Objetos do tipo Tweet
 //ENTRADA: 2 Objetos do tipo Tweet
 //SAIDA: Dois objetos trocados de posicao entre si
