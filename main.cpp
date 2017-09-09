@@ -86,11 +86,13 @@ void salvarTxt(string salvar, string file) {
 
 Tweet** setRand(Tweet** src, int tam, int tamVet, int seed) {
 	srand(seed);
+	int random = 0;
 	Tweet** dst = new Tweet*[tam];
 	for (int i = 0; i < tam; i++) {
-		int random = rand() % tamVet;
+		random = rand() % tamVet;
 		while (src[random]->getUso() == true) {
-			random = rand() % tamVet;
+			random = (random + 1) % tamVet;
+			//random = rand() % tamVet;
 		}
 		Tweet* tw = new Tweet(src[random]->getUserID(), src[random]->getTweetID(), src[random]->getTweetText(), src[random]->getDate());
 		src[random]->setUso(true);
@@ -104,6 +106,7 @@ void limpaUso(Tweet** vetor, int tam)
 {
 	for (int i = 0; i < tam; i++)
 	{
+		if(vetor[i]->getUso() == true)
 		vetor[i]->setUso(false);
 	}
 }
@@ -198,14 +201,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 		if (code == "6") { //Realiza InsertionSort
 						   /*InsertionSort*/
-			cout << "Antes de Ordenar via InsertionSort:" << endl;
-			imprimeTIDVetor(vet, tam);
-			cout << endl;
 			InsertionSort ordena; //Chama a classe
 			ordena.insertionsort(vet, 0, tam); //Faz o insertionsort. Passar 0 para ordenar desde o inicio e o tamanho total, nao tamanho-1
-			cout << "Depois de Ordenar:" << endl;
-			imprimeTIDVetor(vet, tam);
-			cout << endl;
 
 			//Salvando resultados em TXT
 			salvar += "Algoritmo InsertionSort:\n";
@@ -221,17 +218,9 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 		if (code == "7") { //Realiza MergeSort
 						   /*MergeSort*/
-			cout << "Antes de Ordenar via MergeSort:" << endl;
-			imprimeTIDVetor(vet, tam);
-			cout << endl;
-
 
 			MergeSort ordena; //Chama a classe 
 			ordena.mergesort(vet, 0, tam - 1); //Faz o mergesort. Passar sempre 0 como inicio e tamanho-1 como final
-
-			cout << "Depois de Ordenar:" << endl;
-			imprimeTIDVetor(vet, tam);
-			cout << endl;
 
 			//Salvando resultados em TXT
 			salvar += "Algoritmo MergeSort:\n";
@@ -250,16 +239,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		}
 		if (code == "9") { //Realiza BubbleSort
 						   /*BubbleSort*/
-			cout << "Antes de Ordenar via BubbleSort:" << endl;
-			imprimeTIDVetor(vet, tam);
-			cout << endl;
-
 			BubbleSort ordena; //Chama a classe
 			ordena.bubblesort(vet, tam); //Faz o bubblesort. Passar o tamanho total, nao tamanho-1
-
-			cout << "Depois de Ordenar:" << endl;
-			imprimeTIDVetor(vet, tam);
-			cout << endl;
 
 			//Salvando resultados em TXT
 			salvar += "Algoritmo BubbleSort:\n";
@@ -275,13 +256,10 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		if (code == "10") { //Realiza QuickSort em um vetor de inteiros (TweetID's)
 							/*Quicksort com vetor de inteiros*/
 			QuickSortInt ordena;
-			cout << "Antes de Ordenar via QuickSort:" << endl;
-			imprimeTIDVetor(vet, tam);
-			cout << endl;
 			cout << "Criando e ordenando vetor de inteiros com TweetID, isso pode demorar" << endl;
 			ordena.criaVet(vet, tam); //Essa funcao ja cria, ordena, imprime e desaloca o vetor de int com os tweetIDs
 
-									  //Salvando resultados em TXT
+			//Salvando resultados em TXT
 			salvar += "Algoritmo QuickSort com um Vetor de Inteiros:\n";
 			salvar += "Numero de trocas: " + toString(ordena.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
@@ -329,6 +307,7 @@ void batchQS(Tweet** vetor, int tamVet) {
 	int vEntrada[3] = { 50, 100, 150 };
 	Tweet** original;
 	QuickSort qs;
+	limpaUso(vetor, tamVet);
 	for (int k=1; k <= 5; k++){
 		for (int i = 0; i < 3; i++) {
 			salvar += "\n================================================================================\n";
@@ -405,6 +384,7 @@ void batchIS(Tweet** vetor, int tamVet)
 	int vEntrada[3] = { 50, 100, 150 };
 	Tweet** original;
 	InsertionSort is;
+	limpaUso(vetor, tamVet);
 	for (int k = 1; k <= 5; k++) {
 		for (int i = 0; i < 3; i++) {
 			salvar += "\n================================================================================\n";
@@ -432,6 +412,7 @@ void batchMS(Tweet** vetor, int tamVet)
 	int vEntrada[3] = { 50, 100, 150 };
 	Tweet** original;
 	MergeSort ms;
+	limpaUso(vetor, tamVet);
 	for (int k = 1; k <= 5; k++) {
 		for (int i = 0; i < 3; i++) {
 			salvar += "\n================================================================================\n";
@@ -459,6 +440,7 @@ void batchBS(Tweet** vetor, int tamVet)
 	int vEntrada[3] = { 50, 100, 150 };
 	Tweet** original;
 	BubbleSort bs;
+	limpaUso(vetor, tamVet);
 	for (int k = 1; k <= 5; k++) {
 		for (int i = 0; i < 3; i++) {
 			salvar += "\n================================================================================\n";
@@ -508,23 +490,26 @@ int main()
 
 	//Importa tweets do arquivo TXT
 	//--------------------------------------------------------------------
-	int tamVet = 500; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 10000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
-	Tweet** array = ger->carregaTweets("test_set_tweets.txt", tamVet);
+	cout << "Instanciando " << tamVet << " tweets." << endl;
+	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
 	//---------------------------------------------------------------------
 
 	//Atribui Tweets Aleatoriamente 
 	//--------------------------------------------------------------------
-	int tam = 100; //Tamanho do Vetor criado com Tweets Aleatorios
-	Tweet** original = setRand(array, tam, tamVet, 1);
+	int tam = 5000; //Tamanho do Vetor criado com Tweets Aleatorios
+	cout << "Gerando um vetor com " << tam << " tweets aleatorios." << endl;
+	Tweet** vAleatorio = setRand(vTweet, tam, tamVet, 1);
 	//--------------------------------------------------------------------
 
 	//Faz os testes em sequencia com o tweet 
 	//--------------------------------------------------------------------
-	testesBatch(array, tamVet);
+	cout << "Fazendo testes em lote:" << endl;
+	testesBatch(vTweet, tamVet);
 	//--------------------------------------------------------------------
 
-	codigoFuncao(original, tam);//Seleciona a funcao ou encerra a execucao;
+	codigoFuncao(vAleatorio, tam);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");
 	return 0;
 }
