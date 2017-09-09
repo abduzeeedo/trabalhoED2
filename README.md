@@ -10,7 +10,7 @@ ED2 - 2017.3
 - [x] Contabilizar Num. Comparações
 - [x] Contabilizar Num. Copias de Registros
 - [x] Tempo Total Execução
-- [ ] Importar Elementos Aleatoriamente
+- [x] Importar Elementos Aleatoriamente
 - [ ] ANALISE CENARIO I -  Graficos, Tabelas, Conclusões
 
 # CENARIO II - Bruno
@@ -44,8 +44,3 @@ ED2 - 2017.3
 - [ ] ANALISE CENARIO IV -  Graficos, Tabelas, Conclusões Pedidas
 
 # IMPLEMENTAÇÃO PALAVRAS DO MOMENTO
-
-# Perguntar Vania:
-- O que significa o "Para cada Tipo de Dado" no Cenario 1
-- Perguntar se pode ter 1 arquivo saida.txt pra cada algoritmo
-- Perguntar se o Tweet e Date podem ser string
