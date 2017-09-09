@@ -324,7 +324,6 @@ vector<int> importaEntrada(const char* nomeArquivo)
 		cout << "Erro ao abrir arquivo " << nomeArquivo << endl;
 }
 
-
 void batchQS(Tweet** vetor, int tamVet) {
 	//vector<int> vEntrada = importaEntrada("entrada.txt");
 	int vEntrada[3] = { 50, 100, 150 };
@@ -401,6 +400,102 @@ void batchQS(Tweet** vetor, int tamVet) {
 	}
 }
 
+void batchIS(Tweet** vetor, int tamVet)
+{
+	int vEntrada[3] = { 50, 100, 150 };
+	Tweet** original;
+	InsertionSort is;
+	for (int k = 1; k <= 5; k++) {
+		for (int i = 0; i < 3; i++) {
+			salvar += "\n================================================================================\n";
+			salvar += "Iteracao Numero " + toString(k);
+			salvar += "\n--------------------------------------------------------------------------------\n";
+			salvar += "Batch de InsertionSort para N=" + toString(vEntrada[i]) + ": ";
+			salvar += "\n================================================================================\n";
+			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+
+			is.insertionsort(original, 0, vEntrada[i]);
+
+			salvar += "Algoritmo InsertionSort:\n";
+			salvar += "Numero de trocas: " + toString(is.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(is.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(is.getTempoGasto()) + "\n\n";
+			free(original);
+			is.limpaDados();
+			limpaUso(vetor, tamVet);
+		}
+	}
+}
+
+void batchMS(Tweet** vetor, int tamVet)
+{
+	int vEntrada[3] = { 50, 100, 150 };
+	Tweet** original;
+	MergeSort ms;
+	for (int k = 1; k <= 5; k++) {
+		for (int i = 0; i < 3; i++) {
+			salvar += "\n================================================================================\n";
+			salvar += "Iteracao Numero " + toString(k);
+			salvar += "\n--------------------------------------------------------------------------------\n";
+			salvar += "Batch de MergeSort para N=" + toString(vEntrada[i]) + ": ";
+			salvar += "\n================================================================================\n";
+			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+
+			ms.mergesort(original, 0, vEntrada[i] - 1);
+
+			salvar += "Algoritmo MergeSort:\n";
+			salvar += "Numero de trocas: " + toString(ms.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(ms.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(ms.getTempoGasto()) + "\n\n";
+			free(original);
+			ms.limpaDados();
+			limpaUso(vetor, tamVet);
+		}
+	}
+}
+
+void batchBS(Tweet** vetor, int tamVet)
+{
+	int vEntrada[3] = { 50, 100, 150 };
+	Tweet** original;
+	BubbleSort bs;
+	for (int k = 1; k <= 5; k++) {
+		for (int i = 0; i < 3; i++) {
+			salvar += "\n================================================================================\n";
+			salvar += "Iteracao Numero " + toString(k);
+			salvar += "\n--------------------------------------------------------------------------------\n";
+			salvar += "Batch de BubbleSort para N=" + toString(vEntrada[i]) + ": ";
+			salvar += "\n================================================================================\n";
+			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+
+			bs.bubblesort(original, vEntrada[i]);
+
+			salvar += "Algoritmo BubbleSort:\n";
+			salvar += "Numero de trocas: " + toString(bs.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(bs.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(bs.getTempoGasto()) + "\n\n";
+			free(original);
+			bs.limpaDados();
+			limpaUso(vetor, tamVet);
+		}
+	}
+}
+
+void testesBatch(Tweet** vetor, int tamVet)
+{
+	batchQS(vetor, tamVet);
+	cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+
+	batchIS(vetor, tamVet);
+	cout << "Batch para InsertionSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+
+	batchMS(vetor, tamVet);
+	cout << "Batch para MergeSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+
+	batchBS(vetor, tamVet);
+	cout << "Batch para BubbleSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+}
+
 int main()
 {
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
@@ -414,8 +509,8 @@ int main()
 	//Importa tweets do arquivo TXT
 	//--------------------------------------------------------------------
 	int tamVet = 500; //Quantidade de Tweets que serao lidos do arquivo txt
-	GerTexto* ble = new GerTexto();
-	Tweet** array = ble->carregaTweets("test_set_tweets.txt", tamVet);
+	GerTexto* ger = new GerTexto();
+	Tweet** array = ger->carregaTweets("test_set_tweets.txt", tamVet);
 	//---------------------------------------------------------------------
 
 	//Atribui Tweets Aleatoriamente 
@@ -424,8 +519,10 @@ int main()
 	Tweet** original = setRand(array, tam, tamVet, 1);
 	//--------------------------------------------------------------------
 
-	batchQS(array, tamVet);
-	cout << "Batch para Quicksort Concluido. Verifique o arquivo saida.txt" << endl;
+	//Faz os testes em sequencia com o tweet 
+	//--------------------------------------------------------------------
+	testesBatch(array, tamVet);
+	//--------------------------------------------------------------------
 
 	codigoFuncao(original, tam);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");
