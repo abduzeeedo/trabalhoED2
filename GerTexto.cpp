@@ -42,3 +42,12 @@ Tweet *GerTexto::carregarTweet(string nome, int seed)
 	}
 	return tw;//retorna um tweet com tais valores recebidos do arquivo txt
 }
+void GerTexto::salvarSaida(string saida, string nome){
+	fstream arquivo;
+	arquivo.open(nome,std::fstream::out | std::fstream::app);
+	if(arquivo.is_open()){
+		arquivo << saida;
+		arquivo << "\n";
+
+	}
+}

@@ -1,8 +1,9 @@
 #include "HashEncad.h"
+
+long long int comp = 0;
 HashEncad::HashEncad(int tam)
 {
     m = 2 * tam;
-    cout << "M: " << m << endl;
     tabela = new ListaEncad[m];
     /*  for (int i = 0; i < m; i++)
         tabela[i] = new ListaEncad();
@@ -16,15 +17,9 @@ HashEncad::~HashEncad()
         tabela[i].inicio();
         while (!tabela[i].verificaNull())
         {
-            delete tabela[i];
+            delete tabela;
         }
     }
-}
-bool HashEncad::encontrar(int chave, int tratColis)
-{
-    int hk;
-    hk = enlacamento(chave);
-    return true;
 }
 int HashEncad::divisao(int chave)
 {
@@ -54,11 +49,13 @@ int HashEncad::sondLinear(int chave)
 
         if (tabela[posicao].verificaVazio())
         {
+            comp++;
             return posicao;
             break;
         }
         else
         {
+            comp++;
             i++;
             if (i >= m - 1)
             {
@@ -81,12 +78,14 @@ int HashEncad::sondQuadratica(int chave)
         posicao = (posicao + (i * i)) % m;
         if (tabela[posicao].verificaVazio())
         {
+            comp++;
             return posicao;
             break;
         }
 
         else
         {
+            comp++;
             i++;
             if (i >= m)
             {
@@ -105,6 +104,7 @@ void HashEncad::duploHash(int chave)
     int i = 0;
     while (!tabela[posicao].verificaVazio() || i < 2 * m)
     {
+        comp++;
         posicao = (hk + i * rk) % m;
         i++;
     }
@@ -114,26 +114,20 @@ void HashEncad::encadSeparado(int chave)
 {
     int posicao = enlacamento(chave);
     if (!tabela[posicao].verificaVazio())
-        tabela[posicao].addNo(chave);
-}
-void HashEncad::encadCol(int chave)
-{
-    int posicao = enlacamento(chave);
-    for (int i = m - 1; i >= 0; i++)
     {
-        if (tabela[i].verificaVazio())
-        {
-            tabela[i].addNo(chave);
-            tabela[posicao].setProxLista(tabela[i]);
-        }
+        comp++;
+        tabela[posicao].addNo(chave);
     }
 }
+
 void HashEncad::inserir(int chave, int tratColis)
 {
     int posicao = enlacamento(chave);
 
     if (tabela[posicao].verificaVazio())
+    {
         tabela[posicao].addNo(chave);
+    }
     else
     {
         switch (tratColis)
@@ -158,13 +152,18 @@ void HashEncad::inserir(int chave, int tratColis)
         case 4:
             encadSeparado(chave);
             break;
-        case 5:
-            encadCol(chave);
-            break;
         default:
             break;
         }
     }
+}
+void HashEncad::salvarArquivo(string nome){
+    string texto = "comp: " + to_string(comp) + "\n";
+    GerTexto* ger = new GerTexto();
+    ger->salvarSaida(texto, nome);
+    texto = "tamanho da tabela: " + to_string((float)sizeof(tabela) * 0.001) + " KBytes\n";
+    ger->salvarSaida(texto, nome);    
+    delete ger;
 }
 void HashEncad::exibirTabela()
 {

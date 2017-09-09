@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "No.h"
+
 class ListaEncad
 {
   private:
@@ -19,8 +20,7 @@ class ListaEncad
     bool verificaUlt();
     bool verificaVazio();
     bool verificaNull();
-    void setProxLista(ListaEncad* proximaLista);
-    ListaEncad* getProxLista();
+  
     
 };
 #endif

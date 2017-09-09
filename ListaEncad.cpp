@@ -65,10 +65,3 @@ ListaEncad::~ListaEncad()
     delete it;
     delete aux;
 }
-void ListaEncad::setProxLista(ListaEncad* proximaLista){
-    proxLista = proximaLista;
-}
-
-ListaEncad* ListaEncad::getProxLista(){
-    return proxLista;
-}

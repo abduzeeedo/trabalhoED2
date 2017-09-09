@@ -4,6 +4,7 @@
 #include "ListaEncad.h"
 #include <string>
 #include <iostream>
+#include "GerTexto.h"
 
 using namespace std;
 
@@ -17,12 +18,11 @@ private:
 public:
     HashEncad(int tam);
     void inserir(int chave, int tratColis);
-    bool encontrar(int chave, int tratColis);
     int sondLinear(int chave);
     int sondQuadratica(int chave);
     void duploHash(int chave);
     void encadSeparado(int chave);
-    void encadCol(int chave);  
+    void salvarArquivo(string nome);
     void exibirTabela();        
     ~HashEncad();
 };

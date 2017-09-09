@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -11,6 +11,8 @@
 #include "MergeSort.h"
 #include "BubbleSort.h"
 #include "GerTexto.h"
+#include "HashStruct.h"
+#include "HashEncad.h"
 
 string salvar = "";
 using namespace std;
