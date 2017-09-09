@@ -284,94 +284,103 @@ vector<int> importaEntrada(const char* nomeArquivo)
 		cout << "Erro ao abrir arquivo " << nomeArquivo << endl;
 }
 
-
 void batchQS(Tweet** vetor, int tamVet) {
 	//vector<int> vEntrada = importaEntrada("entrada.txt");
 	limpaUso(vetor, tamVet);
 	int vEntrada[3] = { 100, 200, 300 };
 	Tweet** original;
+	int tamanhoriginal = 0;
 	QuickSort qs;
-	for (int k=1; k <= 5; k++){
+	for (int k = 1; k <= 5; k++) {
 		limpaUso(vetor, tamVet);
 		for (int i = 0; i < 3; i++) {
-
 			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
 			salvar += "\n--------------------------------------------------------------------------------\n";
 			salvar += "Batch de QuickSort para N=" + toString(vEntrada[i]) + ": ";
 			salvar += "\n================================================================================\n";
-			
+
 			cout << "Instanciando Original..." << endl;
 			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			vector<Tweet*> copia(vEntrada[i]);
+			copy(original, original + vEntrada[i], copia.begin()); //Copia o vetor original para um vetor auxiliar
 			cout << "Ordenando Original por QuickSort Recursivo..." << endl;
-			qs.quicksort(original, 0, vEntrada[i]-1, 'r');
-	
+			qs.quicksort(original, 0, vEntrada[i] - 1, 'r');
+
 			salvar += "Algoritmo QuickSort Recursivo:\n";
 			salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
-			free(original);
+			//free(original);
 			qs.limpaDados();
 			limpaUso(vetor, tamVet);
-	
-			cout << "Instanciando Original..." << endl;
-			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+
+			cout << "Copiando Original..." << endl;
+			//original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
 			cout << "Ordenando Original por QuickSort de Mediana m=3..." << endl;
-			qs.quicksort(original, 0, vEntrada[i]-1, 'm');
-	
+			qs.quicksort(original, 0, vEntrada[i] - 1, 'm');
+
 			salvar += "Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:\n";
 			salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
-	
-			free(original);
+
+			//free(original);
 			qs.limpaDados();
 			limpaUso(vetor, tamVet);
-	
-			cout << "Instanciando Original..." << endl;
-			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+
+			cout << "Copiando Original..." << endl;
+			//original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
 			cout << "Ordenando Original por QuickSort de Mediana m=3..." << endl;
-			qs.quicksort(original, 0, vEntrada[i]-1, 'M');
-	
+			qs.quicksort(original, 0, vEntrada[i] - 1, 'M');
+
 			salvar += "Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:\n";
 			salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
-	
-			free(original);
+
+			//free(original);
 			qs.limpaDados();
 			limpaUso(vetor, tamVet);
-	
-			cout << "Instanciando Original..." << endl;
-			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+
+			cout << "Copiando Original..." << endl;
+			//original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
 			cout << "Ordenando Original por QuickSort de Insercao m=10..." << endl;
-			qs.quicksort(original, 0, vEntrada[i]-1, 'i');
-	
+			qs.quicksort(original, 0, vEntrada[i] - 1, 'i');
+
 			salvar += "Algoritmo QuickSort Recursivo com Insercao com m=10:\n";
 			salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
-				
-			free(original);
+
+			//free(original);
 			qs.limpaDados();
 			limpaUso(vetor, tamVet);
 
-			cout << "Instanciando Original..." << endl;
-			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			cout << "Copiando Original..." << endl;
+			//original = setRand(vetor, vEntrada[i], tamVet, i + k);
+			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
 			cout << "Ordenando Original por QuickSort com Insercao com m=1000..." << endl;
-			qs.quicksort(original, 0, vEntrada[i]-1, 'I');
-	
+			qs.quicksort(original, 0, vEntrada[i] - 1, 'I');
+
 			salvar += "Algoritmo QuickSort Recursivo com Insercao com m=100:\n";
 			salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
 
-			free(original);
+			//free(original);
 			qs.limpaDados();
 			limpaUso(vetor, tamVet);
+			copia.clear(); //Limpa o vetor copia para receber os novos dados na proxima iteracao
 		}
 	}
+	//Desaloca o vetor "original" ao fim da execucao
+	original = 0;
+	free(original);
 }
 
 void batchIS(Tweet** vetor, int tamVet)
