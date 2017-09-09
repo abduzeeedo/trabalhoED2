@@ -305,7 +305,7 @@ int main()
 	//string salvar;
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
-	// Instanciando 7 Tweets para teste
+	/*// Instanciando 7 Tweets para teste
 	const int tam = 20;
 	GerTexto* ger = new GerTexto();
 	Tweet* vetor[tam];
@@ -315,17 +315,20 @@ int main()
 		vetor[i] = ger->carregarTweet("training_set_tweets.txt", i);//carrega os dados do txt no vetor de tweets. A variavel i é passada por parametro como seed do gerador de num Aleatorio
 		vetor[i]->printTweet();
 		cout << endl;
-	}
-
-	Tweet* vetor2[tam];
+	}*/
 
 	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
 	esse numero eh o numero de tweets aleatorios que devem ser importados e instanciados
 	e depois, fazer a ordenacao deles
 	Para usar um for neste vetor, fica assim for (int i = 0; i < vEntrada.size(); i++)*/
 	vector<int> vEntrada = importaEntrada("entrada.txt");
+	
+	GerTexto* ble = new GerTexto();
+	Tweet** array = ble->carregaTweets("training_set_tweets.txt", 100);
+	array[30]->printTweet(); //Imprime um tweet so pra ver se ta importando certo
 
-	codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execucao;
+	//codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execucao;
+	codigoFuncao(array,100);
 	salvarTxt(salvar, "saida.txt");
 	return 0;
 }
