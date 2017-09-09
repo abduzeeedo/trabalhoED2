@@ -15,7 +15,8 @@ public:
 	int getNumComparacoes();
 	double getTempoGasto();
 	void limpaDados();
-	void heapsort(Tweet vetor[], int tam);
-	void constroiHeap(Tweet vetor[], int tam, int indice_raiz);
+	void heapsort(Tweet* vetor[], int tam);
+	void constroiHeap(Tweet* vetor[], int tam, int indice_raiz);
 
 };
+     
