@@ -84,6 +84,21 @@ void salvarTxt(string salvar, string file) {
 	//arquivo.close();
 }
 
+Tweet** setRand(Tweet** src, int tam, int tamVet, int seed) {
+	srand(seed);
+	Tweet** dst = new Tweet*[tam];
+	for (int i = 0; i < tam; i++) {
+		int random = rand() % tamVet;
+		while (src[random]->getUso() == true) {
+			random = rand() % tam;
+		}
+		Tweet* tw = new Tweet(src[random]->getUserID(), src[random]->getTweetID(), src[random]->getTweetText(), src[random]->getDate());
+		src[random]->setUso(true);
+		dst[i] = tw;
+	}
+	return dst;
+}
+
 //Chama o QuickSort passando o tipo por Parametro
 //ENTRADA: Vetor de Objetos do tipo Tweet, tamanho de tal vetor e codigo "Tipo", referente ao tipo de quicksort a ser realizado
 //Tipo r: QuickSort Recursivo com Pivo Central
@@ -305,30 +320,26 @@ int main()
 	//string salvar;
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
-	/*// Instanciando 7 Tweets para teste
-	const int tam = 20;
-	GerTexto* ger = new GerTexto();
-	Tweet* vetor[tam];
-	//Imprimindo os tweets para teste
-	for (int i = 0; i < tam; i++)
-	{
-		vetor[i] = ger->carregarTweet("training_set_tweets.txt", i);//carrega os dados do txt no vetor de tweets. A variavel i é passada por parametro como seed do gerador de num Aleatorio
-		vetor[i]->printTweet();
-		cout << endl;
-	}*/
-
 	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
 	esse numero eh o numero de tweets aleatorios que devem ser importados e instanciados
 	e depois, fazer a ordenacao deles
 	Para usar um for neste vetor, fica assim for (int i = 0; i < vEntrada.size(); i++)*/
 	vector<int> vEntrada = importaEntrada("entrada.txt");
 	
+	//Funcao para importar tweets. O tamVet eh o numero de tweets que vao ser importados
+	int tamVet = 100;
 	GerTexto* ble = new GerTexto();
-	Tweet** array = ble->carregaTweets("training_set_tweets.txt", 100);
-	array[30]->printTweet(); //Imprime um tweet so pra ver se ta importando certo
+	Tweet** array = ble->carregaTweets("training_set_tweets.txt", tamVet);
+	//for (int i = 0; i < tamVet; i++)
+	//array[i]->printTweet(); //Imprime um tweet so pra ver se ta importando certo
+	
+	Tweet** original = setRand(array, 20, tamVet, 1);
+
+	for (int i = 0; i < 20; i++)
+	original[i]->printTweet();
 
 	//codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execucao;
-	codigoFuncao(array,100);
+	codigoFuncao(original, 20);
 	salvarTxt(salvar, "saida.txt");
 	return 0;
 }
