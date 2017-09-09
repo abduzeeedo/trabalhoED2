@@ -403,34 +403,31 @@ void batchQS(Tweet** vetor, int tamVet) {
 
 int main()
 {
-	//string salvar;
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
 	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
-	esse numero eh o numero de tweets aleatorios que devem ser importados e instanciados
+	que indica o numero de tweets aleatorios que devem ser importados e instanciados
 	e depois, fazer a ordenacao deles
-	Para usar um for neste vetor, fica assim for (int i = 0; i < vEntrada.size(); i++)*/
+	Para usar um for neste vetor, basta fazer for (int i = 0; i < vEntrada.size(); i++)*/
 	vector<int> vEntrada = importaEntrada("entrada.txt");
 
-	//Funcao para importar tweets. O tamVet eh o numero de tweets que vao ser importados
-	int tamVet = 500;
-	//int tam = 100;
+	//Importa tweets do arquivo TXT
+	//--------------------------------------------------------------------
+	int tamVet = 500; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ble = new GerTexto();
 	Tweet** array = ble->carregaTweets("test_set_tweets.txt", tamVet);
-	//for (int i = 0; i < tamVet; i++)
-	//array[i]->printTweet(); //Imprime um tweet so pra ver se ta importando certo
+	//---------------------------------------------------------------------
 
-	//Tweet** original = setRand(array, tam, tamVet, 1);
-
-	//for (int i = 0; i < tam; i++)
-	//	original[i]->printTweet();
-
-	//codigoFuncao(vetor, tam); //Seleciona a funcao ou encerra a execucao;
+	//Atribui Tweets Aleatoriamente 
+	//--------------------------------------------------------------------
+	int tam = 100; //Tamanho do Vetor criado com Tweets Aleatorios
+	Tweet** original = setRand(array, tam, tamVet, 1);
+	//--------------------------------------------------------------------
 
 	batchQS(array, tamVet);
-	cout << "Batch para Quicksort Concluido. Verifique o arquivo saidas.txt" << endl;
+	cout << "Batch para Quicksort Concluido. Verifique o arquivo saida.txt" << endl;
 
-	codigoFuncao(array, tamVet);
+	codigoFuncao(original, tam);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");
 	return 0;
 }
