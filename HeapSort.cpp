@@ -33,20 +33,26 @@ double HeapSort::getTempoGasto()
 	return tempoGasto;
 }
 
+void HeapSort::limpaDados() {
+	numCompar = 0;
+	numTrocas = 0;
+	tempoGasto = 0;
+}
+
  //Constroi um vetor Heap
-void constroiHeap(Tweet vetor[], int tam, int indice_raiz)
+void constroiHeap(Tweet* vetor[], int tam, int indice_raiz)
 {
 	int ramificacao;
-	Tweet valor;
+	Tweet* valor;
 	valor = vetor[indice_raiz];
 
 	while (indice_raiz < tam / 2) {
 		ramificacao = 2 * indice_raiz + 1;
 
-		if (ramificacao < tam - 1 && vetor[ramificacao].getTweetID()  < vetor[ramificacao + 1].getTweetID())
+		if (ramificacao < tam - 1 && vetor[ramificacao]->getTweetID()  < vetor[ramificacao + 1]->getTweetID())
 			ramificacao++;
 
-		if (valor.getTweetID() >= vetor[ramificacao].getTweetID())//Identifica o max-heap
+		if (valor->getTweetID() >= vetor[ramificacao]->getTweetID())//Identifica o max-heap
 			break;
 
 		vetor[indice_raiz] = vetor[ramificacao];
@@ -60,13 +66,13 @@ void constroiHeap(Tweet vetor[], int tam, int indice_raiz)
 
 
 //Realiza as trocas
-void HeapSort(Tweet vetor[], int tam)
+void heapsort(Tweet* vetor[], int tam)
 {
 	clock_t relogio;
 	relogio = clock();
 
 	int indice;
-	Tweet troca;
+	Tweet* troca;
 	for (indice = tam / 2; indice >= 0; indice--)
 		constroiHeap(vetor, tam, indice);
 
