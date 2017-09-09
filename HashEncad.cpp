@@ -1,5 +1,11 @@
 #include "HashEncad.h"
-
+/*Cria uma tabela com tamanho tam+4 e uma opcao de tratamento de colisoes passada como parametro
+trat=
+    1: Sondagem Linear
+    2: Sondagem Quadratica
+    3: Duplo Hash
+    4: Encadeamento Separado
+*/
 HashEncad::HashEncad(int tam, int trat)
 {
     tratColis = trat;
@@ -10,7 +16,9 @@ HashEncad::HashEncad(int tam, int trat)
 
 HashEncad::~HashEncad()
 {
+    //falta implementar destrutor
 }
+//Funcoes de hashing 
 int HashEncad::funcaoH2(int chave)
 {
     return (chave + 1) % m;
@@ -29,6 +37,7 @@ int HashEncad::enlacamento(int chave)
     }
     return enlacamento % m;
 }
+//Tratamento de colisoes
 int HashEncad::sondLinear(int chave)
 {
     int posicao = 0;
@@ -112,6 +121,8 @@ void HashEncad::encadSeparado(int chave)
     }
 }
 
+//Inserir uma nova chave na tabela, verifica se a posicao da funcao hashing já está ocupada
+ 
 void HashEncad::inserir(int chave)
 {
     int posicao = divisao(chave);
@@ -146,6 +157,7 @@ void HashEncad::inserir(int chave)
         }
     }
 }
+//Salva os resultados em um arquivo com o nome passado como parametro
 void HashEncad::salvarArquivo(string nome)
 {
     GerTexto *ger = new GerTexto();
@@ -169,12 +181,12 @@ void HashEncad::salvarArquivo(string nome)
     ger->salvarSaida(texto, nome);
     delete ger;
 }
+
+//Exibe a tabela e seus valores
 void HashEncad::exibirTabela()
 {
     for (int i = 0; i < m; i++)
     {
-        // if (!tabela[i].verificaVazio())
-        // {
         tabela[i].inicio();
         cout << "Tabela[" << i << "]:";
         while (!tabela[i].verificaNull())
@@ -183,6 +195,5 @@ void HashEncad::exibirTabela()
             tabela[i].proxNo();
         }
         cout << endl;
-        // }
     }
 }
