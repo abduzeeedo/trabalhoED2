@@ -1,4 +1,3 @@
-
 #include "HeapSort.h"
 
 using namespace std;
@@ -34,6 +33,7 @@ double HeapSort::getTempoGasto()
 	return tempoGasto;
 }
 
+//Funcao usada zerar os atributos a fim de preparar para outra ordenacao
 void HeapSort::limpaDados() {
 	numCompar = 0;
 	numTrocas = 0;
@@ -92,4 +92,3 @@ void HeapSort::heapsort(Tweet* vetor[], int tam)
 	tempoGasto = (clock() - relogio) / (double)CLOCKS_PER_SEC;
 
 }
-

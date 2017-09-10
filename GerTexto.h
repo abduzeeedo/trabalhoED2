@@ -13,10 +13,9 @@ class GerTexto
 {
 private:
 public:
-	Tweet* carregarTweet(string nome, int seed);//Carrega um tweet aleatorio a partir de uma seed passada por parametro. Retorna o objeto tweet em si
-	Tweet** carregaTweets(string nomeArquivo, int numTweets);
+	Tweet** carregaTweets(string nomeArquivo, int numTweets);//Faz a carga dos tweets do arquivo txt em um Vetor de objetos do tipo Tweet
 	GerTexto(); //Construtor
-	void salvarSaida(string saida, string nome);
+	void salvarSaida(string saida, string nome);//Funcao que salva saida em um arquivo TXT
 	~GerTexto(); //Destrutor
 };
 #endif

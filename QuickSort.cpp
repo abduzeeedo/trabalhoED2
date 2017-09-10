@@ -32,6 +32,8 @@ double QuickSort::getTempoGasto()
 {
 	return tempoGasto;
 }
+
+//Funcao usada zerar os atributos a fim de preparar para outra ordenacao
 void QuickSort::limpaDados() {
 	numCompar = 0;
 	numTrocas = 0;
@@ -169,7 +171,7 @@ void QuickSort::quicksort(Tweet* vet[], int ini, int fim, char tipo)
 }
 
 
-//Funcao que calcula a mediana entre 3 valores aleatorios
+//Funcao que calcula a mediana entre 3 e 5 valores aleatorios
 //ENTRADA: Vetor de objetos do tipo Tweet, numero de valores a serem tomados para o calculo da mediana, posicao inicial e final do vetor passado por parametro
 //SAIDA: Retorna um inteiro que indica a posicao do vetor de Tweet`s referente a mediana calculada, para ser usado como pivo do quicksort recursivo.
 int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
@@ -201,7 +203,6 @@ int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
 		posMediana = vet[2]->getUserID();//pega o valor central do vetor (mediana) e atribui o userID, que é a posicao original do vetor de tweets
 		return posMediana;
 	}
-
 	return inicio; //caso nao entre em nenhuma condicao, passa a posicao inicial como valor
 
 }

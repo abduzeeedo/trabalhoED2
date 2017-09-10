@@ -26,7 +26,6 @@ public:
 	void setTweetID(long long int tid);//Atribui um ID de tweet a um objeto
 	void setTweetText(string tw); //Atribui um Texto do Tweet a um objeto
 	void setDate(string date);//Atribui a Data do Tweet a um objeto
-	void setUso(bool uso);
 	void printTweet();//Imprime os dados de um Tweet em tela
 	~Tweet();//Destrutor
 };

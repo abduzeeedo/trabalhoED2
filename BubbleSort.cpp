@@ -30,7 +30,7 @@ double BubbleSort::getTempoGasto()
 {
 	return tempoGasto;
 }
-
+//Funcao usada zerar os atributos a fim de preparar para outra ordenacao
 void BubbleSort::limpaDados()
 {
 	numTrocas = 0;

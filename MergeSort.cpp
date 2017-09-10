@@ -1,5 +1,6 @@
 ﻿#include "MergeSort.h"
 
+//Construtor
 MergeSort::MergeSort()
 {
 	numTrocas = 0;
@@ -7,6 +8,7 @@ MergeSort::MergeSort()
 	tempoGasto = 0.0;
 }
 
+//Destrutor
 MergeSort::~MergeSort()
 {
 }
@@ -29,6 +31,7 @@ double MergeSort::getTempoGasto()
 	return tempoGasto;
 }
 
+//Funcao usada zerar os atributos a fim de preparar para outra ordenacao
 void MergeSort::limpaDados()
 {
 	numCompar = 0;

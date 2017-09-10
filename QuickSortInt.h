@@ -14,6 +14,7 @@ private:
 public:
 	QuickSortInt();//Construtor
 	~QuickSortInt();//Destrutor
+	void limpaDados();//Funcao usada zerar os atributos a fim de preparar para outra ordenacao
 	void criaVet(Tweet* vet[], int tam);//Insere os tweetID`s de um vetor de objetos do tipo Tweet em um vetor de inteiros
 	int getNumTrocas();//Retorna o numero de trocas do objeto
 	int getNumComparacoes();//Retorna o numero de comparacoes do objeto

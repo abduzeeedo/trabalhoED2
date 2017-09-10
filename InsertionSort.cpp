@@ -32,7 +32,8 @@ double InsertionSort::getTempoGasto()
 	return tempoGasto;
 }
 
-void InsertionSort::limpaDados() 
+//Funcao usada zerar os atributos a fim de preparar para outra ordenacao
+void InsertionSort::limpaDados()
 {
 	numCompar = 0;
 	numTrocas = 0;

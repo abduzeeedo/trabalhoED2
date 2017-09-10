@@ -19,4 +19,3 @@ public:
 	void constroiHeap(Tweet* vetor[], int tam, int indice_raiz);
 
 };
-     

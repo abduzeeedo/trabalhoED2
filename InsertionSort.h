@@ -15,5 +15,5 @@ public:
 	int getNumComparacoes();//Retorna o numero de comparacoes do objeto
 	double getTempoGasto();//Retorna o tempo gasto na execucao da ordenacao do objeto
 	void insertionsort(Tweet* vetor[], int inicio, int fim);//Funcao de Ordenacao por InsertionSort
-	void limpaDados();
+	void limpaDados();//Funcao usada zerar os atributos a fim de preparar para outra ordenacao
 };
