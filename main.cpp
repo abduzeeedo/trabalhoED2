@@ -125,7 +125,7 @@ void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
 	QuickSort ordena; //Chama a classes
 	ordena.quicksort(vet, 0, tam - 1, tipo); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final.
 
-											 //"Armazena" os dados de saida pós ordenacao na String "saida", para ser posteriormente escrita em um arquivo .txt
+	//"Armazena" os dados de saida pós ordenacao na String "saida", para ser posteriormente escrita em um arquivo .txt
 	if (tipo == 'r')
 		saidasMenu += "Algoritmo QuickSort Recursivo:\n";
 
@@ -188,7 +188,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		}
 
 		if (code == "6") { //Realiza InsertionSort
-			 /*InsertionSort*/
+						   /*InsertionSort*/
 			InsertionSort ordena; //Chama a classe
 			ordena.insertionsort(vet, 0, tam); //Faz o insertionsort. Passar 0 para ordenar desde o inicio e o tamanho total, nao tamanho-1
 
@@ -279,15 +279,6 @@ vector<int> importaEntrada(const char* nomeArquivo)
 		cout << "Erro ao abrir arquivo " << nomeArquivo << endl;
 }
 
-Tweet** copiaTweets(Tweet** src, int tam) {
-	Tweet** dst = new Tweet*[tam];
-	for (int i = 0; i < tam; i++) {
-		Tweet* tw = new Tweet(src[i]->getUserID(), src[i]->getTweetID(), src[i]->getTweetText(), src[i]->getDate());
-		dst[i] = tw;
-	}
-	return dst;
-}
-
 void batchQS(Tweet** vetor, int tamVet) {
 	//vector<int> vEntrada = importaEntrada("entrada.txt");
 	limpaUso(vetor, tamVet);
@@ -315,12 +306,10 @@ void batchQS(Tweet** vetor, int tamVet) {
 			salvar += "Numero de trocas: " + toString(qs.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
-			//free(original);
+
 			qs.limpaDados();
-			//limpaUso(vetor, tamVet);
 
 			cout << "Copiando Original..." << endl;
-			//original = setRand(vetor, vEntrada[i], tamVet, i + k);
 			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
 			cout << "Ordenando Original por QuickSort de Mediana m=3..." << endl;
 			qs.quicksort(original, 0, vEntrada[i] - 1, 'm');
@@ -330,12 +319,9 @@ void batchQS(Tweet** vetor, int tamVet) {
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
 
-			//free(original);
 			qs.limpaDados();
-			//limpaUso(vetor, tamVet);
 
 			cout << "Copiando Original..." << endl;
-			//original = setRand(vetor, vEntrada[i], tamVet, i + k);
 			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
 			cout << "Ordenando Original por QuickSort de Mediana m=3..." << endl;
 			qs.quicksort(original, 0, vEntrada[i] - 1, 'M');
@@ -345,12 +331,9 @@ void batchQS(Tweet** vetor, int tamVet) {
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
 
-			//free(original);
 			qs.limpaDados();
-			//limpaUso(vetor, tamVet);
 
 			cout << "Copiando Original..." << endl;
-			//original = setRand(vetor, vEntrada[i], tamVet, i + k);
 			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
 			cout << "Ordenando Original por QuickSort de Insercao m=10..." << endl;
 			qs.quicksort(original, 0, vEntrada[i] - 1, 'i');
@@ -360,12 +343,9 @@ void batchQS(Tweet** vetor, int tamVet) {
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
 
-			//free(original);
 			qs.limpaDados();
-			//limpaUso(vetor, tamVet);
 
 			cout << "Copiando Original..." << endl;
-			//original = setRand(vetor, vEntrada[i], tamVet, i + k);
 			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
 			cout << "Ordenando Original por QuickSort com Insercao com m=1000..." << endl;
 			qs.quicksort(original, 0, vEntrada[i] - 1, 'I');
@@ -375,9 +355,8 @@ void batchQS(Tweet** vetor, int tamVet) {
 			salvar += "Numero de comparacoes: " + toString(qs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(qs.getTempoGasto()) + "\n\n";
 
-			//free(original);
 			qs.limpaDados();
-			//limpaUso(vetor, tamVet);
+
 			copia.clear(); //Limpa o vetor copia para receber os novos dados na proxima iteracao
 			original = 0; //Desaloca o vetor "original" ao fim da iteracao
 			free(original);
@@ -385,10 +364,9 @@ void batchQS(Tweet** vetor, int tamVet) {
 	}
 }
 
-
 void batchIS(Tweet** vetor, int tamVet)
 {
-	int vEntrada[3] = { 10000, 30000, 60000 };
+	int vEntrada[3] = { 50, 100, 150 };
 	Tweet** original;
 	InsertionSort is;
 	limpaUso(vetor, tamVet);
@@ -416,7 +394,7 @@ void batchIS(Tweet** vetor, int tamVet)
 
 void batchMS(Tweet** vetor, int tamVet)
 {
-	int vEntrada[3] = { 10000, 30000, 60000 };
+	int vEntrada[3] = { 50, 100, 150 };
 	Tweet** original;
 	MergeSort ms;
 	limpaUso(vetor, tamVet);
@@ -444,7 +422,7 @@ void batchMS(Tweet** vetor, int tamVet)
 
 void batchBS(Tweet** vetor, int tamVet)
 {
-	int vEntrada[3] = { 10000, 30000, 60000 };
+	int vEntrada[3] = { 50, 100, 150 };
 	Tweet** original;
 	BubbleSort bs;
 	limpaUso(vetor, tamVet);
@@ -474,7 +452,7 @@ void testesBatch(Tweet** vetor, int tamVet)
 {
 	batchQS(vetor, tamVet);
 	cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
-
+	
 	batchIS(vetor, tamVet);
 	cout << "Batch para InsertionSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
@@ -497,7 +475,7 @@ int main()
 
 	//Importa tweets do arquivo TXT
 	//--------------------------------------------------------------------
-	int tamVet = 300000; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 100000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
@@ -505,10 +483,9 @@ int main()
 
 	//Atribui Tweets Aleatoriamente 
 	//--------------------------------------------------------------------
-	int tam = 5000; //Tamanho do Vetor criado com Tweets Aleatorios
+	int tam = 10000; //Tamanho do Vetor criado com Tweets Aleatorios
 	cout << "Gerando um vetor com " << tam << " tweets aleatorios." << endl;
 	Tweet** vAleatorio = setRand(vTweet, tam, tamVet, 1);
-	limpaUso(vTweet, tamVet);
 	//--------------------------------------------------------------------
 
 	//Faz os testes em sequencia com o vetor de tweet 
