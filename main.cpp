@@ -19,6 +19,7 @@ string salvar = "";
 string saidasMenu = "";
 using namespace std;
 
+
 //Funcao usada para pegar as linhas do arquivo do Menu. 
 //Entrada: Arquivo .txt com os dados do Menu 
 //Saída: String lida na linha analizada.
@@ -43,6 +44,16 @@ string analisaLinhas(ifstream& File)
 		cout << "ERRO AO LER O ARQUIVO DE MENU" << endl;
 		return 0;
 	}
+}
+
+//Funcao Que salva uma string em um arquivo .txt
+//Entrada: String a ser salva e arquivo .txt onde os dados serao salvos. 
+//Saida: Escrita da string passada por parametro em um arquivo .txt (tambem passado por parametro)
+void salvarTxt(string salvar, string file) {
+	ofstream arquivo;
+	arquivo.open(file);
+	arquivo << salvar << endl;
+	//arquivo.close();
 }
 
 //fun��o para converter um int para String, usada na escrita de dados em arquivo txt
@@ -77,16 +88,6 @@ void imprimeTIDVetor(Tweet* vet[], int tam) {
 		cout << "[" << vet[k]->getTweetID() << "]";
 	}
 	cout << endl;
-}
-
-//Funcao Que salva uma string em um arquivo .txt
-//Entrada: String a ser salva e arquivo .txt onde os dados serao salvos. 
-//Saida: Escrita da string passada por parametro em um arquivo .txt (tambem passado por parametro)
-void salvarTxt(string salvar, string file) {
-	ofstream arquivo;
-	arquivo.open(file);
-	arquivo << salvar << endl;
-	//arquivo.close();
 }
 
 //Funcao passada um ponteiro pra vetor do tipo Tweet, retorna um ponteiro pra um vetor com os mesmos valores com tamanho tam
@@ -425,59 +426,70 @@ void batchQSi(Tweet** original, int tamVet) {
 
 void batchHash(Tweet* vet[], int tam)
 {
-	//Criando um vetor de inteiros para ser usado no hashing
-	long long int* vetInt = (long long int*)malloc(sizeof(long long int) * tam);
-	for (int i = 0; i < tam; i++)
-	{
-		vetInt[i] = vet[i]->getTweetID();
-	}
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 
-	//TRATAMENTO DE COLISAO 1
-	HashEncad *h1 = new HashEncad(tam, 1);
-	for (int a = 0; a < tam; a++)
-	{
-		h1->inserir(vetInt[a]);
-	}
-	h1->salvarArquivo("saida2.txt");
-	delete h1;
+	for (int k = 1; k <= 1; k++) {
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
+			tam = vEntrada[i];
+			//Criando um vetor de inteiros para ser usado no hashing
+			long long int* vetInt = (long long int*)malloc(sizeof(long long int) * tam);
+			for (int i = 0; i < tam; i++)
+			{
+				vetInt[i] = vet[i]->getTweetID();
+			}
 
-	//TRATAMENTO DE COLISAO 2
-	HashEncad *h2 = new HashEncad(tam, 2);
-	for (int b = 0; b < tam; b++)
-	{
-		h2->inserir(vetInt[b]);
-	}
-	h2->salvarArquivo("saida2.txt");
-	delete h2;
+			randomiza(vet, tam, i+k);
 
-	//TRATAMENTO DE COLISAO 3 - NAO ESTA FUNCIONANDO
-	/*HashEncad *h3 = new HashEncad(tam, 3);
-	for (int c = 0; c < tam; c++)
-	{
-		h3->inserir(vetInt[c]);
-	}
-	h3->salvarArquivo("saida2.txt");
-	delete h3;*/
+			//TRATAMENTO DE COLISAO 1
+			HashEncad *h1 = new HashEncad(tam, 1);
+			for (int a = 0; a < tam; a++)
+			{
+				h1->inserir(vetInt[a]);
+			}
+			h1->salvarArquivo("saida2.txt");
+			delete h1;
 
-	//TRATAMENTO DE COLISAO 4
-	HashEncad *h4 = new HashEncad(tam, 4);
-	for (int d = 0; d < tam; d++)
-	{
-		h4->inserir(vetInt[d]);
-	}
-	h4->salvarArquivo("saida2.txt");
-	delete h4;
+			//TRATAMENTO DE COLISAO 2
+			HashEncad *h2 = new HashEncad(tam, 2);
+			for (int b = 0; b < tam; b++)
+			{
+				h2->inserir(vetInt[b]);
+			}
+			h2->salvarArquivo("saida2.txt");
+			delete h2;
 
-	//TRATAMENTO DE COLISAO 5 e 6
-	HashStruct *h5 = new HashStruct(tam);
-	for (int e = 0; e < tam; e++)
-	{
-		h5->inserir(vetInt[e]);
-	}
-	h5->salvarArquivo("saida2.txt");
-	delete h5;
+			//TRATAMENTO DE COLISAO 3 - NAO ESTA FUNCIONANDO
+			/*
+			HashEncad *h3 = new HashEncad(tam, 3);
+			for (int c = 0; c < tam; c++)
+			{
+			h3->inserir(vetInt[c]);
+			}
+			h3->salvarArquivo("saida2.txt");
+			delete h3;
+			*/
 
-	delete vetInt;
+			//TRATAMENTO DE COLISAO 4
+			HashEncad *h4 = new HashEncad(tam, 4);
+			for (int d = 0; d < tam; d++)
+			{
+				h4->inserir(vetInt[d]);
+			}
+			h4->salvarArquivo("saida2.txt");
+			delete h4;
+
+			//TRATAMENTO DE COLISAO 5 e 6
+			HashStruct *h5 = new HashStruct(tam);
+			for (int e = 0; e < tam; e++)
+			{
+				h5->inserir(vetInt[e]);
+			}
+			h5->salvarArquivo("saida2.txt");
+			delete h5;
+
+			delete vetInt;
+		}
+	}
 }
 
 //Funcao para realizar testes em Batch de todos os Algoritmos
@@ -502,9 +514,6 @@ void testesBatch(Tweet** vetor, int tamVet)
 
 	batchHS(vetor, tamVet);
 	cout << "Batch para HeapSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
-
-	batchHash(vetor, tamVet);
-	cout << "Batch para Hashing concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 }
 
 //Metodo que seleciona via codigo de comando a funcao a ser executada e finaliza execucao
@@ -615,7 +624,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 							/*Quicksort com vetor de inteiros*/
 			QuickSortInt ordena;
 			randomiza(vet, tam, stoi(code));
-			cout << "Criando e ordenando vetor de inteiros com TweetID, isso pode demorar" << endl;
+			cout << "Criando e Ordenando vetor de inteiros com TweetID" << endl;
 			ordena.criaVet(vet, tam); //Essa funcao ja cria, ordena, imprime e desaloca o vetor de int com os tweetIDs
 
 									  //Salvando resultados em TXT
@@ -624,10 +633,9 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			saidasMenu += "Numero de comparacoes: " + toString(ordena.getNumComparacoes()) + "\n";
 			saidasMenu += "Tempo gasto: " + toString(ordena.getTempoGasto()) + "\n\n";
 
-			cout << "Ordenou via QuickSort em vetor de Inteiros:" << endl;
+			cout << "Ordenou via QuickSort em vetor de Inteiros." << endl;
 		}
 	}
-
 }
 
 int main()
@@ -640,7 +648,7 @@ int main()
 	vector<int> vEntrada = importaEntrada("entrada.txt");
 
 	//Importando tweets do arquivo TXT-------------------------------------------
-	int tamVet = 30000; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 3000000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
