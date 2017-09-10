@@ -539,21 +539,18 @@ void batchHash() {
 */
 void testesBatch(Tweet** vetor, int tamVet)
 {
-	//batchQS(vetor, tamVet);
-	//cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
-	limpaUso(vetor, tamVet);
+	batchQS(vetor, tamVet);
+	cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+
 	batchIS(vetor, tamVet);
 	cout << "Batch para InsertionSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
-	limpaUso(vetor, tamVet);
 	batchMS(vetor, tamVet);
 	cout << "Batch para MergeSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
-	limpaUso(vetor, tamVet);
 	batchBS(vetor, tamVet);
 	cout << "Batch para BubbleSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
-	limpaUso(vetor, tamVet);
 	batchHS(vetor, tamVet);
 	cout << "Batch para HeapSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 }
