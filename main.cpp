@@ -290,11 +290,12 @@ vector<int> importaEntrada(const char* nomeArquivo)
 //ENTRADA: Vetor de tweets obtido via arquivo txt e seu tamanho
 //Arquivo txt com todas os resultados de ordenacao via quicksort
 void batchQS(Tweet** original, int tamVet) {
-	//vector<int> vEntrada = importaEntrada("entrada.txt");
-	int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
+	//int vEntrada[3] = { 10000, 30000, 60000 };
 	QuickSort qs;
 	for (int k = 1; k <= 1; k++) {
-		for (unsigned int i = 0; i < 3; i++) {
+		randomiza(original, tamVet, k);
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
 			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(QuickSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
@@ -372,11 +373,12 @@ void batchQS(Tweet** original, int tamVet) {
 //Arquivo txt com todas os resultados de ordenacao via InsertionSort
 void batchIS(Tweet** original, int tamVet)
 {
-	int vEntrada[3] = { 10000, 30000, 60000 };
-	//ector<int> vEntrada = importaEntrada("entrada.txt");
+	//int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 	InsertionSort is;
 	for (int k = 1; k <= 1; k++) {
-		for (unsigned int i = 0; i < 3; i++) {
+		randomiza(original, tamVet, k);
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
 			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(InsertionSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
@@ -404,11 +406,12 @@ void batchIS(Tweet** original, int tamVet)
 //Arquivo txt com todas os resultados de ordenacao via MergeSort
 void batchMS(Tweet** original, int tamVet)
 {
-	int vEntrada[3] = { 10000, 30000, 60000 };
-	//vector<int> vEntrada = importaEntrada("entrada.txt");
+	//int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 	MergeSort ms;
 	for (int k = 1; k <= 1; k++) {
-		for (unsigned int i = 0; i < 3; i++) {
+		randomiza(original, tamVet, k);
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
 			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(MergeSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
@@ -437,11 +440,12 @@ void batchMS(Tweet** original, int tamVet)
 //Arquivo txt com todas os resultados de ordenacao via BubbleSort
 void batchBS(Tweet** original, int tamVet)
 {
-	int vEntrada[3] = { 10000, 30000, 60000 };
-	//vector<int> vEntrada = importaEntrada("entrada.txt");
+	//int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 	BubbleSort bs;
 	for (int k = 1; k <= 1; k++) {
-		for (unsigned int i = 0; i < 3; i++) {
+		randomiza(original, tamVet, k);
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
 			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(BubbleSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
@@ -470,11 +474,12 @@ void batchBS(Tweet** original, int tamVet)
 //Arquivo txt com todas os resultados de ordenacao via HeapSort
 void batchHS(Tweet** original, int tamVet)
 {
-	int vEntrada[3] = { 10000, 30000, 60000 };
-	//vector<int> vEntrada = importaEntrada("entrada.txt");
+	//int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 	HeapSort hs;
 	for (int k = 1; k <= 1; k++) {
-		for (unsigned int i = 0; i < 3; i++) {
+		randomiza(original, tamVet, k);
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
 			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(HeapSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
@@ -557,15 +562,29 @@ int main()
 
 	//Importa tweets do arquivo TXT
 	//--------------------------------------------------------------------
-	int tamVet = 300000; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 3000000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
+
 	//---------------------------------------------------------------------
+
+	for (int i = 0; i < 10;  i++) {
+		cout << "[" << vTweet[i]->getTweetID() << "] ";
+	}
+	cout << "\n" << endl;
+
+	cout << "Randomizando..." << endl;
+	randomiza(vTweet, tamVet, 1);
+
+	for (int i = 0; i < 10; i++) {
+		cout << "[" << vTweet[i]->getTweetID() << "] ";
+	}
+	cout << endl;
 
 	//Atribui Tweets Aleatoriamente 
 	//--------------------------------------------------------------------
-	int tam = 1000; //Tamanho do Vetor criado com Tweets Aleatorios
+	int tam = 100; //Tamanho do Vetor criado com Tweets Aleatorios
 	cout << "Gerando um vetor com " << tam << " tweets aleatorios." << endl;
 	Tweet** vAleatorio = carregaTweets(vTweet, tam, tamVet);
 	//--------------------------------------------------------------------
@@ -574,8 +593,8 @@ int main()
 
 	//Faz os testes em sequencia com o vetor de tweet 
 	//--------------------------------------------------------------------
-	cout << "Fazendo testes em lote:" << endl;
-	testesBatch(vTweet, tamVet);
+	//cout << "Fazendo testes em lote:" << endl;
+	//testesBatch(vTweet, tamVet);
 	//--------------------------------------------------------------------
 
 	codigoFuncao(vAleatorio, tam);//Seleciona a funcao ou encerra a execucao;
