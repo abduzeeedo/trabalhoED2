@@ -29,6 +29,13 @@ double MergeSort::getTempoGasto()
 	return tempoGasto;
 }
 
+void MergeSort::limpaDados()
+{
+	numCompar = 0;
+	numTrocas = 0;
+	tempoGasto = 0;
+}
+
 //Funcao que "junta" subparticoes do vetor de tweets
 void MergeSort::intercala(Tweet *vet[], int ini, int meio, int fim)
 {

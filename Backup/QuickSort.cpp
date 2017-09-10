@@ -32,6 +32,11 @@ double QuickSort::getTempoGasto()
 {
 	return tempoGasto;
 }
+void QuickSort::limpaDados() {
+	numCompar = 0;
+	numTrocas = 0;
+	tempoGasto = 0;
+}
 
 //Funcao que realiza a troca de posicao entre dois objetos do tipo Tweet
 //ENTRADA: 2 Objetos do tipo Tweet a serem trocados de posicao entre si
@@ -167,7 +172,7 @@ void QuickSort::quicksort(Tweet* vet[], int ini, int fim, char tipo)
 //Funcao que calcula a mediana entre 3 valores aleatorios
 //ENTRADA: Vetor de objetos do tipo Tweet, numero de valores a serem tomados para o calculo da mediana, posicao inicial e final do vetor passado por parametro
 //SAIDA: Retorna um inteiro que indica a posicao do vetor de Tweet`s referente a mediana calculada, para ser usado como pivo do quicksort recursivo.
-int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
+int QuickSort::mediana2(Tweet* vet[], int numVal, int inicio, int fim) {
 
 	int posMediana;//posicao a ser calculada e retornada da funcao
 	int posRand;//Posicao Calculada Randomicamente
@@ -196,7 +201,98 @@ int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
 		posMediana = vet[2]->getUserID();//pega o valor central do vetor (mediana) e atribui o userID, que é a posicao original do vetor de tweets
 		return posMediana;
 	}
-
 	return inicio; //caso nao entre em nenhuma condicao, passa a posicao inicial como valor
 
+}
+
+int QuickSort::mediana(Tweet* vet[], int numVal, int inicio, int fim) {
+
+	int posRand;//Posicao Calculada Randomicamente
+	long long int a, b, c;
+	
+	if (numVal == 3) { //para k=3
+		long long int tIDoriginal[3];
+		int posOriginal[3];
+
+		for (int i = 0; i < 3; i++) {
+			srand(i);
+			posRand = rand() % (fim - inicio);
+			posOriginal[i] = posRand;//Armazena a posicao gerada aleatoriamente
+			tIDoriginal[i] = vet[posRand]->getTweetID(); //Armazena o TweetID do objeto na posicao gerada aleatoriamente
+		}
+		a = tIDoriginal[0] - tIDoriginal[1];
+		b = tIDoriginal[1] - tIDoriginal[2];
+		c = tIDoriginal[0] - tIDoriginal[2];
+		if (a*b > 0) return posOriginal[1];
+		if (b*c > 0) return posOriginal[2];
+		return posOriginal[0];
+	}
+	else return inicio;
+
+	/*
+	if (numVal == 3) { //para k=3
+		long long int tIDoriginal[3];
+		int posOriginal[3];
+
+		for (int i = 0; i < 3; i++) {
+			srand(i);
+			posRand = rand() % (fim - inicio);
+			posOriginal[i] = posRand;//Armazena a posicao gerada aleatoriamente
+			tIDoriginal[i] = vet[posRand]->getTweetID(); //Armazena o TweetID do objeto na posicao gerada aleatoriamente
+		}
+
+		int i, posAux, j;
+		long long int chave; //chave auxiliar
+		for (i = 1; i < 3; i++)
+		{
+			chave = tIDoriginal[i];
+			posAux = posOriginal[i];
+			j = i - 1;
+
+			// Desloca valores maiores que a chave uma posicao a frente da sua atual
+			while (j >= 0 && tIDoriginal[j] > chave)
+			{
+				tIDoriginal[j + 1] = tIDoriginal[j];
+				posOriginal[j + 1] = posOriginal[j];
+				j = j - 1;
+			}
+			tIDoriginal[j + 1] = chave;
+			posOriginal[j + 1] = posAux;
+		}
+		return posOriginal[1];
+	}
+
+	if (numVal == 5) { //para k=5
+		long long int tIDoriginal[5];
+		int posOriginal[5];
+
+		for (int i = 0; i < 5; i++) {
+			srand(i);
+			posRand = rand() % (fim - inicio);
+			posOriginal[i] = posRand;//Armazena a posicao gerada aleatoriamente
+			tIDoriginal[i] = vet[posRand]->getTweetID(); //Armazena o TweetID do objeto na posicao gerada aleatoriamente
+		}
+
+		int i, posAux, j;
+		long long int chave; //chave auxiliar
+		for (i = 1; i < 5; i++)
+		{
+			chave = tIDoriginal[i];
+			posAux = posOriginal[i];
+			j = i - 1;
+
+			// Desloca valores maiores que a chave uma posicao a frente da sua atual 
+			while (j >= 0 && tIDoriginal[j] > chave)
+			{
+				tIDoriginal[j + 1] = tIDoriginal[j];
+				posOriginal[j + 1] = posOriginal[j];
+				j = j - 1;
+			}
+			tIDoriginal[j + 1] = chave;
+			posOriginal[j + 1] = posAux;
+		}
+		return posOriginal[2];
+	}
+	*/
+	return inicio;
 }

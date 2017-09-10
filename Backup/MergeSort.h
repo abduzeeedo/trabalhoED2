@@ -12,9 +12,9 @@ private:
 public:
 	MergeSort();//Construtor
 	~MergeSort();//Destrutor
+	void limpaDados();
 	void mergesort(Tweet* vetor[], int inicio, int fim);//Funcao de ordenacao por MergeSort Recursivo
 	int getNumTrocas();//Retorna o numero de trocas do objeto
 	int getNumComparacoes();//Retorna o numero de comparacoes do objeto
 	double getTempoGasto();//Retorna o tempo gasto na execucao da ordenacao do objeto
 };
-

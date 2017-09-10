@@ -32,6 +32,13 @@ double InsertionSort::getTempoGasto()
 	return tempoGasto;
 }
 
+void InsertionSort::limpaDados()
+{
+	numCompar = 0;
+	numTrocas = 0;
+	tempoGasto = 0;
+}
+
 //Algoritmo InsertionSort
 //ENTRADA: Vetor de objetos do tipo Tweet, a posicao inicial e final do intervalo a ser ordenado
 //SAIDA: Tal vetor ordenado via InsertionSort

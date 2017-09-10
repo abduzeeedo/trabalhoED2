@@ -64,8 +64,8 @@ Tweet** GerTexto::carregaTweets(string nomeArquivo, int numTweets)
 				Tweet* tw = new Tweet(uID, tID, text, date);
 				ordenaEntrada[t] = tw;
 				t++;
-				cout << "tweet numero " << t << " carregado";
-				cout << endl;
+				//cout << "tweet numero " << t << " carregado";
+				//cout << endl;
 			}
 		arquivo.close(); //Fecha o arquivo
 		return ordenaEntrada; //Retorna o vetor
