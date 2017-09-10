@@ -1,0 +1,180 @@
+Sondagem linear
+Tamanho da tabela: 1004
+Comparacoes: 15399
+tamanho da tabela: 0.004000 KBytes
+
+Sondagem quadratica
+Tamanho da tabela: 1004
+Comparacoes: 5540
+tamanho da tabela: 0.004000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 1004
+Comparacoes: 15399
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem quadratica
+Tamanho da tabela: 1004
+Comparacoes: 5540
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento separado
+Tamanho da tabela: 1004
+Comparacoes: 372
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento coalescido
+Tamanho da tabela: 1004
+Comparacoes: 223652
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 5004
+Comparacoes: 202442
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem quadratica
+Tamanho da tabela: 5004
+Comparacoes: 33667
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento separado
+Tamanho da tabela: 5004
+Comparacoes: 1858
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento coalescido
+Tamanho da tabela: 5004
+Comparacoes: 5537687
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 10004
+Comparacoes: 563281
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 1004
+Comparacoes: 15384
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem quadratica
+Tamanho da tabela: 1004
+Comparacoes: 5325
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento separado
+Tamanho da tabela: 1004
+Comparacoes: 372
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento coalescido
+Tamanho da tabela: 1004
+Comparacoes: 212820
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 5004
+Comparacoes: 202449
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem quadratica
+Tamanho da tabela: 5004
+Comparacoes: 29987
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento separado
+Tamanho da tabela: 5004
+Comparacoes: 1858
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento coalescido
+Tamanho da tabela: 5004
+Comparacoes: 5570220
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 10004
+Comparacoes: 563257
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem quadratica
+Tamanho da tabela: 10004
+Comparacoes: 79471
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento separado
+Tamanho da tabela: 10004
+Comparacoes: 3632
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento coalescido
+Tamanho da tabela: 10004
+Comparacoes: 21605656
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 50004
+Comparacoes: 5375090
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem quadratica
+Tamanho da tabela: 50004
+Comparacoes: 509895
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento separado
+Tamanho da tabela: 50004
+Comparacoes: 18398
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento coalescido
+Tamanho da tabela: 50004
+Comparacoes: 547244527
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 100004
+Comparacoes: 16821139
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem quadratica
+Tamanho da tabela: 100004
+Comparacoes: 1039761
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento separado
+Tamanho da tabela: 100004
+Comparacoes: 36849
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento coalescido
+Tamanho da tabela: 100004
+Comparacoes: 2194444141
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 500004
+Comparacoes: 301383071
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem quadratica
+Tamanho da tabela: 500004
+Comparacoes: 5287736
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento separado
+Tamanho da tabela: 500004
+Comparacoes: 183731
+tamanho da tabela: 0.008000 KBytes
+
+Encadeamento coalescido
+Tamanho da tabela: 500004
+Comparacoes: 54583329844
+tamanho da tabela: 0.008000 KBytes
+
+Sondagem linear
+Tamanho da tabela: 1000004
+Comparacoes: 473252501
+tamanho da tabela: 0.008000 KBytes
+
