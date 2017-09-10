@@ -10,6 +10,7 @@
 #include "InsertionSort.h"
 #include "MergeSort.h"
 #include "BubbleSort.h"
+#include "HeapSort.h"
 #include "GerTexto.h"
 #include "HashStruct.h"
 #include "HashEncad.h"
@@ -125,7 +126,7 @@ void tiposQuickSort(Tweet* vet[], int tam, char tipo) {
 	QuickSort ordena; //Chama a classes
 	ordena.quicksort(vet, 0, tam - 1, tipo); //Faz o quicksort. Passar sempre 0 como inicio e tamanho-1 como final.
 
-	//"Armazena" os dados de saida pós ordenacao na String "saida", para ser posteriormente escrita em um arquivo .txt
+											 //"Armazena" os dados de saida pós ordenacao na String "saida", para ser posteriormente escrita em um arquivo .txt
 	if (tipo == 'r')
 		saidasMenu += "Algoritmo QuickSort Recursivo:\n";
 
@@ -448,11 +449,39 @@ void batchBS(Tweet** vetor, int tamVet)
 	}
 }
 
+void batchHS(Tweet** vetor, int tamVet)
+{
+	int vEntrada[3] = { 50, 100, 150 };
+	Tweet** original;
+	HeapSort hs;
+	limpaUso(vetor, tamVet);
+	for (int k = 1; k <= 5; k++) {
+		for (int i = 0; i < 3; i++) {
+			salvar += "\n================================================================================\n";
+			salvar += "Iteracao Numero " + toString(k);
+			salvar += "\n--------------------------------------------------------------------------------\n";
+			salvar += "Batch de BubbleSort para N=" + toString(vEntrada[i]) + ": ";
+			salvar += "\n================================================================================\n";
+			original = setRand(vetor, vEntrada[i], tamVet, i + k);
+
+			hs.heapsort(original, vEntrada[i]);
+
+			salvar += "Algoritmo BubbleSort:\n";
+			salvar += "Numero de trocas: " + toString(hs.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(hs.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(hs.getTempoGasto()) + "\n\n";
+			free(original);
+			hs.limpaDados();
+			limpaUso(vetor, tamVet);
+		}
+	}
+}
+
 void testesBatch(Tweet** vetor, int tamVet)
 {
 	batchQS(vetor, tamVet);
 	cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
-	
+
 	batchIS(vetor, tamVet);
 	cout << "Batch para InsertionSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
@@ -461,6 +490,9 @@ void testesBatch(Tweet** vetor, int tamVet)
 
 	batchBS(vetor, tamVet);
 	cout << "Batch para BubbleSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+
+	batchHS(vetor, tamVet);
+	cout << "Batch para HeapSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 }
 
 int main()
@@ -475,7 +507,7 @@ int main()
 
 	//Importa tweets do arquivo TXT
 	//--------------------------------------------------------------------
-	int tamVet = 100000; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 30000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
@@ -490,9 +522,12 @@ int main()
 
 	//Faz os testes em sequencia com o vetor de tweet 
 	//--------------------------------------------------------------------
-	cout << "Fazendo testes em lote:" << endl;
-	testesBatch(vTweet, tamVet);
+	//cout << "Fazendo testes em lote:" << endl;
+	//testesBatch(vTweet, tamVet);
 	//--------------------------------------------------------------------
+
+	batchHS(vTweet, tamVet);
+	cout << "Batch para HeapSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
 	codigoFuncao(vAleatorio, tam);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");
