@@ -6,6 +6,7 @@
 #include <iostream>
 #include "math.h"
 #include "GerTexto.h"
+#include "Tweet.h"
 
 using namespace std;
 
@@ -13,19 +14,18 @@ class HashEncad{
 private:
     ListaEncad* tabela;
     int m, tratColis;
-    int divisao(int chave);
-    int funcaoH2(int chave);
-    int enlacamento(int chave); 
+	long long int divisao(long long int chave);
+	long long int funcaoH2(long long int chave);
+	long long int enlacamento(long long int chave);
     long long int comparacoes;
-    
-    
+        
 public:
     HashEncad(int tam, int trat);
-    void inserir(int chave);
-    int sondLinear(int chave);
-    int sondQuadratica(int chave);
-    void duploHash(int chave);
-    void encadSeparado(int chave);
+    void inserir(long long int chave);
+    long long int sondLinear(long long int chave);
+	long long int sondQuadratica(long long int chave);
+    void duploHash(long long int chave);
+    void encadSeparado(long long int chave);
     void salvarArquivo(string nome);
     void exibirTabela();        
     ~HashEncad();

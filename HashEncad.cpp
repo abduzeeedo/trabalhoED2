@@ -18,16 +18,17 @@ HashEncad::~HashEncad()
 {
     //falta implementar destrutor
 }
+
 //Funcoes de hashing 
-int HashEncad::funcaoH2(int chave)
+long long int HashEncad::funcaoH2(long long int chave)
 {
     return (chave + 1) % m;
 }
-int HashEncad::divisao(int chave)
+long long int HashEncad::divisao(long long int chave)
 {
     return chave % m;
 }
-int HashEncad::enlacamento(int chave)
+long long int HashEncad::enlacamento(long long int chave)
 {
     string str = to_string(chave);
     int enlacamento = 0;
@@ -37,8 +38,9 @@ int HashEncad::enlacamento(int chave)
     }
     return enlacamento % m;
 }
+
 //Tratamento de colisoes
-int HashEncad::sondLinear(int chave)
+long long int HashEncad::sondLinear(long long int chave)
 {
     int posicao = 0;
     int i = 0, it = 0;
@@ -67,11 +69,11 @@ int HashEncad::sondLinear(int chave)
     }
     return -1;
 }
-int HashEncad::sondQuadratica(int chave)
+long long int HashEncad::sondQuadratica(long long int chave)
 {
     int posicao = 0;
     int i = 0, it = 0;
-    int hk;
+	long long int hk;
     hk = divisao(chave);
     posicao = hk;
     while (!tabela[posicao].verificaVazio())
@@ -97,11 +99,11 @@ int HashEncad::sondQuadratica(int chave)
     }
     return posicao;
 }
-void HashEncad::duploHash(int chave)
+void HashEncad::duploHash(long long int chave)
 {
-    int hk = divisao(chave);
-    int posicao = hk;
-    int rk = funcaoH2(chave);
+	long long int hk = divisao(chave);
+	long long int posicao = hk;
+	long long int rk = funcaoH2(chave);
     int i = 0;
     while (!tabela[posicao].verificaVazio())
     {
@@ -111,9 +113,9 @@ void HashEncad::duploHash(int chave)
     }
     tabela[posicao].addNo(chave);
 }
-void HashEncad::encadSeparado(int chave)
+void HashEncad::encadSeparado(long long int chave)
 {
-    int posicao = divisao(chave);
+	long long int posicao = divisao(chave);
     if (!tabela[posicao].verificaVazio())
     {
         comparacoes++;
@@ -123,9 +125,9 @@ void HashEncad::encadSeparado(int chave)
 
 //Inserir uma nova chave na tabela, verifica se a posicao da funcao hashing já está ocupada
  
-void HashEncad::inserir(int chave)
+void HashEncad::inserir(long long int chave)
 {
-    int posicao = divisao(chave);
+	long long int posicao = divisao(chave);
     if (tabela[posicao].verificaVazio())
     {
         tabela[posicao].addNo(chave);

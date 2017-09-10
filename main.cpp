@@ -19,7 +19,6 @@ string salvar = "";
 string saidasMenu = "";
 using namespace std;
 
-
 //Funcao usada para pegar as linhas do arquivo do Menu. 
 //Entrada: Arquivo .txt com os dados do Menu 
 //Saída: String lida na linha analizada.
@@ -424,33 +423,53 @@ void batchQSi(Tweet** original, int tamVet) {
 	}
 }
 
-/*
-void batchHash() {
-	HashEncad *h1 = new HashEncad(100, 1);
-	HashEncad *h2 = new HashEncad(100, 2);
-	HashEncad *h3 = new HashEncad(100, 3);
-	HashEncad *h4 = new HashEncad(100, 4);
-	HashStruct *h5 = new HashStruct(100);
-	for (int i = 0; i < 100; i++)
+void batchHash(Tweet* vet[], int tam)
+{
+	//Criando um vetor de inteiros para ser usado no hashing
+	long long int* vetInt = (long long int*)malloc(sizeof(long long int) * tam);
+	for (int i = 0; i < tam; i++)
 	{
-		h1->inserir(i * 2);
-		h2->inserir(i * 2);
-		h3->inserir(i * 2);
-		h4->inserir(i * 2);
-		h5->inserir(i * 2);
+		vetInt[i] = vet[i]->getTweetID();
+	}
 
+	//TRATAMENTO DE COLISAO 1
+	HashEncad *h1 = new HashEncad(tam, 1);
+	for (int a = 0; a < tam; a++)
+	{
+		h1->inserir(vetInt[a]);
 	}
 	h1->salvarArquivo("saida2.txt");
-	h2->salvarArquivo("saida2.txt");
-	h3->salvarArquivo("saida2.txt");
-	h4->salvarArquivo("saida2.txt");
-	h5->salvarArquivo("saida2.txt");
 	delete h1;
+
+	//TRATAMENTO DE COLISAO 2
+	HashEncad *h2 = new HashEncad(tam, 2);
+	for (int b = 0; b < tam; b++)
+	{
+		h2->inserir(vetInt[b]);
+	}
+	h2->salvarArquivo("saida2.txt");
 	delete h2;
-	delete h3;
+
+	//TRATAMENTO DE COLISAO 3 - NAO ESTA FUNCIONANDO
+	/*HashEncad *h3 = new HashEncad(tam, 3);
+	for (int c = 0; c < tam; c++)
+	{
+		h3->inserir(vetInt[c]);
+	}
+	h3->salvarArquivo("saida2.txt");
+	delete h3;*/
+
+	//TRATAMENTO DE COLISAO 4
+	HashEncad *h4 = new HashEncad(tam, 4);
+	for (int d = 0; d < tam; d++)
+	{
+		h4->inserir(vetInt[d]);
+	}
+	h4->salvarArquivo("saida2.txt");
 	delete h4;
-	delete h5;
-}*/
+
+	delete vetInt;
+}
 
 //Funcao para realizar testes em Batch de todos os Algoritmos
 //ENTRADA: Vetor de tweets a serem testados e seu tamanho
@@ -474,6 +493,9 @@ void testesBatch(Tweet** vetor, int tamVet)
 
 	batchHS(vetor, tamVet);
 	cout << "Batch para HeapSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+
+	batchHash(vetor, tamVet);
+	cout << "Batch para Hashing concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 }
 
 //Metodo que seleciona via codigo de comando a funcao a ser executada e finaliza execucao
@@ -609,7 +631,7 @@ int main()
 	vector<int> vEntrada = importaEntrada("entrada.txt");
 
 	//Importando tweets do arquivo TXT-------------------------------------------
-	int tamVet = 3000000; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 30000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
@@ -625,6 +647,8 @@ int main()
 	//cout << "Fazendo testes em lote:" << endl;
 	//testesBatch(vTweet, tamVet);
 	//---------------------------------------------------------------------------
+
+	batchHash(vTweet, tamVet);
 
 	codigoFuncao(vAleatorio, tam);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");

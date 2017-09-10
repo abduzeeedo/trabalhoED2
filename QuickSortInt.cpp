@@ -57,7 +57,7 @@ void QuickSortInt::troca(long long int &t1, long long int &t2)
 //SAIDA: Atribuicao dos TweetID`s dos objetos do tipo Tweet's para um vetor de inteiro, e a ordenacao desse vetor de inteiro via QuickSort
 void QuickSortInt::criaVet(Tweet* vet[], int tam)
 {
-	long long int* vetInt = (long long int*)malloc(sizeof(long long int) * tam); //Melhor que malloc pois ja desaloca a memoria automaticamente quando sai da funcao
+	long long int* vetInt = (long long int*)malloc(sizeof(long long int) * tam);
 	for (int i = 0; i < tam; i++)
 	{
 		vetInt[i] = vet[i]->getTweetID();
