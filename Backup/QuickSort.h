@@ -16,7 +16,6 @@ public:
 	void limpaDados();
 	void quicksort(Tweet* vetor[], int ini, int fim, char tipo);//Funcao de ordenacao por QuickSort Recursivo e suas variacoes
 	int mediana(Tweet* vet[], int numVal, int inicio, int fim);//Funcao que calcula a mediana entre 3 e 5 valores de TweetID's e retorna a posicao de tal valor
-	int mediana2(Tweet* vet[], int numVal, int inicio, int fim);//Funcao que calcula a mediana entre 3 e 5 valores de TweetID's e retorna a posicao de tal valor
 	int getNumTrocas();//Retorna o numero de trocas do objeto
 	int getNumComparacoes();//Retorna o numero de comparacoes do objeto
 	double getTempoGasto();//Retorna o tempo gasto na execucao da ordenacao do objeto

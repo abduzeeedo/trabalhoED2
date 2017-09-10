@@ -32,6 +32,12 @@ double QuickSortInt::getTempoGasto()
 	return tempoGasto;
 }
 
+void QuickSortInt::limpaDados() {
+	numCompar = 0;
+	numTrocas = 0;
+	tempoGasto = 0;
+}
+
 //Funcao que realiza a troca de posicao entre dois inteiros
 //ENTRADA: 2 inteiros a serem trocados de posicao entre si
 //SAIDA: A troca de posicao entre os dois inteiros
@@ -57,13 +63,6 @@ void QuickSortInt::criaVet(Tweet* vet[], int tam)
 		vetInt[i] = vet[i]->getTweetID();
 	}
 	quicksortint(vetInt, 0, tam - 1); //Faz a ordenacao do vetor de inteiros criado
-									  //Imprime o vetor ordenado
-	cout << "Depois de Ordenar:" << endl;
-	cout << "Vetor: ";
-	for (int k = 0; k < tam; k++)
-	{
-		cout << "[" << vetInt[k] << "]";
-	}
 }
 
 //Algoritmo de particionamento do vetor

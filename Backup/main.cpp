@@ -456,7 +456,7 @@ void batchBS(Tweet** original, int tamVet)
 			cout << "Randomizando..." << endl;
 			randomiza(original, vEntrada[i], i + k);
 
-			cout << "Ordenando o Vetor com Bubble Sort..." << endl;
+			cout << "Ordenando o Vetor com BubbleSort..." << endl;
 			bs.bubblesort(original, vEntrada[i]);
 
 			salvar += "Algoritmo BubbleSort:\n";
@@ -490,16 +490,46 @@ void batchHS(Tweet** original, int tamVet)
 			cout << "Randomizando..." << endl;
 			randomiza(original, vEntrada[i], i + k);
 			
-			cout << "Ordenando o Vetor com Heap Sort..." << endl;
+			cout << "Ordenando o Vetor com HeapSort..." << endl;
 			hs.heapsort(original, vEntrada[i]);
 
-			salvar += "Algoritmo BubbleSort:\n";
+			salvar += "Algoritmo HeapSort:\n";
 			salvar += "Numero de trocas: " + toString(hs.getNumTrocas()) + "\n";
 			salvar += "Numero de comparacoes: " + toString(hs.getNumComparacoes()) + "\n";
 			salvar += "Tempo gasto: " + toString(hs.getTempoGasto()) + "\n\n";
 
 			hs.limpaDados();
 
+		}
+	}
+}
+
+void batchQSi(Tweet** original, int tamVet) {
+	//int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
+	QuickSortInt qsi;
+	for (int k = 1; k <= 1; k++) {
+		randomiza(original, tamVet, k);
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
+			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(QuickSort Inteiros)..." << endl;
+			salvar += "\n================================================================================\n";
+			salvar += "Iteracao Numero " + toString(k);
+			salvar += "\n--------------------------------------------------------------------------------\n";
+			salvar += "Batch de QuickSort Inteiros para N=" + toString(vEntrada[i]) + ": ";
+			salvar += "\n================================================================================\n";
+
+			cout << "Randomizando..." << endl;
+			randomiza(original, vEntrada[i], i + k);
+
+			cout << "Ordenando o Vetor com QuickSort Inteiros..." << endl;
+			qsi.criaVet(original, vEntrada[i]);
+
+			salvar += "Algoritmo QuickSort Inteiros:\n";
+			salvar += "Numero de trocas: " + toString(qsi.getNumTrocas()) + "\n";
+			salvar += "Numero de comparacoes: " + toString(qsi.getNumComparacoes()) + "\n";
+			salvar += "Tempo gasto: " + toString(qsi.getTempoGasto()) + "\n\n";
+
+			qsi.limpaDados();
 		}
 	}
 }
@@ -537,13 +567,16 @@ void testesBatch(Tweet** vetor, int tamVet)
 	batchQS(vetor, tamVet);
 	cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
+	batchQSi(vetor, tamVet);
+	cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+
 	batchIS(vetor, tamVet);
 	cout << "Batch para InsertionSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
 	batchMS(vetor, tamVet);
 	cout << "Batch para MergeSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
-	batchBS(vetor, tamVet);
+	//batchBS(vetor, tamVet);
 	cout << "Batch para BubbleSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
 	batchHS(vetor, tamVet);
@@ -578,12 +611,15 @@ int main()
 
 	//Faz os testes em sequencia com o vetor de tweet 
 	//--------------------------------------------------------------------
-	cout << "Fazendo testes em lote:" << endl;
-	testesBatch(vTweet, tamVet);
+	//cout << "Fazendo testes em lote:" << endl;
+	//testesBatch(vTweet, tamVet);
 	//--------------------------------------------------------------------
 
+	batchQSi(vTweet, tamVet);
+	cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+
 	codigoFuncao(vAleatorio, tam);//Seleciona a funcao ou encerra a execucao;
-	salvarTxt(salvar, "saida.txt");
+	salvarTxt(salvar, "batchQSi.txt");
 	salvarTxt(saidasMenu, "saidasMenu.txt");
 	return 0;
 }
