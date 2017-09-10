@@ -1,0 +1,218 @@
+
+================================================================================
+Iteracao Numero 1
+--------------------------------------------------------------------------------
+Batch de QuickSort para N=1000: 
+================================================================================
+Algoritmo QuickSort Recursivo:
+Numero de trocas: 4907
+Numero de comparacoes: 4859
+Tempo gasto: 0.011
+
+Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:
+Numero de trocas: 5726
+Numero de comparacoes: 6058
+Tempo gasto: 0.179
+
+Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:
+Numero de trocas: 4748
+Numero de comparacoes: 4927
+Tempo gasto: 0.138
+
+Algoritmo QuickSort Recursivo com Insercao com m=10:
+Numero de trocas: 5972
+Numero de comparacoes: 5454
+Tempo gasto: 0.003
+
+Algoritmo QuickSort Recursivo com Insercao com m=100:
+Numero de trocas: 17189
+Numero de comparacoes: 16321
+Tempo gasto: 0.011
+
+
+================================================================================
+Iteracao Numero 1
+--------------------------------------------------------------------------------
+Batch de QuickSort para N=5000: 
+================================================================================
+Algoritmo QuickSort Recursivo:
+Numero de trocas: 32783
+Numero de comparacoes: 32805
+Tempo gasto: 0.034
+
+Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:
+Numero de trocas: 34194
+Numero de comparacoes: 34981
+Tempo gasto: 0.964
+
+Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:
+Numero de trocas: 32842
+Numero de comparacoes: 33963
+Tempo gasto: 1.099
+
+Algoritmo QuickSort Recursivo com Insercao com m=10:
+Numero de trocas: 39946
+Numero de comparacoes: 36869
+Tempo gasto: 0.024
+
+Algoritmo QuickSort Recursivo com Insercao com m=100:
+Numero de trocas: 103185
+Numero de comparacoes: 98507
+Tempo gasto: 0.038
+
+
+================================================================================
+Iteracao Numero 1
+--------------------------------------------------------------------------------
+Batch de QuickSort para N=10000: 
+================================================================================
+Algoritmo QuickSort Recursivo:
+Numero de trocas: 71530
+Numero de comparacoes: 71016
+Tempo gasto: 0.068
+
+Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:
+Numero de trocas: 78130
+Numero de comparacoes: 79977
+Tempo gasto: 2.403
+
+Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:
+Numero de trocas: 83146
+Numero de comparacoes: 84489
+Tempo gasto: 2.3
+
+Algoritmo QuickSort Recursivo com Insercao com m=10:
+Numero de trocas: 90870
+Numero de comparacoes: 85772
+Tempo gasto: 0.089
+
+Algoritmo QuickSort Recursivo com Insercao com m=100:
+Numero de trocas: 226423
+Numero de comparacoes: 217544
+Tempo gasto: 0.102
+
+
+================================================================================
+Iteracao Numero 1
+--------------------------------------------------------------------------------
+Batch de QuickSort para N=50000: 
+================================================================================
+Algoritmo QuickSort Recursivo:
+Numero de trocas: 479928
+Numero de comparacoes: 482733
+Tempo gasto: 0.541
+
+Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:
+Numero de trocas: 302678
+Numero de comparacoes: 487009
+Tempo gasto: 14.403
+
+Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:
+Numero de trocas: 299562
+Numero de comparacoes: 512487
+Tempo gasto: 15.984
+
+Algoritmo QuickSort Recursivo com Insercao com m=10:
+Numero de trocas: 371409
+Numero de comparacoes: 826897
+Tempo gasto: 1.296
+
+Algoritmo QuickSort Recursivo com Insercao com m=100:
+Numero de trocas: 822420
+Numero de comparacoes: 1.23257e+06
+Tempo gasto: 1.157
+
+
+================================================================================
+Iteracao Numero 1
+--------------------------------------------------------------------------------
+Batch de QuickSort para N=100000: 
+================================================================================
+Algoritmo QuickSort Recursivo:
+Numero de trocas: 4.29279e+06
+Numero de comparacoes: 7.98292e+06
+Tempo gasto: 37.438
+
+Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:
+Numero de trocas: 377150
+Numero de comparacoes: 1.04933e+06
+Tempo gasto: 33.068
+
+Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:
+Numero de trocas: 332572
+Numero de comparacoes: 1.02002e+06
+Tempo gasto: 31.032
+
+Algoritmo QuickSort Recursivo com Insercao com m=10:
+Numero de trocas: 410862
+Numero de comparacoes: 887900
+Tempo gasto: 0.967
+
+Algoritmo QuickSort Recursivo com Insercao com m=100:
+Numero de trocas: 859399
+Numero de comparacoes: 1.19656e+06
+Tempo gasto: 0.808
+
+
+================================================================================
+Iteracao Numero 1
+--------------------------------------------------------------------------------
+Batch de QuickSort para N=500000: 
+================================================================================
+Algoritmo QuickSort Recursivo:
+Numero de trocas: 6.01922e+06
+Numero de comparacoes: 6.12337e+06
+Tempo gasto: 10.679
+
+Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:
+Numero de trocas: 937853
+Numero de comparacoes: 5.71378e+06
+Tempo gasto: 192.996
+
+Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:
+Numero de trocas: 649043
+Numero de comparacoes: 5.68204e+06
+Tempo gasto: 156.361
+
+Algoritmo QuickSort Recursivo com Insercao com m=10:
+Numero de trocas: 820779
+Numero de comparacoes: 4.83495e+06
+Tempo gasto: 5.161
+
+Algoritmo QuickSort Recursivo com Insercao com m=100:
+Numero de trocas: 1.26616e+06
+Numero de comparacoes: 4.37913e+06
+Tempo gasto: 3.84
+
+
+================================================================================
+Iteracao Numero 1
+--------------------------------------------------------------------------------
+Batch de QuickSort para N=1e+06: 
+================================================================================
+Algoritmo QuickSort Recursivo:
+Numero de trocas: 1.21723e+07
+Numero de comparacoes: 1.40911e+07
+Tempo gasto: 30.161
+
+Algoritmo QuickSort Recursivo com Mediana entre 3 Valores:
+Numero de trocas: 1.14625e+06
+Numero de comparacoes: 1.35982e+07
+Tempo gasto: 361.7
+
+Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:
+Numero de trocas: 1.0368e+06
+Numero de comparacoes: 1.30128e+07
+Tempo gasto: 364.732
+
+Algoritmo QuickSort Recursivo com Insercao com m=10:
+Numero de trocas: 1.32186e+06
+Numero de comparacoes: 1.03431e+07
+Tempo gasto: 12.586
+
+Algoritmo QuickSort Recursivo com Insercao com m=100:
+Numero de trocas: 1.77137e+06
+Numero de comparacoes: 8.94722e+06
+Tempo gasto: 7.743
+
+
