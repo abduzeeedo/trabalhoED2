@@ -595,10 +595,6 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 			cout << "Ordenou via QuickSort em vetor de Inteiros:" << endl;
 		}
-		if (code == "11") {
-			cout << "Fazendo Bateria de Testes em lote:" << endl;
-			testesBatch(vet, tam);
-		}
 	}
 
 }
@@ -620,14 +616,14 @@ int main()
 	//---------------------------------------------------------------------------
 
 	//Atribui Tweets Aleatoriamente, para ser usado no Menu-----------------------
-	int tam = 100; //Tamanho do Vetor criado com Tweets Aleatorios
+	int tam = 1000; //Tamanho do Vetor criado com Tweets Aleatorios
 	cout << "Gerando um vetor com " << tam << " tweets aleatorios." << endl;
 	Tweet** vAleatorio = carregaTweets(vTweet, tam, tamVet);
 	//---------------------------------------------------------------------------
 
 	//Faz os testes em sequencia com o vetor de tweet-----------------------------
-	cout << "Fazendo testes em lote:" << endl;
-	testesBatch(vTweet, tamVet);
+	//cout << "Fazendo testes em lote:" << endl;
+	//testesBatch(vTweet, tamVet);
 	//---------------------------------------------------------------------------
 
 	codigoFuncao(vAleatorio, tam);//Seleciona a funcao ou encerra a execucao;
