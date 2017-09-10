@@ -11,7 +11,6 @@ Tweet::Tweet(int uid, long long int tid, string tw, string da)
 	tweetID = tid;
 	tweetText = tw;
 	date = da;
-	foiUsada = false;
 }
 void Tweet::addTweet(int uid, int tid, string tw, string da)
 {
@@ -48,12 +47,6 @@ string Tweet::getDate()
 }
 void Tweet::setDate(string da) {
 	date = da;
-}
-bool Tweet::getUso() {
-	return foiUsada;
-}
-void Tweet::setUso(bool uso) {
-	foiUsada = uso;
 }
 void Tweet::printTweet() {
 	cout << userID << " " << tweetID << " " << tweetText << " " << date << endl << "\n";

@@ -86,21 +86,6 @@ void salvarTxt(string salvar, string file) {
 	//arquivo.close();
 }
 
-Tweet** setRand(Tweet** src, int tam, int tamVet, int seed) {
-	srand(seed);
-	Tweet** dst = new Tweet*[tam];
-	for (int i = 0; i < tam; i++) {
-		int random = rand() % tamVet;
-		while (src[random]->getUso() == true) {
-			//random = rand() % tamVet;
-			random = (random + 1) % tamVet;
-		}
-		dst[i] = src[random];
-		src[random]->setUso(true);
-	}
-	return dst;
-}
-
 Tweet** carregaTweets(Tweet** src, int tam, int tamVet) {
 	Tweet** dst = new Tweet*[tam];
 	for (int i = 0; i < tam; i++) {
@@ -113,16 +98,6 @@ void randomiza(Tweet** vetor, int tam, int seed) {
 	srand(seed);
 	for (int i = 0; i < tam; i++) {
 		swap(vetor[rand() % tam], vetor[rand() % tam]);
-	}
-}
-
-//Marca todos os tweets como nao usados
-void limpaUso(Tweet** vetor, int tam)
-{
-	for (int i = 0; i < tam; i++)
-	{
-		if (vetor[i]->getUso() == true)
-			vetor[i]->setUso(false);
 	}
 }
 
@@ -311,6 +286,9 @@ vector<int> importaEntrada(const char* nomeArquivo)
 		cout << "Erro ao abrir arquivo " << nomeArquivo << endl;
 }
 
+//Funcao para testes em Lote de QuickSort
+//ENTRADA: Vetor de tweets obtido via arquivo txt e seu tamanho
+//Arquivo txt com todas os resultados de ordenacao via quicksort
 void batchQS(Tweet** original, int tamVet) {
 	//vector<int> vEntrada = importaEntrada("entrada.txt");
 	int vEntrada[3] = { 10000, 30000, 60000 };
@@ -389,6 +367,9 @@ void batchQS(Tweet** original, int tamVet) {
 	}
 }
 
+//Funcao para testes em Lote de InsertionSort
+//ENTRADA: Vetor de tweets obtido via arquivo txt e seu tamanho
+//Arquivo txt com todas os resultados de ordenacao via InsertionSort
 void batchIS(Tweet** original, int tamVet)
 {
 	int vEntrada[3] = { 10000, 30000, 60000 };
@@ -418,6 +399,9 @@ void batchIS(Tweet** original, int tamVet)
 	}
 }
 
+//Funcao para testes em Lote de MergeSort
+//ENTRADA: Vetor de tweets obtido via arquivo txt e seu tamanho
+//Arquivo txt com todas os resultados de ordenacao via MergeSort
 void batchMS(Tweet** original, int tamVet)
 {
 	int vEntrada[3] = { 10000, 30000, 60000 };
@@ -448,6 +432,9 @@ void batchMS(Tweet** original, int tamVet)
 	}
 }
 
+//Funcao para testes em Lote de BubbleSort
+//ENTRADA: Vetor de tweets obtido via arquivo txt e seu tamanho
+//Arquivo txt com todas os resultados de ordenacao via BubbleSort
 void batchBS(Tweet** original, int tamVet)
 {
 	int vEntrada[3] = { 10000, 30000, 60000 };
@@ -478,6 +465,9 @@ void batchBS(Tweet** original, int tamVet)
 	}
 }
 
+//Funcao para testes em Lote de HeapSort
+//ENTRADA: Vetor de tweets obtido via arquivo txt e seu tamanho
+//Arquivo txt com todas os resultados de ordenacao via HeapSort
 void batchHS(Tweet** original, int tamVet)
 {
 	int vEntrada[3] = { 10000, 30000, 60000 };
@@ -535,8 +525,8 @@ void batchHash() {
 	delete h3;
 	delete h4;
 	delete h5;
-}
-*/
+}*/
+
 void testesBatch(Tweet** vetor, int tamVet)
 {
 	batchQS(vetor, tamVet);
@@ -578,8 +568,9 @@ int main()
 	int tam = 1000; //Tamanho do Vetor criado com Tweets Aleatorios
 	cout << "Gerando um vetor com " << tam << " tweets aleatorios." << endl;
 	Tweet** vAleatorio = carregaTweets(vTweet, tam, tamVet);
-
 	//--------------------------------------------------------------------
+
+
 
 	//Faz os testes em sequencia com o vetor de tweet 
 	//--------------------------------------------------------------------
