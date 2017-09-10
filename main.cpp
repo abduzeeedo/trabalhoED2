@@ -95,11 +95,25 @@ Tweet** setRand(Tweet** src, int tam, int tamVet, int seed) {
 			//random = rand() % tamVet;
 			random = (random + 1) % tamVet;
 		}
-		Tweet* tw = new Tweet(src[random]->getUserID(), src[random]->getTweetID(), src[random]->getTweetText(), src[random]->getDate());
+		dst[i] = src[random];
 		src[random]->setUso(true);
-		dst[i] = tw;
 	}
 	return dst;
+}
+
+Tweet** carregaTweets(Tweet** src, int tam, int tamVet) {
+	Tweet** dst = new Tweet*[tam];
+	for (int i = 0; i < tam; i++) {
+		dst[i] = src[i];
+	}
+	return dst;
+}
+
+void randomiza(Tweet** vetor, int tam, int seed) {
+	srand(seed);
+	for (int i = 0; i < tam; i++) {
+		swap(vetor[rand() % tam], vetor[rand() % tam]);
+	}
 }
 
 //Marca todos os tweets como nao usados
@@ -287,8 +301,8 @@ void batchQS(Tweet** vetor, int tamVet) {
 	Tweet** original;
 	QuickSort qs;
 	for (int k = 1; k <= 5; k++) {
-		for (int i = 0; i < 3; i++) {
-			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "..." << endl;
+		for (unsigned int i = 0; i < 3; i++) {
+			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(QuickSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
 			salvar += "\n--------------------------------------------------------------------------------\n";
@@ -324,7 +338,7 @@ void batchQS(Tweet** vetor, int tamVet) {
 
 			cout << "Copiando Original..." << endl;
 			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
-			cout << "Ordenando Original por QuickSort de Mediana m=3..." << endl;
+			cout << "Ordenando Original por QuickSort de Mediana m=5..." << endl;
 			qs.quicksort(original, 0, vEntrada[i] - 1, 'M');
 
 			salvar += "Algoritmo QuickSort Recursivo com Mediana entre 5 Valores:\n";
@@ -348,7 +362,7 @@ void batchQS(Tweet** vetor, int tamVet) {
 
 			cout << "Copiando Original..." << endl;
 			original = &copia[0]; //Copia o vetor copia para o vetor original e faz a ordenacao
-			cout << "Ordenando Original por QuickSort com Insercao com m=1000..." << endl;
+			cout << "Ordenando Original por QuickSort com Insercao com m=100..." << endl;
 			qs.quicksort(original, 0, vEntrada[i] - 1, 'I');
 
 			salvar += "Algoritmo QuickSort Recursivo com Insercao com m=100:\n";
@@ -360,6 +374,7 @@ void batchQS(Tweet** vetor, int tamVet) {
 
 			copia.clear(); //Limpa o vetor copia para receber os novos dados na proxima iteracao
 			original = 0; //Desaloca o vetor "original" ao fim da iteracao
+			delete original;
 			free(original);
 		}
 	}
@@ -367,19 +382,23 @@ void batchQS(Tweet** vetor, int tamVet) {
 
 void batchIS(Tweet** vetor, int tamVet)
 {
-	int vEntrada[3] = { 50, 100, 150 };
+	//int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 	Tweet** original;
 	InsertionSort is;
-	limpaUso(vetor, tamVet);
-	for (int k = 1; k <= 5; k++) {
-		for (int i = 0; i < 3; i++) {
+	for (int k = 1; k <= 1; k++) {
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
+			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(InsertionSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
 			salvar += "\n--------------------------------------------------------------------------------\n";
 			salvar += "Batch de InsertionSort para N=" + toString(vEntrada[i]) + ": ";
 			salvar += "\n================================================================================\n";
+
+			cout << "Instanciando o Vetor..." << endl;
 			original = setRand(vetor, vEntrada[i], tamVet, i + k);
 
+			cout << "Ordenando o Vetor com Insertion Sort..." << endl;
 			is.insertionsort(original, 0, vEntrada[i]);
 
 			salvar += "Algoritmo InsertionSort:\n";
@@ -395,19 +414,25 @@ void batchIS(Tweet** vetor, int tamVet)
 
 void batchMS(Tweet** vetor, int tamVet)
 {
-	int vEntrada[3] = { 50, 100, 150 };
+	limpaUso(vetor, tamVet);
+	//int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 	Tweet** original;
 	MergeSort ms;
 	limpaUso(vetor, tamVet);
-	for (int k = 1; k <= 5; k++) {
-		for (int i = 0; i < 3; i++) {
+	for (int k = 1; k <= 1; k++) {
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
+			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(MergeSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
 			salvar += "\n--------------------------------------------------------------------------------\n";
 			salvar += "Batch de MergeSort para N=" + toString(vEntrada[i]) + ": ";
 			salvar += "\n================================================================================\n";
+			
+			cout << "Instanciando o Vetor..." << endl;
 			original = setRand(vetor, vEntrada[i], tamVet, i + k);
 
+			cout << "Ordenando o Vetor com MergeSort Sort..." << endl;
 			ms.mergesort(original, 0, vEntrada[i] - 1);
 
 			salvar += "Algoritmo MergeSort:\n";
@@ -423,19 +448,25 @@ void batchMS(Tweet** vetor, int tamVet)
 
 void batchBS(Tweet** vetor, int tamVet)
 {
-	int vEntrada[3] = { 50, 100, 150 };
+	limpaUso(vetor, tamVet);
+	//int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 	Tweet** original;
 	BubbleSort bs;
 	limpaUso(vetor, tamVet);
-	for (int k = 1; k <= 5; k++) {
-		for (int i = 0; i < 3; i++) {
+	for (int k = 1; k <= 1; k++) {
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
+			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(BubbleSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
 			salvar += "\n--------------------------------------------------------------------------------\n";
 			salvar += "Batch de BubbleSort para N=" + toString(vEntrada[i]) + ": ";
 			salvar += "\n================================================================================\n";
+
+			cout << "Instanciando o Vetor..." << endl;
 			original = setRand(vetor, vEntrada[i], tamVet, i + k);
 
+			cout << "Ordenando o Vetor com Bubble Sort..." << endl;
 			bs.bubblesort(original, vEntrada[i]);
 
 			salvar += "Algoritmo BubbleSort:\n";
@@ -451,19 +482,25 @@ void batchBS(Tweet** vetor, int tamVet)
 
 void batchHS(Tweet** vetor, int tamVet)
 {
-	int vEntrada[3] = { 50, 100, 150 };
+	limpaUso(vetor, tamVet);
+	//int vEntrada[3] = { 10000, 30000, 60000 };
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 	Tweet** original;
 	HeapSort hs;
 	limpaUso(vetor, tamVet);
-	for (int k = 1; k <= 5; k++) {
-		for (int i = 0; i < 3; i++) {
+	for (int k = 1; k <= 1; k++) {
+		for (unsigned int i = 0; i < vEntrada.size(); i++) {
+			cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << "(HeapSort)..." << endl;
 			salvar += "\n================================================================================\n";
 			salvar += "Iteracao Numero " + toString(k);
 			salvar += "\n--------------------------------------------------------------------------------\n";
-			salvar += "Batch de BubbleSort para N=" + toString(vEntrada[i]) + ": ";
+			salvar += "Batch de HeapSort para N=" + toString(vEntrada[i]) + ": ";
 			salvar += "\n================================================================================\n";
+			
+			cout << "Instanciando o Vetor..." << endl;
 			original = setRand(vetor, vEntrada[i], tamVet, i + k);
-
+			
+			cout << "Ordenando o Vetor com Heap Sort..." << endl;
 			hs.heapsort(original, vEntrada[i]);
 
 			salvar += "Algoritmo BubbleSort:\n";
@@ -477,20 +514,51 @@ void batchHS(Tweet** vetor, int tamVet)
 	}
 }
 
+/*
+void batchHash() {
+	HashEncad *h1 = new HashEncad(100, 1);
+	HashEncad *h2 = new HashEncad(100, 2);
+	HashEncad *h3 = new HashEncad(100, 3);
+	HashEncad *h4 = new HashEncad(100, 4);
+	HashStruct *h5 = new HashStruct(100);
+	for (int i = 0; i < 100; i++)
+	{
+		h1->inserir(i * 2);
+		h2->inserir(i * 2);
+		h3->inserir(i * 2);
+		h4->inserir(i * 2);
+		h5->inserir(i * 2);
+
+	}
+	h1->salvarArquivo("saida2.txt");
+	h2->salvarArquivo("saida2.txt");
+	h3->salvarArquivo("saida2.txt");
+	h4->salvarArquivo("saida2.txt");
+	h5->salvarArquivo("saida2.txt");
+	delete h1;
+	delete h2;
+	delete h3;
+	delete h4;
+	delete h5;
+}
+*/
 void testesBatch(Tweet** vetor, int tamVet)
 {
-	batchQS(vetor, tamVet);
-	cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
-
+	//batchQS(vetor, tamVet);
+	//cout << "Batch para Quicksort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
+	limpaUso(vetor, tamVet);
 	batchIS(vetor, tamVet);
 	cout << "Batch para InsertionSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
+	limpaUso(vetor, tamVet);
 	batchMS(vetor, tamVet);
 	cout << "Batch para MergeSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
+	limpaUso(vetor, tamVet);
 	batchBS(vetor, tamVet);
 	cout << "Batch para BubbleSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
+	limpaUso(vetor, tamVet);
 	batchHS(vetor, tamVet);
 	cout << "Batch para HeapSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 }
@@ -515,19 +583,19 @@ int main()
 
 	//Atribui Tweets Aleatoriamente 
 	//--------------------------------------------------------------------
-	int tam = 10000; //Tamanho do Vetor criado com Tweets Aleatorios
+	int tam = 100; //Tamanho do Vetor criado com Tweets Aleatorios
 	cout << "Gerando um vetor com " << tam << " tweets aleatorios." << endl;
-	Tweet** vAleatorio = setRand(vTweet, tam, tamVet, 1);
+	Tweet** vAleatorio = carregaTweets(vTweet, tam, tamVet);
+
+	randomiza(vAleatorio, tam, 1);
+
 	//--------------------------------------------------------------------
 
 	//Faz os testes em sequencia com o vetor de tweet 
 	//--------------------------------------------------------------------
-	//cout << "Fazendo testes em lote:" << endl;
-	//testesBatch(vTweet, tamVet);
+	cout << "Fazendo testes em lote:" << endl;
+	testesBatch(vTweet, tamVet);
 	//--------------------------------------------------------------------
-
-	batchHS(vTweet, tamVet);
-	cout << "Batch para HeapSort concluido. Verifique o arquivo saida.txt para ver os resultados" << endl;
 
 	codigoFuncao(vAleatorio, tam);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");
