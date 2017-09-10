@@ -566,21 +566,8 @@ int main()
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
-
 	//---------------------------------------------------------------------
 
-	for (int i = 0; i < 10;  i++) {
-		cout << "[" << vTweet[i]->getTweetID() << "] ";
-	}
-	cout << "\n" << endl;
-
-	cout << "Randomizando..." << endl;
-	randomiza(vTweet, tamVet, 1);
-
-	for (int i = 0; i < 10; i++) {
-		cout << "[" << vTweet[i]->getTweetID() << "] ";
-	}
-	cout << endl;
 
 	//Atribui Tweets Aleatoriamente 
 	//--------------------------------------------------------------------
@@ -589,12 +576,10 @@ int main()
 	Tweet** vAleatorio = carregaTweets(vTweet, tam, tamVet);
 	//--------------------------------------------------------------------
 
-
-
 	//Faz os testes em sequencia com o vetor de tweet 
 	//--------------------------------------------------------------------
-	//cout << "Fazendo testes em lote:" << endl;
-	//testesBatch(vTweet, tamVet);
+	cout << "Fazendo testes em lote:" << endl;
+	testesBatch(vTweet, tamVet);
 	//--------------------------------------------------------------------
 
 	codigoFuncao(vAleatorio, tam);//Seleciona a funcao ou encerra a execucao;
