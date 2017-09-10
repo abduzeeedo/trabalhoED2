@@ -12,11 +12,11 @@ HashStruct::HashStruct(int tam)
     }
 }
 //Funcoes de hahsing
-int HashStruct::divisao(int chave)
+long long int HashStruct::divisao(long long int chave)
 {
     return chave % m;
 }
-int HashStruct::enlacamento(int chave)
+long long int HashStruct::enlacamento(long long int chave)
 {
     string str = to_string(chave);
     int enlacamento = 0;
@@ -27,7 +27,7 @@ int HashStruct::enlacamento(int chave)
     return enlacamento % m;
 }
 //Tratamento de colisoes
-void HashStruct::encadCol(int chave)
+void HashStruct::encadCol(long long int chave)
 {
     int posicao = divisao(chave);
     for (int i = m - 1; i >= 0; i--)
@@ -46,9 +46,9 @@ void HashStruct::encadCol(int chave)
     }
 }
 //Inserir uma nova chave na tabela
-void HashStruct::inserir(int chave)
+void HashStruct::inserir(long long int chave)
 {
-    int posicao = 0;
+	long long int posicao = 0;
     posicao = divisao(chave);
     if (tabela[posicao].posVazia)
     {

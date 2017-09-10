@@ -468,6 +468,15 @@ void batchHash(Tweet* vet[], int tam)
 	h4->salvarArquivo("saida2.txt");
 	delete h4;
 
+	//TRATAMENTO DE COLISAO 5 e 6
+	HashStruct *h5 = new HashStruct(tam);
+	for (int e = 0; e < tam; e++)
+	{
+		h5->inserir(vetInt[e]);
+	}
+	h5->salvarArquivo("saida2.txt");
+	delete h5;
+
 	delete vetInt;
 }
 
