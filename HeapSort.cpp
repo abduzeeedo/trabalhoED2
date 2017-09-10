@@ -1,5 +1,4 @@
 
-
 #include "HeapSort.h"
 
 using namespace std;
@@ -41,7 +40,7 @@ void HeapSort::limpaDados() {
 	tempoGasto = 0;
 }
 
- //Constroi um vetor Heap
+//Constroi um vetor Heap
 void HeapSort::constroiHeap(Tweet* vetor[], int tam, int indice_raiz)
 {
 	int ramificacao;
@@ -51,11 +50,14 @@ void HeapSort::constroiHeap(Tweet* vetor[], int tam, int indice_raiz)
 	while (indice_raiz < tam / 2) {
 		ramificacao = 2 * indice_raiz + 1;
 
-		if (ramificacao < tam - 1 && vetor[ramificacao]->getTweetID()  < vetor[ramificacao + 1]->getTweetID())
+		if (ramificacao < tam - 1 && vetor[ramificacao]->getTweetID() < vetor[ramificacao + 1]->getTweetID()) {
 			ramificacao++;
 
-		if (valor->getTweetID() >= vetor[ramificacao]->getTweetID())//Identifica o max-heap
+		}
+		if (valor->getTweetID() >= vetor[ramificacao]->getTweetID()) {//Identifica o max-heap
+			numTrocas++;
 			break;
+		}
 
 		vetor[indice_raiz] = vetor[ramificacao];
 		indice_raiz = ramificacao;
