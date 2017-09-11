@@ -1,3 +1,12 @@
+/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO: 
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -424,11 +433,14 @@ void batchQSi(Tweet** original, int tamVet) {
 	}
 }
 
+//Funcao para testes em Lote das Funcoes de Hashing
+//ENTRADA: Vetor de tweets obtido via arquivo txt e seu tamanho
+//Arquivo txt com todas os resultados dos testes em Lote das Funcoes de Hashing
 void batchHash(Tweet* vet[], int tam)
 {
 	vector<int> vEntrada = importaEntrada("entrada.txt");
 
-	for (int k = 1; k <= 1; k++) {
+	for (int k = 1; k <= 5; k++) {
 		for (unsigned int i = 0; i < vEntrada.size(); i++) {
 			tam = vEntrada[i];
 			//Criando um vetor de inteiros para ser usado no hashing
@@ -438,7 +450,7 @@ void batchHash(Tweet* vet[], int tam)
 				vetInt[i] = vet[i]->getTweetID();
 			}
 
-			/*cout << "Tratando Colisao 1 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
+			cout << "Tratando Colisao 1 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
 			//TRATAMENTO DE COLISAO 1
 			HashEncad *h1 = new HashEncad(tam, 1);
 			for (int a = 0; a < tam; a++)
@@ -458,33 +470,16 @@ void batchHash(Tweet* vet[], int tam)
 			h2->salvarArquivo("saida2.txt");
 			delete h2;
 
-<<<<<<< HEAD
-			cout << "Randomizando..." << endl;
-			randomiza(vet, tam, i + k);
-*/
-			cout << "Tratando Colisao 3 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
-			//TRATAMENTO DE COLISAO 3 - NAO ESTA FUNCIONANDO
-			
-=======
 			/*cout << "Tratando Colisao 3 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
 			//TRATAMENTO DE COLISAO 3 - NAO ESTA FUNCIONANDO
->>>>>>> 6787ed40083c01ce2fa2bdce96c8cbef6b03dd2d
 			HashEncad *h3 = new HashEncad(tam, 3);
 			for (int c = 0; c < tam; c++)
 			{
 			h3->inserir(vetInt[c]);
 			}
 			h3->salvarArquivo("saida2.txt");
-<<<<<<< HEAD
-			delete h3;
-			
-
-			/*cout << "Randomizando..." << endl;
-			randomiza(vet, tam, i + k);
-=======
 			delete h3;*/
 
->>>>>>> 6787ed40083c01ce2fa2bdce96c8cbef6b03dd2d
 
 			cout << "Tratando Colisao 4 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
 			//TRATAMENTO DE COLISAO 4
@@ -504,7 +499,7 @@ void batchHash(Tweet* vet[], int tam)
 				h5->inserir(vetInt[e]);
 			}
 			h5->salvarArquivo("saida2.txt");
-			delete h5;*/
+			delete h5;
 
 			cout << "Randomizando..." << endl;
 			randomiza(vet, tam, i + k);
