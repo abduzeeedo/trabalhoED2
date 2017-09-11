@@ -13,5 +13,13 @@
 || 8 -  HeapSort no vetor de tweets                                ||
 || 9 -  BubbleSort no vetor de tweets                              ||
 || 10 - Quicksort recursivo no vetor de tweetID                    ||
+|| 11 - Testes em Batch para QuickSort                             ||
+|| 12 - Testes em Batch para QuickSort de Inteiros                 ||
+|| 13 - Testes em Batch para InsertionSort                         ||
+|| 14 - Testes em Batch para BubbleSort                            ||
+|| 15 - Testes em Batch para MergeSort                             ||
+|| 16 - Testes em Batch para HeapSort                              ||
+|| 17 - Testes em Batch para Hashing                               ||
+|| 18 - Testes em Batch Completo (Todos os Batch's)                ||
 || -1 - Encerra a execucao do projeto                              ||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

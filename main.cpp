@@ -467,7 +467,7 @@ void batchHash(Tweet* vet[], int tam)
 			}
 			h3->salvarArquivo("saida2.txt");
 			delete h3;*/
-			
+
 
 			cout << "Tratando Colisao 4 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
 			//TRATAMENTO DE COLISAO 4
@@ -643,6 +643,30 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 			cout << "Ordenou via QuickSort em vetor de Inteiros, verifique o arquivo saida.txt para ver os resultados." << endl;
 		}
+		if (code == "11") {
+			batchQS(vet, tam);
+		}
+		if (code == "12") {
+			batchQSi(vet, tam);
+		}
+		if (code == "13") {
+			batchIS(vet, tam);
+		}
+		if (code == "14") {
+			batchBS(vet, tam);
+		}
+		if (code == "15") {
+			batchMS(vet, tam);
+		}
+		if (code == "16") {
+			batchHS(vet, tam);
+		}
+		if (code == "17") {
+			batchHash(vet, tam);
+		}
+		if (code == "18") {
+			testesBatch(vet, tam);
+		}
 	}
 }
 
@@ -652,7 +676,7 @@ int main()
 
 	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
 	que indica o numero de tweets aleatorios que devem ser importados e instanciados
-	 e depois, fazer a ordenacao deles*/
+	e depois, fazer a ordenacao deles*/
 	vector<int> vEntrada = importaEntrada("entrada.txt");
 
 	//Importando tweets do arquivo TXT-------------------------------------------
@@ -673,7 +697,6 @@ int main()
 	//testesBatch(vTweet, tamVet);
 	//---------------------------------------------------------------------------
 
-	//batchHash(vTweet, tamVet);
 
 	codigoFuncao(vTweet, tamVet);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");
