@@ -6,10 +6,54 @@ trat=
     3: Duplo Hash
     4: Encadeamento Separado
 */
+long long int HashEncad::maiorPrimo(int N)
+{
+    int limite = floor(sqrt(N));
+
+    vector<int> vet(N);
+
+    int tam, num;
+    for (num = 2, tam = 0; num <= N; num++, tam++)
+        vet[tam] = num;
+    int removeu, i = 0;
+    while (1)
+    {
+        removeu = 0;
+        if (vet[i] != -1)
+            num = vet[i];
+        else
+        {
+            i++;
+            continue;
+        }
+        int j;
+        for (j = i + 1; j < tam; j++)
+        {
+            if (vet[j] % num == 0)
+            {
+                vet[j] = -1; // remoção do elemento
+                removeu = 1;
+            }
+        }
+        if (removeu == 0 || vet[i] == limite)
+            break;
+        i++;
+    }
+    for (i = tam - 1; i >= 0; i--)
+    {
+        if (vet[i] != -1)
+        {
+            return vet[i];
+            break;
+        }
+    }
+}
+
 HashEncad::HashEncad(int tam, int trat)
 {
     tratColis = trat;
-    m = tam + 4;
+    m = maiorPrimo(tam + 100);
+    cout << "M:" << m << endl;
     tabela = new ListaEncad[m];
     comparacoes = 0;
 }
@@ -19,10 +63,10 @@ HashEncad::~HashEncad()
     //falta implementar destrutor
 }
 
-//Funcoes de hashing 
+//Funcoes de hashing
 long long int HashEncad::funcaoH2(long long int chave)
 {
-    return (chave + 1) % m;
+    return (chave*3)%m;
 }
 long long int HashEncad::divisao(long long int chave)
 {
@@ -60,11 +104,6 @@ long long int HashEncad::sondLinear(long long int chave)
         {
             comparacoes++;
             i++;
-            if (i >= m - 1)
-            {
-                i = 0;
-                it++;
-            }
         }
     }
     return -1;
@@ -73,49 +112,37 @@ long long int HashEncad::sondQuadratica(long long int chave)
 {
     int posicao = 0;
     int i = 0, it = 0;
-	long long int hk;
+    long long int hk;
     hk = divisao(chave);
     posicao = hk;
     while (!tabela[posicao].verificaVazio())
     {
-        posicao = (posicao + (i * i)) % m;
-        if (tabela[posicao].verificaVazio())
-        {
-            comparacoes++;
-            return posicao;
-            break;
-        }
-
-        else
-        {
-            comparacoes++;
-            i++;
-            if (i >= m)
-            {
-                i = 0;
-                it++;
-            }
-        }
+        i++;
+        comparacoes++;        
+        posicao = (hk + (i * i)) % m;
     }
     return posicao;
 }
 void HashEncad::duploHash(long long int chave)
 {
-	long long int hk = divisao(chave);
-	long long int posicao = hk;
-	long long int rk = funcaoH2(chave);
+    long long int hk = divisao(chave);
+    long long int posicao = hk;
+    long long int rk = funcaoH2(chave);
+    if(rk==0)
+        rk = funcaoH2(chave+1);
     int i = 0;
     while (!tabela[posicao].verificaVazio())
     {
         comparacoes++;
-        posicao = (hk + i * rk) % m;
         i++;
+        posicao = ((hk + (i * rk)) % m);
+        
     }
     tabela[posicao].addNo(chave);
 }
 void HashEncad::encadSeparado(long long int chave)
 {
-	long long int posicao = divisao(chave);
+    long long int posicao = divisao(chave);
     if (!tabela[posicao].verificaVazio())
     {
         comparacoes++;
@@ -124,10 +151,10 @@ void HashEncad::encadSeparado(long long int chave)
 }
 
 //Inserir uma nova chave na tabela, verifica se a posicao da funcao hashing já está ocupada
- 
+
 void HashEncad::inserir(long long int chave)
 {
-	long long int posicao = divisao(chave);
+    long long int posicao = divisao(chave);
     if (tabela[posicao].verificaVazio())
     {
         tabela[posicao].addNo(chave);

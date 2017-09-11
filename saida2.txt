@@ -1,0 +1,120 @@
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 2411
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 2411
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 2411
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 1937
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 1937
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 2089
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 5099
+Comparacoes: 16906
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 10099
+Comparacoes: 41247
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 50093
+Comparacoes: 290609
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 1207
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 1705
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 5099
+Comparacoes: 14661
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 10099
+Comparacoes: 35654
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 2011
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 5099
+Comparacoes: 17186
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 10099
+Comparacoes: 40861
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 50093
+Comparacoes: 280982
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1097
+Comparacoes: 2011
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 5099
+Comparacoes: 17186
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 10099
+Comparacoes: 40861
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 50093
+Comparacoes: 280982
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 100069
+Comparacoes: 654503
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 500083
+Comparacoes: 3923426
+tamanho da tabela: 0.008000 KBytes
+
+Duplo hash
+Tamanho da tabela: 1000099
+Comparacoes: 8478758
+tamanho da tabela: 0.008000 KBytes
+

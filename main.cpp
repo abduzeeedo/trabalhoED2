@@ -440,7 +440,7 @@ void batchHash(Tweet* vet[], int tam)
 			cout << "Randomizando..." << endl;
 			randomiza(vet, tam, i+k);
 
-			cout << "Tratando Colisao 1 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
+			/*cout << "Tratando Colisao 1 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
 			//TRATAMENTO DE COLISAO 1
 			HashEncad *h1 = new HashEncad(tam, 1);
 			for (int a = 0; a < tam; a++)
@@ -465,10 +465,10 @@ void batchHash(Tweet* vet[], int tam)
 
 			cout << "Randomizando..." << endl;
 			randomiza(vet, tam, i + k);
-
-			//cout << "Tratando Colisao 3 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
+*/
+			cout << "Tratando Colisao 3 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
 			//TRATAMENTO DE COLISAO 3 - NAO ESTA FUNCIONANDO
-			/*
+			
 			HashEncad *h3 = new HashEncad(tam, 3);
 			for (int c = 0; c < tam; c++)
 			{
@@ -476,9 +476,9 @@ void batchHash(Tweet* vet[], int tam)
 			}
 			h3->salvarArquivo("saida2.txt");
 			delete h3;
-			*/
+			
 
-			cout << "Randomizando..." << endl;
+			/*cout << "Randomizando..." << endl;
 			randomiza(vet, tam, i + k);
 
 			cout << "Tratando Colisao 4 com Vetor de Tamanho" << vEntrada[i] << " na iteracao " << k << "..." << endl;
@@ -502,7 +502,7 @@ void batchHash(Tweet* vet[], int tam)
 				h5->inserir(vetInt[e]);
 			}
 			h5->salvarArquivo("saida2.txt");
-			delete h5;
+			delete h5;*/
 
 			delete vetInt;
 		}

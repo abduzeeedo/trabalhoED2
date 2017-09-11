@@ -23,6 +23,8 @@ private:
   long long int enlacamento(long long int chave);
   long long int divisao(long long int chave);
   void encadCol(long long int chave);
+  long long int maiorPrimo(int N);
+  
 
 
 public:

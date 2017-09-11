@@ -11,6 +11,48 @@ HashStruct::HashStruct(int tam)
         tabela[i].prox = -2;
     }
 }
+long long int HashStruct::maiorPrimo(int N)
+{
+	int limite = floor(sqrt(N));
+
+	vector<int> vet(N);
+
+	int tam, num;
+	for(num = 2, tam = 0; num <= N; num++, tam++)
+		vet[tam] = num;
+	int removeu, i = 0;
+	while(1)
+	{
+		removeu = 0;
+		if(vet[i] != -1)
+			num = vet[i];
+		else
+		{
+			i++;
+			continue;
+		}
+		int j;
+		for(j = i + 1; j < tam; j++)
+		{
+			if(vet[j] % num == 0)
+			{
+				vet[j] = -1; // remoção do elemento
+				removeu = 1;
+			}
+		}
+		if(removeu == 0 || vet[i] == limite)
+			break;
+		i++;
+    }
+    for(i = tam-1; i >=0; i--)
+	{
+		if(vet[i] != -1)
+		{
+            return vet[i];
+            break;
+		}
+	}
+}
 //Funcoes de hahsing
 long long int HashStruct::divisao(long long int chave)
 {

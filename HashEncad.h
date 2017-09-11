@@ -18,6 +18,8 @@ private:
 	long long int funcaoH2(long long int chave);
 	long long int enlacamento(long long int chave);
     long long int comparacoes;
+    long long int maiorPrimo(int N);
+    
         
 public:
     HashEncad(int tam, int trat);

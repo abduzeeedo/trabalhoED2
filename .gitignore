@@ -28,3 +28,5 @@ Thumbs.db
 #########################
 bin/
 obj/
+
+test_set_tweets.txt
