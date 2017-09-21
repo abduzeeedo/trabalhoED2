@@ -41,3 +41,13 @@ void Palavra::aumentaFreq()
 {
     frequencia++;
 }
+
+int Palavra::getHash()
+{
+    return numero_hash;
+}
+
+void Palavra::setHash(int h)
+{
+    numero_hash = h;
+}
