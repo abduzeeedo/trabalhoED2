@@ -2,52 +2,52 @@
 
 Palavra::Palavra()
 {
-    //ctor
+	//ctor
 }
 
 //Construtor sobrecarregado
 Palavra::Palavra(string c, int f)
 {
-    conteudo = c;
-    frequencia = f;
+	conteudo = c;
+	frequencia = f;
 }
 
 Palavra::~Palavra()
 {
-    //dtor
+	//dtor
 }
 
 string Palavra::getConteudo()
 {
-    return conteudo;
+	return conteudo;
 }
 
 void Palavra::setConteudo(string c)
 {
-    conteudo = c;
+	conteudo = c;
 }
 
 int Palavra::getFreq()
 {
-    return frequencia;
+	return frequencia;
 }
 
 void Palavra::setFreq(int f)
 {
-    frequencia = f;
+	frequencia = f;
 }
 
 void Palavra::aumentaFreq()
 {
-    frequencia++;
+	frequencia++;
 }
 
 int Palavra::getHash()
 {
-    return numero_hash;
+	return numero_hash;
 }
 
 void Palavra::setHash(int h)
 {
-    numero_hash = h;
+	numero_hash = h;
 }

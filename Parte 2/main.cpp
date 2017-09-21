@@ -12,20 +12,17 @@ using namespace std;
 //Alterar ela se for usar mesmo
 unsigned int hasht(const char* s)
 {
-	unsigned int h = 0;
-
-	for (; *s; ++s)
-	{
-		h += *s;
-		h += (h << 10);
-		h ^= (h >> 6);
-	}
-
-	h += (h << 3);
-	h ^= (h >> 11);
-	h += (h << 15);
-
-	return h;
+unsigned int h = 0;
+for (; *s; ++s)
+{
+h += *s;
+h += (h << 10);
+h ^= (h >> 6);
+}
+h += (h << 3);
+h ^= (h >> 11);
+h += (h << 15);
+return h;
 }
 */
 
@@ -42,8 +39,8 @@ void removeEspaco(string &str)
 	bool espaco = false;
 
 	//Percorre por todos os espacos no comeco do texto, se houver algum
-	if(str[++j] == ' ')
-	while (++j < tam && str[j] == ' ');
+	if (str[++j] == ' ')
+		while (++j < tam && str[j] == ' ');
 
 	//Comeca a leitura da string
 	while (j < tam)
@@ -76,42 +73,73 @@ void removeEspaco(string &str)
 
 void separaPalavras(string original, vector<Palavra> &vPal)
 {
-    string buffer;
-    for (short i = 0; i<original.length(); i++) //Percorre a string orignal ate o seu final
-    {
-        if(original[i] != ' ') //Caso o caracter atual nao seja um espaco, adiciona ele no buffer
-        {
-            buffer += original[i];
-        }
-        else //Caso seja um espaco, transfere todo o buffer anterior (uma palavra completa) para o vetor de palavras
-        {
-            if(buffer.size()>2)//Ignora palavras com 2 letras ou menos
-            {
-            //Palavra* p = new Palavra(buffer,0);
-            Palavra p(buffer,0);//Nao tenho certeza se e melhor fazer por ponteiro, se for eh so mudar
-            vPal.push_back(p);
-            buffer.clear();
-            }
-        }
-    }
-    //Adiciona a ultima palavra ao vetor (sem isso, somente com o for, ele nao adiciona a ultima palavra)
-    Palavra p2(buffer,0);
-    vPal.push_back(p2);
-    buffer.clear();
+	string buffer;
+	for (short i = 0; i<original.length(); i++) //Percorre a string orignal ate o seu final
+	{
+		if (original[i] != ' ') //Caso o caracter atual nao seja um espaco, adiciona ele no buffer
+		{
+			buffer += original[i];
+		}
+		else //Caso seja um espaco, transfere todo o buffer anterior (uma palavra completa) para o vetor de palavras
+		{
+			if (buffer.size() < 2)//Ignora palavras com 2 letras ou menos
+				buffer.clear();
+			else
+			{
+				//Palavra* p = new Palavra(buffer,0);
+				Palavra p(buffer, 0);//Nao tenho certeza se e melhor fazer por ponteiro, se for eh so mudar
+				vPal.push_back(p);
+				buffer.clear();
+			}
+		}
+	}
+	//Adiciona a ultima palavra ao vetor (sem isso, somente com o for, ele nao adiciona a ultima palavra)
+	Palavra p2(buffer, 0);
+	vPal.push_back(p2);
+	buffer.clear();
 }
+
 //Coloca todos os caracteres da string em minusculo
 void sMinusculo(string &s)
 {
-    transform(s.begin(), s.end(), s.begin(), ::tolower);
+	transform(s.begin(), s.end(), s.begin(), ::tolower);
 }
+
 //Remove todas as pontuacoes, espacos e caracteres especiais de uma string
 void limpaString(string &s)
 {
-    /*Nao usei o erase/remove porque em tweets que nao existe espacos entre a pontuacao, as palavras ficariam todas juntas dificultando dividir o tweet em varias palavras
+	/*Nao usei o erase/remove porque em tweets que nao existe espacos entre a pontuacao, as palavras ficariam todas juntas dificultando dividir o tweet em varias palavras
 	Exemplo: usando erase/remove no tweet Exemplo.de.tweet, iria ficar Exemplodetweet e isso ia contar como uma palavra so
 	Usando o replace_if com espacos, ficaria Exemplo de tweet, o que eh o certo*/
-    replace_if(s.begin(), s.end(), ::ispunct, ' ');
-    removeEspaco(s);
+	replace_if(s.begin(), s.end(), ::ispunct, ' ');
+	removeEspaco(s);
+}
+
+//Ordena o vetor em ordem alfabetica
+bool ordenacao(Palavra p1, Palavra p2)
+{
+	if (p1.getConteudo() > p2.getConteudo())
+		return true;
+	else
+		return false;
+}
+
+//Verifica se uma palavra eh igual a outra
+bool ehIgual(Palavra p1, Palavra p2)
+{
+	if (p1.getHash() == p2.getHash())
+		return true;
+	else
+		return false;
+}
+
+//Funcao para ordenacao do vetor em base das frequencias
+bool ordenaFreq(Palavra p1, Palavra p2)
+{
+	if (p1.getFreq() > p2.getFreq())
+		return true;
+	else
+		return false;
 }
 
 int main()
@@ -130,7 +158,7 @@ int main()
 	cout << endl;
 
 	//Coloca todas as strings como minusculas (case insensitive)
-    //O hashing padrao do C gera resultados diferentes dependendo se esta em caps lock ou nao
+	//O hashing padrao do C gera resultados diferentes dependendo se esta em caps lock ou nao
 	//Por isso precisa de colocar tudo em minusculo para garantir
 	sMinusculo(s1);
 	sMinusculo(s2);
@@ -154,70 +182,50 @@ int main()
 	/*Ao final de todos estes processos, todos os tweets estarao prontos para serem divididos em varias palavras para fazer o hashing delas
 	todos os tweets estarao sem espacos desnecessarios, sem sinais de pontuacao e todas as letras minusculas (pois o hashing tem que ser case insensitive)*/
 
-    cout << endl << "==========================================================" << endl << endl;
+	cout << endl << "==========================================================" << endl << endl;
 
-    //Fazendo o hashing de um tweet exemplo e calculando o uso de cada
-    //Hashing padrao do C
+	//Fazendo o hashing de um tweet exemplo e calculando o uso de cada
+	//Hashing padrao do C
 	hash<string> string_hash;
 	string teste = "Pedra, papel, tesoura, lagarto, Spock. Eh muito simples! Olhe - tesoura corta papel, papel cobre pedra, pedra esmaga lagarto, lagarto envenena Spock, Spock esmaga tesoura, tesoura decapita lagarto, lagarto come papel, papel refuta Spock, Spock vaporiza pedra e como sempre, pedra quebra tesoura...";
-    cout<<"String de exemplo no trabalho:"<<endl;
-    cout<<teste<<endl<<endl;
+	cout << "String de exemplo no trabalho:" << endl;
+	cout << teste << endl << endl;
 
-    sMinusculo(teste);
-    limpaString(teste);
+	sMinusculo(teste);
+	limpaString(teste);
 
 	//Separando os tweets em palavras diferentes
 	vector<Palavra>vPalavra;
 	separaPalavras(teste, vPalavra); //Testei apenas com uma string por vez mas fucniona para todas
 	//Imprimindo o vetor de palavras mais o hashing delas para ver se ficou tudo certo
-	cout<<"-Vetor de palavras separadas da string e seus respectivos hashings-"<<endl;
-	for (short p = 0;p<vPalavra.size();p++)
-    {
-        vPalavra[p].setHash(string_hash(vPalavra[p].getConteudo())%vPalavra.size());
-        cout<<vPalavra[p].getConteudo()<<" - " <<vPalavra[p].getHash()<<endl;
-    }
+	cout << "-Vetor de palavras separadas da string e seus respectivos hashings-" << endl;
+	for (short p = 0; p<vPalavra.size(); p++)
+	{
+		vPalavra[p].setHash(string_hash(vPalavra[p].getConteudo()));
+		cout << vPalavra[p].getConteudo() << " - " << vPalavra[p].getHash() << endl;
+	}
 
-    //Calculando a frequencia de todas as palavras (nao sei se tem um jeito melhor, provavelmente tem)
-    for(int m = 0; m<vPalavra.size();m++)
-    {
-        for(int n=0;n<vPalavra.size();n++)
-        {
-            if(vPalavra[m].getHash() == vPalavra[n].getHash())
-                vPalavra[m].aumentaFreq();
-        }
-    }
+	//Calculando a frequencia de todas as palavras (nao sei se tem um jeito melhor, provavelmente tem)
+	for (int m = 0; m<vPalavra.size(); m++)
+	{
+		for (int n = 0; n<vPalavra.size(); n++)
+		{
+			if (vPalavra[m].getHash() == vPalavra[n].getHash())
+				vPalavra[m].aumentaFreq();
+		}
+	}
 
-    short n = 6; //Testando o top6 palavras (de acordo com o exemplo)
-    vector<Palavra>topPalavras(6);
-    //Calculando as palavras mais usadas (provavelmente tem um jeito melhor de fazer isso tbm)
-    for(int u=0;u<vPalavra.size();u++)
-    {
-        if(u==0)
-        {
-            short l = 0;
-            while(l<n)
-            {
-            topPalavras[l] = vPalavra[0];
-            l++;
-            }
-        }
-        else
-        {
-            short l2 = 0;
-            while(l2<n)
-            {
-                if(vPalavra[u].getFreq() > topPalavras[l2].getFreq())
-                    topPalavras[l2] = vPalavra[u];
-                l2++;
-            }
-        }
-    }
+	short n = 6; //Testando o top6 palavras (de acordo com o exemplo)
+	sort(vPalavra.begin(), vPalavra.end(), ordenacao);//Ordena o vetor em ordem alfabetica
+	vPalavra.erase(unique(vPalavra.begin(), vPalavra.end(), ehIgual),vPalavra.end());//Elimina palavras repetidas (eh necessario ordenar em ordem alfabetica primeiro)
+	sort(vPalavra.begin(), vPalavra.end(), ordenaFreq);//Ordena o vetor por ordem de frequencia
 
-    //Imprimindo as palavras mais usadas
-    for(short b=0;b<n;b++)
-    {
-        cout<<topPalavras[b].getFreq()<<" - "<<topPalavras[b].getConteudo()<<endl;
-    }
+	//Imprimindo as palavras mais usadas
+	cout << endl << "-Palavras mais usadas-" << endl;
+	for (short b = 0; b<n; b++)
+	{
+		cout << vPalavra[b].getFreq() << " - " << vPalavra[b].getConteudo() << endl;
+	}
 
 	//system("pause");
 	return 0;
