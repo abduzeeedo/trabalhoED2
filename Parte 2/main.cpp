@@ -230,7 +230,7 @@ int main()
 
 	//Imprimindo as n_pal palavras mais usadas
 	cout << endl << "Palavras mais usadas:" << endl;
-	for (short b = 0; b<n_pal; b++)
+	for (int b = 0; b<n_pal; b++)
 	{
 		cout << vPalavras[b].getFreq() << " - " << vPalavras[b].getConteudo() << endl;
 	}
