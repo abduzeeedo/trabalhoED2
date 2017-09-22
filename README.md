@@ -4,6 +4,8 @@ ED2 - 2017.3
 - [x] Preparação das Classes
 - [x] Inserção Dados via TXT
 
+# PARTE 1 - ALGORITMOS DE ORDENAÇÃO
+
 # CENARIO I - Bellotti
 - [x] QuickSort (Recursivo) - TWEETID (vetor de int)
 - [x] QuickSort (Recursivo) - TWEET
@@ -43,4 +45,10 @@ ED2 - 2017.3
 - [x] Comparar em Gasto de Mem
 - [ ] ANALISE CENARIO IV -  Graficos, Tabelas, Conclusões Pedidas
 
-# IMPLEMENTAÇÃO PALAVRAS DO MOMENTO
+# PARTE 2 - IMPLEMENTAÇÃO PALAVRAS DO MOMENTO
+- [x] Ler N tweets aleatorios diferentes
+- [x] Remover pontuações e caracteres especiais dos tweets
+- [x] Colocar todos os tweets com letras minúsculas (case insensitive)
+- [ ] Criar uma Hash Table para tweets
+- [ ] Criar uma função de hashing que suporte caracteres
+- [ ] Criar uma Hash Table para palavras
