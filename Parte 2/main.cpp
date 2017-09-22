@@ -124,10 +124,13 @@ bool ordenacao(Palavra p1, Palavra p2)
 }
 
 //Verifica se uma palavra eh igual a outra
-bool ehIgual(Palavra p1, Palavra p2)
+bool ehIgual(Palavra &p1, Palavra &p2)
 {
 	if (p1.getHash() == p2.getHash())
-		return true;
+    {
+        p1.aumentaFreq();
+        return true;
+    }
 	else
 		return false;
 }
@@ -178,16 +181,11 @@ int main()
 	short n;
 	cout << "Digite o numero de tweets aleatorios para calcular a frequencia das palavras: " << endl;
 	cin >> n;
-	while (n > tam)
-	{
-		cout << "Numero invalido, digite um numero menor ou igual a " << tam << endl;
-		cin >> n;
-	}
 
 	int i; //Variavel para controle de iterações
 	//Preparando os tweets para ser calculada a frequencia
-	cout << "Preparando os tweets para ser calculada a frequencia, serao realizados [5] passos..." << endl;
-	cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todas as strings em minusculo." << endl;
+	cout << "Preparando os tweets para ser calculada a frequencia, serao realizados [4] passos..." << endl;
+	cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todas as strings em minusculo e calculando as frequencias." << endl;
 	for (i = 0; i < tam; i++)
 		vTweet[i]->setTweetText(limpaString(vTweet[i]->getTweetText()));
 
@@ -205,30 +203,15 @@ int main()
 		vPalavras[i].setHash(string_hash(vPalavras[i].getConteudo()));
 	}
 
-	//Calculando a frequencia de todas as palavras (nao sei se tem um jeito melhor que nao seja O(n^2), provavelmente tem)
-	cout << "[4] Calculando a frequencia de cada palavra, este processo pode demorar." << endl;
-	for (i = 0; i<vPalavras.size(); i++)
-	{
-		for (int n = 0; n<vPalavras.size(); n++)
-		{
-			if (vPalavras[i].getHash() == vPalavras[n].getHash())//Se os hashings sao iguais, entao as palavras sao iguais
-				vPalavras[i].aumentaFreq(); //Aumenta a frequencia da palavra
-		}
-	}
-
 	//Ordenando o vetor por ordem de frequencia
-	cout << "[5] Ordenando o vetor por ordem de frequencia." << endl;
+	cout << "[4] Ordenando o vetor por ordem de frequencia." << endl;
 	ordenaVetor(vPalavras);
 
 	//Le o numero N de palavras que o usuario deseja ver a frequencia
-	int n_pal;
 	cout << "Digite o numero de palavras a serem exibidas com suas frequencias: " << endl;
+	int n_pal;
+	cin.clear();
 	cin >> n_pal;
-	while (n_pal > vPalavras.size())
-	{
-		cout << "Numero invalido, digite um numero menor ou igual a " << vPalavras.size() << endl;
-		cin >> n_pal;
-	}
 
 	//Imprimindo as n_pal palavras mais usadas
 	cout << endl << "Palavras mais usadas:" << endl;
