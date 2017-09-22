@@ -102,14 +102,16 @@ void separaPalavras(string original, vector<Palavra> &vPal)
 }
 
 //Remove todas as pontuacoes, espacos, caracteres especiais e coloca todas as letras em minusculo
-void limpaString(string &s)
+string limpaString(string original)
 {
+    string s = original;
 	/*Nao usei o erase/remove porque em tweets que nao existe espacos entre a pontuacao, as palavras ficariam todas juntas dificultando dividir o tweet em varias palavras
 	Exemplo: usando erase/remove no tweet Exemplo.de.tweet, iria ficar Exemplodetweet e isso ia contar como uma palavra so
 	Usando o replace_if com espacos, ficaria Exemplo de tweet, o que eh o certo*/
 	replace_if(s.begin(), s.end(), ::ispunct, ' ');//Troca todos os sinais de pontuacao e caracteres especiais por espacos
 	transform(s.begin(), s.end(), s.begin(), ::tolower);//Coloca as letras em minusculo
 	removeEspaco(s);//Remove os espacos desneessarios
+	return s;
 }
 
 //Funcao auxiliar para ordenar o vetor em ordem alfabetica
@@ -150,10 +152,10 @@ void ordenaVetor(vector<Palavra> &vPal)
 //Funcao randomiza o conteudo de um vetor de tweets
 //Entrada: Ponteiro para vetor do tipo Tweet, tamanho do vetor origem seed do random
 //Saida: O vetor de tweets com valores entre as posicoes randomizados (desordena)
-void randomiza(Tweet** vetor, int tam, int seed) 
+void randomiza(Tweet** vetor, int tam, int seed)
 {
 	srand(seed);
-	for (int i = 0; i < tam; i++) 
+	for (int i = 0; i < tam; i++)
 		swap(vetor[rand() % tam], vetor[rand() % tam]);
 }
 
@@ -182,34 +184,35 @@ int main()
 		cin >> n;
 	}
 
+	int i; //Variavel para controle de iterações
 	//Preparando os tweets para ser calculada a frequencia
 	cout << "Preparando os tweets para ser calculada a frequencia, serao realizados [5] passos..." << endl;
 	cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todas as strings em minusculo." << endl;
-	for (int t = 0; t < tam; t++)
-		limpaString(vTweet[t]->getTweetText());
+	for (i = 0; i < tam; i++)
+		vTweet[i]->setTweetText(limpaString(vTweet[i]->getTweetText()));
 
 	//Separando todos os tweets em palavras diferentes
 	cout << "[2] Separando todas as palavras dos tweets." << endl;
 	vector<Palavra> vPalavras; //Cria um vetor de palavras para armazenar todas as palavras do tweet
-	for (int p = 0; p < n; p++)
-		separaPalavras(vTweet[p]->getTweetText(),vPalavras);//Separa as palavras de cada tweet
+	for (i = 0; i < n; i++)
+		separaPalavras(vTweet[i]->getTweetText(),vPalavras);//Separa as palavras de cada tweet
 
 	//Calculando o hashing de cada palavra
 	cout << "[3] Calculando o hashing de cada palavra." << endl;
 	hash<string> string_hash;//Hashing padrao do C
-	for (int h = 0; h<vPalavras.size(); h++)
+	for (i = 0; i<vPalavras.size(); i++)
 	{
-		vPalavras[h].setHash(string_hash(vPalavras[h].getConteudo()));
+		vPalavras[i].setHash(string_hash(vPalavras[i].getConteudo()));
 	}
 
 	//Calculando a frequencia de todas as palavras (nao sei se tem um jeito melhor que nao seja O(n^2), provavelmente tem)
 	cout << "[4] Calculando a frequencia de cada palavra, este processo pode demorar." << endl;
-	for (int m = 0; m<vPalavras.size(); m++)
+	for (i = 0; i<vPalavras.size(); i++)
 	{
 		for (int n = 0; n<vPalavras.size(); n++)
 		{
-			if (vPalavras[m].getHash() == vPalavras[n].getHash())//Se os hashings sao iguais, entao as palavras sao iguais
-				vPalavras[m].aumentaFreq(); //Aumenta a frequencia da palavra
+			if (vPalavras[i].getHash() == vPalavras[n].getHash())//Se os hashings sao iguais, entao as palavras sao iguais
+				vPalavras[i].aumentaFreq(); //Aumenta a frequencia da palavra
 		}
 	}
 
@@ -229,9 +232,9 @@ int main()
 
 	//Imprimindo as n_pal palavras mais usadas
 	cout << endl << "Palavras mais usadas:" << endl;
-	for (int b = 0; b<n_pal; b++)
+	for (i = 0; i<n_pal; i++)
 	{
-		cout << vPalavras[b].getFreq() << " - " << vPalavras[b].getConteudo() << endl;
+		cout << vPalavras[i].getFreq() << " - " << vPalavras[i].getConteudo() << endl;
 	}
 
 	//system("pause");
