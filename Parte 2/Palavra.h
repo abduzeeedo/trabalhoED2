@@ -6,12 +6,12 @@ using namespace std;
 class Palavra
 {
 private:
-	string conteudo;
-	int frequencia;
-	int numero_hash;
+	string conteudo; //Palavra em si
+	int frequencia; //Numero de vezes que a palavra aparece
+	int numero_hash; //Numero do hashing da palavra
 public:
 	Palavra();
-	Palavra(string, int);
+	Palavra(string, int); //Construtor sobrecarregado
 	virtual ~Palavra();
 	string getConteudo();
 	void setConteudo(string);
@@ -21,5 +21,4 @@ public:
 	void setHash(int);
 	int getHash();
 };
-
 #endif // PALAVRA_H

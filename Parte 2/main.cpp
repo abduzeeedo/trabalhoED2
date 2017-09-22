@@ -71,6 +71,7 @@ void removeEspaco(string &str)
 	}
 }
 
+//Separa a string original em varias palavras, que sao armazenadas em um vetor
 void separaPalavras(string original, vector<Palavra> &vPal)
 {
 	string buffer;
@@ -82,7 +83,7 @@ void separaPalavras(string original, vector<Palavra> &vPal)
 		}
 		else //Caso seja um espaco, transfere todo o buffer anterior (uma palavra completa) para o vetor de palavras
 		{
-			if (buffer.size() < 2)//Ignora palavras com 2 letras ou menos
+			if (buffer.size() < 2)//Ignora palavras com menos de 2 letras
 				buffer.clear();
 			else
 			{
@@ -133,7 +134,7 @@ bool ehIgual(Palavra p1, Palavra p2)
 		return false;
 }
 
-//Funcao para ordenacao do vetor em base das frequencias
+//Funcao para ordenacao do vetor em base das frequencias (sera substituido pelo MergeSort na implementacao final)
 bool ordenaFreq(Palavra p1, Palavra p2)
 {
 	if (p1.getFreq() > p2.getFreq())
@@ -144,68 +145,29 @@ bool ordenaFreq(Palavra p1, Palavra p2)
 
 int main()
 {
-	cout << "-Strings de testes de tweets-" << endl;
-	string s1 = "este e um teste de tweet";
-	cout << s1 << endl;
-	string s2 = "Este, tambem, e um teste de tweet.";
-	cout << s2 << endl;
-	string s3 = "Mais um teste!!";
-	cout << s3 << endl;
-	string s4 = "Este tweet tem caracteres especiais: ! @ # $ % & * ( ) e mais alguns";
-	cout << s4 << endl;
-	string s5 = "teste de link http://www.google.com.br";
-	cout << s5;
-	cout << endl;
-
-	//Coloca todas as strings como minusculas (case insensitive)
-	//O hashing padrao do C gera resultados diferentes dependendo se esta em caps lock ou nao
-	//Por isso precisa de colocar tudo em minusculo para garantir
-	sMinusculo(s1);
-	sMinusculo(s2);
-	sMinusculo(s3);
-	sMinusculo(s4);
-	sMinusculo(s5);
-
-	cout << endl << "-Strings em minusculo sem os caracteres especiais, espacos e pontuacoes-" << endl;
-	//Troca todos os sinais de pontuacao e caracteres especiais por espacos e depois remove os espacos desnecessarios
-	limpaString(s1);
-	limpaString(s2);
-	limpaString(s3);
-	limpaString(s4);
-	limpaString(s5);
-	cout << s1 << endl;
-	cout << s2 << endl;
-	cout << s3 << endl;
-	cout << s4 << endl;
-	cout << s5 << endl;
-
-	/*Ao final de todos estes processos, todos os tweets estarao prontos para serem divididos em varias palavras para fazer o hashing delas
-	todos os tweets estarao sem espacos desnecessarios, sem sinais de pontuacao e todas as letras minusculas (pois o hashing tem que ser case insensitive)*/
-
-	cout << endl << "==========================================================" << endl << endl;
-
-	//Fazendo o hashing de um tweet exemplo e calculando o uso de cada
-	//Hashing padrao do C
-	hash<string> string_hash;
+	hash<string> string_hash;//Hashing padrao do C
 	string teste = "Pedra, papel, tesoura, lagarto, Spock. Eh muito simples! Olhe - tesoura corta papel, papel cobre pedra, pedra esmaga lagarto, lagarto envenena Spock, Spock esmaga tesoura, tesoura decapita lagarto, lagarto come papel, papel refuta Spock, Spock vaporiza pedra e como sempre, pedra quebra tesoura...";
 	cout << "String de exemplo no trabalho:" << endl;
 	cout << teste << endl << endl;
 
+	//Preparando a string para ordenacao das palavras
 	sMinusculo(teste);
 	limpaString(teste);
+	/*Ao final de todos estes processos, todos os tweets estarao prontos para serem divididos em varias palavras para fazer o hashing delas
+	todos os tweets estarao sem espacos desnecessarios, sem sinais de pontuacao e todas as letras minusculas (pois o hashing tem que ser case insensitive)*/
 
 	//Separando os tweets em palavras diferentes
-	vector<Palavra>vPalavra;
-	separaPalavras(teste, vPalavra); //Testei apenas com uma string por vez mas fucniona para todas
-	//Imprimindo o vetor de palavras mais o hashing delas para ver se ficou tudo certo
+	vector<Palavra>vPalavra;//Cria um vetor de palavras para armazenar todas as palavras do tweet
+	separaPalavras(teste, vPalavra); //Separa as palavras
+	//Imprimindo o vetor de palavras com o hashing delas para ver se ficou tudo certo
 	cout << "-Vetor de palavras separadas da string e seus respectivos hashings-" << endl;
-	for (short p = 0; p<vPalavra.size(); p++)
+	for (int p = 0; p<vPalavra.size(); p++)
 	{
 		vPalavra[p].setHash(string_hash(vPalavra[p].getConteudo()));
 		cout << vPalavra[p].getConteudo() << " - " << vPalavra[p].getHash() << endl;
 	}
 
-	//Calculando a frequencia de todas as palavras (nao sei se tem um jeito melhor, provavelmente tem)
+	//Calculando a frequencia de todas as palavras (nao sei se tem um jeito melhor que nao seja O(n^2), provavelmente tem)
 	for (int m = 0; m<vPalavra.size(); m++)
 	{
 		for (int n = 0; n<vPalavra.size(); n++)
@@ -218,7 +180,7 @@ int main()
 	short n = 6; //Testando o top6 palavras (de acordo com o exemplo)
 	sort(vPalavra.begin(), vPalavra.end(), ordenacao);//Ordena o vetor em ordem alfabetica
 	vPalavra.erase(unique(vPalavra.begin(), vPalavra.end(), ehIgual),vPalavra.end());//Elimina palavras repetidas (eh necessario ordenar em ordem alfabetica primeiro)
-	sort(vPalavra.begin(), vPalavra.end(), ordenaFreq);//Ordena o vetor por ordem de frequencia
+	sort(vPalavra.begin(), vPalavra.end(), ordenaFreq);//Ordena o vetor por ordem de frequencia (sera substituido pelo MergeSort na implementacao final)
 
 	//Imprimindo as palavras mais usadas
 	cout << endl << "-Palavras mais usadas-" << endl;

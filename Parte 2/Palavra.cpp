@@ -17,6 +17,7 @@ Palavra::~Palavra()
 	//dtor
 }
 
+/*Gets e sets*/
 string Palavra::getConteudo()
 {
 	return conteudo;
