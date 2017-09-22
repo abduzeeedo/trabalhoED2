@@ -1,6 +1,6 @@
 #include <iostream>
-#include <string>
 #include <algorithm>
+#include <string>
 #include <vector>
 #include "Palavra.h"
 #include "Tweet.h"
@@ -101,6 +101,15 @@ void separaPalavras(string original, vector<Palavra> &vPal)
 	buffer.clear();
 }
 
+//Verifica se a letra e valida (se e de A a Z ou um numero)
+bool charInvalido(const char &c)
+{
+	if ((c <= 'Z' && c >= 'A') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
+		return false;
+	else
+		return true;
+}
+
 //Remove todas as pontuacoes, espacos, caracteres especiais e coloca todas as letras em minusculo
 string limpaString(string original)
 {
@@ -108,8 +117,8 @@ string limpaString(string original)
 	/*Nao usei o erase/remove porque em tweets que nao existe espacos entre a pontuacao, as palavras ficariam todas juntas dificultando dividir o tweet em varias palavras
 	Exemplo: usando erase/remove no tweet Exemplo.de.tweet, iria ficar Exemplodetweet e isso ia contar como uma palavra so
 	Usando o replace_if com espacos, ficaria Exemplo de tweet, o que eh o certo*/
-	replace_if(s.begin(), s.end(), ::ispunct, ' ');//Troca todos os sinais de pontuacao e caracteres especiais por espacos
 	transform(s.begin(), s.end(), s.begin(), ::tolower);//Coloca as letras em minusculo
+	replace_if(s.begin(), s.end(), charInvalido, ' ');//Troca todos os sinais de pontuacao e caracteres especiais por espacos
 	removeEspaco(s);//Remove os espacos desneessarios
 	return s;
 }
@@ -167,6 +176,11 @@ int main()
 	cout << "Digite o numero N de tweets a serem importados: " << endl;
 	int tam; //Quantidade de Tweets que serao lidos do arquivo txt
 	cin >> tam;
+	while (tam <= 0)
+	{
+		cout << "Tamanho invalido, digite um tamanho maior que 0" << endl;
+		cin >> tam;
+	}
 
 	//Importando tweets do arquivo TXT
 	GerTexto* ger = new GerTexto();
@@ -175,14 +189,19 @@ int main()
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
 
 	//Randomizando o vetor de entrada para fazer o calculo da frequencia de N tweets aleatorios
-	randomiza(vTweet, tamVet, 0);
+	randomiza(vTweet, tamVet, tam);
 
 	//Le o numero N de tweets que o usuario deseja fazer a frequencia de palavras
-	short n;
+	int n;
 	cout << "Digite o numero de tweets aleatorios para calcular a frequencia das palavras: " << endl;
 	cin >> n;
+	while (n > tam || n <= 0)
+	{
+		cout << "Numero invalido, digite um numero entre 1 e " << tam << endl;
+		cin >> n;
+	}
 
-	int i; //Variavel para controle de iterações
+	int i; //Variavel para controle de iteraÃ§Ãµes
 	//Preparando os tweets para ser calculada a frequencia
 	cout << "Preparando os tweets para ser calculada a frequencia, serao realizados [4] passos..." << endl;
 	cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todas as strings em minusculo e calculando as frequencias." << endl;
@@ -212,6 +231,11 @@ int main()
 	int n_pal;
 	cin.clear();
 	cin >> n_pal;
+	while (n_pal > vPalavras.size() || n_pal <= 0)
+	{
+		cout << "Numero invalido, digite um numero entre 1 e " << vPalavras.size() << endl;
+		cin >> n_pal;
+	}
 
 	//Imprimindo as n_pal palavras mais usadas
 	cout << endl << "Palavras mais usadas:" << endl;
@@ -220,6 +244,6 @@ int main()
 		cout << vPalavras[i].getFreq() << " - " << vPalavras[i].getConteudo() << endl;
 	}
 
-	//system("pause");
+	system("pause");
 	return 0;
 }
