@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include <string>
 #include <vector>
 #include "Palavra.h"
 #include "Tweet.h"
