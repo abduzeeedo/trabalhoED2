@@ -218,9 +218,7 @@ int main()
 	cout << "[3] Calculando o hashing de cada palavra." << endl;
 	hash<string> string_hash;//Hashing padrao do C
 	for (i = 0; i<vPalavras.size(); i++)
-	{
 		vPalavras[i].setHash(string_hash(vPalavras[i].getConteudo()));
-	}
 
 	//Ordenando o vetor por ordem de frequencia
 	cout << "[4] Ordenando o vetor por ordem de frequencia." << endl;
@@ -244,6 +242,6 @@ int main()
 		cout << vPalavras[i].getFreq() << " - " << vPalavras[i].getConteudo() << endl;
 	}
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
