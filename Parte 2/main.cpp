@@ -98,7 +98,7 @@ void separaPalavras(string original, vector<Palavra> &vPal)
 		}
 	}
 	//Adiciona a ultima palavra ao vetor (sem isso, somente com o for, ele nao adiciona a ultima palavra)
-	Palavra p2(buffer, 0);
+	Palavra p2(buffer, 1);
 	vPal.push_back(p2);
 	buffer.clear();
 }
@@ -199,7 +199,7 @@ int main()
 	int i; //Variavel para controle de iterações
 	//Preparando os tweets para ser calculada a frequencia
 	cout << endl << "Preparando os tweets para ser calculada a frequencia, serao realizados [5] passos..." << endl;
-	cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todas as strings em minusculo e calculando as frequencias." << endl;
+	cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao, colocando todas as strings em minusculo e calculando as frequencias." << endl;
 	for (i = 0; i < tam; i++)
 		vTweet[i]->setTweetText(limpaString(vTweet[i]->getTweetText()));
 
@@ -251,6 +251,6 @@ int main()
 		cout << vPalavras[i].getFreq() << " - " << vPalavras[i].getConteudo() << endl;
 	}
 
-	system("pause");
+	//system("pause");
 	return 0;
 }
