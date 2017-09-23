@@ -2,9 +2,11 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <time.h>   
 #include "Palavra.h"
 #include "Tweet.h"
 #include "GerTexto.h"
+#include "MergeSort.h"
 
 using namespace std;
 
@@ -89,7 +91,7 @@ void separaPalavras(string original, vector<Palavra> &vPal)
 			else
 			{
 				//Palavra* p = new Palavra(buffer,0);
-				Palavra p(buffer, 0);//Nao tenho certeza se e melhor fazer por ponteiro, se for eh so mudar
+				Palavra p(buffer, 1);//Nao tenho certeza se e melhor fazer por ponteiro, se for eh so mudar
 				vPal.push_back(p);
 				buffer.clear();
 			}
@@ -137,38 +139,31 @@ bool ehIgual(Palavra &p1, Palavra &p2)
 {
 	if (p1.getHash() == p2.getHash())
     {
-        p1.aumentaFreq();
+		if(&p1 != &p2) //Nao conta a mesma palavra 2 vezes
+			p1.aumentaFreq();
         return true;
     }
 	else
 		return false;
 }
 
-//Funcao auxiliar para ordenacao do vetor em base das frequencias (sera substituido pelo MergeSort na implementacao final)
-bool ordenaFreq(Palavra p1, Palavra p2)
-{
-	if (p1.getFreq() > p2.getFreq())
-		return true;
-	else
-		return false;
-}
-
-//Funcao auxiliar para deixar o vetor de palavras ordenado por frequencia
-void ordenaVetor(vector<Palavra> &vPal)
+//Funcao auxiliar para preparar o vetor para ser ordenado
+void preparaVetor(vector<Palavra> &vPal)
 {
 	sort(vPal.begin(), vPal.end(), ordenacao);//Ordena o vetor em ordem alfabetica
 	vPal.erase(unique(vPal.begin(), vPal.end(), ehIgual), vPal.end());//Elimina palavras repetidas (eh necessario ordenar em ordem alfabetica primeiro)
-	sort(vPal.begin(), vPal.end(), ordenaFreq);//Ordena o vetor por ordem de frequencia (sera substituido pelo MergeSort na implementacao final)
 }
 
 //Funcao randomiza o conteudo de um vetor de tweets
 //Entrada: Ponteiro para vetor do tipo Tweet, tamanho do vetor origem seed do random
 //Saida: O vetor de tweets com valores entre as posicoes randomizados (desordena)
-void randomiza(Tweet** vetor, int tam, int seed)
+void randomiza(Tweet** vetor, int tam)
 {
-	srand(seed);
 	for (int i = 0; i < tam; i++)
+	{
+		srand(2*i+tam); //Troca a seed do rand a cada iteraçao
 		swap(vetor[rand() % tam], vetor[rand() % tam]);
+	}
 }
 
 int main()
@@ -189,11 +184,11 @@ int main()
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
 
 	//Randomizando o vetor de entrada para fazer o calculo da frequencia de N tweets aleatorios
-	randomiza(vTweet, tamVet, tam);
+	randomiza(vTweet, tamVet);
 
 	//Le o numero N de tweets que o usuario deseja fazer a frequencia de palavras
 	int n;
-	cout << "Digite o numero de tweets aleatorios para calcular a frequencia das palavras: " << endl;
+	cout << endl << "Digite o numero de tweets aleatorios para calcular a frequencia das palavras: " << endl;
 	cin >> n;
 	while (n > tam || n <= 0)
 	{
@@ -203,7 +198,7 @@ int main()
 
 	int i; //Variavel para controle de iterações
 	//Preparando os tweets para ser calculada a frequencia
-	cout << "Preparando os tweets para ser calculada a frequencia, serao realizados [4] passos..." << endl;
+	cout << endl << "Preparando os tweets para ser calculada a frequencia, serao realizados [5] passos..." << endl;
 	cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todas as strings em minusculo e calculando as frequencias." << endl;
 	for (i = 0; i < tam; i++)
 		vTweet[i]->setTweetText(limpaString(vTweet[i]->getTweetText()));
@@ -212,17 +207,31 @@ int main()
 	cout << "[2] Separando todas as palavras dos tweets." << endl;
 	vector<Palavra> vPalavras; //Cria um vetor de palavras para armazenar todas as palavras do tweet
 	for (i = 0; i < n; i++)
-		separaPalavras(vTweet[i]->getTweetText(),vPalavras);//Separa as palavras de cada tweet
+		separaPalavras(vTweet[i]->getTweetText(), vPalavras);//Separa as palavras de cada tweet
+
+	//Desalocando o vetor de tweets original (nao ta desalocando n sei pq)
+	delete[] vTweet;
+	delete ger;
+	vTweet = NULL;
+	ger = NULL;
 
 	//Calculando o hashing de cada palavra
 	cout << "[3] Calculando o hashing de cada palavra." << endl;
 	hash<string> string_hash;//Hashing padrao do C
 	for (i = 0; i<vPalavras.size(); i++)
+	{
 		vPalavras[i].setHash(string_hash(vPalavras[i].getConteudo()));
+	}
+
+	//Preparando o vetor para ordenacao
+	cout << "[4] Preparando o vetor para a ordenacao." << endl;
+	preparaVetor(vPalavras);
 
 	//Ordenando o vetor por ordem de frequencia
-	cout << "[4] Ordenando o vetor por ordem de frequencia." << endl;
-	ordenaVetor(vPalavras);
+	cout << "[5] Ordenando o vetor por ordem de frequencia usando MergeSort." << endl;
+	MergeSort ms;
+	ms.mergesort(vPalavras, 0, vPalavras.size()-1);
+	cout << "Vetor ordenado, foram realizadas " << ms.getNumTrocas() << " trocas e " << ms.getNumComparacoes() << " comparacoes." << endl << endl;
 
 	//Le o numero N de palavras que o usuario deseja ver a frequencia
 	cout << "Digite o numero de palavras a serem exibidas com suas frequencias: " << endl;
@@ -236,12 +245,12 @@ int main()
 	}
 
 	//Imprimindo as n_pal palavras mais usadas
-	cout << endl << "Palavras mais usadas:" << endl;
+	cout << endl << "As [" << n_pal << "] palavras mais usadas sao:" << endl;
 	for (i = 0; i<n_pal; i++)
 	{
 		cout << vPalavras[i].getFreq() << " - " << vPalavras[i].getConteudo() << endl;
 	}
 
-	//system("pause");
+	system("pause");
 	return 0;
 }
