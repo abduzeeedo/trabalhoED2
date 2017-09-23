@@ -49,6 +49,7 @@ ED2 - 2017.3
 - [x] Ler N tweets aleatorios diferentes
 - [x] Remover pontuações e caracteres especiais dos tweets
 - [x] Colocar todos os tweets com letras minúsculas (case insensitive)
+- [x] Ordenar as palavras por MergeSort
 - [ ] Criar uma Hash Table para tweets
 - [ ] Criar uma função de hashing que suporte caracteres
 - [ ] Criar uma Hash Table para palavras
