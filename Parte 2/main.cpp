@@ -138,10 +138,8 @@ bool ordenacao(Palavra p1, Palavra p2)
 //Verifica se uma palavra eh igual a outra
 bool ehIgual(Palavra &p1, Palavra &p2)
 {
-	if (p1.getHash() == p2.getHash())
+	if (p1.getConteudo() == p2.getConteudo())
     {
-		if(&p1 != &p2) //Nao conta a mesma palavra 2 vezes
-			p1.aumentaFreq();
         return true;
     }
 	else
@@ -216,6 +214,7 @@ int main()
 	vTweet = NULL;
 	ger = NULL;
 
+	/*----------------ALTERAR O HASHING AQUI----------------*/
 	//Calculando o hashing de cada palavra
 	cout << "[3] Calculando o hashing de cada palavra." << endl;
 	hash<string> string_hash;//Hashing padrao do C
