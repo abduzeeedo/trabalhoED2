@@ -1,3 +1,12 @@
+/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO:
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
+
 #include <iostream>
 #include <algorithm>
 #include <string>
@@ -10,25 +19,6 @@
 #include "HashTweet.h"
 #include "HashPalavra.h"
 using namespace std;
-
-/*
-//Funcao de hashing que achei na net, caso nao possa usar o hashing padrao
-//Alterar ela se for usar mesmo
-unsigned int hasht(const char* s)
-{
-unsigned int h = 0;
-for (; *s; ++s)
-{
-h += *s;
-h += (h << 10);
-h ^= (h >> 6);
-}
-h += (h << 3);
-h ^= (h >> 11);
-h += (h << 15);
-return h;
-}
-*/
 
 //Remove os espacos a mais de uma string, feito in-place e O(n) onde n eh o tamanho da palavra
 void removeEspaco(string &str)
@@ -91,14 +81,13 @@ void separaPalavras(string original, vector<Palavra> &vPal)
                 buffer.clear();
             else
             {
-                //Palavra* p = new Palavra(buffer,0);
-                Palavra p(buffer, 1);//Nao tenho certeza se e melhor fazer por ponteiro, se for eh so mudar
+                Palavra p(buffer, 1);
                 vPal.push_back(p);
                 buffer.clear();
             }
         }
     }
-    //Adiciona a ultima palavra ao vetor (sem isso, somente com o for, ele nao adiciona a ultima palavra)
+    //Adiciona a ultima palavra ao vetor
     Palavra p2(buffer, 1);
     vPal.push_back(p2);
     buffer.clear();
@@ -142,7 +131,7 @@ int main()
 {
     cout << "Digite o numero N de tweets a serem importados: " << endl;
     int tam; //Quantidade de Tweets que serao lidos do arquivo txt
-     HashPalavra* hp;
+    HashPalavra* hp;
     cin >> tam;
     while (tam <= 0)
     {
@@ -182,12 +171,6 @@ int main()
     for (i = 0; i < n; i++)
         separaPalavras(vTweet[i]->getTweetText(), vPalavras);//Separa as palavras de cada tweet
 
-    //Desalocando o vetor de tweets original (nao ta desalocando n sei pq)
-    delete[] vTweet;
-    delete ger;
-    vTweet = NULL;
-    ger = NULL;
-
     //Calculando o hashing de cada palavra
     cout << "[3] Calculando o hashing de cada palavra." << endl;
        hp = new HashPalavra(vPalavras.size()/2);
@@ -196,8 +179,8 @@ int main()
 
     //Preparando o vetor para ordenacao
     cout << "[4] Preparando o vetor para a ordenacao." << endl;
-    vector<Palavra> novo = hp->retornaVetor();  //Novo vetor com as palavras do hash
     vPalavras.clear();
+    vector<Palavra> novo = hp->retornaVetor();  //Novo vetor com as palavras do hash
     vPalavras = novo;
 
     //Ordenando o vetor por ordem de frequencia
