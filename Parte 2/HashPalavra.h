@@ -8,6 +8,8 @@
 #include "math.h"
 #include <vector>
 #include "GerTexto.h"
+#include <bitset>
+
 using namespace std;
 
 class HashPalavra

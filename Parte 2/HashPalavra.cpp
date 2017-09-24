@@ -67,11 +67,17 @@ HashPalavra::~HashPalavra()
 long long int HashPalavra::funcaoHashing(string chave)
 {
     int tamanho = 0;
-    for(int i=0; i <chave.size(); i++)
+    int menor = chave[0], posicao =0;
+    for(int i=1; i <chave.size(); i++)
     {
-        tamanho+=chave[i];
+        tamanho+=chave[i-1]*chave[i];
+        if(chave[i] < menor)
+        {
+            menor = chave[i];
+            posicao =i;
+        }
     }
-    tamanho = (max(chave.size()*chave[0], chave.size()*chave[chave.size()-1]) + tamanho);
+    tamanho = ((chave.size()*posicao)+ tamanho*menor);
     return tamanho % m;
 }
 //tratamento de colisao
