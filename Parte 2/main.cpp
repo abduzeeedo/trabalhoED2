@@ -160,7 +160,7 @@ void randomiza(Tweet** vetor, int tam)
 {
 	for (int i = 0; i < tam; i++)
 	{
-		srand(2*i+tam); //Troca a seed do rand a cada iteraÃ§ao
+		srand(2*i+tam); //Troca a seed do rand a cada iteraçao
 		swap(vetor[rand() % tam], vetor[rand() % tam]);
 	}
 }
@@ -195,7 +195,7 @@ int main()
 		cin >> n;
 	}
 
-	int i; //Variavel para controle de iteraÃ§Ãµes
+	int i; //Variavel para controle de iterações
 	//Preparando os tweets para ser calculada a frequencia
 	cout << endl << "Preparando os tweets para ser calculada a frequencia, serao realizados [5] passos..." << endl;
 	cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao, colocando todas as strings em minusculo e calculando as frequencias." << endl;
@@ -229,25 +229,23 @@ int main()
 
 	//Preparando o vetor para ordenacao
 	cout << "[4] Preparando o vetor para a ordenacao." << endl;
-	//preparaVetor(vPalavras);
-
+    vector<Palavra> vPalavras2 = hp->retornaVetor(); //novo vetor com as palavras do hash
 	//Ordenando o vetor por ordem de frequencia
 	cout << "[5] Ordenando o vetor por ordem de frequencia usando MergeSort." << endl;
 	MergeSort ms;
-	ms.mergesort(vPalavras, 0, vPalavras.size()-1);
+	ms.mergesort(vPalavras2, 0, vPalavras2.size()-1);
 	cout << "Exibindo palavras" << endl;
     hp->exibirTabela();
 	cout << "Vetor ordenado, foram realizadas " << ms.getNumTrocas() << " trocas e " << ms.getNumComparacoes() << " comparacoes." << endl << endl;
 
 	//Le o numero N de palavras que o usuario deseja ver a frequencia
 	cout << "Digite o numero de palavras a serem exibidas com suas frequencias: " << endl;
-		    cout << vPalavras.size() << endl;
 	int n_pal;
 	cin.clear();
 	cin >> n_pal;
-	while (n_pal > vPalavras.size() || n_pal <= 0)
+	while (n_pal > vPalavras2.size() || n_pal <= 0)
 	{
-		cout << "Numero invalido, digite um numero entre 1 e " << vPalavras.size() << endl;
+		cout << "Numero invalido, digite um numero entre 1 e " << vPalavras2.size() << endl;
 		cin >> n_pal;
 	}
 
@@ -255,7 +253,7 @@ int main()
 	cout << endl << "As [" << n_pal << "] palavras mais usadas sao:" << endl;
 	for (i = 0; i<n_pal; i++)
 	{
-		cout << vPalavras[i].getFreq() << " - " << vPalavras[i].getConteudo() << endl;
+		cout << vPalavras2[i].getFreq() << " - " << vPalavras2[i].getConteudo() << endl;
 	}
 
 	//system("pause");

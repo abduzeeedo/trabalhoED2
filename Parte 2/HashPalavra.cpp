@@ -137,12 +137,28 @@ void HashPalavra::exibirTabela()
     for (int i = 0; i < m; i++)
     {
         tabela[i].inicio();
-            cout << "Tabela[" << i << "]:";
+        cout << "Tabela[" << i << "]:";
         while (!tabela[i].verificaNull())
         {
-                cout << " -> " << tabela[i].consultaChave()->getConteudo() << " ("<<tabela[i].consultaChave()->getFreq() << ")";
+            cout << " -> " << tabela[i].consultaChave()->getConteudo() << " ("<<tabela[i].consultaChave()->getFreq() << ")";
             tabela[i].proxNo();
         }
         cout << endl;
     }
+}
+//retorna um vector do tipo palavra para ordernar
+vector<Palavra> HashPalavra::retornaVetor()
+{
+    vector<Palavra> vet;
+
+    for (int i = 0; i < m; i++)
+    {
+        tabela[i].inicio();
+        while (!tabela[i].verificaNull())
+        {
+            vet.push_back(*tabela[i].consultaChave());
+            tabela[i].proxNo();
+        }
+    }
+    return vet;
 }

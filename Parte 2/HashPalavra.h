@@ -24,6 +24,7 @@ public:
     Palavra* retornaPorPalavra(string id);
     Palavra* retornaPorPosicao(int id);
     void exibirTabela();
+    vector<Palavra> retornaVetor();
     HashPalavra(int tam);
     ~HashPalavra();
 
