@@ -3,6 +3,7 @@
 Palavra::Palavra()
 {
 	//ctor
+	frequencia = 0;
 }
 
 //Construtor sobrecarregado

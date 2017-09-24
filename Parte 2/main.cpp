@@ -229,7 +229,7 @@ int main()
 
 	//Preparando o vetor para ordenacao
 	cout << "[4] Preparando o vetor para a ordenacao." << endl;
-	preparaVetor(vPalavras);
+	//preparaVetor(vPalavras);
 
 	//Ordenando o vetor por ordem de frequencia
 	cout << "[5] Ordenando o vetor por ordem de frequencia usando MergeSort." << endl;
@@ -241,6 +241,7 @@ int main()
 
 	//Le o numero N de palavras que o usuario deseja ver a frequencia
 	cout << "Digite o numero de palavras a serem exibidas com suas frequencias: " << endl;
+		    cout << vPalavras.size() << endl;
 	int n_pal;
 	cin.clear();
 	cin >> n_pal;
