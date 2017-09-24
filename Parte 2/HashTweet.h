@@ -1,7 +1,7 @@
 #ifndef HASHTWEET_H
 #define HASHTWEET_H
 
-#include "ListaEncad.h"
+#include "ListaTweet.h"
 #include <string>
 #include <iostream>
 #include "math.h"
@@ -14,18 +14,18 @@ using namespace std;
 
 class HashTweet{
 private:
-    ListaEncad* tabela;
-    int m, tratColis;
+    ListaTweet* tabela;
+    int m;
 	long long int divisao(long long int chave);
 	long long int enlacamento(long long int chave);
     long long int comparacoes;
     long long int maiorPrimo(int N);
+    void encadSeparado(Tweet* chave);
 
 
 public:
-    HashTweet(int tam, int trat);
+    HashTweet(int tam);
     void inserir(Tweet* chave);
-    void encadSeparado(Tweet* chave);
     Tweet* retornaPorTweetId(int id);
     Tweet* retornaPorPosicao(int id);
     void salvarArquivo(string nome);

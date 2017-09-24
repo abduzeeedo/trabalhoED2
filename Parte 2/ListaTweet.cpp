@@ -1,11 +1,11 @@
-#include "ListaEncad.h"
+#include "ListaTweet.h"
 
-ListaEncad::ListaEncad()
+ListaTweet::ListaTweet()
 {
     pri = NULL;
     it = NULL;
 }
-void ListaEncad::addNo(Tweet *chave)
+void ListaTweet::addNo(Tweet *chave)
 {
     No *n;
     n->atual = chave;
@@ -22,11 +22,11 @@ void ListaEncad::addNo(Tweet *chave)
         it->prox = n;
     }
 }
-Tweet *ListaEncad::consultaChave()
+Tweet *ListaTweet::consultaChave()
 {
     return it->atual;
 }
-Tweet *ListaEncad::retornaPorId(int id)
+Tweet *ListaTweet::retornaPorId(int id)
 {
     if (!verificaVazio())
     {
@@ -45,41 +45,41 @@ Tweet *ListaEncad::retornaPorId(int id)
             return NULL;
     }
 }
-void ListaEncad::inicio()
+void ListaTweet::inicio()
 {
     it = pri;
 }
-void ListaEncad::proxNo()
+void ListaTweet::proxNo()
 {
     if (it != NULL)
         it = it->prox;
 }
-bool ListaEncad::verificaUlt()
+bool ListaTweet::verificaUlt()
 {
     if (it->prox == NULL)
         return true;
     else
         return false;
 }
-bool ListaEncad::verificaVazio()
+bool ListaTweet::verificaVazio()
 {
     if (pri == NULL)
         return true;
     else
         return false;
 }
-Tweet *ListaEncad::retornaPrimeiro()
+Tweet *ListaTweet::retornaPrimeiro()
 {
     return pri->atual;
 }
-bool ListaEncad::verificaNull()
+bool ListaTweet::verificaNull()
 {
     if (it == NULL)
         return true;
     else
         return false;
 }
-ListaEncad::~ListaEncad()
+ListaTweet::~ListaTweet()
 {
     it = pri;
     No *aux;

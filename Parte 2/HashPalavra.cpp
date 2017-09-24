@@ -1,4 +1,4 @@
-#include "HashTweet.h"
+#include "HashPalavra.h"
 //patch para a funcao to_string
 template <typename T>
 std::string to_string(T value)
@@ -8,7 +8,7 @@ std::string to_string(T value)
 	return os.str() ;
 }
 //retorna o maior primo anterior à um numero
-long long int HashTweet::maiorPrimo(int N)
+long long int HashPalavra::maiorPrimo(int N)
 {
     int limite = floor(sqrt(N));
     vector<int> vet(N);
@@ -50,55 +50,56 @@ long long int HashTweet::maiorPrimo(int N)
 }
 
 //construtor
-HashTweet::HashTweet(int tam)
+HashPalavra::HashPalavra(int tam)
 {
     m = maiorPrimo(tam + 100);
     cout << "M:" << m << endl;
-    tabela = new ListaTweet[m];
-    comparacoes = 0;
+    tabela = new ListaPalavra[m];
 }
 
 //destrutor
-HashTweet::~HashTweet()
+HashPalavra::~HashPalavra()
 {
     //falta implementar destrutor
 }
 
 //Funcoes de hashing
-long long int HashTweet::divisao(long long int chave)
+long long int HashPalavra::funcaoHashing(string chave)
 {
-    return chave % m;
+    int tamanho = 0;
+    for(int i=0;i <chave.size(); i++){
+        tamanho+=chave[i];
+    }
+    tamanho = (chave.size() + tamanho*chave.size());
+    return tamanho % m;
 }
 //tratamento de colisao
-void HashTweet::encadSeparado(Tweet* chave)
+void HashPalavra::encadSeparado(Palavra* chave)
 {
-    long long int posicao = divisao(chave->getTweetID());
+    long long int posicao = funcaoHashing(chave->getConteudo());
     if (!tabela[posicao].verificaVazio())
     {
-        comparacoes++;
         tabela[posicao].addNo(chave);
     }
 }
 
 //Inserir uma nova chave na tabela, verifica se a posicao da funcao hashing já está ocupada
-void HashTweet::inserir(Tweet* chave)
+void HashPalavra::inserir(Palavra* chave)
 {
-    long long int posicao = divisao(chave->getTweetID());
+    long long int posicao = funcaoHashing(chave->getConteudo());
     if (tabela[posicao].verificaVazio())
         tabela[posicao].addNo(chave);
     else
         encadSeparado(chave);
 }
 //Salva os resultados em um arquivo com o nome passado como parametro
-void HashTweet::salvarArquivo(string nome)
+void HashPalavra::salvarArquivo(string nome)
 {
     GerTexto *ger = new GerTexto();
     string texto;
     texto = "Encadeamento separado\n";
     texto += "Tamanho da tabela: ";
     texto += to_string(m);
-    texto += "\nComparacoes: ";
-    texto += to_string(comparacoes);
     texto += "\n";
     texto += "tamanho da tabela: ";
     texto += to_string((float)sizeof(tabela) * 0.001);
@@ -107,8 +108,8 @@ void HashTweet::salvarArquivo(string nome)
     delete ger;
 }
 //retorna o tweet com id desejado
-Tweet* HashTweet::retornaPorTweetId(int id){
-    long long int posicao = divisao(id);
+Palavra* HashPalavra::retornaPorPalavra(string id){
+    long long int posicao = funcaoHashing(id);
     if(tabela[posicao].verificaVazio())
         return NULL;
     else {
@@ -116,7 +117,7 @@ Tweet* HashTweet::retornaPorTweetId(int id){
     }
 }
 //retorna o primeiro tweet da posicao desejada
-Tweet* HashTweet::retornaPorPosicao(int id){
+Palavra* HashPalavra::retornaPorPosicao(int id){
     if(tabela[id].verificaVazio())
         return NULL;
     else {
@@ -126,7 +127,7 @@ Tweet* HashTweet::retornaPorPosicao(int id){
 }
 
 //Exibe a tabela e seus valores
-void HashTweet::exibirTabela()
+void HashPalavra::exibirTabela()
 {
     for (int i = 0; i < m; i++)
     {

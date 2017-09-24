@@ -8,6 +8,7 @@
 #include "GerTexto.h"
 #include "MergeSort.h"
 #include "HashTweet.h"
+#include "HashPalavra.h"
 using namespace std;
 
 /*
