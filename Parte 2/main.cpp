@@ -2,12 +2,12 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include <time.h>   
+#include <time.h>
 #include "Palavra.h"
 #include "Tweet.h"
 #include "GerTexto.h"
 #include "MergeSort.h"
-
+#include "HashTweet.h"
 using namespace std;
 
 /*
