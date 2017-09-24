@@ -126,33 +126,6 @@ string limpaString(string original)
 	return s;
 }
 
-//Funcao auxiliar para ordenar o vetor em ordem alfabetica
-bool ordenacao(Palavra p1, Palavra p2)
-{
-	if (p1.getConteudo() > p2.getConteudo())
-		return true;
-	else
-		return false;
-}
-
-//Verifica se uma palavra eh igual a outra
-bool ehIgual(Palavra &p1, Palavra &p2)
-{
-	if (p1.getConteudo() == p2.getConteudo())
-    {
-        return true;
-    }
-	else
-		return false;
-}
-
-//Funcao auxiliar para preparar o vetor para ser ordenado
-void preparaVetor(vector<Palavra> &vPal)
-{
-	sort(vPal.begin(), vPal.end(), ordenacao);//Ordena o vetor em ordem alfabetica
-	vPal.erase(unique(vPal.begin(), vPal.end(), ehIgual), vPal.end());//Elimina palavras repetidas (eh necessario ordenar em ordem alfabetica primeiro)
-}
-
 //Funcao randomiza o conteudo de um vetor de tweets
 //Entrada: Ponteiro para vetor do tipo Tweet, tamanho do vetor origem seed do random
 //Saida: O vetor de tweets com valores entre as posicoes randomizados (desordena)
@@ -160,7 +133,7 @@ void randomiza(Tweet** vetor, int tam)
 {
 	for (int i = 0; i < tam; i++)
 	{
-		srand(2*i+tam); //Troca a seed do rand a cada iteraçao
+		srand(2*i+tam); //Troca a seed do rand a cada iteraÃ§ao
 		swap(vetor[rand() % tam], vetor[rand() % tam]);
 	}
 }
@@ -180,7 +153,7 @@ int main()
 	GerTexto* ger = new GerTexto();
 	int tamVet = tam * 2; //Serao instanciados 2 vezes o numero de tweets informados, para poder randomizar
 	cout << "Instanciando " << tam << " tweets para realizar os testes, aguarde." << endl;
-	Tweet** vTweet = ger->carregaTweets("tw.txt", tamVet);
+	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
 
 	//Randomizando o vetor de entrada para fazer o calculo da frequencia de N tweets aleatorios
 	randomiza(vTweet, tamVet);
@@ -195,7 +168,7 @@ int main()
 		cin >> n;
 	}
 
-	int i; //Variavel para controle de iterações
+	int i; //Variavel para controle de iteraÃ§Ãµes
 	//Preparando os tweets para ser calculada a frequencia
 	cout << endl << "Preparando os tweets para ser calculada a frequencia, serao realizados [5] passos..." << endl;
 	cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao, colocando todas as strings em minusculo e calculando as frequencias." << endl;
@@ -214,26 +187,22 @@ int main()
 	vTweet = NULL;
 	ger = NULL;
 
-	/*----------------ALTERAR O HASHING AQUI----------------*/
 	//Calculando o hashing de cada palavra
 	cout << "[3] Calculando o hashing de cada palavra." << endl;
-	/*hash<string> string_hash;//Hashing padrao do C
-
-	*/
 	HashPalavra* hp = new HashPalavra(vPalavras.size());
 	for (i = 0; i<vPalavras.size(); i++)
-	{
 	    hp->inserir(&vPalavras[i]);
-		//vPalavras[i].setHash(string_hash(vPalavras[i].getConteudo()));
-	}
 
 	//Preparando o vetor para ordenacao
 	cout << "[4] Preparando o vetor para a ordenacao." << endl;
-    vector<Palavra> vPalavras2 = hp->retornaVetor(); //novo vetor com as palavras do hash
+	vector<Palavra> novo = hp->retornaVetor();  //Novo vetor com as palavras do hash
+	vPalavras.clear();
+	vPalavras = novo;
+
 	//Ordenando o vetor por ordem de frequencia
 	cout << "[5] Ordenando o vetor por ordem de frequencia usando MergeSort." << endl;
 	MergeSort ms;
-	ms.mergesort(vPalavras2, 0, vPalavras2.size()-1);
+	ms.mergesort(vPalavras, 0, vPalavras.size()-1);
 	cout << "Exibindo palavras" << endl;
     hp->exibirTabela();
 	cout << "Vetor ordenado, foram realizadas " << ms.getNumTrocas() << " trocas e " << ms.getNumComparacoes() << " comparacoes." << endl << endl;
@@ -243,9 +212,9 @@ int main()
 	int n_pal;
 	cin.clear();
 	cin >> n_pal;
-	while (n_pal > vPalavras2.size() || n_pal <= 0)
+	while (n_pal > vPalavras.size() || n_pal <= 0)
 	{
-		cout << "Numero invalido, digite um numero entre 1 e " << vPalavras2.size() << endl;
+		cout << "Numero invalido, digite um numero entre 1 e " << vPalavras.size() << endl;
 		cin >> n_pal;
 	}
 
@@ -253,9 +222,9 @@ int main()
 	cout << endl << "As [" << n_pal << "] palavras mais usadas sao:" << endl;
 	for (i = 0; i<n_pal; i++)
 	{
-		cout << vPalavras2[i].getFreq() << " - " << vPalavras2[i].getConteudo() << endl;
+		cout << vPalavras[i].getFreq() << " - " << vPalavras[i].getConteudo() << endl;
 	}
 
-	//system("pause");
+	system("pause");
 	return 0;
 }
