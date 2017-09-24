@@ -180,7 +180,7 @@ int main()
 	GerTexto* ger = new GerTexto();
 	int tamVet = tam * 2; //Serao instanciados 2 vezes o numero de tweets informados, para poder randomizar
 	cout << "Instanciando " << tam << " tweets para realizar os testes, aguarde." << endl;
-	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
+	Tweet** vTweet = ger->carregaTweets("tw.txt", tamVet);
 
 	//Randomizando o vetor de entrada para fazer o calculo da frequencia de N tweets aleatorios
 	randomiza(vTweet, tamVet);
@@ -217,10 +217,14 @@ int main()
 	/*----------------ALTERAR O HASHING AQUI----------------*/
 	//Calculando o hashing de cada palavra
 	cout << "[3] Calculando o hashing de cada palavra." << endl;
-	hash<string> string_hash;//Hashing padrao do C
+	/*hash<string> string_hash;//Hashing padrao do C
+
+	*/
+	HashPalavra* hp = new HashPalavra(vPalavras.size());
 	for (i = 0; i<vPalavras.size(); i++)
 	{
-		vPalavras[i].setHash(string_hash(vPalavras[i].getConteudo()));
+	    hp->inserir(&vPalavras[i]);
+		//vPalavras[i].setHash(string_hash(vPalavras[i].getConteudo()));
 	}
 
 	//Preparando o vetor para ordenacao
@@ -231,6 +235,8 @@ int main()
 	cout << "[5] Ordenando o vetor por ordem de frequencia usando MergeSort." << endl;
 	MergeSort ms;
 	ms.mergesort(vPalavras, 0, vPalavras.size()-1);
+	cout << "Exibindo palavras" << endl;
+    hp->exibirTabela();
 	cout << "Vetor ordenado, foram realizadas " << ms.getNumTrocas() << " trocas e " << ms.getNumComparacoes() << " comparacoes." << endl << endl;
 
 	//Le o numero N de palavras que o usuario deseja ver a frequencia

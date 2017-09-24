@@ -3,9 +3,9 @@
 template <typename T>
 std::string to_string(T value)
 {
-	std::ostringstream os ;
-	os << value ;
-	return os.str() ;
+    std::ostringstream os ;
+    os << value ;
+    return os.str() ;
 }
 //retorna o maior primo anterior à um numero
 long long int HashPalavra::maiorPrimo(int N)
@@ -67,10 +67,11 @@ HashPalavra::~HashPalavra()
 long long int HashPalavra::funcaoHashing(string chave)
 {
     int tamanho = 0;
-    for(int i=0;i <chave.size(); i++){
+    for(int i=0; i <chave.size(); i++)
+    {
         tamanho+=chave[i];
     }
-    tamanho = (chave.size() + tamanho*chave.size());
+    tamanho = (max(chave.size()*chave[0], chave.size()*chave[chave.size()-1]) + tamanho);
     return tamanho % m;
 }
 //tratamento de colisao
@@ -108,19 +109,23 @@ void HashPalavra::salvarArquivo(string nome)
     delete ger;
 }
 //retorna o tweet com id desejado
-Palavra* HashPalavra::retornaPorPalavra(string id){
+Palavra* HashPalavra::retornaPorPalavra(string id)
+{
     long long int posicao = funcaoHashing(id);
     if(tabela[posicao].verificaVazio())
         return NULL;
-    else {
+    else
+    {
         return tabela[posicao].retornaPorId(id);
     }
 }
 //retorna o primeiro tweet da posicao desejada
-Palavra* HashPalavra::retornaPorPosicao(int id){
+Palavra* HashPalavra::retornaPorPosicao(int id)
+{
     if(tabela[id].verificaVazio())
         return NULL;
-    else {
+    else
+    {
         tabela[id].inicio();
         return tabela[id].retornaPrimeiro();
     }
@@ -132,10 +137,10 @@ void HashPalavra::exibirTabela()
     for (int i = 0; i < m; i++)
     {
         tabela[i].inicio();
-        cout << "Tabela[" << i << "]:";
+            cout << "Tabela[" << i << "]:";
         while (!tabela[i].verificaNull())
         {
-            cout << " -> " << tabela[i].consultaChave();
+                cout << " -> " << tabela[i].consultaChave()->getConteudo() << " ("<<tabela[i].consultaChave()->getFreq() << ")";
             tabela[i].proxNo();
         }
         cout << endl;

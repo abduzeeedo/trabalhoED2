@@ -11,7 +11,7 @@ ListaPalavra::ListaPalavra()
 */
 void ListaPalavra::addNo(Palavra *chave)
 {
-    No *n;
+    No *n = new No;
     n->atual = chave;
     n->prox = NULL;
     if (pri == NULL)

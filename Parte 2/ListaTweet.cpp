@@ -7,7 +7,7 @@ ListaTweet::ListaTweet()
 }
 void ListaTweet::addNo(Tweet *chave)
 {
-    No *n;
+    No *n = new No;
     n->atual = chave;
     n->prox = NULL;
     if (pri == NULL)
