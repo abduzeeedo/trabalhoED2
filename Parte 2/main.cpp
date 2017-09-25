@@ -131,7 +131,7 @@ void randomiza(Tweet** vetor, int tam)
     for (int i = 0; i < tam; i++)
     {
         srand(2*i+tam); //Troca a seed do rand a cada iteraçao
-        swap(vetor[rand() % tam], vetor[rand()*(i+1) % tam]);
+        swap(vetor[rand() % tam], vetor[rand()*(i+2) % tam]);
     }
 }
 
@@ -190,6 +190,7 @@ int main()
     vector<Palavra> novo = hp->retornaVetor();  //Novo vetor com as palavras do hash
     vPalavras.clear();
     vPalavras = novo;
+    cout << "-> Vetor preparado, existem " << vPalavras.size() << " palavras unicas a serem ordenadas." << endl;
 
     //Ordenando o vetor por ordem de frequencia
     cout << "[5] Ordenando o vetor por ordem de frequencia usando MergeSort."<<endl;
