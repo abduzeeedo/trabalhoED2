@@ -131,7 +131,7 @@ void randomiza(Tweet** vetor, int tam)
     for (int i = 0; i < tam; i++)
     {
         srand(2*i+tam); //Troca a seed do rand a cada iteraçao
-        swap(vetor[rand() % tam], vetor[rand() % tam]);
+        swap(vetor[rand() % tam], vetor[rand()*(i+1) % tam]);
     }
 }
 
