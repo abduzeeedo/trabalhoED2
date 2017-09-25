@@ -27,7 +27,5 @@ public:
 	int getFreq();
 	void setFreq(int);
 	void aumentaFreq();
-	void setHash(int);
-	int getHash();
 };
 #endif // PALAVRA_H

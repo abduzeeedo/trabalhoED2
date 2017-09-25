@@ -138,12 +138,12 @@ void randomiza(Tweet** vetor, int tam)
 int main()
 {
     int i; //Variavel para controle de iterações
-    cout << "Digite o numero N de tweets a serem importados: " << endl;
+    cout << "Digite o numero N de tweets a serem importados: ";
     int tam; //Quantidade de Tweets que serao lidos do arquivo txt
     cin >> tam;
     while (tam <= 0)
     {
-        cout << "Tamanho invalido, digite um tamanho maior que 0" << endl;
+        cout << "Tamanho invalido, digite um tamanho maior que 0: ";
         cin >> tam;
     }
 
@@ -158,11 +158,11 @@ int main()
 
     //Le o numero N de tweets que o usuario deseja fazer a frequencia de palavras
     int n;
-    cout << endl << "Digite o numero de tweets aleatorios para calcular a frequencia das palavras: " << endl;
+    cout << endl << "Digite o numero de tweets aleatorios para calcular a frequencia das palavras: ";
     cin >> n;
     while (n > tam || n <= 0)
     {
-        cout << "Numero invalido, digite um numero entre 1 e " << tam << endl;
+        cout << "Numero invalido, digite um numero entre 1 e " << tam << ": ";
         cin >> n;
     }
 
@@ -192,21 +192,21 @@ int main()
     vPalavras = novo;
 
     //Ordenando o vetor por ordem de frequencia
-    cout << "[5] Ordenando o vetor por ordem de frequencia usando MergeSort." << endl;
+    cout << "[5] Ordenando o vetor por ordem de frequencia usando MergeSort."<<endl;
     MergeSort ms;
     ms.mergesort(vPalavras, 0, vPalavras.size()-1);
     /*cout << "Exibindo palavras" << endl;
     hp->exibirTabela();*/
-    cout << "Vetor ordenado, foram realizadas " << ms.getNumTrocas() << " trocas e " << ms.getNumComparacoes() << " comparacoes." << endl << endl;
+    cout << "-> Vetor ordenado, foram realizadas " << ms.getNumTrocas() << " trocas e " << ms.getNumComparacoes() << " comparacoes." << endl << endl;
 
     //Le o numero N de palavras que o usuario deseja ver a frequencia
-    cout << "Digite o numero de palavras a serem exibidas com suas frequencias: " << endl;
+    cout << "Digite o numero de palavras a serem exibidas com suas frequencias: ";
     int n_pal;
     cin.clear();
     cin >> n_pal;
     while (n_pal > vPalavras.size() || n_pal <= 0)
     {
-        cout << "Numero invalido, digite um numero entre 1 e " << vPalavras.size() << endl;
+        cout << "Numero invalido, digite um numero entre 1 e " << vPalavras.size() << ": ";
         cin >> n_pal;
     }
 
