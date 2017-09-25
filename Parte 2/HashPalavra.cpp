@@ -1,3 +1,12 @@
+/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO:
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
+
 #include "HashPalavra.h"
 //patch para a funcao to_string
 template <typename T>
@@ -53,7 +62,7 @@ long long int HashPalavra::maiorPrimo(int N)
 HashPalavra::HashPalavra(int tam)
 {
     m = maiorPrimo(tam + 100);
-    cout << "M:" << m << endl;
+    //cout << "M:" << m << endl;
     tabela = new ListaPalavra[m];
 }
 

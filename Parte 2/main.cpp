@@ -173,22 +173,22 @@ int main()
 
     //Calculando o hashing de cada palavra
     cout << "[3] Calculando o hashing de cada palavra." << endl;
-       hp = new HashPalavra(vPalavras.size()/2);
+    hp = new HashPalavra(vPalavras.size()/2);
     for (i = 0; i<vPalavras.size(); i++)
         hp->inserir(&vPalavras[i]);
 
     //Preparando o vetor para ordenacao
     cout << "[4] Preparando o vetor para a ordenacao." << endl;
-    vPalavras.clear();
     vector<Palavra> novo = hp->retornaVetor();  //Novo vetor com as palavras do hash
+	vPalavras.clear();
     vPalavras = novo;
 
     //Ordenando o vetor por ordem de frequencia
     cout << "[5] Ordenando o vetor por ordem de frequencia usando MergeSort." << endl;
     MergeSort ms;
     ms.mergesort(vPalavras, 0, vPalavras.size()-1);
-    cout << "Exibindo palavras" << endl;
-    hp->exibirTabela();
+    /*cout << "Exibindo palavras" << endl;
+    hp->exibirTabela();*/
     cout << "Vetor ordenado, foram realizadas " << ms.getNumTrocas() << " trocas e " << ms.getNumComparacoes() << " comparacoes." << endl << endl;
 
     //Le o numero N de palavras que o usuario deseja ver a frequencia
@@ -209,6 +209,6 @@ int main()
         cout << vPalavras[i].getFreq() << " - " << vPalavras[i].getConteudo() << endl;
     }
 
-    //system("pause");
+    system("pause");
     return 0;
 }

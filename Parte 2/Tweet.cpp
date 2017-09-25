@@ -8,7 +8,6 @@ Pedro Bellotti
 --------------------------------------*/
 #include "Tweet.h"
 
-
 // Construtor sobrecarregado para poder utilizar dois tipos de inicialização
 Tweet::Tweet()
 {

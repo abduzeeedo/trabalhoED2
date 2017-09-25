@@ -1,3 +1,12 @@
+/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO:
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
+
 #include "HashTweet.h"
 //patch para a funcao to_string
 template <typename T>

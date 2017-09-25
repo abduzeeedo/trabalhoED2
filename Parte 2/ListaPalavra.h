@@ -1,3 +1,12 @@
+/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO:
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
+
 #ifndef LISTAPALAVRA_H
 #define LISTAPALAVRA_H
 

@@ -1,3 +1,12 @@
+/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO:
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
+
 #include "ListaPalavra.h"
 
 ListaPalavra::ListaPalavra()
@@ -109,5 +118,5 @@ ListaPalavra::~ListaPalavra()
         it = aux;
     }
     delete it;
-    delete aux;
+    //delete aux;
 }
