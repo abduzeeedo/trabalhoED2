@@ -20,7 +20,39 @@ Pedro Bellotti
 #include "HashPalavra.h"
 using namespace std;
 
-//Remove os espacos a mais de uma string, feito in-place e O(n) onde n eh o tamanho da palavra
+//Separa a string original em varias palavras, que sao armazenadas em um vetor
+//ENTRADA: Uma string (tweet) e um vetor de palavras
+//SAIDA(void): O vetor de palavras com cada palavra em uma posicao
+void separaPalavras(string original, vector<Palavra> &vPal)
+{
+    string buffer;
+    for (short i = 0; i<original.length(); i++) //Percorre a string orignal ate o seu final
+    {
+        if (original[i] != ' ') //Caso o caracter atual nao seja um espaco, adiciona ele no buffer
+        {
+            buffer += original[i];
+        }
+        else //Caso seja um espaco, transfere todo o buffer anterior (uma palavra completa) para o vetor de palavras
+        {
+            if (buffer.size() < 2)//Ignora palavras com menos de 2 letras
+                buffer.clear();
+            else
+            {
+                Palavra p(buffer, 1);
+                vPal.push_back(p);
+                buffer.clear();
+            }
+        }
+    }
+    //Adiciona a ultima palavra ao vetor
+    Palavra p2(buffer, 1);
+    vPal.push_back(p2);
+    buffer.clear();
+}
+
+//Remove os espacos a mais de uma string, feito in-place e O(n) onde n eh o tamanho da string (tweet)
+//ENTRADA: uma string (tweet)
+//SAIDA: a mesma string, sem espacos desnecessarios (apenas um espaco entre cada palavra)
 void removeEspaco(string &str)
 {
     //i = posicao vazia na "nova" string
@@ -65,35 +97,9 @@ void removeEspaco(string &str)
     }
 }
 
-//Separa a string original em varias palavras, que sao armazenadas em um vetor
-void separaPalavras(string original, vector<Palavra> &vPal)
-{
-    string buffer;
-    for (short i = 0; i<original.length(); i++) //Percorre a string orignal ate o seu final
-    {
-        if (original[i] != ' ') //Caso o caracter atual nao seja um espaco, adiciona ele no buffer
-        {
-            buffer += original[i];
-        }
-        else //Caso seja um espaco, transfere todo o buffer anterior (uma palavra completa) para o vetor de palavras
-        {
-            if (buffer.size() < 2)//Ignora palavras com menos de 2 letras
-                buffer.clear();
-            else
-            {
-                Palavra p(buffer, 1);
-                vPal.push_back(p);
-                buffer.clear();
-            }
-        }
-    }
-    //Adiciona a ultima palavra ao vetor
-    Palavra p2(buffer, 1);
-    vPal.push_back(p2);
-    buffer.clear();
-}
-
 //Verifica se a letra e valida (se e de A a Z ou um numero)
+//ENTRADA: uma variavel do tipo const char
+//SAIDA: verdadeiro/falso dependendo se a variavel eh uma letra/numero ou nao
 bool charInvalido(const char &c)
 {
     if ((c <= 'Z' && c >= 'A') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
@@ -103,6 +109,8 @@ bool charInvalido(const char &c)
 }
 
 //Remove todas as pontuacoes, espacos, caracteres especiais e coloca todas as letras em minusculo
+//ENTRADA: Uma string (tweet)
+//SAIDA: Uma string contendo as mesmas palavras da entrada porem em letras minusculas e sem sinais de pontuacao.
 string limpaString(string original)
 {
     string s = original;
@@ -116,8 +124,8 @@ string limpaString(string original)
 }
 
 //Funcao randomiza o conteudo de um vetor de tweets
-//Entrada: Ponteiro para vetor do tipo Tweet, tamanho do vetor origem seed do random
-//Saida: O vetor de tweets com valores entre as posicoes randomizados (desordena)
+//ENTRADA: Ponteiro para vetor do tipo Tweet e tamanho do vetor
+//SAIDA: O vetor de tweets com valores entre as posicoes randomizados (desordenado)
 void randomiza(Tweet** vetor, int tam)
 {
     for (int i = 0; i < tam; i++)
@@ -129,9 +137,9 @@ void randomiza(Tweet** vetor, int tam)
 
 int main()
 {
+    int i; //Variavel para controle de iterações
     cout << "Digite o numero N de tweets a serem importados: " << endl;
     int tam; //Quantidade de Tweets que serao lidos do arquivo txt
-    HashPalavra* hp;
     cin >> tam;
     while (tam <= 0)
     {
@@ -158,10 +166,9 @@ int main()
         cin >> n;
     }
 
-    int i; //Variavel para controle de iterações
     //Preparando os tweets para ser calculada a frequencia
     cout << endl << "Preparando os tweets para ser calculada a frequencia, serao realizados [5] passos..." << endl;
-    cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao, colocando todas as strings em minusculo e calculando as frequencias." << endl;
+    cout << "[1] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todos os caracteres em minusculo." << endl;
     for (i = 0; i < tam; i++)
         vTweet[i]->setTweetText(limpaString(vTweet[i]->getTweetText()));
 
@@ -172,7 +179,8 @@ int main()
         separaPalavras(vTweet[i]->getTweetText(), vPalavras);//Separa as palavras de cada tweet
 
     //Calculando o hashing de cada palavra
-    cout << "[3] Calculando o hashing de cada palavra." << endl;
+    cout << "[3] Calculando o hashing de cada palavra e calculando as frequencias." << endl;
+    HashPalavra* hp;
     hp = new HashPalavra(vPalavras.size()/2);
     for (i = 0; i<vPalavras.size(); i++)
         hp->inserir(&vPalavras[i]);
@@ -180,7 +188,7 @@ int main()
     //Preparando o vetor para ordenacao
     cout << "[4] Preparando o vetor para a ordenacao." << endl;
     vector<Palavra> novo = hp->retornaVetor();  //Novo vetor com as palavras do hash
-	vPalavras.clear();
+    vPalavras.clear();
     vPalavras = novo;
 
     //Ordenando o vetor por ordem de frequencia
