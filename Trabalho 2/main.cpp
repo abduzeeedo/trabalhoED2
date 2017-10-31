@@ -1,4 +1,12 @@
-﻿#include <iostream>
+﻿/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO:
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -6,11 +14,11 @@
 #include "stdlib.h"
 #include "Tweet.h"
 #include "GerTexto.h"
+#include "ArvoreSplay.h"
 
 string salvar = "";
 string saidasMenu = "";
 using namespace std;
-
 
 //Funcao usada para pegar as linhas do arquivo do Menu. 
 //Entrada: Arquivo .txt com os dados do Menu 
@@ -148,6 +156,46 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		if (code == "0") {
 			imprimeMenu();//Imprime o Menu (via arquivo txt)
 		}
+
+		if (code == "1") {
+			ArvoreSplay* as = new ArvoreSplay();
+			int ias;
+			//Insere os tweets na arvore
+			for (ias = 0; ias < tam; ias++)
+			{
+				as->insereNo(vet[ias]);
+			}
+			/*
+			Como fazer a remocao/busca na Arvore Splay:
+			1- Ler o tweet ID
+			2- Buscar no vetor mesmo vetor utilizado para insercao o ponteiro para o tweetID
+			3- Chamar a remocao/busca na arvore com o ponteiro encontrado
+
+			Exemplo: Remover o tweet de ID 10524432019 (eh o 10 tweet do arquivo test_set_tweets)
+			for (ias = 0; ias < tam; ias++)
+			{
+				if (vet[ias]->getTweetID() == 10524432019) //Achou o tweet, sai do for
+				{
+					break;
+				}
+			}
+			//Faz a busca/remocao na arvore com a posicao do vetor de tweet encontrado, caso ele exista
+			if(vet[ias]->getTweetID() == 10524432019)
+			{
+				as->busca(vTweet[ias]);
+				as->removeNo(vTweet[ias]);
+			}
+			else
+			{
+				cout << "Tweet nao encontrado!" << endl;
+			}
+			*/
+			cout << "Arvore Splay criada." << endl;
+			cout << "Tempo total gasto nas insercoes: " << as->gettempoInsercao() << endl;
+			cout << "Numero de comparacoes feitas: " << as->getnumCompar() << endl;
+			cout << "Numero de copias de registro feitas: " << as->getnumCopias() << endl;
+			delete as;
+		}
 	}
 }
 
@@ -158,7 +206,7 @@ int main()
 	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
 	que indica o numero de tweets aleatorios que devem ser importados e instanciados
 	e depois, coloca-los em uma arvore*/
-	vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
+	//vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 
 	//Importando tweets do arquivo TXT-------------------------------------------
 	int tamVet = 100; //Quantidade de Tweets que serao lidos do arquivo txt
@@ -176,5 +224,6 @@ int main()
 	codigoFuncao(vTweet, tamVet);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");
 	salvarTxt(saidasMenu, "saidasMenu.txt");
+	system("pause");
 	return 0;
 }

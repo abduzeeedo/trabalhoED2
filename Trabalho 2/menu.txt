@@ -3,5 +3,6 @@
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||  DIGITE NO CONSOLE O CODIGO DA INSTRUCAO - GUIA DE CODIGOS:     ||
 || 0 -  Imprime este Menu (Para fins de Consulta)                  ||
+|| 1 -  Cria uma Arovre Splay de Tweets                            ||
 || -1 - Encerra a execucao do projeto                              ||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
