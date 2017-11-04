@@ -11,17 +11,18 @@ Pedro Bellotti
 #include <string>
 #include <sstream>
 #include <vector>
-#include "stdlib.h"
+#include <stdlib.h>
 #include "Tweet.h"
 #include "GerTexto.h"
 #include "ArvoreSplay.h"
+#include "AVL.h"
 
 string salvar = "";
 string saidasMenu = "";
 using namespace std;
 
-//Funcao usada para pegar as linhas do arquivo do Menu. 
-//Entrada: Arquivo .txt com os dados do Menu 
+//Funcao usada para pegar as linhas do arquivo do Menu.
+//Entrada: Arquivo .txt com os dados do Menu
 //Saída: String lida na linha analizada.
 string analisaLinhas(ifstream& File)
 {
@@ -47,7 +48,7 @@ string analisaLinhas(ifstream& File)
 }
 
 //Funcao Que salva uma string em um arquivo .txt
-//Entrada: String a ser salva e arquivo .txt onde os dados serao salvos. 
+//Entrada: String a ser salva e arquivo .txt onde os dados serao salvos.
 //Saida: Escrita da string passada por parametro em um arquivo .txt (tambem passado por parametro)
 void salvarTxt(string salvar, string file) {
 	ofstream arquivo;
@@ -67,7 +68,7 @@ string toString(double i)
 }
 
 //Funcao de Impressao de Menu
-//Entrada: Arquivo .txt do menu a ser impresso em tela 
+//Entrada: Arquivo .txt do menu a ser impresso em tela
 //Saida: Impressao em tela do Menu de opcoes
 void imprimeMenu()
 {
@@ -78,8 +79,8 @@ void imprimeMenu()
 	leitor.close();
 }
 
-//Funcao usada para imprimir todos os TweetID`s 
-//Entrada: Vetor de objetos do tipo Tweet e tamanho de tal vetor. 
+//Funcao usada para imprimir todos os TweetID`s
+//Entrada: Vetor de objetos do tipo Tweet e tamanho de tal vetor.
 //Saida: Impressao em tela de todos os TweetID`s deste vetor
 void imprimeTIDVetor(Tweet* vet[], int tam) {
 	cout << "Vetor: ";
@@ -126,12 +127,12 @@ vector<int> importaEntrada(const char* nomeArquivo)
 	if (arquivo.is_open()) //Verifica se o arquivo esta aberto
 	{
 		getline(arquivo, linha); //Le a primeira linha do arquivo
-		N = stoi(linha); //Converte string para int
+		N = atoi(linha.c_str()); //Converte string para int
 		vector<int> vEntrada(N); //Cria o vetor com N posicoes lidas da primeira linha
 		while (!arquivo.eof()) //Continua lendo o arquivo
 		{
 			getline(arquivo, linha);
-			vEntrada[i] = stoi(linha); //Armazena na posicao i do vetor o numero lido da linha
+			vEntrada[i] = atoi(linha.c_str()); //Armazena na posicao i do vetor o numero lido da linha
 			i++;
 		}
 		arquivo.close(); //Fecha o arquivo
@@ -196,6 +197,16 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Numero de copias de registro feitas: " << as->getnumCopias() << endl;
 			delete as;
 		}
+		if(code == "2")
+        {
+            AVL* arvoreAVL = new AVL();
+            int ias;
+			//Insere os tweets na arvore
+			for (ias = 0; ias < tam; ias++)
+			{
+				arvoreAVL->inserir(vet[ias]);
+			}
+        }
 	}
 }
 
