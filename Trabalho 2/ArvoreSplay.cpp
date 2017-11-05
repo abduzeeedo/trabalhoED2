@@ -37,8 +37,21 @@ Destrutor da Arvore Splay
 */
 ArvoreSplay::~ArvoreSplay()
 {
-	delete raiz;
+	deletaArvore(raiz);
 	raiz = NULL;
+}
+
+/*
+Funcao auxiliar para o destrutor
+*/
+void ArvoreSplay::deletaArvore(No* del)
+{
+	if (del != NULL)
+	{
+		deletaArvore(del->esq);
+		deletaArvore(del->dir);
+		delete del;
+	}
 }
 
 /*
