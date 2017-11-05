@@ -26,7 +26,7 @@ Funcao para retornar o numero de comparacoes feitas
 ENTRADA: -
 SAIDA: Numero de comparacoes
 */
-long int ArvoreVP::getnumCompar()
+long int ArvoreVP::getNumCompar()
 {
 	return numCompar;
 }
@@ -36,7 +36,7 @@ Funcao para retornar o numero de copias de registro feitas
 ENTRADA: -
 SAIDA: Numero de copias de registro
 */
-long int ArvoreVP::getnumCopias()
+long int ArvoreVP::getNumCopias()
 {
 	return numCopias;
 }
@@ -46,7 +46,7 @@ Funcao para retornar o tempo gasto nas insercoes
 ENTRADA: -
 SAIDA: Tempo gasto nas insercoes
 */
-double ArvoreVP::gettempoInsercao()
+double ArvoreVP::getTempoInsercao()
 {
 	return tempoGastoInsercao;
 }
@@ -56,7 +56,7 @@ Funcao para retornar o tempo gasto na remocao
 ENTRADA: -
 SAIDA: Tempo gasto na remocao
 */
-double ArvoreVP::gettempoRemocao()
+double ArvoreVP::getTempoRemocao()
 {
 	return tempoGastoRemocao;
 }

@@ -13,10 +13,10 @@ public:
 	void remover(long long int p);
 	int alturaVP();
 	No_VP** getRaiz();
-	long int getnumCompar(); //Retorna o numero de comparacoes feitas
-	long int getnumCopias(); //Retorna o numero de copias de registro feitas
-	double gettempoInsercao(); //Retorna o tempo gasto nas insercoes
-	double gettempoRemocao(); //Retorna o tempo gasto na remocao
+	long int getNumCompar(); //Retorna o numero de comparacoes feitas
+	long int getNumCopias(); //Retorna o numero de copias de registro feitas
+	double getTempoInsercao(); //Retorna o tempo gasto nas insercoes
+	double getTempoRemocao(); //Retorna o tempo gasto na remocao
 	~ArvoreVP();
 
 private:

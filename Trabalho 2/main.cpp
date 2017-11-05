@@ -17,6 +17,7 @@ Pedro Bellotti
 #include "ArvoreSplay.h"
 #include "arvoreB.h"
 #include "AVL.h"
+#include "ArvoreVP.h"
 
 string salvar = "";
 string saidasMenu = "";
@@ -227,6 +228,21 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Numero de comparacoes feitas: " << arvoreB->getNumCompar() << endl;
 			cout << "Numero de copias de registro feitas: " << arvoreB->getNumCompias() << endl;
 			delete arvoreB;
+		}
+		if (code == "4")
+		{
+			ArvoreVP* arvoreVP = new ArvoreVP();
+			int iavp;
+			//Insere os tweets na arvore
+			for (iavp = 0; iavp < tam; iavp++)
+			{
+				arvoreVP->insere(vet[iavp]->getTweetID());
+			}
+			cout << "Arvore VP criada." << endl;
+			cout << "Tempo total gasto nas insercoes: " << arvoreVP->getTempoInsercao() << endl;
+			cout << "Numero de comparacoes feitas: " << arvoreVP->getNumCompar() << endl;
+			cout << "Numero de copias de registro feitas: " << arvoreVP->getNumCopias() << endl;
+			delete arvoreVP;
 		}
 	}
 }
