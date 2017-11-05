@@ -1,0 +1,50 @@
+#include "No_VP.h"
+#include "Tweet.h"
+#include <ctime>
+
+#ifndef ArvoreVP_H
+#define ArvoreVP_H
+
+class ArvoreVP
+{
+public:
+	ArvoreVP();
+	void insere(long long int valor);
+	void remover(long long int p);
+	int alturaVP();
+	No_VP** getRaiz();
+	long int getnumCompar(); //Retorna o numero de comparacoes feitas
+	long int getnumCopias(); //Retorna o numero de copias de registro feitas
+	double gettempoInsercao(); //Retorna o tempo gasto nas insercoes
+	double gettempoRemocao(); //Retorna o tempo gasto na remocao
+	~ArvoreVP();
+
+private:
+	No_VP* raiz;
+	void insereAVP(No_VP* no, No_VP* pai, long long int valor);
+	void deletaH(No_VP* p);
+	void corrigeCaso1(No_VP* no);
+	void corrigeCaso2(No_VP* no);
+	void corrigeCaso3(No_VP* no);
+	void corrigeCaso4(No_VP* no);
+	void corrigeCaso5(No_VP* no);
+	void rotacaoEsquerda(No_VP* no);
+	void rotacaoDireita(No_VP* no);
+	void removerCaso1(No_VP* n);
+	void removerCaso2(No_VP* n);
+	void removerCaso3(No_VP* n);
+	void removerCaso4(No_VP* n);
+	void removerCaso5(No_VP* n);
+	void removerCaso6(No_VP* n);
+	No_VP* getPredecessor(No_VP* no);
+	No_VP* getIrmao(No_VP* no);
+	void trocaNos(No_VP* noVelho, No_VP* noNovo);
+	int altura(No_VP* no);
+	long int numCompar; //Numero de comparacoes feitas
+	long int numCopias; //Numero de copias de registro feitas
+	double tempoGastoInsercao; //Tempo gasto nas insercoes (somado a cada insercao)
+	double tempoGastoRemocao; //Tempo gasto nas remocoes (calculado a cada remocao)
+};
+
+#endif // ArvoreVermelhoPreta_H
+#pragma once
