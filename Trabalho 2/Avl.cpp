@@ -97,7 +97,7 @@ void AVL::remover(Tweet* tw)
 No* AVL::removerAux2(No* no)
 {
     No* noAux;
-    No* noAuxPai;
+    No* noAuxPai = new No();
     if((no->getEsq()==NULL)&& (no->getDir() == NULL))
     {
         delete no;
@@ -139,7 +139,7 @@ No* AVL::removerAux2(No* no)
 No* AVL::removerAux(No* no, Tweet* tw)
 {
     No* noAux = no;
-    No* noPai;
+    No* noPai = new No();
     bool bdir = false;
     if(tw->getTweetID() == no->getChave()->getTweetID()) return removerAux2(noAux);
     while(noAux !=NULL)
