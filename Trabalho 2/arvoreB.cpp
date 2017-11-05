@@ -65,7 +65,7 @@ void ArvoreB::inserir(int valor)
 			auxRaiz->filho[0] = raiz;
 			auxRaiz->filho[1] = novoNo;
 			auxRaiz->chave[0] = s;
-			auxRaiz->tamanho++; //Aumenta o identificador do n˙mero de filhos presente no nÛ
+			auxRaiz->tamanho++; //Aumenta o identificador do n√∫mero de filhos presente no n√≥
 			raiz = auxRaiz;
 		}
 	}
@@ -107,9 +107,9 @@ void ArvoreB::insereRecursivo(No_B* no, int valor)
 	{
 		insereRecursivo(no->filho[k], valor);
 		if (no->filho[k]->chave[MAX] != 0)
-		{//Verifica se houve overflow na inserÁ„o
+		{//Verifica se houve overflow na inser√ß√£o
 			No_B* novoNo;//No que sera criado no split
-			int s = split(no->filho[k], &novoNo);//Valor de retorno do split, ou seja, o valor que ser· adicionado no 'no'
+			int s = split(no->filho[k], &novoNo);//Valor de retorno do split, ou seja, o valor que ser√° adicionado no 'no'
 			insereNo(no, s);
 			no->filho[no->getPos(s)] = no->filho[no->getPos(s) + 1];//Coloco o ponteiro para o filho 'n' usado no split na posicao correta
 			no->filho[no->getPos(s) + 1] = novoNo;//Adiciona o 'novoNo' criado como filho maior de 's'
@@ -134,6 +134,7 @@ int ArvoreB::split(No_B* n, No_B** novoNo)
 		(*novoNo)->tamanho++;
 		n->tamanho--;
 		k++;
+		numCopias++;
 	}
 
 	(*novoNo)->filho[k] = n->filho[MAX + 1];
@@ -141,6 +142,7 @@ int ArvoreB::split(No_B* n, No_B** novoNo)
 	sobressalente = n->chave[MID];//Guardo o No que ira subir para o pai
 	n->chave[MID] = 0;
 	n->tamanho--;
+	numCopias++;
 
 	return sobressalente;//Retorno o No sobressalente da funcao split
 }
@@ -182,9 +184,9 @@ int ArvoreB::sucessorNaRaiz(int valor)
 	else 
 	{
 		int posicaoChave = raiz->getPos(valor);
-		No_B* auxiliar = raiz->filho[posicaoChave + 1];       //Desce para o primeiro filho a direita -- possÌvel sucessor
+		No_B* auxiliar = raiz->filho[posicaoChave + 1];       //Desce para o primeiro filho a direita -- poss√≠vel sucessor
 		if (auxiliar == NULL)
-		{//O sucessor est· na raiz
+		{//O sucessor est√° na raiz
 			if (raiz->chave[posicaoChave + 1] == 0)
 			{
 				cout << endl;
@@ -194,9 +196,9 @@ int ArvoreB::sucessorNaRaiz(int valor)
 			else
 				return raiz->chave[posicaoChave + 1];         //Retornando o sucessor
 		}
-		while (auxiliar->filho[0] != NULL)                     //Desce para a esquerda atÈ uma folha
+		while (auxiliar->filho[0] != NULL)                     //Desce para a esquerda at√© uma folha
 			auxiliar = auxiliar->filho[0];
-		return auxiliar->chave[0];                          //Retorna o primeiro elemento que È o sucessor
+		return auxiliar->chave[0];                          //Retorna o primeiro elemento que √© o sucessor
 	}
 }
 
@@ -208,15 +210,15 @@ int ArvoreB::sucessor(int valor)
 		return 0;
 	}
 	if (raiz != buscar(valor, raiz)) {
-		No_B* elemento = buscar(valor, raiz);   //Busca na ·rvore e armazena um ponteiro pro nÛ do valor
-		int posicaoChave = elemento->getPos(valor); //Armazena posiÁ„o do valor chave
+		No_B* elemento = buscar(valor, raiz);   //Busca na √°rvore e armazena um ponteiro pro n√≥ do valor
+		int posicaoChave = elemento->getPos(valor); //Armazena posi√ß√£o do valor chave
 		if (elemento->filho[0] != NULL)
-		{ //N„o È folha
+		{ //N√£o √© folha
 			elemento = elemento->filho[posicaoChave + 1];   //Desce para o filho direito da chave
 			while (true) 
 			{
 				if (elemento->filho[0] == NULL)
-				{  //Filho a esquerda da ultima chave v·lida
+				{  //Filho a esquerda da ultima chave v√°lida
 					return elemento->chave[0];
 				}
 				else
@@ -231,8 +233,8 @@ int ArvoreB::sucessor(int valor)
 			{    //ultimo elemento da folha
 				No_B* pai = getPai(elemento);
 				/**
-				*   Corrige o problema de ter um nÛ intermedi·rio a esquerda do primeiro nÛ da raiz
-				*   O problema seria em retornar o sucessor do nÛ mais a direita do nÛ a esquerda da raiz
+				*   Corrige o problema de ter um n√≥ intermedi√°rio a esquerda do primeiro n√≥ da raiz
+				*   O problema seria em retornar o sucessor do n√≥ mais a direita do n√≥ a esquerda da raiz
 				*/
 				if ((raiz->chave[raiz->tamanho - 1]<valor) && (pai->filho[pai->tamanho] == elemento))
 				{
@@ -263,12 +265,12 @@ int ArvoreB::sucessor(int valor)
 		}
 	}
 	else 
-	{                                                       //Elemento est· na raiz
+	{                                                       //Elemento est√° na raiz
 		int posicaoChave = raiz->getPos(valor);
 		if (raiz->filho[0] == NULL) 
-		{ //SÛ h· raiz presente
+		{ //S√≥ h√° raiz presente
 			if ((raiz->chave[posicaoChave + 1]) == 0)
-			{ //Sucessor do ˙ltimo elemento n„o h·
+			{ //Sucessor do √∫ltimo elemento n√£o h√°
 				cout << "Nao ha sucessor do elemento " << valor << " na arvore B, pois ele eh o\nultimo elemento da arvore" << endl;
 				return 0;
 			}
@@ -278,7 +280,7 @@ int ArvoreB::sucessor(int valor)
 			}
 		}
 		else
-		{ //H· mais nÛs alÈm da raiz
+		{ //H√° mais n√≥s al√©m da raiz
 			No_B* auxiliar = raiz->filho[posicaoChave + 1];       //Desce para o filho a direita
 			while (true)
 			{
@@ -296,7 +298,7 @@ int ArvoreB::sucessor(int valor)
 }
 
 No_B* ArvoreB::getSucessor(int valor)
-{//Retorna o nÛ do sucessor do elemento
+{//Retorna o n√≥ do sucessor do elemento
 	if (buscar(valor, raiz) == NULL)
 	{
 		//cout << "O elemento escolhido nao esta presente na arvore B." << endl;
@@ -304,15 +306,15 @@ No_B* ArvoreB::getSucessor(int valor)
 	}
 	if (raiz != buscar(valor, raiz)) 
 	{
-		No_B* elemento = buscar(valor, raiz);                   //Busca na ·rvore e armazena um ponteiro pro nÛ do valor
-		int posicaoChave = elemento->getPos(valor);             //Armazena posiÁ„o do valor chave
+		No_B* elemento = buscar(valor, raiz);                   //Busca na √°rvore e armazena um ponteiro pro n√≥ do valor
+		int posicaoChave = elemento->getPos(valor);             //Armazena posi√ß√£o do valor chave
 		if (elemento->filho[0] != NULL)
-		{//N„o È folha
+		{//N√£o √© folha
 			elemento = elemento->filho[posicaoChave + 1];         //Desce para o filho direito da chave
 			while (true)
 			{
 				if (elemento->filho[0] == NULL)
-				{                   //Filho a esquerda da ultima chave v·lida
+				{                   //Filho a esquerda da ultima chave v√°lida
 					return elemento;
 				}
 				else
@@ -327,8 +329,8 @@ No_B* ArvoreB::getSucessor(int valor)
 			{            //ultimo elemento da folha
 				No_B* pai = getPai(elemento);
 				/**
-				*   Corrige o problema de ter um nÛ intermedi·rio a esquerda do primeiro nÛ da raiz
-				*   O problema seria em retornar o sucessor do nÛ mais a direita do nÛ a esquerda da raiz
+				*   Corrige o problema de ter um n√≥ intermedi√°rio a esquerda do primeiro n√≥ da raiz
+				*   O problema seria em retornar o sucessor do n√≥ mais a direita do n√≥ a esquerda da raiz
 				*/
 				if ((raiz->chave[raiz->tamanho - 1]<valor) && (pai->filho[pai->tamanho] == elemento)) 
 				{
@@ -360,12 +362,12 @@ No_B* ArvoreB::getSucessor(int valor)
 		}
 	}
 	else 
-	{ //Elemento est· na raiz
+	{ //Elemento est√° na raiz
 		int posicaoChave = raiz->getPos(valor);
 		if (raiz->filho[0] == NULL)
-		{//SÛ h· raiz presente
+		{//S√≥ h√° raiz presente
 			if ((raiz->chave[posicaoChave + 1]) == 0)
-			{ //Sucessor do ˙ltimo elemento n„o h·
+			{ //Sucessor do √∫ltimo elemento n√£o h√°
 				//cout << "Nao ha sucessor do elemento " << valor << " na arvore B, pois ele eh o\nultimo elemento da arvore" << endl;
 				return NULL;
 			}
@@ -375,7 +377,7 @@ No_B* ArvoreB::getSucessor(int valor)
 			}
 		}
 		else
-		{ //H· mais nÛs alÈm da raiz
+		{ //H√° mais n√≥s al√©m da raiz
 			No_B* auxiliar = raiz->filho[posicaoChave + 1];       //Desce para o filho a direita
 			while (true)
 			{
@@ -411,15 +413,15 @@ int ArvoreB::predecessor(int valor)
 	}
 	if (raiz != buscar(valor, raiz))
 	{
-		No_B* elemento = buscar(valor, raiz);                   //Busca na ·rvore e armazena um ponteiro pro nÛ do valor
-		int posicaoChave = elemento->getPos(valor);             //Armazena posiÁ„o do valor chave
+		No_B* elemento = buscar(valor, raiz);                   //Busca na √°rvore e armazena um ponteiro pro n√≥ do valor
+		int posicaoChave = elemento->getPos(valor);             //Armazena posi√ß√£o do valor chave
 		if (elemento->filho[0] != NULL)
-		{                           //N„o È folha
+		{                           //N√£o √© folha
 			elemento = elemento->filho[posicaoChave];           //Desce para o filho esquerdo
 			while (true)
 			{
 				if (elemento->filho[elemento->tamanho] == NULL) 
-				{   //Filho a direita da ultima chave v·lida
+				{   //Filho a direita da ultima chave v√°lida
 					return elemento->chave[elemento->tamanho - 1];
 				}
 				else 
@@ -434,8 +436,8 @@ int ArvoreB::predecessor(int valor)
 			{                                //Primeiro elemento da folha
 				No_B* pai = getPai(elemento);
 				/**
-				*   Corrige o problema de ter um nÛ intermedi·rio a direita do primeiro nÛ da raiz
-				*   O problema seria em retornar o predecessor do nÛ mais a esquerda do nÛ a direita da raiz
+				*   Corrige o problema de ter um n√≥ intermedi√°rio a direita do primeiro n√≥ da raiz
+				*   O problema seria em retornar o predecessor do n√≥ mais a esquerda do n√≥ a direita da raiz
 				*/
 				if ((raiz->chave[0]>valor) && (pai->filho[0] == elemento))
 				{
@@ -454,7 +456,7 @@ int ArvoreB::predecessor(int valor)
 				{           //Percorre os filhos para saber
 					if (pai->filho[i] == elemento)
 					{
-						if (i>0)                                   //Ajusta o Ìndice da chave
+						if (i>0)                                   //Ajusta o √≠ndice da chave
 							i = i - 1;
 						return pai->chave[i];
 					}
@@ -467,12 +469,12 @@ int ArvoreB::predecessor(int valor)
 		}
 	}
 	else
-	{                                                           //Elemento est· na raiz
+	{                                                           //Elemento est√° na raiz
 		int posicaoChave = raiz->getPos(valor);
 		if (raiz->filho[0] == NULL)
-		{                                   //SÛ h· raiz presente
+		{                                   //S√≥ h√° raiz presente
 			if (posicaoChave == 0)
-			{                                    //Predecessor do primeiro elemento n„o h·
+			{                                    //Predecessor do primeiro elemento n√£o h√°
 				cout << "Nao ha predecessor do elemento " << valor << " na arvore B, pois ele eh o\nprimeiro elemento da arvore" << endl;
 				return 0;
 			}
@@ -482,12 +484,12 @@ int ArvoreB::predecessor(int valor)
 			}
 		}
 		else 
-		{                                                       //H· mais nÛs alÈm da raiz
+		{                                                       //H√° mais n√≥s al√©m da raiz
 			No_B* auxiliar = raiz->filho[posicaoChave];             //Desce para o filho a esquerda
 			while (true)
 			{
 				if (auxiliar->filho[auxiliar->tamanho] == NULL)
-				{        //Filho a direita da ultima chave v·lida
+				{        //Filho a direita da ultima chave v√°lida
 					return auxiliar->chave[auxiliar->tamanho - 1];
 				}
 				else 
@@ -499,7 +501,7 @@ int ArvoreB::predecessor(int valor)
 	}
 }
 No_B* ArvoreB::getPredecessor(int valor)
-{                           //Retorna o nÛ do predecessor do elemento
+{                           //Retorna o n√≥ do predecessor do elemento
 	if (buscar(valor, raiz) == NULL)
 	{
 		//cout << "O elemento escolhido nao esta presente na arvore B." << endl;
@@ -507,15 +509,15 @@ No_B* ArvoreB::getPredecessor(int valor)
 	}
 	if (raiz != buscar(valor, raiz))
 	{
-		No_B* elemento = buscar(valor, raiz);                       //Busca na ·rvore e armazena um ponteiro pro nÛ do valor
-		int posicaoChave = elemento->getPos(valor);                 //Armazena posiÁ„o do valor chave
+		No_B* elemento = buscar(valor, raiz);                       //Busca na √°rvore e armazena um ponteiro pro n√≥ do valor
+		int posicaoChave = elemento->getPos(valor);                 //Armazena posi√ß√£o do valor chave
 		if (elemento->filho[0] != NULL) 
-		{//N„o È folha
+		{//N√£o √© folha
 			elemento = elemento->filho[posicaoChave];               //Desce para o filho esquerdo
 			while (true) 
 			{
 				if (elemento->filho[elemento->tamanho] == NULL)
-				{       //Filho a direita da ultima chave v·lida
+				{       //Filho a direita da ultima chave v√°lida
 					return elemento;
 				}
 				else
@@ -530,8 +532,8 @@ No_B* ArvoreB::getPredecessor(int valor)
 			{                                    //Primeiro elemento da folha
 				No_B* pai = getPai(elemento);
 				/**
-				*   Corrige o problema de ter um nÛ intermedi·rio a direita do primeiro nÛ da raiz
-				*   O problema seria em retornar o predecessor do nÛ mais a esquerda do nÛ a direita da raiz
+				*   Corrige o problema de ter um n√≥ intermedi√°rio a direita do primeiro n√≥ da raiz
+				*   O problema seria em retornar o predecessor do n√≥ mais a esquerda do n√≥ a direita da raiz
 				*/
 				if ((raiz->chave[0]>valor) && (pai->filho[0] == elemento))
 				{
@@ -552,7 +554,7 @@ No_B* ArvoreB::getPredecessor(int valor)
 				{                 //Percorre os filhos para saber
 					if (pai->filho[i] == elemento)
 					{
-						if (i>0)                                         //Ajusta o Ìndice da chave
+						if (i>0)                                         //Ajusta o √≠ndice da chave
 							i = i - 1;
 						return pai;
 					}
@@ -565,12 +567,12 @@ No_B* ArvoreB::getPredecessor(int valor)
 		}
 	}
 	else
-	{                                                               //Elemento est· na raiz
+	{                                                               //Elemento est√° na raiz
 		int posicaoChave = raiz->getPos(valor);
 		if (raiz->filho[0] == NULL) 
-		{                                       //SÛ h· raiz presente
+		{                                       //S√≥ h√° raiz presente
 			if (posicaoChave == 0)
-			{                                        //Predecessor do primeiro elemento n„o h·
+			{                                        //Predecessor do primeiro elemento n√£o h√°
 				//cout << "Nao ha predecessor do elemento " << valor << " na arvore B, pois ele eh o\nprimeiro elemento da arvore" << endl;
 				return NULL;
 			}
@@ -580,12 +582,12 @@ No_B* ArvoreB::getPredecessor(int valor)
 			}
 		}
 		else 
-		{                                                           //H· mais nÛs alÈm da raiz
+		{                                                           //H√° mais n√≥s al√©m da raiz
 			No_B* auxiliar = raiz->filho[posicaoChave];                 //Desce para o filho a esquerda
 			while (true)
 			{
 				if (auxiliar->filho[auxiliar->tamanho] == NULL)
-				{            //Filho a direita da ultima chave v·lida
+				{            //Filho a direita da ultima chave v√°lida
 					return auxiliar;
 				}
 				else 
@@ -624,10 +626,10 @@ void ArvoreB::auxRemover(int valor, No_B* n)
 {
 	/**
 	*   Precisa do sucessor e do predecessor
-	*   Se o filho a direita e esquerda for NULL quer dizer que È folha, remove o elemento
-	*   Se n„o atingiu um n˙mero mÌnimo de nÛs ser· necess·rio pegar o pai e o irm„o,
+	*   Se o filho a direita e esquerda for NULL quer dizer que √© folha, remove o elemento
+	*   Se n√£o atingiu um n√∫mero m√≠nimo de n√≥s ser√° necess√°rio pegar o pai e o irm√£o,
 	*   colocar em um vetor e fazer split
-	*   ter um mÈtodo chamado No_B* ArvoreB::getPai(No_B* n);  -> se for a raiz o pai È null, se n„o retorna um ponteiro pro nÛ pai
+	*   ter um m√©todo chamado No_B* ArvoreB::getPai(No_B* n);  -> se for a raiz o pai √© null, se n√£o retorna um ponteiro pro n√≥ pai
 	*/
 	if (n == NULL)
 	{
@@ -636,7 +638,7 @@ void ArvoreB::auxRemover(int valor, No_B* n)
 	if (n == raiz)
 	{
 		if (n->filho[0] == NULL) 
-		{  //SÛ tem a raiz de nÛ
+		{  //S√≥ tem a raiz de n√≥
 			int posicaoChave = n->getPos(valor);
 			for (int i = 0; i<n->tamanho; i++)
 			{
@@ -646,15 +648,15 @@ void ArvoreB::auxRemover(int valor, No_B* n)
 				}
 				if (n->chave[0] == 0)
 				{ //Arvore NULL
-					raiz->tamanho = 0;  //Diminuindo o tamanho do n˙mero de chaves que est„o presente
+					raiz->tamanho = 0;  //Diminuindo o tamanho do n√∫mero de chaves que est√£o presente
 					raiz = NULL;
 					return;
 				}
 			}
-			n->tamanho--; //Como o elemento foi removido, ent„o diminui-se o n˙mero de elementos presentes no nÛ
+			n->tamanho--; //Como o elemento foi removido, ent√£o diminui-se o n√∫mero de elementos presentes no n√≥
 			return;
 		}
-		else {   //Tem mais de um nÛ na ·rvore
+		else {   //Tem mais de um n√≥ na √°rvore
 			No_B* pred = getPredecessor(valor); //predecessor
 			No_B* suc = getSucessor(valor); //sucessor
 			int posicaoChave = n->getPos(valor);
@@ -662,7 +664,7 @@ void ArvoreB::auxRemover(int valor, No_B* n)
 			{
 				n->chave[posicaoChave] = pred->chave[pred->tamanho - 1];   //troca o elemento predecessor para o lugar do elemento a ser removido, e remove ele da folha
 				pred->chave[pred->tamanho - 1] = 0;   //Apagando o elemento
-				pred->tamanho--;    //Diminuindo o tamanho do n˙mero de chaves que est„o presente
+				pred->tamanho--;    //Diminuindo o tamanho do n√∫mero de chaves que est√£o presente
 				return;
 			}
 			else {
@@ -678,7 +680,7 @@ void ArvoreB::auxRemover(int valor, No_B* n)
 							suc->chave[i] = suc->chave[i + 1];
 						}
 					}
-					suc->tamanho--;    //Diminuindo o tamanho do n˙mero de chaves que est„o presente
+					suc->tamanho--;    //Diminuindo o tamanho do n√∫mero de chaves que est√£o presente
 					return;
 				}
 			}
@@ -689,31 +691,31 @@ void ArvoreB::auxRemover(int valor, No_B* n)
 }
 
 No_B* ArvoreB::getPai(No_B* n)
-{ //Retorna o pai de um nÛ
+{ //Retorna o pai de um n√≥
 	if (n == NULL)
-	{  //Se o elemento procurado n„o estiver na ·rvore a busca pelo ponteiro ser· null, ent„o o pai tbm È
+	{  //Se o elemento procurado n√£o estiver na √°rvore a busca pelo ponteiro ser√° null, ent√£o o pai tbm √©
 		return NULL;
 	}
 	if (n == raiz)
-	{  // N„o tem pai
+	{  // N√£o tem pai
 		return n;
 	}
 	else if (n != raiz) 
 	{
-		No_B* pai = raiz; //Para caminhar na ·rvore
-		int elemento = n->chave[0];    //Para buscar na ·rvore
+		No_B* pai = raiz; //Para caminhar na √°rvore
+		int elemento = n->chave[0];    //Para buscar na √°rvore
 		while (true)
 		{
 			for (int i = 0; i < pai->tamanho; i++)
 			{
 				if (pai->chave[i] > elemento) 
-				{   //Se a chave for maior que o elemento desÁo o pai para o ponteiro da esquerda
+				{   //Se a chave for maior que o elemento des√ßo o pai para o ponteiro da esquerda
 					if (pai->filho[i] == n)
 					{
 						return pai;
 					}
 					else 
-					{   //Se o filho ainda n„o tem o elemento atualizo pai
+					{   //Se o filho ainda n√£o tem o elemento atualizo pai
 						pai = pai->filho[i];    //atualiza o ponteiro do pai
 						break;  //Sai do loop
 					}
@@ -721,14 +723,14 @@ No_B* ArvoreB::getPai(No_B* n)
 				else if (pai->chave[i] < elemento)
 				{
 					if (pai->chave[i + 1] == 0)
-					{ //Todos os elementos do nÛ s„o menores do que valor ==> DesÁo o pai para a direita no ˙ltimo ponteiro do filho
+					{ //Todos os elementos do n√≥ s√£o menores do que valor ==> Des√ßo o pai para a direita no √∫ltimo ponteiro do filho
 						if (pai->filho[i + 1] == n)
-						{ //Se o ponteiro do ˙ltimo filho for igual a n, retorna o pai porque ele j· foi encontrado
+						{ //Se o ponteiro do √∫ltimo filho for igual a n, retorna o pai porque ele j√° foi encontrado
 							return pai;
 						}
 						else
 						{
-							pai = pai->filho[i + 1];  //Desce pro ˙ltimo ponteiro de filho
+							pai = pai->filho[i + 1];  //Desce pro √∫ltimo ponteiro de filho
 							break;
 						}
 					}
@@ -755,7 +757,7 @@ void ArvoreB::limparArvore()
 	cout << "Estrutura limpa com sucesso" << endl;
 }
 void ArvoreB::lerRaiz()
-{    //Procedimento para teste de verificaÁ„o dos elementos da raiz
+{    //Procedimento para teste de verifica√ß√£o dos elementos da raiz
 	for (int i = 0; i <= raiz->tamanho; i++) {
 		cout << "i = " << i << "  " << raiz->chave[i] << endl;
 	}
