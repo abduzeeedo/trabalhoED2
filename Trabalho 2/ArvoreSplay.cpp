@@ -13,11 +13,11 @@ using namespace std;
 /*
 Struct para o No da arvore
 */
-struct No
+struct No_S
 {
 	Tweet* chave; //Chave do no
-	struct No* esq; //Ponteiro para no a esquerda
-	struct No* dir; //Ponteiro para no a direita
+	struct No_S* esq; //Ponteiro para no a esquerda
+	struct No_S* dir; //Ponteiro para no a direita
 };
 
 /*
@@ -44,7 +44,7 @@ ArvoreSplay::~ArvoreSplay()
 /*
 Funcao auxiliar para o destrutor
 */
-void ArvoreSplay::deletaArvore(No* del)
+void ArvoreSplay::deletaArvore(No_S* del)
 {
 	if (del != NULL)
 	{
@@ -59,7 +59,7 @@ Funcao para retornar o ponteiro para a raiz da arvore
 ENTRADA: -
 SAIDA: Ponteiro para No (raiz)
 */
-No* ArvoreSplay::getRaiz()
+No_S* ArvoreSplay::getRaiz()
 {
 	return raiz;
 }
@@ -109,9 +109,9 @@ Funcao de rotacao para a esquerda
 ENTRADA: No a ser rotacionado
 SAIDA: Ponteiro para No com a rotacao feita
 */
-No* ArvoreSplay::rotacaoEsq(struct No* x)
+No_S* ArvoreSplay::rotacaoEsq(struct No_S* x)
 {
-	struct No* y = x->dir;
+	struct No_S* y = x->dir;
 	x->dir = y->esq;
 	y->esq = x;
 	numCopias++;
@@ -123,9 +123,9 @@ Funcao de rotacao para a direita
 ENTRADA: No a ser rotacionado
 SAIDA: Ponteiro para No com a rotacao feita
 */
-No* ArvoreSplay::rotacaoDir(struct No* x)
+No_S* ArvoreSplay::rotacaoDir(struct No_S* x)
 {
-	struct No* y = x->esq;
+	struct No_S* y = x->esq;
 	x->esq = y->dir;
 	y->dir = x;
 	numCopias++;
@@ -137,7 +137,7 @@ Funcao para realizar o splay (espalhamento) de um No na arvore
 ENTRADA: Ponteiro para o No raiz da arvore e chave a ser espalhada
 SAIDA: Ponteiro para No raiz (o No que buscado, se existir. Caso contrario, retorna o ultimo No acessado)
 */
-No* ArvoreSplay::splay(struct No* raiz, Tweet* chave)
+No_S* ArvoreSplay::splay(struct No_S* raiz, Tweet* chave)
 {
 	// Caso a raiz nao exista ou a chave seja a raiz, apenas retorna a raiz
 	if (raiz == NULL || raiz->chave->getTweetID() == chave->getTweetID() && ++numCompar)
@@ -199,7 +199,7 @@ Funcao de busca na arvore
 ENTRADA: Chave do No a ser buscado
 SAIDA: Ponteiro para o No encontrado
 */
-No* ArvoreSplay::busca(Tweet* chave)
+No_S* ArvoreSplay::busca(Tweet* chave)
 {
 	return splay(raiz, chave);
 }
@@ -209,7 +209,7 @@ Funcao de impressao da arvore
 ENTRADA: Ponteiro para o No raiz
 SAIDA: Arvore impressa na tela
 */
-void ArvoreSplay::imprimeArvore(No* raiz)
+void ArvoreSplay::imprimeArvore(No_S* raiz)
 {
 	if (raiz != NULL)
 	{
@@ -233,9 +233,9 @@ Funcao auxiliar para insercoes
 ENTRADA: Chave do novo no
 SAIDA: Ponteiro para o novo No (folha)
 */
-No* ArvoreSplay::addNo(Tweet* ch)
+No_S* ArvoreSplay::addNo(Tweet* ch)
 {
-	struct No* novoNo = new No();
+	struct No_S* novoNo = new No_S();
 	novoNo->chave = ch;
 	novoNo->esq = NULL;
 	novoNo->dir = NULL;
@@ -247,7 +247,7 @@ Funcao de insercao de um novo No na arvore
 ENTRADA: Chave do novo No
 SAIDA: Arvore com o novo No adicionado
 */
-No* ArvoreSplay::insereNo(Tweet* chave)
+No_S* ArvoreSplay::insereNo(Tweet* chave)
 {
 	clock_t relogio;
 	relogio = clock();
@@ -269,7 +269,7 @@ No* ArvoreSplay::insereNo(Tweet* chave)
 	}
 
 	// Caso 3 - A chave nao existe na arvore, logo, deve ser inserida
-	struct No* novoNo = addNo(chave); //Cria um novo No para ser adicionado
+	struct No_S* novoNo = addNo(chave); //Cria um novo No para ser adicionado
 	// Caso a chave do novo No seja menor que a chave da raiz, insere a direita e coloca o filho a esquerda da raiz como o filho esquerdo do novo No
 	if (raiz->chave > chave && ++numCompar)
 	{
@@ -293,7 +293,7 @@ Funcao de remocao de um No na arvore
 ENTRADA: Chave do No a ser removido
 SAIDA: Arvore com o novo No removido
 */
-struct No* ArvoreSplay::removeNo(Tweet* chave)
+struct No_S* ArvoreSplay::removeNo(Tweet* chave)
 {
 	clock_t relogio;
 	relogio = clock();
@@ -314,7 +314,7 @@ struct No* ArvoreSplay::removeNo(Tweet* chave)
 	}
 
 	// Caso 3 - A chave existe na arvore e deve ser removida
-	struct No* aux; //Cria um No auxiliar para remocao
+	struct No_S* aux; //Cria um No auxiliar para remocao
 	// Caso o No com a chave nao tenha filho a esquerda, coloca seu filho a direita como raiz
 	if (!raiz->esq)
 	{

@@ -5,6 +5,7 @@
 #include <ctime>
 #include "Tweet.h"
 #include "No.h"
+
 using namespace std;
 class AVL
 {
@@ -15,6 +16,10 @@ public:
     void inserir(Tweet* tw);
     void remover(Tweet* tw);
     void imprimir();
+	long int getNumCompar();
+	long int getNumCompias();
+	double getTempoInsercao();
+	double getTempoRemocao();
 private:
     //variaveis
     No* raiz;
@@ -36,11 +41,5 @@ private:
     No* rotRR(No* no);
     No* rotL(No* no);
     No* rotLL(No* no);
-    long int getNumCompar();
-    long int getNumCompias();
-    double getTempoInsercao();
-    double getTempoRemocao();
-
-
 };
 #endif

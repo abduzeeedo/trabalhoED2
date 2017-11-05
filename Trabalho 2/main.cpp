@@ -15,6 +15,7 @@ Pedro Bellotti
 #include "Tweet.h"
 #include "GerTexto.h"
 #include "ArvoreSplay.h"
+#include "arvoreB.h"
 #include "AVL.h"
 
 string salvar = "";
@@ -200,13 +201,33 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		if(code == "2")
         {
             AVL* arvoreAVL = new AVL();
-            int ias;
+            int iav;
 			//Insere os tweets na arvore
-			for (ias = 0; ias < tam; ias++)
+			for (iav = 0; iav < tam; iav++)
 			{
-				arvoreAVL->inserir(vet[ias]);
+				arvoreAVL->inserir(vet[iav]);
 			}
+			cout << "Arvore AVL criada." << endl;
+			cout << "Tempo total gasto nas insercoes: " << arvoreAVL->getTempoInsercao() << endl;
+			cout << "Numero de comparacoes feitas: " << arvoreAVL->getNumCompar() << endl;
+			cout << "Numero de copias de registro feitas: " << arvoreAVL->getNumCompias() << endl;
+			delete arvoreAVL;
         }
+		if (code == "3")
+		{
+			ArvoreB* arvoreB = new ArvoreB();
+			int iab;
+			//Insere os tweets na arvore
+			for (iab = 0; iab < tam; iab++)
+			{
+				arvoreB->inserir(vet[iab]->getTweetID());
+			}
+			cout << "Arvore B criada." << endl;
+			cout << "Tempo total gasto nas insercoes: " << arvoreB->getTempoInsercao() << endl;
+			cout << "Numero de comparacoes feitas: " << arvoreB->getNumCompar() << endl;
+			cout << "Numero de copias de registro feitas: " << arvoreB->getNumCompias() << endl;
+			delete arvoreB;
+		}
 	}
 }
 
