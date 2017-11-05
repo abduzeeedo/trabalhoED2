@@ -26,6 +26,7 @@ private:
 	struct No* rotacaoEsq(No*); //Rotacao a esquerda
 	struct No* splay(No*, Tweet*); //Funcao de espalhamento
 	struct No* addNo(Tweet*); //Funcao auxiliar de insercao
+	void deletaArvore(No*); //Funcao auxiliar para o destrutor
 public:
 	ArvoreSplay();
 	~ArvoreSplay();
