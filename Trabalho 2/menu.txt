@@ -6,5 +6,6 @@
 || 1 -  Cria uma Arovre Splay de Tweets                            ||
 || 2 -  Cria uma Arovre AVL de Tweets                              ||
 || 3 -  Cria uma Arovre B de Tweets                                ||
+|| 3 -  Cria uma Arovre Vermelho-Preto de Tweets                   ||
 || -1 - Encerra a execucao do projeto                              ||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

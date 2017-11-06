@@ -1,3 +1,11 @@
+/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO:
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
 #ifndef NO_H
 #define NO_H
 #include <iostream>

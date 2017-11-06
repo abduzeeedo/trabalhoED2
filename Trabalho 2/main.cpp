@@ -161,12 +161,12 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		}
 
 		if (code == "1") {
-			ArvoreSplay* as = new ArvoreSplay();
+			ArvoreSplay* arvoreSplay = new ArvoreSplay();
 			int ias;
 			//Insere os tweets na arvore
 			for (ias = 0; ias < tam; ias++)
 			{
-				as->insereNo(vet[ias]);
+				arvoreSplay->insereNo(vet[ias]);
 			}
 			/*
 			Como fazer a remocao/busca na Arvore Splay:
@@ -185,8 +185,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			//Faz a busca/remocao na arvore com a posicao do vetor de tweet encontrado, caso ele exista
 			if(vet[ias]->getTweetID() == 10524432019)
 			{
-				as->busca(vTweet[ias]);
-				as->removeNo(vTweet[ias]);
+				arvoreSplay->busca(vTweet[ias]);
+				arvoreSplay->removeNo(vTweet[ias]);
 			}
 			else
 			{
@@ -194,10 +194,10 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			}
 			*/
 			cout << "Arvore Splay criada." << endl;
-			cout << "Tempo total gasto nas insercoes: " << as->gettempoInsercao() << endl;
-			cout << "Numero de comparacoes feitas: " << as->getnumCompar() << endl;
-			cout << "Numero de copias de registro feitas: " << as->getnumCopias() << endl;
-			delete as;
+			cout << "Tempo total gasto nas insercoes: " << arvoreSplay->gettempoInsercao() << endl;
+			cout << "Numero de comparacoes feitas: " << arvoreSplay->getnumCompar() << endl;
+			cout << "Numero de copias de registro feitas: " << arvoreSplay->getnumCopias() << endl;
+			delete arvoreSplay;
 		}
 		if(code == "2")
         {
