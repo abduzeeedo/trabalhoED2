@@ -54,6 +54,14 @@ void ArvoreSplay::deletaArvore(No_S* del)
 	}
 }
 
+void ArvoreSplay::limpaDados()
+{
+	numCompar = 0;
+	numCopias = 0;
+	tempoGastoInsercao = 0;
+	tempoGastoRemocao = 0;
+}
+
 /*
 Funcao para retornar o ponteiro para a raiz da arvore
 ENTRADA: -
@@ -149,7 +157,7 @@ No_S* ArvoreSplay::splay(struct No_S* raiz, Tweet* chave)
 		if (raiz->esq == NULL)
 			return raiz; // Se a raiz nao tem filho esquerdo, a chave nao existe - portanto retorna o ultimo no visitado (no caso, a raiz)
 
-		// Verifica os casos de rotacao
+						 // Verifica os casos de rotacao
 		if (raiz->esq->chave->getTweetID() > chave->getTweetID() && ++numCompar) //Esquerda-esquerda
 		{
 			raiz->esq->esq = splay(raiz->esq->esq, chave); //Coloca a chave como raiz recursivamente
@@ -173,7 +181,7 @@ No_S* ArvoreSplay::splay(struct No_S* raiz, Tweet* chave)
 		if (raiz->dir == NULL)
 			return raiz; // Se a raiz nao tem filho direito a chave nao existe, portanto retorna o ultimo no visitado (no caso, a raiz)
 
-		// Verifica os casos de rotacao
+						 // Verifica os casos de rotacao
 		if (raiz->dir->chave->getTweetID() > chave->getTweetID() && ++numCompar) //Direita-esquerda
 		{
 			raiz->dir->esq = splay(raiz->dir->esq, chave); //Coloca a chave como raiz recursivamente
@@ -214,7 +222,7 @@ void ArvoreSplay::imprimeArvore(No_S* raiz)
 	if (raiz != NULL)
 	{
 		cout << "Chave: " << raiz->chave->getTweetID() << endl;
-		if(raiz->esq != NULL)
+		if (raiz->esq != NULL)
 			cout << "Esquerda: " << raiz->esq->chave->getTweetID() << endl;
 		else
 			cout << "Esquerda: NULL" << endl;
@@ -270,7 +278,7 @@ No_S* ArvoreSplay::insereNo(Tweet* chave)
 
 	// Caso 3 - A chave nao existe na arvore, logo, deve ser inserida
 	struct No_S* novoNo = addNo(chave); //Cria um novo No para ser adicionado
-	// Caso a chave do novo No seja menor que a chave da raiz, insere a direita e coloca o filho a esquerda da raiz como o filho esquerdo do novo No
+										// Caso a chave do novo No seja menor que a chave da raiz, insere a direita e coloca o filho a esquerda da raiz como o filho esquerdo do novo No
 	if (raiz->chave > chave && ++numCompar)
 	{
 		novoNo->dir = raiz;
@@ -315,7 +323,7 @@ struct No_S* ArvoreSplay::removeNo(Tweet* chave)
 
 	// Caso 3 - A chave existe na arvore e deve ser removida
 	struct No_S* aux; //Cria um No auxiliar para remocao
-	// Caso o No com a chave nao tenha filho a esquerda, coloca seu filho a direita como raiz
+					  // Caso o No com a chave nao tenha filho a esquerda, coloca seu filho a direita como raiz
 	if (!raiz->esq)
 	{
 		aux = raiz;

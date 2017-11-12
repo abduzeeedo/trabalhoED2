@@ -39,5 +39,6 @@ public:
 	struct No_S* insereNo(Tweet*); //Funcao de insercao
 	struct No_S* removeNo(Tweet*); //Funcao de remocao
 	void imprimeArvore(No_S*); //Imprime a arvore
+	void limpaDados();
 };
 #endif

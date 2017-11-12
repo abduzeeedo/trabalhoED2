@@ -161,122 +161,147 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		}
 
 		if (code == "1") {
-			ArvoreSplay* arvoreSplay = new ArvoreSplay();
-			int ias;
-			//Insere os tweets na arvore
-			for (ias = 0; ias < tam; ias++)
-			{
-				arvoreSplay->insereNo(vet[ias]);
-			}
-			/*
-			Como fazer a remocao/busca na Arvore Splay:
-			1- Ler o tweet ID
-			2- Buscar no vetor mesmo vetor utilizado para insercao o ponteiro para o tweetID
-			3- Chamar a remocao/busca na arvore com o ponteiro encontrado
-			Exemplo: Remover o tweet de ID 10524432019 (eh o 10 tweet do arquivo test_set_tweets)
-			for (ias = 0; ias < tam; ias++)
-			{
-			if (vet[ias]->getTweetID() == 10524432019) //Achou o tweet, sai do for
-			{
-			break;
-			}
-			}
-			//Faz a busca/remocao na arvore com a posicao do vetor de tweet encontrado, caso ele exista
-			if(vet[ias]->getTweetID() == 10524432019)
-			{
-			arvoreSplay->busca(vTweet[ias]);
-			arvoreSplay->removeNo(vTweet[ias]);
-			}
-			else
-			{
-			cout << "Tweet nao encontrado!" << endl;
-			}
-			*/
-			cout << "Arvore Splay criada." << endl;
-			cout << "Tempo total gasto nas insercoes: " << arvoreSplay->gettempoInsercao() << endl;
-			cout << "Numero de comparacoes feitas: " << arvoreSplay->getnumCompar() << endl;
-			cout << "Numero de copias de registro feitas: " << arvoreSplay->getnumCopias() << endl;
-
-			saidasInsercao += "Arvore Splay:\n";
-			saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreSplay->gettempoInsercao()) + "\n";
-			saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreSplay->getnumCompar()) + "\n";
-			saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreSplay->getnumCopias()) + "\n\n";
-
-			delete arvoreSplay;
-		}
-		if (code == "2")
-		{
-			AVL* arvoreAVL = new AVL();
-			int iav;
-			//Insere os tweets na arvore
-			for (iav = 0; iav < tam; iav++)
-			{
-				arvoreAVL->inserir(vet[iav]);
-			}
-			cout << "Arvore AVL criada." << endl;
-			cout << "Tempo total gasto nas insercoes: " << arvoreAVL->getTempoInsercao() << endl;
-			cout << "Numero de comparacoes feitas: " << arvoreAVL->getNumCompar() << endl;
-			cout << "Numero de copias de registro feitas: " << arvoreAVL->getNumCompias() << endl;
-			delete arvoreAVL;
-		}
-		if (code == "3")
-		{
-			ArvoreB* arvoreB = new ArvoreB();
-			int iab;
-			//Insere os tweets na arvore
-			for (iab = 0; iab < tam; iab++)
-			{
-				arvoreB->inserir(vet[iab]->getTweetID());
-			}
-			cout << "Arvore B criada." << endl;
-			cout << "Tempo total gasto nas insercoes: " << arvoreB->getTempoInsercao() << endl;
-			cout << "Numero de comparacoes feitas: " << arvoreB->getNumCompar() << endl;
-			cout << "Numero de copias de registro feitas: " << arvoreB->getNumCompias() << endl;
-			delete arvoreB;
-		}
-		if (code == "4")
-		{
-			ArvoreVP* arvoreVP = new ArvoreVP();
-			int iavp;
-			//Insere os tweets na arvore
-			for (iavp = 0; iavp < tam; iavp++)
-			{
-				arvoreVP->insere(vet[iavp]->getTweetID());
-			}
-			cout << "Arvore VP criada." << endl;
-			cout << "Tempo total gasto nas insercoes: " << arvoreVP->getTempoInsercao() << endl;
-			cout << "Numero de comparacoes feitas: " << arvoreVP->getNumCompar() << endl;
-			cout << "Numero de copias de registro feitas: " << arvoreVP->getNumCopias() << endl;
-			delete arvoreVP;
-		}
-		if (code == "5")
-		{
-			cout << "Testes em Batch sendo Executados" << endl;
-			ArvoreSplay* arvoreSplay = new ArvoreSplay();
-			
-			vector<int> vEntrada = importaEntrada("entrada.txt");
-			//int vEntrada[3] = { 10000, 30000, 60000 };
-
-			for (int k = 1; k <= 1; k++) { //Numero de Iterações (5 a serem executadas para cada N)
-				randomiza(vet, tam);
-				for (unsigned int i = 0; i < 1; i++) { //Numero de Arquivos do vEntrada a ser considerado
-					cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << endl;
+			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
+			for (int k = 1; k <= 5; k++) {
+				for (unsigned int i = 0; i < 1; i++) {
 					randomiza(vet, vEntrada[i]);
+					ArvoreSplay* arvoreSplay = new ArvoreSplay();
+					int ias;
 					//Insere os tweets na arvore
-					for (int i = 0; i < vEntrada[i]; i++)
+					for (ias = 0; ias < vEntrada[i]; ias++)
 					{
-						arvoreSplay->insereNo(vet[i]);
+						arvoreSplay->insereNo(vet[ias]);
 					}
-
+					/*
+					Como fazer a remocao/busca na Arvore Splay:
+					1- Ler o tweet ID
+					2- Buscar no vetor mesmo vetor utilizado para insercao o ponteiro para o tweetID
+					3- Chamar a remocao/busca na arvore com o ponteiro encontrado
+					Exemplo: Remover o tweet de ID 10524432019 (eh o 10 tweet do arquivo test_set_tweets)
+					for (ias = 0; ias < tam; ias++)
+					{
+					if (vet[ias]->getTweetID() == 10524432019) //Achou o tweet, sai do for
+					{
+					break;
+					}
+					}
+					//Faz a busca/remocao na arvore com a posicao do vetor de tweet encontrado, caso ele exista
+					if(vet[ias]->getTweetID() == 10524432019)
+					{
+					arvoreSplay->busca(vTweet[ias]);
+					arvoreSplay->removeNo(vTweet[ias]);
+					}
+					else
+					{
+					cout << "Tweet nao encontrado!" << endl;
+					}
+					*/
 					cout << "Arvore Splay criada." << endl;
 					cout << "Tempo total gasto nas insercoes: " << arvoreSplay->gettempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreSplay->getnumCompar() << endl;
 					cout << "Numero de copias de registro feitas: " << arvoreSplay->getnumCopias() << endl;
 
-					saidasInsercao += "Arvore Splay:\n";
+					saidasInsercao += "==========================================================\n";
+					saidasInsercao += "Arvore Splay, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
 					saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreSplay->gettempoInsercao()) + "\n";
 					saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreSplay->getnumCompar()) + "\n";
 					saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreSplay->getnumCopias()) + "\n\n";
+					saidasInsercao += "==========================================================\n";
+					arvoreSplay->limpaDados();
+					delete arvoreSplay;
+				}
+			}
+		}
+		if (code == "2")
+		{
+			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
+			for (int k = 1; k <= 5; k++) {
+				for (unsigned int i = 0; i < 1; i++) {
+					randomiza(vet, vEntrada[i]);
+					AVL* arvoreAVL = new AVL();
+					int iav;
+					//Insere os tweets na arvore
+					for (iav = 0; iav < tam; iav++)
+					{
+						arvoreAVL->inserir(vet[iav]);
+					}
+
+					cout << "Arvore AVL criada." << endl;
+					cout << "Tempo total gasto nas insercoes: " << arvoreAVL->getTempoInsercao() << endl;
+					cout << "Numero de comparacoes feitas: " << arvoreAVL->getNumCompar() << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreAVL->getNumCopias() << endl;
+
+					saidasInsercao += "==========================================================\n";
+					saidasInsercao += "Arvore AVL, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+					saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreAVL->getTempoInsercao()) + "\n";
+					saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreAVL->getNumCompar()) + "\n";
+					saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreAVL->getNumCopias()) + "\n\n";
+					saidasInsercao += "==========================================================\n";
+
+					arvoreAVL->limpaDados();
+					delete arvoreAVL;
+				}
+			}
+		}
+		if (code == "3")
+		{
+			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
+			for (int k = 1; k <= 5; k++) {
+				for (unsigned int i = 0; i < 1; i++) {
+					randomiza(vet, vEntrada[i]);
+					ArvoreB* arvoreB = new ArvoreB();
+					int iab;
+					//Insere os tweets na arvore
+					for (iab = 0; iab < tam; iab++)
+					{
+						arvoreB->inserir(vet[iab]->getTweetID());
+					}
+
+					cout << "Arvore B criada." << endl;
+					cout << "Tempo total gasto nas insercoes: " << arvoreB->getTempoInsercao() << endl;
+					cout << "Numero de comparacoes feitas: " << arvoreB->getNumCompar() << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreB->getNumCopias() << endl;
+
+					saidasInsercao += "==========================================================\n";
+					saidasInsercao += "Arvore B, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+					saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreB->getTempoInsercao()) + "\n";
+					saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreB->getNumCompar()) + "\n";
+					saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreB->getNumCopias()) + "\n\n";
+					saidasInsercao += "==========================================================\n";
+
+					arvoreB->limpaDados();
+					delete arvoreB;
+				}
+			}
+		}
+		if (code == "4")
+		{
+			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
+			for (int k = 1; k <= 5; k++) {
+				for (unsigned int i = 0; i < 1; i++) {
+					randomiza(vet, vEntrada[i]);
+					ArvoreVP* arvoreVP = new ArvoreVP();
+					int iavp;
+					//Insere os tweets na arvore
+					for (iavp = 0; iavp < tam; iavp++)
+					{
+						arvoreVP->insere(vet[iavp]->getTweetID());
+					}
+
+					cout << "Arvore Vermelho/Preta criada." << endl;
+					cout << "Tempo total gasto nas insercoes: " << arvoreVP->getTempoInsercao() << endl;
+					cout << "Numero de comparacoes feitas: " << arvoreVP->getNumCompar() << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreVP->getNumCopias() << endl;
+
+					saidasInsercao += "==========================================================\n";
+					saidasInsercao += "Arvore Vermelho/Preta, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+					saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreVP->getTempoInsercao()) + "\n";
+					saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreVP->getNumCompar()) + "\n";
+					saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreVP->getNumCopias()) + "\n\n";
+					saidasInsercao += "==========================================================\n";
+
+					arvoreVP->limpaDados();
+					delete arvoreVP;
 				}
 			}
 		}

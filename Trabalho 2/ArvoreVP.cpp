@@ -92,6 +92,14 @@ void ArvoreVP::rotacaoEsquerda(No_VP* x) {
 	numCopias++;
 }
 
+void ArvoreVP::limpaDados()
+{
+	numCompar = 0;
+	numCopias = 0;
+	tempoGastoInsercao = 0;
+	tempoGastoRemocao = 0;
+}
+
 void ArvoreVP::rotacaoDireita(No_VP* x) {
 	No_VP* y = x->getAnt();
 	x->setAnt(y->getProx());

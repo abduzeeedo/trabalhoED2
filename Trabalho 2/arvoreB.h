@@ -75,7 +75,7 @@ public:
 	void limparArvore();
 	void lerRaiz();
 	long int getNumCompar();
-	long int getNumCompias();
+	long int getNumCopias();
 	double getTempoInsercao();
 	double getTempoRemocao();
 	/** Para testar os ponteiros*/
@@ -85,6 +85,7 @@ public:
 	int predecessor(int valor);             //Retorna o elemento predecessor de outro elemento;
 	int sucessor(int valor);                //Retorna o elemento sucessor de outro elemento;
 	int sucessorNaRaiz(int valor);
+	void limpaDados();
 	ArvoreB();
 	No_B** getRaiz();
 	~ArvoreB();

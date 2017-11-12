@@ -1,3 +1,11 @@
+/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO:
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
 #include "No_VP.h"
 #include "Tweet.h"
 #include <ctime>
@@ -17,6 +25,7 @@ public:
 	long int getNumCopias(); //Retorna o numero de copias de registro feitas
 	double getTempoInsercao(); //Retorna o tempo gasto nas insercoes
 	double getTempoRemocao(); //Retorna o tempo gasto na remocao
+	void limpaDados();
 	~ArvoreVP();
 
 private:
