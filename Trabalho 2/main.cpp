@@ -160,7 +160,12 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		}
 
 		if (code == "1") {
+			long int numeroComp = 0;
+			long int numeroCopias = 0;
+			double tempoGasto = 0;
+
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
+
 			for (unsigned int i = 0; i < vEntrada.size(); i++) {
 				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i], vEntrada[i]/k);
@@ -200,21 +205,29 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					cout << "Numero de comparacoes feitas: " << arvoreSplay->getnumCompar() << endl;
 					cout << "Numero de copias de registro feitas: " << arvoreSplay->getnumCopias() << "\n" << endl;
 
-					saidasInsercao += "==========================================================\n";
-					saidasInsercao += "Arvore Splay, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
-					saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreSplay->gettempoInsercao()) + "\n";
-					saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreSplay->getnumCompar()) + "\n";
-					saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreSplay->getnumCopias()) + "\n\n";
-					saidasInsercao += "==========================================================\n";
+					numeroComp += arvoreSplay->getnumCompar();
+					numeroCopias += arvoreSplay->getnumCopias();
+					tempoGasto += arvoreSplay->gettempoInsercao();
+
 					arvoreSplay->limpaDados();
 					delete arvoreSplay;
 				}
+				saidasInsercao += "==========================================================\n";
+				saidasInsercao += "Arvore Splay, Média entre 5 interacoes com entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+				saidasInsercao += "Tempo total gasto nas insercoes: " + toString(tempoGasto/5) + "\n";
+				saidasInsercao += "Numero de comparacoes feitas: " + toString(numeroComp/5) + "\n";
+				saidasInsercao += "Numero de copias de registro feitas: " + toString(numeroCopias/5) + "\n\n";
+				saidasInsercao += "==========================================================\n";
 			}
 		}
 		if (code == "2")
 		{
+			long int numeroComp = 0;
+			long int numeroCopias = 0;
+			double tempoGasto = 0;
+
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
-			for (unsigned int i = 0; i < 1; i++) {
+			for (unsigned int i = 0; i < vEntrada.size(); i++) {
 				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i], vEntrada[i] / k);
 					AVL* arvoreAVL = new AVL();
@@ -225,27 +238,34 @@ void codigoFuncao(Tweet* vet[], int tam) {
 						arvoreAVL->inserir(vet[iav]);
 					}
 
-					cout << "Arvore AVL criada." << endl;
+					cout << "Arvore AVL criada na Interacao " << k << ", Entrada de Tamanho " << vEntrada[i] << "." << "\n";
 					cout << "Tempo total gasto nas insercoes: " << arvoreAVL->getTempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreAVL->getNumCompar() << endl;
 					cout << "Numero de copias de registro feitas: " << arvoreAVL->getNumCopias() << "\n" << endl;
 
-					saidasInsercao += "==========================================================\n";
-					saidasInsercao += "Arvore AVL, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
-					saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreAVL->getTempoInsercao()) + "\n";
-					saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreAVL->getNumCompar()) + "\n";
-					saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreAVL->getNumCopias()) + "\n\n";
-					saidasInsercao += "==========================================================\n";
+					numeroComp += arvoreAVL->getNumCompar();
+					numeroCopias += arvoreAVL->getNumCopias();
+					tempoGasto += arvoreAVL->getTempoInsercao();
 
 					arvoreAVL->limpaDados();
 					delete arvoreAVL;
 				}
+				saidasInsercao += "==========================================================\n";
+				saidasInsercao += "Arvore AVL, Média entre 5 interacoes com entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+				saidasInsercao += "Tempo total gasto nas insercoes: " + toString(tempoGasto/5) + "\n";
+				saidasInsercao += "Numero de comparacoes feitas: " + toString(numeroComp/5) + "\n";
+				saidasInsercao += "Numero de copias de registro feitas: " + toString(numeroCopias/5) + "\n\n";
+				saidasInsercao += "==========================================================\n";
 			}
 		}
-		if (code == "3")
+		if (code == "1")
 		{
+			long int numeroComp = 0;
+			long int numeroCopias = 0;
+			double tempoGasto = 0;
+
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
-			for (unsigned int i = 0; i < 1; i++) {
+			for (unsigned int i = 0; i < vEntrada.size(); i++) {
 				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i], vEntrada[i] / k);
 					ArvoreB* arvoreB = new ArvoreB();
@@ -256,27 +276,34 @@ void codigoFuncao(Tweet* vet[], int tam) {
 						arvoreB->inserir(vet[iab]->getTweetID());
 					}
 
-					cout << "Arvore B criada." << endl;
+					cout << "Arvore B criada na Interacao " << k << ", Entrada de Tamanho " << vEntrada[i] << "." << "\n";
 					cout << "Tempo total gasto nas insercoes: " << arvoreB->getTempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreB->getNumCompar() << endl;
 					cout << "Numero de copias de registro feitas: " << arvoreB->getNumCopias() << "\n" << endl;
 
-					saidasInsercao += "==========================================================\n";
-					saidasInsercao += "Arvore B, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
-					saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreB->getTempoInsercao()) + "\n";
-					saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreB->getNumCompar()) + "\n";
-					saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreB->getNumCopias()) + "\n\n";
-					saidasInsercao += "==========================================================\n";
+					numeroComp += arvoreB->getNumCompar();
+					numeroCopias += arvoreB->getNumCopias();
+					tempoGasto += arvoreB->getTempoInsercao();
 
 					arvoreB->limpaDados();
 					delete arvoreB;
 				}
+				saidasInsercao += "==========================================================\n";
+				saidasInsercao += "Arvore B, Média entre 5 interacoes com entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+				saidasInsercao += "Tempo total gasto nas insercoes: " + toString(tempoGasto / 5) + "\n";
+				saidasInsercao += "Numero de comparacoes feitas: " + toString(numeroComp / 5) + "\n";
+				saidasInsercao += "Numero de copias de registro feitas: " + toString(numeroCopias / 5) + "\n\n";
+				saidasInsercao += "==========================================================\n";
 			}
 		}
-		if (code == "4")
+		if (code == "1")
 		{
+			long int numeroComp = 0;
+			long int numeroCopias = 0;
+			double tempoGasto = 0;
+
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
-			for (unsigned int i = 0; i < 1; i++) {
+			for (unsigned int i = 0; i < vEntrada.size(); i++) {
 				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i], vEntrada[i] / k);
 					ArvoreVP* arvoreVP = new ArvoreVP();
@@ -287,21 +314,24 @@ void codigoFuncao(Tweet* vet[], int tam) {
 						arvoreVP->insere(vet[iavp]->getTweetID());
 					}
 
-					cout << "Arvore Vermelho/Preta criada." << endl;
+					cout << "Arvore Vermelho/Preta criada na Interacao " << k << ", Entrada de Tamanho " << vEntrada[i] << "." << "\n";
 					cout << "Tempo total gasto nas insercoes: " << arvoreVP->getTempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreVP->getNumCompar() << endl;
 					cout << "Numero de copias de registro feitas: " << arvoreVP->getNumCopias() << "\n" << endl;
 
-					saidasInsercao += "==========================================================\n";
-					saidasInsercao += "Arvore Vermelho/Preta, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
-					saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreVP->getTempoInsercao()) + "\n";
-					saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreVP->getNumCompar()) + "\n";
-					saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreVP->getNumCopias()) + "\n\n";
-					saidasInsercao += "==========================================================\n";
+					numeroComp += arvoreVP->getNumCompar();
+					numeroCopias += arvoreVP->getNumCopias();
+					tempoGasto += arvoreVP->getTempoInsercao();
 
 					arvoreVP->limpaDados();
 					delete arvoreVP;
 				}
+				saidasInsercao += "==========================================================\n";
+				saidasInsercao += "Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+				saidasInsercao += "Tempo total gasto nas insercoes: " + toString(tempoGasto / 5) + "\n";
+				saidasInsercao += "Numero de comparacoes feitas: " + toString(numeroComp / 5) + "\n";
+				saidasInsercao += "Numero de copias de registro feitas: " + toString(numeroCopias / 5) + "\n\n";
+				saidasInsercao += "==========================================================\n";
 			}
 		}
 	}
@@ -317,7 +347,7 @@ int main()
 	//vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 
 	//Importando tweets do arquivo TXT-------------------------------------------
-	int tamVet = 1000000; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 2000000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets para realizar os testes, aguarde." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
