@@ -20,7 +20,7 @@ Pedro Bellotti
 #include "ArvoreVP.h"
 
 string salvar = "";
-string saidasMenu = "";
+string saidasInsercao = "";
 using namespace std;
 
 //Funcao usada para pegar as linhas do arquivo do Menu.
@@ -173,36 +173,41 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			1- Ler o tweet ID
 			2- Buscar no vetor mesmo vetor utilizado para insercao o ponteiro para o tweetID
 			3- Chamar a remocao/busca na arvore com o ponteiro encontrado
-
 			Exemplo: Remover o tweet de ID 10524432019 (eh o 10 tweet do arquivo test_set_tweets)
 			for (ias = 0; ias < tam; ias++)
 			{
-				if (vet[ias]->getTweetID() == 10524432019) //Achou o tweet, sai do for
-				{
-					break;
-				}
+			if (vet[ias]->getTweetID() == 10524432019) //Achou o tweet, sai do for
+			{
+			break;
+			}
 			}
 			//Faz a busca/remocao na arvore com a posicao do vetor de tweet encontrado, caso ele exista
 			if(vet[ias]->getTweetID() == 10524432019)
 			{
-				arvoreSplay->busca(vTweet[ias]);
-				arvoreSplay->removeNo(vTweet[ias]);
+			arvoreSplay->busca(vTweet[ias]);
+			arvoreSplay->removeNo(vTweet[ias]);
 			}
 			else
 			{
-				cout << "Tweet nao encontrado!" << endl;
+			cout << "Tweet nao encontrado!" << endl;
 			}
 			*/
 			cout << "Arvore Splay criada." << endl;
 			cout << "Tempo total gasto nas insercoes: " << arvoreSplay->gettempoInsercao() << endl;
 			cout << "Numero de comparacoes feitas: " << arvoreSplay->getnumCompar() << endl;
 			cout << "Numero de copias de registro feitas: " << arvoreSplay->getnumCopias() << endl;
+
+			saidasInsercao += "Arvore Splay:\n";
+			saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreSplay->gettempoInsercao()) + "\n";
+			saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreSplay->getnumCompar()) + "\n";
+			saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreSplay->getnumCopias()) + "\n\n";
+
 			delete arvoreSplay;
 		}
-		if(code == "2")
-        {
-            AVL* arvoreAVL = new AVL();
-            int iav;
+		if (code == "2")
+		{
+			AVL* arvoreAVL = new AVL();
+			int iav;
 			//Insere os tweets na arvore
 			for (iav = 0; iav < tam; iav++)
 			{
@@ -213,7 +218,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Numero de comparacoes feitas: " << arvoreAVL->getNumCompar() << endl;
 			cout << "Numero de copias de registro feitas: " << arvoreAVL->getNumCompias() << endl;
 			delete arvoreAVL;
-        }
+		}
 		if (code == "3")
 		{
 			ArvoreB* arvoreB = new ArvoreB();
@@ -244,6 +249,37 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			cout << "Numero de copias de registro feitas: " << arvoreVP->getNumCopias() << endl;
 			delete arvoreVP;
 		}
+		if (code == "5")
+		{
+			cout << "Testes em Batch sendo Executados" << endl;
+			ArvoreSplay* arvoreSplay = new ArvoreSplay();
+			
+			vector<int> vEntrada = importaEntrada("entrada.txt");
+			//int vEntrada[3] = { 10000, 30000, 60000 };
+
+			for (int k = 1; k <= 1; k++) { //Numero de Iterações (5 a serem executadas para cada N)
+				randomiza(vet, tam);
+				for (unsigned int i = 0; i < 1; i++) { //Numero de Arquivos do vEntrada a ser considerado
+					cout << "Ordenando vetor de tamanho " << vEntrada[i] << " na iteracao " << k << endl;
+					randomiza(vet, vEntrada[i]);
+					//Insere os tweets na arvore
+					for (int i = 0; i < vEntrada[i]; i++)
+					{
+						arvoreSplay->insereNo(vet[i]);
+					}
+
+					cout << "Arvore Splay criada." << endl;
+					cout << "Tempo total gasto nas insercoes: " << arvoreSplay->gettempoInsercao() << endl;
+					cout << "Numero de comparacoes feitas: " << arvoreSplay->getnumCompar() << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreSplay->getnumCopias() << endl;
+
+					saidasInsercao += "Arvore Splay:\n";
+					saidasInsercao += "Tempo total gasto nas insercoes: " + toString(arvoreSplay->gettempoInsercao()) + "\n";
+					saidasInsercao += "Numero de comparacoes feitas: " + toString(arvoreSplay->getnumCompar()) + "\n";
+					saidasInsercao += "Numero de copias de registro feitas: " + toString(arvoreSplay->getnumCopias()) + "\n\n";
+				}
+			}
+		}
 	}
 }
 
@@ -257,7 +293,7 @@ int main()
 	//vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 
 	//Importando tweets do arquivo TXT-------------------------------------------
-	int tamVet = 100; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 30000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets para realizar os testes, aguarde." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
@@ -271,7 +307,7 @@ int main()
 
 	codigoFuncao(vTweet, tamVet);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(salvar, "saida.txt");
-	salvarTxt(saidasMenu, "saidasMenu.txt");
+	salvarTxt(saidasInsercao, "saidasInsercao.txt");
 	system("pause");
 	return 0;
 }
