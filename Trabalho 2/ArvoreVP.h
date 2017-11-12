@@ -26,7 +26,8 @@ public:
 	double getTempoInsercao(); //Retorna o tempo gasto nas insercoes
 	double getTempoRemocao(); //Retorna o tempo gasto na remocao
 	double getTempoBusca(); //Retorna o tempo gasto na busca
-	bool busca(long long int chave, No_VP* n);
+	No_VP* busca(long long int chave, No_VP* n);
+	bool buscar(long long int chave);
 	void limpaDados();
 	~ArvoreVP();
 

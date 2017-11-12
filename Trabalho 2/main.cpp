@@ -271,7 +271,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 					//realiza uma busca aleatoria
 					cout << "Realizando Busca..." << endl;
-					arvoreAVL->busca(vet[rand()]->getTweetID());
+					//arvoreAVL->busca(vet[rand()]->getTweetID());
 
 					//armazena dados em variaveis para tirar media posteriormente
 					numeroCompBusca += arvoreAVL->getNumCompar();
@@ -420,7 +420,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 					//realiza uma busca aleatoria
 					cout << "Realizando Busca..." << endl;
-					//arvoreVP->buscar(vet[rand()]->getTweetID());
+					arvoreVP->buscar(vet[rand()]->getTweetID());
 
 					//armazena dados em variaveis para tirar media posteriormente
 					numeroCompBusca += arvoreVP->getNumCompar();

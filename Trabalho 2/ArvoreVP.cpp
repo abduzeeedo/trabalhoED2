@@ -73,8 +73,41 @@ double ArvoreVP::getTempoRemocao()
 	return tempoGastoRemocao;
 }
 
-bool ArvoreVP::busca(long long int chave, No_VP* n){
-	return true;
+bool ArvoreVP::buscar(long long int chave) {
+	clock_t relogio;
+	relogio = clock();
+	if (busca(chave, raiz) != NULL) {
+		tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
+		return true;
+	}
+	else {
+		tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
+		return false;
+	}
+}
+
+No_VP* ArvoreVP::busca(long long int chave, No_VP* n){
+
+	No_VP* aux;
+	if (n == NULL) {
+		numCompar++;
+	
+		return NULL;
+	}
+	else
+	{
+		if (n->getValor() == chave) {
+			numCompar++;
+			return n;
+		}
+	}
+
+	aux = busca(chave, n->getProx());
+	if (aux != NULL) {
+		numCompar++;
+		return aux;
+	}
+	return NULL;
 }
 
 void ArvoreVP::rotacaoEsquerda(No_VP* x) {
