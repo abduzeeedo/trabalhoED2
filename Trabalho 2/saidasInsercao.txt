@@ -1,0 +1,736 @@
+==========================================================
+Arvore Splay, Interacao 1, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 0.001
+Numero de comparacoes feitas: 7562
+Numero de copias de registro feitas: 8618
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 2, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 0.002
+Numero de comparacoes feitas: 8774
+Numero de copias de registro feitas: 10220
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 3, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 0.002
+Numero de comparacoes feitas: 8303
+Numero de copias de registro feitas: 9534
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 4, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 0.001
+Numero de comparacoes feitas: 7656
+Numero de copias de registro feitas: 8753
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 5, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 0.002
+Numero de comparacoes feitas: 8652
+Numero de copias de registro feitas: 10010
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 1, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 0.008
+Numero de comparacoes feitas: 58249
+Numero de copias de registro feitas: 70711
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 2, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 0.011
+Numero de comparacoes feitas: 60890
+Numero de copias de registro feitas: 73508
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 3, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 0.013
+Numero de comparacoes feitas: 58741
+Numero de copias de registro feitas: 70911
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 4, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 0.011
+Numero de comparacoes feitas: 60163
+Numero de copias de registro feitas: 72497
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 5, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 0.01
+Numero de comparacoes feitas: 60167
+Numero de copias de registro feitas: 72871
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 1, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 0.021
+Numero de comparacoes feitas: 133726
+Numero de copias de registro feitas: 164220
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 2, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 0.025
+Numero de comparacoes feitas: 136397
+Numero de copias de registro feitas: 166886
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 3, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 0.023
+Numero de comparacoes feitas: 136559
+Numero de copias de registro feitas: 166957
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 4, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 0.024
+Numero de comparacoes feitas: 139496
+Numero de copias de registro feitas: 170972
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 5, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 0.022
+Numero de comparacoes feitas: 134616
+Numero de copias de registro feitas: 164514
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 1, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 0.12
+Numero de comparacoes feitas: 639668
+Numero de copias de registro feitas: 802928
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 2, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 0.121
+Numero de comparacoes feitas: 648581
+Numero de copias de registro feitas: 813404
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 3, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 0.119
+Numero de comparacoes feitas: 649889
+Numero de copias de registro feitas: 815689
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 4, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 0.129
+Numero de comparacoes feitas: 650798
+Numero de copias de registro feitas: 816872
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 5, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 0.12
+Numero de comparacoes feitas: 646034
+Numero de copias de registro feitas: 809923
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 1, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 0.215
+Numero de comparacoes feitas: 1.04614e+06
+Numero de copias de registro feitas: 1.34697e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 2, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 0.219
+Numero de comparacoes feitas: 1.04655e+06
+Numero de copias de registro feitas: 1.34761e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 3, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 0.213
+Numero de comparacoes feitas: 1.04289e+06
+Numero de copias de registro feitas: 1.34291e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 4, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 0.221
+Numero de comparacoes feitas: 1.04504e+06
+Numero de copias de registro feitas: 1.34581e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 5, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 0.222
+Numero de comparacoes feitas: 1.03313e+06
+Numero de copias de registro feitas: 1.32923e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 1, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.312
+Numero de comparacoes feitas: 5.11611e+06
+Numero de copias de registro feitas: 6.87006e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 2, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.379
+Numero de comparacoes feitas: 5.30973e+06
+Numero de copias de registro feitas: 7.1387e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 3, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.213
+Numero de comparacoes feitas: 5.01757e+06
+Numero de copias de registro feitas: 6.73251e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 4, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.395
+Numero de comparacoes feitas: 5.3179e+06
+Numero de copias de registro feitas: 7.15027e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 5, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.373
+Numero de comparacoes feitas: 5.22305e+06
+Numero de copias de registro feitas: 7.01818e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 1, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 3.197
+Numero de comparacoes feitas: 1.15695e+07
+Numero de copias de registro feitas: 1.56639e+07
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 2, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 3.131
+Numero de comparacoes feitas: 1.15336e+07
+Numero de copias de registro feitas: 1.56137e+07
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 3, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 3.132
+Numero de comparacoes feitas: 1.15708e+07
+Numero de copias de registro feitas: 1.56589e+07
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 4, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 2.95
+Numero de comparacoes feitas: 1.1281e+07
+Numero de copias de registro feitas: 1.52623e+07
+
+==========================================================
+==========================================================
+Arvore Splay, Interacao 5, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 3.014
+Numero de comparacoes feitas: 1.1502e+07
+Numero de copias de registro feitas: 1.55655e+07
+
+==========================================================
+==========================================================
+Arvore B, Interacao 1, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 1.558
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47607e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 2, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 1.506
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47581e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 3, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 1.546
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47603e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 4, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 1.535
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47631e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 5, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 1.501
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47611e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 1, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 1.515
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47581e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 2, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 1.531
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47591e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 3, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 1.495
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47622e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 4, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 1.523
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47569e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 5, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 1.478
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47675e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 1, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 1.507
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47611e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 2, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 1.498
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47637e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 3, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 1.498
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47671e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 4, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 1.495
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47624e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 5, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 1.485
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47694e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 1, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 1.489
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47575e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 2, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 1.501
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47585e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 3, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 1.499
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47657e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 4, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 1.504
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47578e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 5, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 1.56
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47537e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 1, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 1.502
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47619e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 2, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 1.51
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47652e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 3, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 1.49
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47629e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 4, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 1.535
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47611e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 5, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 1.513
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47649e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 1, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.542
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47643e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 2, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.507
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47682e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 3, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.493
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47545e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 4, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.495
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47691e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 5, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.527
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47636e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 1, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 1.56
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47654e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 2, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 1.544
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.4762e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 3, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 1.547
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47619e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 4, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 1.562
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47565e+06
+
+==========================================================
+==========================================================
+Arvore B, Interacao 5, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 1.526
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47688e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 1, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 6.827
+Numero de comparacoes feitas: 2.1122e+07
+Numero de copias de registro feitas: 1.80367e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 2, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 6.88
+Numero de comparacoes feitas: 2.15738e+07
+Numero de copias de registro feitas: 1.89049e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 3, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 6.921
+Numero de comparacoes feitas: 2.06712e+07
+Numero de copias de registro feitas: 1.80979e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 4, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 6.903
+Numero de comparacoes feitas: 2.14775e+07
+Numero de copias de registro feitas: 1.88928e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 5, Entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 6.752
+Numero de comparacoes feitas: 2.05201e+07
+Numero de copias de registro feitas: 1.80969e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 1, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 6.66
+Numero de comparacoes feitas: 2.08681e+07
+Numero de copias de registro feitas: 1.80342e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 2, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 6.741
+Numero de comparacoes feitas: 2.15365e+07
+Numero de copias de registro feitas: 1.85188e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 3, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 6.723
+Numero de comparacoes feitas: 2.25403e+07
+Numero de copias de registro feitas: 1.94564e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 4, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 6.686
+Numero de comparacoes feitas: 2.0567e+07
+Numero de copias de registro feitas: 1.80017e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 5, Entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 6.667
+Numero de comparacoes feitas: 1.97235e+07
+Numero de copias de registro feitas: 1.79551e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 1, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 6.694
+Numero de comparacoes feitas: 2.19882e+07
+Numero de copias de registro feitas: 1.84971e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 2, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 6.664
+Numero de comparacoes feitas: 2.2127e+07
+Numero de copias de registro feitas: 1.86877e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 3, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 6.704
+Numero de comparacoes feitas: 2.20046e+07
+Numero de copias de registro feitas: 1.86772e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 4, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 6.709
+Numero de comparacoes feitas: 2.14909e+07
+Numero de copias de registro feitas: 1.88389e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 5, Entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 6.837
+Numero de comparacoes feitas: 2.04234e+07
+Numero de copias de registro feitas: 1.83763e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 1, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 6.891
+Numero de comparacoes feitas: 2.38667e+07
+Numero de copias de registro feitas: 1.94899e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 2, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 6.795
+Numero de comparacoes feitas: 2.06533e+07
+Numero de copias de registro feitas: 1.79924e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 3, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 6.948
+Numero de comparacoes feitas: 2.19877e+07
+Numero de copias de registro feitas: 1.85104e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 4, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 6.865
+Numero de comparacoes feitas: 2.14194e+07
+Numero de copias de registro feitas: 1.8492e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 5, Entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 6.755
+Numero de comparacoes feitas: 2.06726e+07
+Numero de copias de registro feitas: 1.80585e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 1, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 6.718
+Numero de comparacoes feitas: 2.04418e+07
+Numero de copias de registro feitas: 1.81827e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 2, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 6.69
+Numero de comparacoes feitas: 2.05052e+07
+Numero de copias de registro feitas: 1.83916e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 3, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 6.723
+Numero de comparacoes feitas: 2.30394e+07
+Numero de copias de registro feitas: 1.94377e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 4, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 6.745
+Numero de comparacoes feitas: 2.09106e+07
+Numero de copias de registro feitas: 1.88772e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 5, Entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 6.673
+Numero de comparacoes feitas: 1.98442e+07
+Numero de copias de registro feitas: 1.80454e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 1, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 6.659
+Numero de comparacoes feitas: 2.06336e+07
+Numero de copias de registro feitas: 1.80974e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 2, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 6.704
+Numero de comparacoes feitas: 2.27054e+07
+Numero de copias de registro feitas: 1.87492e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 3, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 6.625
+Numero de comparacoes feitas: 2.13703e+07
+Numero de copias de registro feitas: 1.81304e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 4, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 6.619
+Numero de comparacoes feitas: 2.10941e+07
+Numero de copias de registro feitas: 1.81216e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 5, Entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 6.807
+Numero de comparacoes feitas: 2.14427e+07
+Numero de copias de registro feitas: 1.88133e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 1, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 6.8
+Numero de comparacoes feitas: 2.17296e+07
+Numero de copias de registro feitas: 1.92474e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 2, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 6.822
+Numero de comparacoes feitas: 2.06731e+07
+Numero de copias de registro feitas: 1.8175e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 3, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 6.779
+Numero de comparacoes feitas: 2.25794e+07
+Numero de copias de registro feitas: 1.85615e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 4, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 6.887
+Numero de comparacoes feitas: 2.17816e+07
+Numero de copias de registro feitas: 1.89376e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho/Preta, Interacao 5, Entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 6.863
+Numero de comparacoes feitas: 2.07697e+07
+Numero de copias de registro feitas: 1.8362e+06
+
+==========================================================
+
