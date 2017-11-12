@@ -44,7 +44,7 @@ No *AVL::rotR(No *no) //rotacao direita
 No *AVL::rotRR(No *no) //rotacao dupla direita
 {
 	no->setEsq(rotL(no->getEsq()));
-	No *noAux = otR(no);
+	No *noAux = rotR(no);
 	numCopias++;
 	return noAux;
 }
