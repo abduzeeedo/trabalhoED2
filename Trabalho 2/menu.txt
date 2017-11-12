@@ -6,6 +6,6 @@
 || 1 -  Cria uma Arvore Splay de Tweets                            ||
 || 2 -  Cria uma Arvore AVL de Tweets                              ||
 || 3 -  Cria uma Arvore B de Tweets                                ||
-|| 4 -  Cria uma Arvore VP de Tweets                               ||
+|| 4 -  Cria uma Arvore Vermelho-Preto de Tweets                   ||
 || -1 - Encerra a execucao do projeto                              ||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
