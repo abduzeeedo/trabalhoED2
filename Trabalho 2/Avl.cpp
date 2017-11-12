@@ -15,6 +15,7 @@ AVL::AVL()
 	numCopias = 0;
 	tempoGastoInsercao = 0;
 	tempoGastoRemocao = 0;
+	tempoGastoBusca = 0;
 }
 
 AVL::~AVL()
@@ -68,18 +69,29 @@ bool AVL::busca(int tweetId)
 }
 bool AVL::buscaAuxiliar(int tweetId, No* no)
 {
-	if (no == NULL)
+	clock_t relogio;
+	relogio = clock();
+
+	if (no == NULL && numCompar++) {
+		tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 		return false;
-	else if (no->getChave()->getTweetID() == tweetId)
+	}
+	else if (no->getChave()->getTweetID() == tweetId && numCompar++){
+		tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 		return true;
-	else if (no->getChave()->getTweetID() != tweetId)
+	}
+	else if (no->getChave()->getTweetID() != tweetId && numCompar++)
 	{
-		if (no->getEsq() != NULL && no->getChave()->getTweetID() < tweetId)
+		if (no->getEsq() != NULL && no->getChave()->getTweetID() < tweetId && numCompar++){
 			return buscaAuxiliar(tweetId, no->getEsq());
-		else if (no->getDir() != NULL && no->getChave()->getTweetID() > tweetId)
+		}
+		else if (no->getDir() != NULL && no->getChave()->getTweetID() > tweetId && numCompar++){
 			return buscaAuxiliar(tweetId, no->getDir());
-		else if (no->getEsq() == NULL && no->getDir() == NULL)
+		}
+		else if (no->getEsq() == NULL && no->getDir() == NULL){
+			tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 			return false;
+		}
 	}
 }
 
@@ -326,4 +338,8 @@ double AVL::getTempoInsercao()
 double AVL::getTempoRemocao()
 {
 	return tempoGastoRemocao;
+}
+double AVL::getTempoBusca()
+{
+	return tempoGastoBusca;
 }

@@ -67,6 +67,7 @@ private:
 	long int numCopias;
 	double tempoGastoInsercao;
 	double tempoGastoRemocao;
+	double tempoGastoBusca;
 public:
 	No_B* buscar(int valor, No_B* n);
 	void inserir(int valor);
@@ -78,6 +79,7 @@ public:
 	long int getNumCopias();
 	double getTempoInsercao();
 	double getTempoRemocao();
+	double getTempoBusca();
 	/** Para testar os ponteiros*/
 	void testePai(int valor);
 	void testePredecessor(int valor);

@@ -22,7 +22,6 @@ ArvoreVP::ArvoreVP()
 void ArvoreVP::deletaH(No_VP* p) {
 
 	if (p != NULL) {
-
 		deletaH(p->getAnt());
 		deletaH(p->getProx());
 		delete p;
@@ -67,6 +66,10 @@ SAIDA: Tempo gasto na remocao
 double ArvoreVP::getTempoRemocao()
 {
 	return tempoGastoRemocao;
+}
+
+bool ArvoreVP::busca(long long int chave, No_VP* n){
+	return true;
 }
 
 void ArvoreVP::rotacaoEsquerda(No_VP* x) {
@@ -147,7 +150,7 @@ void ArvoreVP::corrigeCaso3(No_VP* no) {
 	// Caso 3: Pai e Tio do NO VERMELHOS - passam para PRETO e Avo de NO passa para VERMELHO
 	No_VP* tio = no->getTio();
 
-	if (tio != NULL && tio->getCor() == VERMELHO && ++numCompar) {
+	if (tio != NULL && tio->getCor() == VERMELHO) {
 		no->getPai()->setCor(PRETO);
 		tio->setCor(PRETO);
 		No_VP* avo = no->getAvo();
@@ -164,12 +167,12 @@ void ArvoreVP::corrigeCaso4(No_VP* no) {
 	// Caso 4: O pai do NO eh VERMELHO mas o tio de NO eh PRETO
 	No_VP* avo = no->getAvo();
 	No_VP* pai = no->getPai();
-	if ((no == pai->getProx()) && (pai == avo->getAnt()) && ++numCompar) {
+	if ((no == pai->getProx()) && (pai == avo->getAnt())) {
 		// Rotacao a esquerda do pai do NO
 		rotacaoEsquerda(pai);
 		no = no->getAnt();
 	}
-	else if ((no == pai->getAnt()) && (pai == avo->getProx()) && ++numCompar) {
+	else if ((no == pai->getAnt()) && (pai == avo->getProx())) {
 		// Rotacao a direita do pai do NO
 		rotacaoDireita(pai);
 		no = no->getProx();
@@ -183,7 +186,7 @@ void ArvoreVP::corrigeCaso5(No_VP* no) {
 	No_VP* pai = no->getPai();
 	pai->setCor(PRETO);
 	avo->setCor(VERMELHO);
-	if ((no == pai->getAnt()) && (pai == avo->getAnt()) && ++numCompar) {
+	if ((no == pai->getAnt()) && (pai == avo->getAnt())) {
 		// Rotacao a direita do avo do NO
 		rotacaoDireita(avo);
 	}
@@ -236,7 +239,7 @@ void ArvoreVP::trocaNos(No_VP* noVelho, No_VP* noNovo) {
 		raiz = noNovo;
 	}
 	else {
-		if (noVelho == noVelho->getPai()->getAnt() && ++numCompar) {
+		if (noVelho == noVelho->getPai()->getAnt()) {
 			noVelho->getPai()->setAnt(noNovo);
 			numCopias++;
 		}
@@ -282,14 +285,17 @@ void ArvoreVP::remover(long long int valor) {
 	int achou = 0;
 	while (p != NULL) {
 		if (p->getValor() == valor  && ++numCompar) {
+			numCopias++;
 			achou = 1;
 			break;
 		}
 		if (p->getValor() < valor  && ++numCompar) {
 			p = p->getProx();
+			numCopias++;
 		}
 		else {
 			p = p->getAnt();
+			numCopias++;
 		}
 	}
 	if (achou == 0) {

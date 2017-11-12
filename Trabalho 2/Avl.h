@@ -28,6 +28,7 @@ public:
 	long int getNumCopias();
 	double getTempoInsercao();
 	double getTempoRemocao();
+	double getTempoBusca();
 	void limpaDados();
 private:
 	//variaveis
@@ -36,6 +37,7 @@ private:
 	long int numCopias;
 	double tempoGastoInsercao;
 	double tempoGastoRemocao;
+	double tempoGastoBusca;
 	//funcoes
 	bool buscaAuxiliar(int tweetId, No* no);
 	void inserirAuxiliar(Tweet* tw, No* no);

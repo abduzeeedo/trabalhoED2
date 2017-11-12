@@ -25,6 +25,7 @@ public:
 	long int getNumCopias(); //Retorna o numero de copias de registro feitas
 	double getTempoInsercao(); //Retorna o tempo gasto nas insercoes
 	double getTempoRemocao(); //Retorna o tempo gasto na remocao
+	bool busca(long long int chave, No_VP* n);
 	void limpaDados();
 	~ArvoreVP();
 

@@ -48,6 +48,7 @@ void ArvoreB::limpaDados()
 	numCopias = 0;
 	tempoGastoInsercao = 0;
 	tempoGastoRemocao = 0;
+	tempoGastoBusca = 0;
 }
 
 void ArvoreB::inserir(int valor)
@@ -157,20 +158,28 @@ int ArvoreB::split(No_B* n, No_B** novoNo)
 
 No_B* ArvoreB::buscar(int valor, No_B* n)
 {
-
+	clock_t relogio;
+	relogio = clock();
+	
 	No_B* aux;
-	if (n == NULL)
+	if (n == NULL && numCompar++) {
+		tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 		return NULL;
+	}
 	else
 	{//Verifica se o valor esta no No 'n', se estiver, retona a posicao de memoria de 'n', caso nao esteja, verifica nos seus filhos
-		if (n->getPos(valor) != -1)
+		if (n->getPos(valor) != -1 && numCompar++) {
+			tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 			return n;
+		}
 	}
 	for (int i = 0; i <= n->tamanho; i++)
 	{//Verifica se encontra o valor nos filhos de 'n'
 		aux = buscar(valor, n->filho[i]);
-		if (aux != NULL)
+		if (aux != NULL) {
+			tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 			return aux;
+		}
 	}
 	return NULL;
 }
@@ -627,7 +636,7 @@ void ArvoreB::remover(int valor)
 	cout << "Removendo o elemento " << valor << " ..." << endl;
 	auxRemover(valor, buscar(valor, raiz));
 	cout << "Elemento removido com sucesso." << endl;
-	tempoGastoRemocao = (clock() - relogio) / (double)CLOCKS_PER_SEC;
+	tempoGastoRemocao += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 }
 
 void ArvoreB::auxRemover(int valor, No_B* n)
@@ -790,4 +799,8 @@ double ArvoreB::getTempoInsercao()
 double ArvoreB::getTempoRemocao()
 {
 	return tempoGastoRemocao;
+}
+double ArvoreB::getTempoBusca()
+{
+	return tempoGastoBusca;
 }

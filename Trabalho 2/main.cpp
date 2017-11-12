@@ -226,6 +226,11 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			long int numeroCopias = 0;
 			double tempoGasto = 0;
 
+			long int numeroCompBusca = 0;
+			double tempoBusca = 0;
+
+			double tempoRemocao = 0;
+
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 			for (unsigned int i = 0; i < vEntrada.size(); i++) {
 				for (int k = 1; k <= 5; k++) {
@@ -246,8 +251,17 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					numeroComp += arvoreAVL->getNumCompar();
 					numeroCopias += arvoreAVL->getNumCopias();
 					tempoGasto += arvoreAVL->getTempoInsercao();
-
 					arvoreAVL->limpaDados();
+
+					//realiza uma busca aleatoria
+					cout << "Realizando Busca..." << endl;
+					arvoreAVL->busca(vet[rand()]->getTweetID());
+
+					numeroCompBusca += arvoreAVL->getNumCompar();
+					tempoBusca += arvoreAVL->getTempoBusca();
+					arvoreAVL->limpaDados();
+
+					
 					delete arvoreAVL;
 				}
 				saidasInsercao += "==========================================================\n";
@@ -256,13 +270,25 @@ void codigoFuncao(Tweet* vet[], int tam) {
 				saidasInsercao += "Numero de comparacoes feitas: " + toString(numeroComp/5) + "\n";
 				saidasInsercao += "Numero de copias de registro feitas: " + toString(numeroCopias/5) + "\n\n";
 				saidasInsercao += "==========================================================\n";
+
+				saidasBusca += "==========================================================\n";
+				saidasBusca += "Arvore AVL, Média entre 5 interacoes com entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+				saidasBusca += "Tempo total gasto na Busca: " + toString(tempoBusca / 5) + "\n";
+				saidasBusca += "Numero de comparacoes feitas: " + toString(numeroCompBusca / 5) + "\n";
+				saidasBusca += "==========================================================\n";
 			}
 		}
-		if (code == "1")
+		if (code == "3")
 		{
 			long int numeroComp = 0;
 			long int numeroCopias = 0;
 			double tempoGasto = 0;
+
+			long int numeroCompBusca = 0;
+			double tempoBusca = 0;
+
+			long int numeroCompRemocao = 0;
+			double tempoRemocao = 0;
 
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 			for (unsigned int i = 0; i < vEntrada.size(); i++) {
@@ -281,11 +307,34 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					cout << "Numero de comparacoes feitas: " << arvoreB->getNumCompar() << endl;
 					cout << "Numero de copias de registro feitas: " << arvoreB->getNumCopias() << "\n" << endl;
 
+
 					numeroComp += arvoreB->getNumCompar();
 					numeroCopias += arvoreB->getNumCopias();
 					tempoGasto += arvoreB->getTempoInsercao();
-
+					cout << "Limpa Dados..." << endl;
 					arvoreB->limpaDados();
+
+					//realiza uma busca aleatoria
+					cout << "Realizando Busca..." << endl;
+					arvoreB->buscar(vet[rand()]->getTweetID());
+
+					//armazena dados em variaveis para tirar media posteriormente
+					cout << "Salva num Comparacoes na Busca..." << endl;
+					numeroCompBusca += arvoreB->getNumCompar();
+					cout << "Salva Tempo Gasto na Busca..." << endl;
+					tempoBusca += arvoreB->getTempoBusca();
+					cout << "Limpa Dados..." << endl;
+					arvoreB->limpaDados();
+
+					//realiza uma remocao aleatoria
+					cout << "Realizando Remocao..." << endl;
+					arvoreB->remover(vet[rand()]->getTweetID());
+
+					//armazena dados em variaveis para tirar media posteriormente
+					numeroCompRemocao += arvoreB->getNumCompar();
+					tempoRemocao += arvoreB->getTempoRemocao();
+					arvoreB->limpaDados();
+
 					delete arvoreB;
 				}
 				saidasInsercao += "==========================================================\n";
@@ -294,9 +343,21 @@ void codigoFuncao(Tweet* vet[], int tam) {
 				saidasInsercao += "Numero de comparacoes feitas: " + toString(numeroComp / 5) + "\n";
 				saidasInsercao += "Numero de copias de registro feitas: " + toString(numeroCopias / 5) + "\n\n";
 				saidasInsercao += "==========================================================\n";
+
+				saidasBusca += "==========================================================\n";
+				saidasBusca += "Arvore B, Média entre 5 interacoes com entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+				saidasBusca += "Tempo total gasto na Busca: " + toString(tempoBusca / 5) + "\n";
+				saidasBusca += "Numero de comparacoes feitas: " + toString(numeroCompBusca / 5) + "\n";
+				saidasBusca += "==========================================================\n";
+
+				saidasRemocao += "==========================================================\n";
+				saidasRemocao += "Arvore B, Média entre 5 interacoes com entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+				saidasRemocao += "Tempo total gasto na Remocao: " + toString(tempoRemocao / 5) + "\n";
+				saidasRemocao += "Numero de comparacoes feitas: " + toString(numeroCompRemocao / 5) + "\n";
+				saidasRemocao += "==========================================================\n";
 			}
 		}
-		if (code == "1")
+		if (code == "4")
 		{
 			long int numeroComp = 0;
 			long int numeroCopias = 0;
@@ -362,6 +423,8 @@ int main()
 	codigoFuncao(vTweet, tamVet);//Seleciona a funcao ou encerra a execucao;
 
 	salvarTxt(saidasInsercao, "saidasInsercao.txt");
+	salvarTxt(saidasBusca, "saidasBusca.txt");
+	salvarTxt(saidasRemocao, "saidasRemocao.txt");
 	system("pause");
 	return 0;
 }
