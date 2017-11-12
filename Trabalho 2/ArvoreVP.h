@@ -25,6 +25,7 @@ public:
 	long int getNumCopias(); //Retorna o numero de copias de registro feitas
 	double getTempoInsercao(); //Retorna o tempo gasto nas insercoes
 	double getTempoRemocao(); //Retorna o tempo gasto na remocao
+	double getTempoBusca(); //Retorna o tempo gasto na busca
 	bool busca(long long int chave, No_VP* n);
 	void limpaDados();
 	~ArvoreVP();
@@ -54,6 +55,7 @@ private:
 	long int numCopias; //Numero de copias de registro feitas
 	double tempoGastoInsercao; //Tempo gasto nas insercoes (somado a cada insercao)
 	double tempoGastoRemocao; //Tempo gasto nas remocoes (calculado a cada remocao)
+	double tempoGastoBusca; //Tempo gasto nas busca (calculado a cada busca)
 };
 
 #endif // ArvoreVermelhoPreta_H

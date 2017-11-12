@@ -58,6 +58,11 @@ double ArvoreVP::getTempoInsercao()
 	return tempoGastoInsercao;
 }
 
+double ArvoreVP::getTempoBusca()
+{
+	return tempoGastoBusca;
+}
+
 /*
 Funcao para retornar o tempo gasto na remocao
 ENTRADA: -
@@ -284,18 +289,17 @@ void ArvoreVP::remover(long long int valor) {
 	No_VP* p = raiz;
 	int achou = 0;
 	while (p != NULL) {
-		if (p->getValor() == valor  && ++numCompar) {
-			numCopias++;
+		if (p->getValor() == valor) {
+			numCompar++;
 			achou = 1;
 			break;
 		}
-		if (p->getValor() < valor  && ++numCompar) {
+		if (p->getValor() < valor) {
+			numCompar++;
 			p = p->getProx();
-			numCopias++;
 		}
 		else {
 			p = p->getAnt();
-			numCopias++;
 		}
 	}
 	if (achou == 0) {
