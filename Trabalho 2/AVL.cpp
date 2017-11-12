@@ -135,11 +135,13 @@ No *AVL::removerAux2(No *no)
 	No *noAuxPai = new No();
 	if ((no->getEsq() == NULL) && (no->getDir() == NULL))
 	{
+		numCompar++;
 		delete no;
 		return NULL;
 	}
 	else if ((no->getEsq() == NULL) && (no->getDir() != NULL))
 	{
+		numCompar++;
 		noAux = no->getEsq();
 		numCopias++;
 		delete no;
@@ -147,6 +149,7 @@ No *AVL::removerAux2(No *no)
 	}
 	else if ((no->getEsq() != NULL) && (no->getDir() == NULL))
 	{
+		numCompar++;
 		noAux = no->getDir();
 		numCopias++;
 		delete no;
@@ -156,6 +159,7 @@ No *AVL::removerAux2(No *no)
 	{
 		if (no->getEsq()->getDir() == NULL)
 		{
+			numCompar++;
 			noAux = no->getEsq();
 			numCopias++;
 			no->getEsq()->setDir(no->getDir());
@@ -173,8 +177,10 @@ No *AVL::removerAux2(No *no)
 				noAux = noAux->getDir();
 				numCopias++;
 			}
-			if (noAux->getEsq() != NULL)
+			if (noAux->getEsq() != NULL){
+			numCompar++;
 				noAuxPai->setDir(noAux->getEsq());
+			}
 			else
 			{
 				noAuxPai->setDir(NULL);
@@ -193,12 +199,16 @@ No *AVL::removerAux(No *no, Tweet *tw)
 	numCopias++;
 	No *noPai = new No();
 	bool bdir = false;
-	if (tw->getTweetID() == no->getChave()->getTweetID())
+	if (tw->getTweetID() == no->getChave()->getTweetID()){
+
+		numCompar++;
 		return removerAux2(noAux);
+	}
 	while (noAux != NULL)
 	{
 		if (tw->getTweetID() == noAux->getChave()->getTweetID())
 		{
+			numCompar++;
 			if (bdir)
 				noPai->setDir(removerAux2(noAux));
 			else
@@ -209,6 +219,7 @@ No *AVL::removerAux(No *no, Tweet *tw)
 		{
 			if (tw->getTweetID() > noAux->getChave()->getTweetID())
 			{
+				numCompar++;
 				bdir = false;
 				noPai = noAux;
 				numCopias++;
@@ -217,6 +228,7 @@ No *AVL::removerAux(No *no, Tweet *tw)
 			}
 			else
 			{
+				numCompar++;
 				bdir = true;
 				noPai = noAux;
 				numCopias++;
