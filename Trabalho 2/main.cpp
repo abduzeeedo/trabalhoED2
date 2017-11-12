@@ -108,12 +108,10 @@ Tweet** carregaTweets(Tweet** src, int tam, int tamVet) {
 //Funcao randomiza o conteudo de um vetor de tweets
 //ENTRADA: Ponteiro para vetor do tipo Tweet e tamanho do vetor
 //SAIDA: O vetor de tweets com valores entre as posicoes randomizados (desordenado)
-void randomiza(Tweet** vetor, int tam)
-{
-	for (int i = 0; i < tam; i++)
-	{
-		srand(2 * i + tam); //Troca a seed do rand a cada iteraçao
-		swap(vetor[rand() % tam], vetor[rand()*(i + 2) % tam]);
+void randomiza(Tweet** vetor, int tam, int seed) {
+	srand(seed);
+	for (int i = 0; i < tam; i++) {
+		swap(vetor[rand() % tam], vetor[rand() % tam]);
 	}
 }
 
@@ -165,7 +163,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 			for (unsigned int i = 0; i < vEntrada.size(); i++) {
 				for (int k = 1; k <= 5; k++) {
-					randomiza(vet, vEntrada[i]);
+					randomiza(vet, vEntrada[i], vEntrada[i]/k);
 					ArvoreSplay* arvoreSplay = new ArvoreSplay();
 					int ias;
 					//Insere os tweets na arvore
@@ -197,7 +195,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					cout << "Tweet nao encontrado!" << endl;
 					}
 					*/
-					cout << "Arvore Splay criada." << endl;
+					cout << "Arvore Splay criada na Interacao " << k << ", Entrada de Tamanho " << vEntrada[i] << "." << "\n";
 					cout << "Tempo total gasto nas insercoes: " << arvoreSplay->gettempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreSplay->getnumCompar() << endl;
 					cout << "Numero de copias de registro feitas: " << arvoreSplay->getnumCopias() << "\n" << endl;
@@ -218,7 +216,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 			for (unsigned int i = 0; i < 1; i++) {
 				for (int k = 1; k <= 5; k++) {
-					randomiza(vet, vEntrada[i]);
+					randomiza(vet, vEntrada[i], vEntrada[i] / k);
 					AVL* arvoreAVL = new AVL();
 					int iav;
 					//Insere os tweets na arvore
@@ -249,7 +247,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 			for (unsigned int i = 0; i < 1; i++) {
 				for (int k = 1; k <= 5; k++) {
-					randomiza(vet, vEntrada[i]);
+					randomiza(vet, vEntrada[i], vEntrada[i] / k);
 					ArvoreB* arvoreB = new ArvoreB();
 					int iab;
 					//Insere os tweets na arvore
@@ -280,7 +278,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 			for (unsigned int i = 0; i < 1; i++) {
 				for (int k = 1; k <= 5; k++) {
-					randomiza(vet, vEntrada[i]);
+					randomiza(vet, vEntrada[i], vEntrada[i] / k);
 					ArvoreVP* arvoreVP = new ArvoreVP();
 					int iavp;
 					//Insere os tweets na arvore
@@ -319,7 +317,7 @@ int main()
 	//vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 
 	//Importando tweets do arquivo TXT-------------------------------------------
-	int tamVet = 2000000; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 1000000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets para realizar os testes, aguarde." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
