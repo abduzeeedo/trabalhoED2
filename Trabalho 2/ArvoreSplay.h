@@ -21,6 +21,7 @@ private:
 	long int numCopias; //Numero de copias de registro feitas
 	double tempoGastoInsercao; //Tempo gasto nas insercoes (somado a cada insercao)
 	double tempoGastoRemocao; //Tempo gasto nas remocoes (calculado a cada remocao)
+	double tempoGastoBusca; //Tempo gasto nas buscas (calculado a cada busca)
 	struct No_S* raiz; //Raiz da arvore
 	struct No_S* rotacaoDir(No_S*); //Rotacao a direita
 	struct No_S* rotacaoEsq(No_S*); //Rotacao a esquerda
@@ -35,6 +36,7 @@ public:
 	long int getnumCopias(); //Retorna o numero de copias de registro feitas
 	double gettempoInsercao(); //Retorna o tempo gasto nas insercoes
 	double gettempoRemocao(); //Retorna o tempo gasto na remocao
+	double gettempoBusca(); //Retorna o tempo gasto na Busca
 	struct No_S* busca(Tweet*); //Funcao de busca
 	struct No_S* insereNo(Tweet*); //Funcao de insercao
 	struct No_S* removeNo(Tweet*); //Funcao de remocao

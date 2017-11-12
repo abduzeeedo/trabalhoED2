@@ -60,6 +60,7 @@ void ArvoreSplay::limpaDados()
 	numCopias = 0;
 	tempoGastoInsercao = 0;
 	tempoGastoRemocao = 0;
+	tempoGastoBusca = 0;
 }
 
 /*
@@ -100,6 +101,11 @@ SAIDA: Tempo gasto nas insercoes
 double ArvoreSplay::gettempoInsercao()
 {
 	return tempoGastoInsercao;
+}
+
+double ArvoreSplay::gettempoBusca()
+{
+	return tempoGastoBusca;
 }
 
 /*

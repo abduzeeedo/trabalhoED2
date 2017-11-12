@@ -72,23 +72,28 @@ bool AVL::buscaAuxiliar(int tweetId, No* no)
 	clock_t relogio;
 	relogio = clock();
 
-	if (no == NULL && numCompar++) {
+	if (no == NULL) {
+		numCompar++;
 		tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 		return false;
 	}
-	else if (no->getChave()->getTweetID() == tweetId && numCompar++){
+	else if (no->getChave()->getTweetID() == tweetId){
+		numCompar++;
 		tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 		return true;
 	}
-	else if (no->getChave()->getTweetID() != tweetId && numCompar++)
+	else if (no->getChave()->getTweetID() != tweetId)
 	{
-		if (no->getEsq() != NULL && no->getChave()->getTweetID() < tweetId && numCompar++){
+		if (no->getEsq() != NULL && no->getChave()->getTweetID() < tweetId){
+			numCompar++;
 			return buscaAuxiliar(tweetId, no->getEsq());
 		}
-		else if (no->getDir() != NULL && no->getChave()->getTweetID() > tweetId && numCompar++){
+		else if (no->getDir() != NULL && no->getChave()->getTweetID() > tweetId){
+			numCompar++;
 			return buscaAuxiliar(tweetId, no->getDir());
 		}
 		else if (no->getEsq() == NULL && no->getDir() == NULL){
+			numCompar++;
 			tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 			return false;
 		}
