@@ -408,16 +408,34 @@ void codigoFuncao(Tweet* vet[], int tam) {
 						arvoreVP->insere(vet[iavp]->getTweetID());
 					}
 
-					cout << "Arvore Vermelho/Preta criada na Interacao " << k << ", Entrada de Tamanho " << vEntrada[i] << "." << "\n";
+					cout << "\n" << "Arvore Vermelho/Preta criada na Interacao " << k << ", Entrada de Tamanho " << vEntrada[i] << "." << "\n";
 					cout << "Tempo total gasto nas insercoes: " << arvoreVP->getTempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreVP->getNumCompar() << endl;
-					cout << "Numero de copias de registro feitas: " << arvoreVP->getNumCopias() << "\n" << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreVP->getNumCopias() << endl;
 
 					numeroComp += arvoreVP->getNumCompar();
 					numeroCopias += arvoreVP->getNumCopias();
 					tempoGasto += arvoreVP->getTempoInsercao();
-
 					arvoreVP->limpaDados();
+
+					//realiza uma busca aleatoria
+					cout << "Realizando Busca..." << endl;
+					//arvoreVP->buscar(vet[rand()]->getTweetID());
+
+					//armazena dados em variaveis para tirar media posteriormente
+					numeroCompBusca += arvoreVP->getNumCompar();
+					tempoBusca += arvoreVP->getTempoBusca();
+					arvoreVP->limpaDados();
+
+					//realiza uma remocao aleatoria
+					cout << "Realizando Remocao..." << endl;
+					arvoreVP->remover(vet[rand()]->getTweetID());
+
+					//armazena dados em variaveis para tirar media posteriormente
+					numeroCompRemocao += arvoreVP->getNumCompar();
+					tempoRemocao += arvoreVP->getTempoRemocao();
+					arvoreVP->limpaDados();
+
 					delete arvoreVP;
 				}
 				saidasInsercao += "==========================================================\n";
@@ -426,6 +444,18 @@ void codigoFuncao(Tweet* vet[], int tam) {
 				saidasInsercao += "Numero de comparacoes feitas: " + toString(numeroComp / 5) + "\n";
 				saidasInsercao += "Numero de copias de registro feitas: " + toString(numeroCopias / 5) + "\n\n";
 				saidasInsercao += "==========================================================\n";
+
+				saidasBusca += "==========================================================\n";
+				saidasBusca += "Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+				saidasBusca += "Tempo total gasto na Busca: " + toString(tempoBusca / 5) + "\n";
+				saidasBusca += "Numero de comparacoes feitas: " + toString(numeroCompBusca / 5) + "\n";
+				saidasBusca += "==========================================================\n";
+
+				saidasRemocao += "==========================================================\n";
+				saidasRemocao += "Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho " + toString(vEntrada[i]) + "\n";
+				saidasRemocao += "Tempo total gasto na Remocao: " + toString(tempoRemocao / 5) + "\n";
+				saidasRemocao += "Numero de comparacoes feitas: " + toString(numeroCompRemocao / 5) + "\n";
+				saidasRemocao += "==========================================================\n";
 			}
 		}
 	}
