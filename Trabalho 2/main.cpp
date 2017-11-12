@@ -19,8 +19,9 @@ Pedro Bellotti
 #include "AVL.h"
 #include "ArvoreVP.h"
 
-string salvar = "";
 string saidasInsercao = "";
+string saidasBusca = "";
+string saidasRemocao = "";
 using namespace std;
 
 //Funcao usada para pegar as linhas do arquivo do Menu.
@@ -162,8 +163,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 		if (code == "1") {
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
-			for (int k = 1; k <= 5; k++) {
-				for (unsigned int i = 0; i < 1; i++) {
+			for (unsigned int i = 0; i < vEntrada.size(); i++) {
+				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i]);
 					ArvoreSplay* arvoreSplay = new ArvoreSplay();
 					int ias;
@@ -199,7 +200,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					cout << "Arvore Splay criada." << endl;
 					cout << "Tempo total gasto nas insercoes: " << arvoreSplay->gettempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreSplay->getnumCompar() << endl;
-					cout << "Numero de copias de registro feitas: " << arvoreSplay->getnumCopias() << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreSplay->getnumCopias() << "\n" << endl;
 
 					saidasInsercao += "==========================================================\n";
 					saidasInsercao += "Arvore Splay, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
@@ -215,8 +216,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		if (code == "2")
 		{
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
-			for (int k = 1; k <= 5; k++) {
-				for (unsigned int i = 0; i < 1; i++) {
+			for (unsigned int i = 0; i < 1; i++) {
+				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i]);
 					AVL* arvoreAVL = new AVL();
 					int iav;
@@ -229,7 +230,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					cout << "Arvore AVL criada." << endl;
 					cout << "Tempo total gasto nas insercoes: " << arvoreAVL->getTempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreAVL->getNumCompar() << endl;
-					cout << "Numero de copias de registro feitas: " << arvoreAVL->getNumCopias() << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreAVL->getNumCopias() << "\n" << endl;
 
 					saidasInsercao += "==========================================================\n";
 					saidasInsercao += "Arvore AVL, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
@@ -246,8 +247,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		if (code == "3")
 		{
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
-			for (int k = 1; k <= 5; k++) {
-				for (unsigned int i = 0; i < 1; i++) {
+			for (unsigned int i = 0; i < 1; i++) {
+				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i]);
 					ArvoreB* arvoreB = new ArvoreB();
 					int iab;
@@ -260,7 +261,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					cout << "Arvore B criada." << endl;
 					cout << "Tempo total gasto nas insercoes: " << arvoreB->getTempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreB->getNumCompar() << endl;
-					cout << "Numero de copias de registro feitas: " << arvoreB->getNumCopias() << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreB->getNumCopias() << "\n" << endl;
 
 					saidasInsercao += "==========================================================\n";
 					saidasInsercao += "Arvore B, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
@@ -277,8 +278,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		if (code == "4")
 		{
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
-			for (int k = 1; k <= 5; k++) {
-				for (unsigned int i = 0; i < 1; i++) {
+			for (unsigned int i = 0; i < 1; i++) {
+				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i]);
 					ArvoreVP* arvoreVP = new ArvoreVP();
 					int iavp;
@@ -291,7 +292,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					cout << "Arvore Vermelho/Preta criada." << endl;
 					cout << "Tempo total gasto nas insercoes: " << arvoreVP->getTempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreVP->getNumCompar() << endl;
-					cout << "Numero de copias de registro feitas: " << arvoreVP->getNumCopias() << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreVP->getNumCopias() << "\n" << endl;
 
 					saidasInsercao += "==========================================================\n";
 					saidasInsercao += "Arvore Vermelho/Preta, Interacao " + toString(k) + ", Entrada de Tamanho " + toString(vEntrada[i]) + "\n";
@@ -318,7 +319,7 @@ int main()
 	//vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
 
 	//Importando tweets do arquivo TXT-------------------------------------------
-	int tamVet = 30000; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 2000000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "Instanciando " << tamVet << " tweets para realizar os testes, aguarde." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
@@ -331,7 +332,7 @@ int main()
 	//---------------------------------------------------------------------------*/
 
 	codigoFuncao(vTweet, tamVet);//Seleciona a funcao ou encerra a execucao;
-	salvarTxt(salvar, "saida.txt");
+
 	salvarTxt(saidasInsercao, "saidasInsercao.txt");
 	system("pause");
 	return 0;
