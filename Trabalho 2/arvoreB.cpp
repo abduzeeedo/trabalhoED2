@@ -162,13 +162,13 @@ No_B* ArvoreB::buscar(int valor, No_B* n)
 	relogio = clock();
 	
 	No_B* aux;
-	if (n == NULL && numCompar++) {
+	if (n == NULL) {
 		tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 		return NULL;
 	}
 	else
 	{//Verifica se o valor esta no No 'n', se estiver, retona a posicao de memoria de 'n', caso nao esteja, verifica nos seus filhos
-		if (n->getPos(valor) != -1 && numCompar++) {
+		if (n->getPos(valor) != -1) {
 			tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 			return n;
 		}
