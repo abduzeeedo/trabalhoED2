@@ -302,16 +302,15 @@ void codigoFuncao(Tweet* vet[], int tam) {
 						arvoreB->inserir(vet[iab]->getTweetID());
 					}
 
-					cout << "Arvore B criada na Interacao " << k << ", Entrada de Tamanho " << vEntrada[i] << "." << "\n";
+					cout << "\n" << "Arvore B criada na Interacao " << k << ", Entrada de Tamanho " << vEntrada[i] << "." << "\n";
 					cout << "Tempo total gasto nas insercoes: " << arvoreB->getTempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreB->getNumCompar() << endl;
-					cout << "Numero de copias de registro feitas: " << arvoreB->getNumCopias() << "\n" << endl;
+					cout << "Numero de copias de registro feitas: " << arvoreB->getNumCopias() << endl;
 
 
 					numeroComp += arvoreB->getNumCompar();
 					numeroCopias += arvoreB->getNumCopias();
 					tempoGasto += arvoreB->getTempoInsercao();
-					cout << "Limpa Dados..." << endl;
 					arvoreB->limpaDados();
 
 					//realiza uma busca aleatoria
@@ -319,11 +318,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					arvoreB->buscar(vet[rand()]->getTweetID());
 
 					//armazena dados em variaveis para tirar media posteriormente
-					cout << "Salva num Comparacoes na Busca..." << endl;
 					numeroCompBusca += arvoreB->getNumCompar();
-					cout << "Salva Tempo Gasto na Busca..." << endl;
 					tempoBusca += arvoreB->getTempoBusca();
-					cout << "Limpa Dados..." << endl;
 					arvoreB->limpaDados();
 
 					//realiza uma remocao aleatoria

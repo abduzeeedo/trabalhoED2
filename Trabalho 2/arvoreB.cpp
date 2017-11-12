@@ -163,12 +163,14 @@ No_B* ArvoreB::buscar(int valor, No_B* n)
 	
 	No_B* aux;
 	if (n == NULL) {
+		numCompar++;
 		tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 		return NULL;
 	}
 	else
 	{//Verifica se o valor esta no No 'n', se estiver, retona a posicao de memoria de 'n', caso nao esteja, verifica nos seus filhos
 		if (n->getPos(valor) != -1) {
+			numCompar++;
 			tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 			return n;
 		}
@@ -177,6 +179,7 @@ No_B* ArvoreB::buscar(int valor, No_B* n)
 	{//Verifica se encontra o valor nos filhos de 'n'
 		aux = buscar(valor, n->filho[i]);
 		if (aux != NULL) {
+			numCompar++;
 			tempoGastoBusca += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 			return aux;
 		}
