@@ -247,13 +247,13 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			double tempoRemocao = 0;
 
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
-			for (unsigned int i = 0; i < 3; i++) {
+			for (unsigned int i = 0; i < vEntrada.size(); i++) {
 				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i], vEntrada[i] / k);
 					AVL* arvoreAVL = new AVL();
 					int iav;
 					//Insere os tweets na arvore
-					for (iav = 0; iav < tam; iav++)
+					for (iav = 0; iav < vEntrada[i]; iav++)
 					{
 						arvoreAVL->inserir(vet[iav]);
 					}
@@ -328,7 +328,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					ArvoreB* arvoreB = new ArvoreB();
 					int iab;
 					//Insere os tweets na arvore
-					for (iab = 0; iab < tam; iab++)
+					for (iab = 0; iab < vEntrada[i]; iab++)
 					{
 						arvoreB->inserir(vet[iab]->getTweetID());
 					}
@@ -403,7 +403,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					ArvoreVP* arvoreVP = new ArvoreVP();
 					int iavp;
 					//Insere os tweets na arvore
-					for (iavp = 0; iavp < tam; iavp++)
+					for (iavp = 0; iavp < vEntrada[i]; iavp++)
 					{
 						arvoreVP->insere(vet[iavp]->getTweetID());
 					}
