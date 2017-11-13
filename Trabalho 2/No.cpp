@@ -16,7 +16,6 @@ No::No()
 }
 No::~No()
 {
-	delete chave;
 }
 No* No::getEsq()
 {
