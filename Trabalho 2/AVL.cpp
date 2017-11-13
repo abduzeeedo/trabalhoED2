@@ -117,7 +117,7 @@ void AVL::inserir(Tweet *tw)
     relogio = clock();
     raiz = inserirAuxiliar(tw, raiz);
     raiz = balanceia(raiz);
-    calculaFB(raiz);
+    setFB(raiz);
     tempoGastoInsercao += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 }
 void AVL::remover(Tweet *tw)
@@ -126,7 +126,7 @@ void AVL::remover(Tweet *tw)
     relogio = clock();
     raiz = removerAux(raiz, tw);
     raiz = balanceia(raiz);
-    calculaFB(raiz);
+    setFB(raiz);
     tempoGastoRemocao += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 }
 No *AVL::removerAux2(No *no)
@@ -244,6 +244,15 @@ No *AVL::removerAux(No *no, Tweet *tw)
     }
     return no;
 }
+void AVL::setFB(No* no)
+{
+    if(no!=NULL)
+    {
+        no->setFB(calculaAltura(no->getEsq()) - calculaAltura(no->getDir()));
+        setFB(no->getEsq());
+        setFB(no->getDir());
+    }
+}
 No* AVL::inserirAuxiliar(Tweet *tw, No *no)
 {
     if (no == NULL)
@@ -251,6 +260,7 @@ No* AVL::inserirAuxiliar(Tweet *tw, No *no)
         numCompar++;
         no = new No();
         no->setChave(tw);
+        no->setFB(0);
         numCopias++;
     }
     else
@@ -278,13 +288,14 @@ void AVL::limpaDados()
 }
 
 //Outras funcoes
-void AVL::calculaFB(No *no)
+int AVL::calculaFB(No *no)
 {
     if (no != NULL)
     {
-        no->setFB(((calculaAltura(no->getEsq())) - (calculaAltura(no->getDir()))));
+        return (((calculaAltura(no->getEsq())) - (calculaAltura(no->getDir()))));
         numCompar++;
     }
+    else return 0;
 }
 int AVL::calculaAltura(No *no)
 {
@@ -314,11 +325,11 @@ No *AVL::balanceia(No *no)
 {
     if (no != NULL)
     {
-        calculaFB(no);
+        no->setFB(calculaFB(no));
         if (no->getFB() == 2)
         {
             numCompar++;
-            calculaFB(no->getEsq());
+            no->getEsq()->setFB(calculaFB(no->getEsq()));
             if (no->getEsq()->getFB() > 0)
             {
                 numCompar++;
@@ -335,7 +346,7 @@ No *AVL::balanceia(No *no)
         }
         else if (no->getFB() == -2)
         {
-            calculaFB(no->getDir());
+            no->getDir()->setFB(calculaFB(no->getDir()));
             if (no->getDir()->getFB() < 0)
             {
                 numCompar++;

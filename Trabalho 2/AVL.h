@@ -41,10 +41,11 @@ private:
 	//funcoes
 	bool buscaAuxiliar(int tweetId, No* no);
 	No* inserirAuxiliar(Tweet* tw, No* no);
-	void calculaFB(No* no);
+	int calculaFB(No* no);
 	void imprimirAux(No* no);
 	int calculaAltura(No* no);
 	void destrutorAux(No* no);
+	void setFB(No* no);
 	No* removerAux2(No* no);
 	No* removerAux(No* no, Tweet* tw);
 	No* balanceia(No* no);
