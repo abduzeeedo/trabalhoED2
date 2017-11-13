@@ -182,7 +182,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					{
 						arvoreSplay->insereNo(vet[ias]);
 					}
-	
+
 					cout << "Arvore Splay criada na Interacao " << k << ", Entrada de Tamanho " << vEntrada[i] << "." << "\n";
 					cout << "Tempo total gasto nas insercoes: " << arvoreSplay->gettempoInsercao() << endl;
 					cout << "Numero de comparacoes feitas: " << arvoreSplay->getnumCompar() << endl;
@@ -280,7 +280,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 					//realiza uma remocao aleatoria
 					cout << "Realizando Remocao..." << endl;
-					arvoreAVL->remover(vet[rand()]);
+					arvoreAVL->remover(vet[rand() % (vEntrada[i]-1)]);
 
 					//armazena dados em variaveis para tirar media posteriormente
 					numeroCompRemocao += arvoreAVL->getNumCompar();
