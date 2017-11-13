@@ -40,7 +40,7 @@ private:
 	double tempoGastoBusca;
 	//funcoes
 	bool buscaAuxiliar(int tweetId, No* no);
-	void inserirAuxiliar(Tweet* tw, No* no);
+	No* inserirAuxiliar(Tweet* tw, No* no);
 	void calculaFB(No* no);
 	void imprimirAux(No* no);
 	int calculaAltura(No* no);

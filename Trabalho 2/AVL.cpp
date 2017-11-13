@@ -115,7 +115,7 @@ void AVL::inserir(Tweet *tw)
 {
     clock_t relogio;
     relogio = clock();
-    inserirAuxiliar(tw, raiz);
+    raiz = inserirAuxiliar(tw, raiz);
     raiz = balanceia(raiz);
     calculaFB(raiz);
     tempoGastoInsercao += (clock() - relogio) / (double)CLOCKS_PER_SEC;
@@ -244,7 +244,7 @@ No *AVL::removerAux(No *no, Tweet *tw)
     }
     return no;
 }
-void AVL::inserirAuxiliar(Tweet *tw, No *no)
+No* AVL::inserirAuxiliar(Tweet *tw, No *no)
 {
     if (no == NULL)
     {
@@ -258,15 +258,16 @@ void AVL::inserirAuxiliar(Tweet *tw, No *no)
         if (tw->getTweetID() < no->getChave()->getTweetID())
         {
             numCompar++;
-            inserirAuxiliar(tw, no->getEsq());
+            no->setEsq(inserirAuxiliar(tw, no->getEsq()));
         }
 
         else if (tw->getTweetID() > no->getChave()->getTweetID())
         {
             numCompar++;
-            inserirAuxiliar(tw, no->getDir());
+            no->setDir(inserirAuxiliar(tw, no->getDir()));
         }
     }
+    return no;
 }
 void AVL::limpaDados()
 {
@@ -374,6 +375,10 @@ void AVL::imprimirAux(No *no)
         cout << endl;
         imprimirAux(no->getEsq());
         imprimirAux(no->getDir());
+    }
+    else if(no==raiz)
+    {
+        cout << "Arvore vazia!" << endl;
     }
 }
 long int AVL::getNumCompar()
