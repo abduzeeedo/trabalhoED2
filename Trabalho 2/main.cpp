@@ -247,11 +247,10 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			double tempoRemocao = 0;
 
 			vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
-			for (unsigned int i = 0; i < vEntrada.size(); i++) {
+			for (unsigned int i = 0; i < 3; i++) {
 				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i], vEntrada[i] / k);
 					AVL* arvoreAVL = new AVL();
-					arvoreAVL->limpaDados();
 					int iav;
 					//Insere os tweets na arvore
 					for (iav = 0; iav < tam; iav++)
@@ -272,7 +271,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 					//realiza uma busca aleatoria
 					cout << "Realizando Busca..." << endl;
-					arvoreAVL->busca(vet[rand()]->getTweetID());
+					//arvoreAVL->busca(vet[rand()]->getTweetID());
 
 					//armazena dados em variaveis para tirar media posteriormente
 					numeroCompBusca += arvoreAVL->getNumCompar();
@@ -286,6 +285,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					//armazena dados em variaveis para tirar media posteriormente
 					numeroCompRemocao += arvoreAVL->getNumCompar();
 					tempoRemocao += arvoreAVL->getTempoRemocao();
+					arvoreAVL->limpaDados();
 
 					delete arvoreAVL;
 				}
@@ -326,7 +326,6 @@ void codigoFuncao(Tweet* vet[], int tam) {
 				for (int k = 1; k <= 5; k++) {
 					randomiza(vet, vEntrada[i], vEntrada[i] / k);
 					ArvoreB* arvoreB = new ArvoreB();
-					arvoreB->limpaDados();
 					int iab;
 					//Insere os tweets na arvore
 					for (iab = 0; iab < tam; iab++)
@@ -361,6 +360,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					//armazena dados em variaveis para tirar media posteriormente
 					numeroCompRemocao += arvoreB->getNumCompar();
 					tempoRemocao += arvoreB->getTempoRemocao();
+					arvoreB->limpaDados();
 
 					delete arvoreB;
 				}
