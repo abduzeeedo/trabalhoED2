@@ -1,0 +1,106 @@
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 1000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 9
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 5000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 20
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 10000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 34
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 50000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 59
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 100000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 83
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 500000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 344
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 1e+06
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 704
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 1000
+Tempo total gasto na Busca: 0.3452
+Numero de comparacoes feitas: 986229
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 5000
+Tempo total gasto na Busca: 0.579
+Numero de comparacoes feitas: 1.45351e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 10000
+Tempo total gasto na Busca: 0.9064
+Numero de comparacoes feitas: 2.61094e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 50000
+Tempo total gasto na Busca: 1.117
+Numero de comparacoes feitas: 3.17074e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 100000
+Tempo total gasto na Busca: 1.4072
+Numero de comparacoes feitas: 3.98515e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 500000
+Tempo total gasto na Busca: 1.7118
+Numero de comparacoes feitas: 4.83774e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 1e+06
+Tempo total gasto na Busca: 1.9708
+Numero de comparacoes feitas: 5.58192e+06
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 1000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 1
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 5000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 2
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 10000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 3
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 50000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 4
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 100000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 5
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 500000
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 6
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 1e+06
+Tempo total gasto na Busca: 0
+Numero de comparacoes feitas: 7
+==========================================================
+

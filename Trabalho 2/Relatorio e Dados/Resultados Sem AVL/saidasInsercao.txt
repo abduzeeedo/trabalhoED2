@@ -1,0 +1,148 @@
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 0.0014
+Numero de comparacoes feitas: 8541
+Numero de copias de registro feitas: 9904
+
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 0.0118
+Numero de comparacoes feitas: 69131
+Numero de copias de registro feitas: 83228
+
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 0.0342
+Numero de comparacoes feitas: 205534
+Numero de copias de registro feitas: 250193
+
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 0.15
+Numero de comparacoes feitas: 855726
+Numero de copias de registro feitas: 1.06619e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 0.359
+Numero de comparacoes feitas: 1.89614e+06
+Numero de copias de registro feitas: 2.40543e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 1.6896
+Numero de comparacoes feitas: 7.08217e+06
+Numero de copias de registro feitas: 9.37273e+06
+
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 4.914
+Numero de comparacoes feitas: 1.85594e+07
+Numero de copias de registro feitas: 2.49086e+07
+
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 1.3974
+Numero de comparacoes feitas: 2.00001e+06
+Numero de copias de registro feitas: 2.47607e+06
+
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 2.7732
+Numero de comparacoes feitas: 4.00002e+06
+Numero de copias de registro feitas: 4.95214e+06
+
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 4.1506
+Numero de comparacoes feitas: 6.00003e+06
+Numero de copias de registro feitas: 7.42861e+06
+
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 5.549
+Numero de comparacoes feitas: 8.00004e+06
+Numero de copias de registro feitas: 9.90448e+06
+
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 6.9578
+Numero de comparacoes feitas: 1.00001e+07
+Numero de copias de registro feitas: 1.23808e+07
+
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 8.3818
+Numero de comparacoes feitas: 1.20001e+07
+Numero de copias de registro feitas: 1.48572e+07
+
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 9.7814
+Numero de comparacoes feitas: 1.40001e+07
+Numero de copias de registro feitas: 1.73335e+07
+
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 1000
+Tempo total gasto nas insercoes: 6.3768
+Numero de comparacoes feitas: 1.84284e+07
+Numero de copias de registro feitas: 1.84059e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 5000
+Tempo total gasto nas insercoes: 12.7586
+Numero de comparacoes feitas: 3.68335e+07
+Numero de copias de registro feitas: 3.67991e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 10000
+Tempo total gasto nas insercoes: 19.0204
+Numero de comparacoes feitas: 5.5754e+07
+Numero de copias de registro feitas: 5.54145e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 50000
+Tempo total gasto nas insercoes: 25.3252
+Numero de comparacoes feitas: 7.48093e+07
+Numero de copias de registro feitas: 7.39232e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 100000
+Tempo total gasto nas insercoes: 31.6376
+Numero de comparacoes feitas: 9.3077e+07
+Numero de copias de registro feitas: 9.25101e+06
+
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 500000
+Tempo total gasto nas insercoes: 38.0078
+Numero de comparacoes feitas: 1.11886e+08
+Numero de copias de registro feitas: 1.10892e+07
+
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 1e+06
+Tempo total gasto nas insercoes: 44.405
+Numero de comparacoes feitas: 1.30699e+08
+Numero de copias de registro feitas: 1.29549e+07
+
+==========================================================
+

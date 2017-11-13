@@ -1,0 +1,106 @@
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 1000
+Tempo total gasto na Remocao: 0
+Numero de comparacoes feitas: 7
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 5000
+Tempo total gasto na Remocao: 0
+Numero de comparacoes feitas: 15
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 10000
+Tempo total gasto na Remocao: 0
+Numero de comparacoes feitas: 24
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 50000
+Tempo total gasto na Remocao: 0
+Numero de comparacoes feitas: 71
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 100000
+Tempo total gasto na Remocao: 0
+Numero de comparacoes feitas: 73
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 500000
+Tempo total gasto na Remocao: 0.0002
+Numero de comparacoes feitas: 329
+==========================================================
+==========================================================
+Arvore Splay, Média entre 5 interacoes com entrada de Tamanho 1e+06
+Tempo total gasto na Remocao: 0.0002
+Numero de comparacoes feitas: 330
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 1000
+Tempo total gasto na Remocao: 0.3114
+Numero de comparacoes feitas: 1.97412e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 5000
+Tempo total gasto na Remocao: 0.6246
+Numero de comparacoes feitas: 3.96246e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 10000
+Tempo total gasto na Remocao: 0.8758
+Numero de comparacoes feitas: 5.54799e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 50000
+Tempo total gasto na Remocao: 1.0222
+Numero de comparacoes feitas: 6.46877e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 100000
+Tempo total gasto na Remocao: 1.2428
+Numero de comparacoes feitas: 7.85149e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 500000
+Tempo total gasto na Remocao: 1.4682
+Numero de comparacoes feitas: 9.25927e+06
+==========================================================
+==========================================================
+Arvore B, Média entre 5 interacoes com entrada de Tamanho 1e+06
+Tempo total gasto na Remocao: 1.7704
+Numero de comparacoes feitas: 1.11576e+07
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 1000
+Tempo total gasto na Remocao: 0.001
+Numero de comparacoes feitas: 10
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 5000
+Tempo total gasto na Remocao: 0.002
+Numero de comparacoes feitas: 19
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 10000
+Tempo total gasto na Remocao: 0.0044
+Numero de comparacoes feitas: 27
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 50000
+Tempo total gasto na Remocao: 0.0052
+Numero de comparacoes feitas: 35
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 100000
+Tempo total gasto na Remocao: 0.006
+Numero de comparacoes feitas: 46
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 500000
+Tempo total gasto na Remocao: 0.0078
+Numero de comparacoes feitas: 59
+==========================================================
+==========================================================
+Arvore Vermelho-Preta, Média entre 5 interacoes com entrada de Tamanho 1e+06
+Tempo total gasto na Remocao: 0.0112
+Numero de comparacoes feitas: 68
+==========================================================
+
