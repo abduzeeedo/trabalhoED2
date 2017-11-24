@@ -3,8 +3,9 @@
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||  DIGITE NO CONSOLE O CODIGO DA INSTRUCAO - GUIA DE CODIGOS:     ||
 || 0 -  Imprime este Menu (Para fins de Consulta)                  ||
-|| 1 -  Cria uma Arovre Splay de Tweets                            ||
-|| 2 -  Cria uma Arovre AVL de Tweets                              ||
-|| 3 -  Cria uma Arovre B de Tweets                                ||
+|| 1 -  Fazer a compressao de tweets usando metodo Huffman         ||
+|| 2 -  Fazer a compressao de tweets usando metodo LZ77            ||
+|| 3 -  Fazer a compressao de tweets usando metodo LZ78            ||
+|| 4 -  Fazer a compressao de tweets usando metodo LZW             ||
 || -1 - Encerra a execucao do projeto                              ||
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
