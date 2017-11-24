@@ -1,4 +1,4 @@
-/*---------------------------------------
+﻿/*---------------------------------------
 TRABALHO DE ESTRUTURA DE DADOS 2
 GRUPO:
 Bruno Carvalho
@@ -104,11 +104,11 @@ Tweet** carregaTweets(Tweet** src, int tam, int tamVet) {
 //ENTRADA: Ponteiro para vetor do tipo Tweet e tamanho do vetor
 //SAIDA: O vetor de tweets com valores entre as posicoes randomizados (desordenado)
 void randomiza(Tweet** vetor, int tam) {
-    for (int i = 0; i < tam; i++)
-    {
-        srand(2*i+tam); //Troca a seed do rand a cada iteraçao
-        swap(vetor[rand() % tam], vetor[rand()*(i+2) % tam]);
-    }
+	for (int i = 0; i < tam; i++)
+	{
+		srand(2 * i + tam); //Troca a seed do rand a cada iteraçao
+		swap(vetor[rand() % tam], vetor[rand()*(i + 2) % tam]);
+	}
 }
 
 //Funcao para ler os N numeros aleatorios do arquivo entrada.txt
@@ -143,46 +143,46 @@ vector<int> importaEntrada(const char* nomeArquivo)
 //SAIDA: a mesma string, sem espacos desnecessarios (apenas um espaco entre cada palavra)
 void removeEspaco(string &str)
 {
-    //i = posicao vazia na "nova" string
-    //j = posicao da proxima letra a ser inserida na string original
-    //tam = tamanho da string (condicao de parada)
-    //espaco = flag para nao retirar espacos necessarios (precisa ter pelo menos um espaco entre cada palavra)
-    size_t tam = str.length();
-    short i = 0;
-    short j = -1;
-    bool espaco = false;
+	//i = posicao vazia na "nova" string
+	//j = posicao da proxima letra a ser inserida na string original
+	//tam = tamanho da string (condicao de parada)
+	//espaco = flag para nao retirar espacos necessarios (precisa ter pelo menos um espaco entre cada palavra)
+	size_t tam = str.length();
+	short i = 0;
+	short j = -1;
+	bool espaco = false;
 
-    //Percorre por todos os espacos no comeco do texto, se houver algum
-    if (str[++j] == ' ')
-        while (++j < tam && str[j] == ' ');
+	//Percorre por todos os espacos no comeco do texto, se houver algum
+	if (str[++j] == ' ')
+		while (++j < tam && str[j] == ' ');
 
-    //Comeca a leitura da string
-    while (j < tam)
-    {
-        if (str[j] != ' ')
-        {
-            str[i++] = str[j++]; //Coloca a letra da posicao j na posicao i e aumenta os indices
-            espaco = false; //Quando o caractere encontrado e uma letra, coloca a flag como false
-        }
-        else if (str[j++] == ' ')
-        {
-            if (!espaco)
-            {
-                str[i++] = ' '; //Adiciona apenas um espaco (necessario) entre uma palavra e outra
-                espaco = true; //Quando o caractere encontrado nao e uma letra, coloca a flag como true
-            }
-        }
-    }
-    //Remove todos os epacos no final do texto, se houver algum
-    if (i <= 1)
-        str.erase(str.begin() + i, str.end());
-    else
-    {
-        if (str[i - 1] == ' ')
-            str.erase(str.begin() + i - 1, str.end());
-        else
-            str.erase(str.begin() + i, str.end());
-    }
+	//Comeca a leitura da string
+	while (j < tam)
+	{
+		if (str[j] != ' ')
+		{
+			str[i++] = str[j++]; //Coloca a letra da posicao j na posicao i e aumenta os indices
+			espaco = false; //Quando o caractere encontrado e uma letra, coloca a flag como false
+		}
+		else if (str[j++] == ' ')
+		{
+			if (!espaco)
+			{
+				str[i++] = ' '; //Adiciona apenas um espaco (necessario) entre uma palavra e outra
+				espaco = true; //Quando o caractere encontrado nao e uma letra, coloca a flag como true
+			}
+		}
+	}
+	//Remove todos os epacos no final do texto, se houver algum
+	if (i <= 1)
+		str.erase(str.begin() + i, str.end());
+	else
+	{
+		if (str[i - 1] == ' ')
+			str.erase(str.begin() + i - 1, str.end());
+		else
+			str.erase(str.begin() + i, str.end());
+	}
 }
 
 //Verifica se a letra e valida (se e de A a Z ou um numero)
@@ -190,10 +190,10 @@ void removeEspaco(string &str)
 //SAIDA: verdadeiro/falso dependendo se a variavel eh uma letra/numero ou nao
 bool charInvalido(const char &c)
 {
-    if ((c <= 'Z' && c >= 'A') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
-        return false;
-    else
-        return true;
+	if ((c <= 'Z' && c >= 'A') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))
+		return false;
+	else
+		return true;
 }
 
 //Remove todas as pontuacoes, espacos, caracteres especiais e coloca todas as letras em minusculo
@@ -201,14 +201,14 @@ bool charInvalido(const char &c)
 //SAIDA: Uma string contendo as mesmas palavras da entrada porem em letras minusculas e sem sinais de pontuacao.
 string limpaString(string original)
 {
-    string s = original;
-    /*Nao usei o erase/remove porque em tweets que nao existe espacos entre a pontuacao, as palavras ficariam todas juntas dificultando dividir o tweet em varias palavras
-    Exemplo: usando erase/remove no tweet Exemplo.de.tweet, iria ficar Exemplodetweet e isso ia contar como uma palavra so
-    Usando o replace_if com espacos, ficaria Exemplo de tweet, o que eh o certo*/
-    transform(s.begin(), s.end(), s.begin(), ::tolower);//Coloca as letras em minusculo
-    replace_if(s.begin(), s.end(), charInvalido, ' ');//Troca todos os sinais de pontuacao e caracteres especiais por espacos
-    removeEspaco(s);//Remove os espacos desneessarios
-    return s;
+	string s = original;
+	/*Nao usei o erase/remove porque em tweets que nao existe espacos entre a pontuacao, as palavras ficariam todas juntas dificultando dividir o tweet em varias palavras
+	Exemplo: usando erase/remove no tweet Exemplo.de.tweet, iria ficar Exemplodetweet e isso ia contar como uma palavra so
+	Usando o replace_if com espacos, ficaria Exemplo de tweet, o que eh o certo*/
+	transform(s.begin(), s.end(), s.begin(), ::tolower);//Coloca as letras em minusculo
+	replace_if(s.begin(), s.end(), charInvalido, ' ');//Troca todos os sinais de pontuacao e caracteres especiais por espacos
+	removeEspaco(s);//Remove os espacos desneessarios
+	return s;
 }
 
 //Metodo que seleciona via codigo de comando a funcao a ser executada e finaliza execucao
@@ -227,33 +227,33 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			imprimeMenu();//Imprime o Menu (via arquivo txt)
 		}
 
-        if (code == "1") {
-			cout << "Fazendo a compressao de tweets usando metodo Huffman."<<endl;
+		if (code == "1") {
+			cout << "Fazendo a compressao de tweets usando metodo Huffman." << endl;
 		}
 
-        if (code == "2") {
-			cout << "Fazendo a compressao de tweets usando metodo LZ77."<<endl;
+		if (code == "2") {
+			cout << "Fazendo a compressao de tweets usando metodo LZ77." << endl;
 		}
 
-        if (code == "3") {
-			cout << "Fazendo a compressao de tweets usando metodo LZ78."<<endl;
+		if (code == "3") {
+			cout << "Fazendo a compressao de tweets usando metodo LZ78." << endl;
 		}
 
-        if (code == "4") {
-			cout << "Fazendo a compressao de tweets usando metodo LZW."<<endl;
+		if (code == "4") {
+			cout << "Fazendo a compressao de tweets usando metodo LZW." << endl;
 		}
 	}
 }
 
 int main()
 {
-    int i; //Variavel para controle de iteracoes
+	int i; //Variavel para controle de iteracoes
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
 	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
 	que indica o numero de tweets aleatorios que devem ser importados e instanciados
-	e depois, coloca-los em uma arvore*/
-	//vector<int> vEntrada = importaEntrada("entradaInsercao.txt");
+	para serem comprimidos*/
+	vector<int> vEntrada = importaEntrada("entrada.txt");
 
 	//Importando tweets do arquivo TXT-------------------------------------------
 	int tamVet = 100; //Quantidade de Tweets que serao lidos do arquivo txt
@@ -263,17 +263,17 @@ int main()
 	//---------------------------------------------------------------------------
 
 	//Randomizando o vetor de entrada para fazer o calculo da frequencia de N tweets aleatorios
-    randomiza(vTweet, tamVet);
+	randomiza(vTweet, tamVet);
 
 	/* Para facilitar na compressao, removemos todos os caracteres que nao sao letras ou numeros das strings
 	e tambem colocamos todas as letras em minusculo */
-    cout << "[2] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todos os caracteres em minusculo." << endl;
-    for (i = 0; i < tamVet; i++)
-        vTweet[i]->setTweetText(limpaString(vTweet[i]->getTweetText()));
+	cout << "[2] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todos os caracteres em minusculo." << endl;
+	for (i = 0; i < tamVet; i++)
+		vTweet[i]->setTweetText(limpaString(vTweet[i]->getTweetText()));
 
 
 	codigoFuncao(vTweet, tamVet);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(saida, "saidas.txt");
-	//system("pause");
+	system("pause");
 	return 0;
 }
