@@ -240,10 +240,13 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 			for (int v = 0; v < vEntrada.size(); v++)
 			{
-				Huffman* huf = new Huffman;
+				Huffman* huf = new Huffman();
 				cout << endl;
+				saida += "\n================================================================================\n";
 				cout << "Iteracao " << v+1 << " de " << vEntrada.size() << "." << endl;
+				saida += "Metodo Huffman - Iteracao " + toString(v+1) + " de " + toString(vEntrada.size()) + ".\n";
 				cout << "Fazendo a compressao de " << vEntrada[v] << " tweets." << endl;
+				saida += "Fazendo a compressao de " + toString(vEntrada[v]) + " tweets.\n";
 				cout << "[1] Criando string com todos os tweets pedidos." << endl;
 				/*Cria uma string com todos os tweets que foram passados*/
 				for (int h = 0; h < vEntrada[v]; h++)
@@ -267,10 +270,16 @@ void codigoFuncao(Tweet* vet[], int tam) {
 				salvarTxt(saida_Huf, salvaCompresso);
 
 				cout << "Compressao de tweets usando metodo Huffman completa." << endl;
+				saida += "Compressao de tweets usando metodo Huffman completa.\n";
 				cout << "Tamanho ocupado antes da compressao: " << comprime.size() << " bytes." << endl;
+				saida += "Tamanho ocupado antes da compressao: " + toString(comprime.size()) + " bytes.\n";
 				/*Divide por 8 pois como o que salva eh uma string, cada 1 e 0 tem 8 bits e nao 1*/
 				cout << "Tamanho ocupado apos a compressao: " << saida_Huf.size() / 8 << " bytes." << endl;
+				saida += "Tamanho ocupado apos a compressao: " + toString(saida_Huf.size()/8) + " bytes.\n";
+				cout << "Tempo gasto pela compressao: " << huf->getTempoGasto() << endl;
+				saida += "Tempo gasto pela compressao: " + toString(huf->getTempoGasto());
 				cout << endl;
+				saida += "\n================================================================================\n";
 				comprime.clear();
 				saida_Huf.clear();
 				delete huf;

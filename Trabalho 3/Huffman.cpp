@@ -13,6 +13,7 @@ Huffman::Huffman()
 {
 	priLista = NULL;
 	ultLista = NULL;
+	tempoGasto = 0.0;
 }
 
 /*Destrutor*/
@@ -35,6 +36,16 @@ void Huffman::deletaNo(NoH* n)
 		deletaNo(n->getEsq());
 		delete n;
 	}
+}
+
+/*
+FUNCAO GETTEMPOGASTO
+Entrada: -
+Saida: Tempo gasto na codificacao da string
+*/
+double Huffman::getTempoGasto()
+{
+	return tempoGasto;
 }
 
 /*
@@ -166,6 +177,8 @@ Saida: Codigo da string e tabela de frequencias
 */
 string Huffman::codifica(string s)
 {
+	clock_t relogio;
+	relogio = clock();
 	/*Codifica uma unica string (Huffman estatico)*/
 	string codigo;
 	if (priLista == NULL)
@@ -180,10 +193,12 @@ string Huffman::codifica(string s)
 		}
 		criaArvore(); //Cria a arvore
 		geraCodigo(codigo, priLista); //Gera os codigos da arvore
+		tempoGasto += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 		return geraCodigoString(s); //Gera o codigo da string
 	}
 	else
 		cout << "Tabela de frequencias e arvore de Huffman ja foram criadas, nao eh possivel adicionar uma nova string." << endl;
+	tempoGasto += (clock() - relogio) / (double)CLOCKS_PER_SEC;
 	return codigo;
 }
 

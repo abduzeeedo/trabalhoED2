@@ -12,6 +12,7 @@ Pedro Bellotti
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -19,10 +20,12 @@ class Huffman
 {
 public:
 	Huffman();
-	NoH **getArvore(); //Ponteiro para raiz da arvore Huffman
+	NoH** getArvore(); //Ponteiro para raiz da arvore Huffman
 	string codifica(string s); //Codifica uma string
+	double getTempoGasto(); //Retorna o tempo gasto na codificacao
 	~Huffman();
 private:
+	double tempoGasto; //Tempo gasto para codificacao da string
 	NoH *priLista; //Primeiro No da lista
 	NoH *ultLista; //Ultimo No da lista
 	NoH* getMenor(); //Menor No da lista
