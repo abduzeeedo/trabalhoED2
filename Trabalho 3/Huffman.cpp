@@ -171,45 +171,23 @@ void Huffman::removeLista(NoH *n)
 }
 
 /*
-FUNCAO CODIFICA
-Entrada: String a ser codificada
-Saida: Codigo da string e tabela de frequencias
+FUNCAO GERACODIGOSTRING
+Entrada: String para gerar o codigo
+Saida: Codigos presentes na arvore que formam a string
 */
-string Huffman::codifica(string s)
+string Huffman::geraCodigoString(string s)
 {
-	clock_t relogio;
-	relogio = clock();
-	/*Codifica uma unica string (Huffman estatico)*/
-	string codigo;
-	if (priLista == NULL)
+	string *codigo = new string;
+	string::iterator it = s.begin();
+	while (it != s.end())
 	{
-		/*Insere os caracteres da string na tabela de frequencias*/
-		string::iterator it;
-		it = s.begin();
-		while (it != s.end())
+		if (*it >= 97 && *it <= 122)
 		{
-			insere(*it, 1);
-			it++;
+			*codigo += codigos[*it - 97];
 		}
-		criaArvore(); //Cria a arvore
-		geraCodigo(codigo, priLista); //Gera os codigos da arvore
-		tempoGasto += (clock() - relogio) / (double)CLOCKS_PER_SEC;
-		return geraCodigoString(s); //Gera o codigo da string
+		it++;
 	}
-	else
-		cout << "Tabela de frequencias e arvore de Huffman ja foram criadas, nao eh possivel adicionar uma nova string." << endl;
-	tempoGasto += (clock() - relogio) / (double)CLOCKS_PER_SEC;
-	return codigo;
-}
-
-/*
-FUNCAO GETARVORE
-Entrada: -
-Saida: Ponteiro para o primeiro No da lista (raiz da arvore)
-*/
-NoH** Huffman::getArvore()
-{
-	return &priLista;
+	return *codigo;
 }
 
 /*
@@ -248,21 +226,33 @@ void Huffman::geraCodigo(string s, NoH *n)
 }
 
 /*
-FUNCAO GERACODIGOSTRING
-Entrada: String para gerar o codigo
-Saida: Codigos presentes na arvore que formam a string
+FUNCAO CODIFICA
+Entrada: String a ser codificada
+Saida: Codigo da string e tabela de frequencias
 */
-string Huffman::geraCodigoString(string s)
+string Huffman::codifica(string s)
 {
-	string *codigo = new string;
-	string::iterator it = s.begin();
-	while (it != s.end())
+	clock_t relogio;
+	relogio = clock();
+	/*Codifica uma unica string (Huffman estatico)*/
+	string codigo;
+	if (priLista == NULL)
 	{
-		if (*it >= 97 && *it <= 122)
+		/*Insere os caracteres da string na tabela de frequencias*/
+		string::iterator it;
+		it = s.begin();
+		while (it != s.end())
 		{
-			*codigo += codigos[*it - 97];
+			insere(*it, 1);
+			it++;
 		}
-		it++;
+		criaArvore(); //Cria a arvore
+		geraCodigo(codigo, priLista); //Gera os codigos da arvore
+		tempoGasto += (clock() - relogio) / (double)CLOCKS_PER_SEC;
+		return geraCodigoString(s); //Gera o codigo da string
 	}
-	return *codigo;
+	else
+		cout << "ERRO - Tabela de frequencias ja existe!" << endl;
+	tempoGasto += (clock() - relogio) / (double)CLOCKS_PER_SEC;
+	return codigo;
 }

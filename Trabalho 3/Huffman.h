@@ -20,7 +20,6 @@ class Huffman
 {
 public:
 	Huffman();
-	NoH** getArvore(); //Ponteiro para raiz da arvore Huffman
 	string codifica(string s); //Codifica uma string
 	double getTempoGasto(); //Retorna o tempo gasto na codificacao
 	~Huffman();
