@@ -1,0 +1,29 @@
+#ifndef HUFFMAN_H
+#define HUFFMAN_H
+#include "NoH.h"
+#include <stdlib.h>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Huffman
+{
+public:
+	Huffman();
+	NoH **getArvore(); //Ponteiro para raiz da arvore Huffman
+	string codifica(string s); //Codifica uma string
+	~Huffman();
+private:
+	NoH *priLista; //Primeiro No da lista
+	NoH *ultLista; //Ultimo No da lista
+	NoH* getMenor(); //Menor No da lista
+	void removeLista(NoH* n); //Remove um no da lista
+	void insere(char c, int f); //Insere o char C
+	void criaArvore(); //Constroi arvore de Huffman
+	string geraCodigoString(string s); //Gera o codigo da string usando a arvore
+	void geraCodigo(string s, NoH* n); //Pega todos os codigos presentes na arvore
+	string codigos[26]; //Lista de caracteres minusculos
+	void deletaNo(NoH* n); //Deleta um no da Arvore
+};
+#endif // HUFFMAN_H
