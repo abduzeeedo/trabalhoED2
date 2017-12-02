@@ -13,7 +13,6 @@ Pedro Bellotti
 class NoH
 {
 public:
-
 	NoH() { esq = dir = prox = NULL; letra = -1; }
 	~NoH() { esq = dir = prox = NULL; letra = -1; };
 	char getChar() { return letra; }
@@ -34,5 +33,4 @@ private:
 	NoH *dir; //Filho a direita
 	NoH *prox; //Proximo No da lista
 };
-
 #endif // NOH_H

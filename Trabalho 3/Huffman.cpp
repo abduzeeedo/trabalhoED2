@@ -86,6 +86,26 @@ void Huffman::insere(char c, int f)
 }
 
 /*
+FUNCAO SALVABINARIO
+Entrada: Nome do arquivo e string a ser salva
+Saida: Arquivo TXT criado com a string salva bit por bit
+*/
+void Huffman::salvaBinario(string nomeArquivo, string salvar)
+{
+	string oitoBits;
+	string umBit;
+	ofstream out(nomeArquivo);
+
+	for (int i = 0; i < salvar.length(); i += 8)
+	{
+		oitoBits = salvar.substr(i, 8); //Pega a string a cada 8 bits
+		umBit = bitset<1>(oitoBits).to_string(); //Converte os 8 bits para 1
+		out << umBit; //Salva o numero na saida
+	}
+	out.close();
+}
+
+/*
 FUNCAO GETMENOR
 Entrada: - 
 Saida: O No de menor frequencia da lista

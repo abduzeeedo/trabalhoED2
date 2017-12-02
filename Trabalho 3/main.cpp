@@ -54,7 +54,7 @@ void salvarTxt(string salvar, string file) {
 	ofstream arquivo;
 	arquivo.open(file);
 	arquivo << salvar << endl;
-	//arquivo.close();
+	arquivo.close();
 }
 
 //fun��o para converter um int para String, usada na escrita de dados em arquivo txt
@@ -265,15 +265,15 @@ void codigoFuncao(Tweet* vet[], int tam) {
 				saida_Huf += huf->codifica(comprime);
 
 				cout << "[4] Salvando string codificada em um novo arquivo de texto." << endl;
-				/*Salva a string comprimida em um novo TXT*/
+				/*Salva a string comprimida bit por bit em um novo TXT*/
 				string salvaCompresso = "Huffman_Compresso_Iteracao_" + toString(v+1) + ".txt";
-				salvarTxt(saida_Huf, salvaCompresso);
+				huf->salvaBinario(salvaCompresso, saida_Huf);
 
 				cout << "Compressao de tweets usando metodo Huffman completa." << endl;
 				saida += "Compressao de tweets usando metodo Huffman completa.\n";
 				cout << "Tamanho ocupado antes da compressao: " << comprime.size() << " bytes." << endl;
 				saida += "Tamanho ocupado antes da compressao: " + toString(comprime.size()) + " bytes.\n";
-				/*Divide por 8 pois como o que salva eh uma string, cada 1 e 0 tem 8 bits e nao 1*/
+				/*Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.*/
 				cout << "Tamanho ocupado apos a compressao: " << saida_Huf.size() / 8 << " bytes." << endl;
 				saida += "Tamanho ocupado apos a compressao: " + toString(saida_Huf.size()/8) + " bytes.\n";
 				cout << "Tempo gasto pela compressao: " << huf->getTempoGasto() << endl;
