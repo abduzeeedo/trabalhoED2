@@ -94,15 +94,15 @@ void Huffman::salvaBinario(string nomeArquivo, string salvar)
 {
 	string oitoBits;
 	string umBit;
-	ofstream out(nomeArquivo);
+	ofstream saida(nomeArquivo);
 
 	for (int i = 0; i < salvar.length(); i += 8)
 	{
 		oitoBits = salvar.substr(i, 8); //Pega a string a cada 8 bits
 		umBit = bitset<1>(oitoBits).to_string(); //Converte os 8 bits para 1
-		out << umBit; //Salva o numero na saida
+		saida << umBit; //Salva o numero na saida
 	}
-	out.close();
+	saida.close();
 }
 
 /*

@@ -24,7 +24,7 @@ public:
 	Huffman();
 	string codifica(string); //Codifica uma string
 	double getTempoGasto(); //Retorna o tempo gasto na codificacao
-	void salvaBinario(string, string);
+	void salvaBinario(string, string); //Salva a string de codigos bit por bit
 	~Huffman();
 private:
 	double tempoGasto; //Tempo gasto para codificacao da string

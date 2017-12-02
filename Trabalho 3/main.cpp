@@ -241,13 +241,20 @@ void codigoFuncao(Tweet* vet[], int tam) {
 			for (int v = 0; v < vEntrada.size(); v++)
 			{
 				Huffman* huf = new Huffman();
+
+				/*Exibindo e salvando dados de entrada*/
 				cout << endl;
 				saida += "\n================================================================================\n";
 				cout << "Iteracao " << v+1 << " de " << vEntrada.size() << "." << endl;
 				saida += "Metodo Huffman - Iteracao " + toString(v+1) + " de " + toString(vEntrada.size()) + ".\n";
 				cout << "Fazendo a compressao de " << vEntrada[v] << " tweets." << endl;
 				saida += "Fazendo a compressao de " + toString(vEntrada[v]) + " tweets.\n";
-				cout << "[1] Criando string com todos os tweets pedidos." << endl;
+
+				/*Randomizando o vetor de entrada a cada iteracao*/
+				cout << "[1] Randomizando o vetor de tweets." << endl;
+				randomiza(vet, tam);
+
+				cout << "[2] Criando string com " << vEntrada[v] << " tweets." << endl;
 				/*Cria uma string com todos os tweets que foram passados*/
 				for (int h = 0; h < vEntrada[v]; h++)
 				{
@@ -255,27 +262,27 @@ void codigoFuncao(Tweet* vet[], int tam) {
 					comprime += "\n"; //Pula uma linha a cada tweet
 				}
 
-				cout << "[2] Salvando string em arquivo de texto." << endl;
+				cout << "[3] Salvando string em arquivo de texto." << endl;
 				/*Salva a string sem estar comprimida num TXT para comprar os tamanhos depois*/
-				string salvaSemCompressao = "Huffman_SemCompressao_Iteracao_" + toString(v+1) + ".txt";
-				salvarTxt(comprime, salvaSemCompressao);
+				string arquivoSemCompressao = "Huffman_SemCompressao_Iteracao_" + toString(v+1) + ".txt";
+				salvarTxt(comprime, arquivoSemCompressao);
 
-				cout << "[3] Codificando a string." << endl;
+				cout << "[4] Codificando a string." << endl;
 				/*Comprime a string*/
-				saida_Huf += huf->codifica(comprime);
+				saida_Huf = huf->codifica(comprime);
 
-				cout << "[4] Salvando string codificada em um novo arquivo de texto." << endl;
+				cout << "[5] Salvando string codificada em um novo arquivo de texto." << endl;
 				/*Salva a string comprimida bit por bit em um novo TXT*/
-				string salvaCompresso = "Huffman_Compresso_Iteracao_" + toString(v+1) + ".txt";
-				huf->salvaBinario(salvaCompresso, saida_Huf);
+				string arquivoCompresso = "Huffman_Compresso_Iteracao_" + toString(v+1) + ".txt";
+				huf->salvaBinario(arquivoCompresso, saida_Huf);
 
+				/*Exibindo e salvando dados de saida*/
 				cout << "Compressao de tweets usando metodo Huffman completa." << endl;
 				saida += "Compressao de tweets usando metodo Huffman completa.\n";
 				cout << "Tamanho ocupado antes da compressao: " << comprime.size() << " bytes." << endl;
 				saida += "Tamanho ocupado antes da compressao: " + toString(comprime.size()) + " bytes.\n";
-				/*Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.*/
-				cout << "Tamanho ocupado apos a compressao: " << saida_Huf.size() / 8 << " bytes." << endl;
-				saida += "Tamanho ocupado apos a compressao: " + toString(saida_Huf.size()/8) + " bytes.\n";
+				cout << "Tamanho ocupado apos a compressao: " << saida_Huf.size() / 8 << " bytes." << endl; //Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.
+				saida += "Tamanho ocupado apos a compressao: " + toString(saida_Huf.size()/8) + " bytes.\n"; //Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.
 				cout << "Tempo gasto pela compressao: " << huf->getTempoGasto() << endl;
 				saida += "Tempo gasto pela compressao: " + toString(huf->getTempoGasto());
 				cout << endl;
@@ -311,9 +318,6 @@ int main()
 	cout << "[1] Instanciando " << tamVet << " tweets para realizar os testes, aguarde." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
 	//---------------------------------------------------------------------------
-
-	//Randomizando o vetor de entrada para fazer o calculo da frequencia de N tweets aleatorios
-	randomiza(vTweet, tamVet);
 
 	/* Para facilitar em algumas compressoes, removemos todos os caracteres que nao sao letras ou numeros das strings
 	e tambem colocamos todas as letras em minusculo */
