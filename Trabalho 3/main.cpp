@@ -18,7 +18,6 @@ Pedro Bellotti
 #include "Huffman.h"
 
 string saida = "";
-string saida_Huf = "";
 using namespace std;
 
 //Funcao usada para pegar as linhas do arquivo do Menu.
@@ -109,7 +108,7 @@ void randomiza(Tweet** vetor, int tam) {
 	for (int i = 0; i < tam; i++)
 	{
 		srand(2 * i + tam); //Troca a seed do rand a cada iteraçao
-		swap(vetor[rand() % tam], vetor[rand()*(i + 2) % tam]);
+		swap(vetor[rand() % tam], vetor[rand() % tam]);
 	}
 }
 
@@ -237,7 +236,7 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		if (code == "1") {
 			cout << "Fazendo a compressao de tweets usando metodo Huffman..." << endl;
 			string comprime;
-
+			string saida_Huf = "";
 			for (int v = 0; v < vEntrada.size(); v++)
 			{
 				Huffman* huf = new Huffman();
@@ -313,7 +312,7 @@ int main()
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
 	//Importando tweets do arquivo TXT-------------------------------------------
-	int tamVet = 500; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 1500000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "[1] Instanciando " << tamVet << " tweets para realizar os testes, aguarde." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
