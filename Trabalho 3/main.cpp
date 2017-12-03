@@ -16,7 +16,8 @@ Pedro Bellotti
 #include "Tweet.h"
 #include "GerTexto.h"
 #include "Huffman.h"
-
+#include "LZ77.h"
+#include "Tupla.h"
 string saida = "";
 using namespace std;
 
@@ -294,7 +295,56 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 		if (code == "2") {
 			cout << "Fazendo a compressao de tweets usando metodo LZ77..." << endl;
+			string comprime;
+			string saida_LZ = "";
+			vector<Tupla*> saida_lz77;
+			for (int v = 0; v < vEntrada.size(); v++)
+			{
+				LZ77* lz = new LZ77(48, 24);
+				cout << endl;
+				saida += "\n================================================================================\n";
+				cout << "Iteracao " << v+1 << " de " << vEntrada.size() << "." << endl;
+				saida += "Metodo LZ77 - Iteracao " + toString(v+1) + " de " + toString(vEntrada.size()) + ".\n";
+				cout << "Fazendo a compressao de " << vEntrada[v] << " tweets." << endl;
+				saida += "Fazendo a compressao de " + toString(vEntrada[v]) + " tweets.\n";
+
+				cout << "[1] Randomizando o vetor de tweets." << endl;
+				randomiza(vet, tam);
+				cout << "[2] Criando string com " << vEntrada[v] << " tweets." << endl;
+
+				for (int h = 0; h < vEntrada[v]; h++)
+				{
+					comprime += vet[h]->getTweetText();
+					comprime += "\n"; //Pula uma linha a cada tweet
+				}
+				cout << "[3] Salvando string em arquivo de texto." << endl;
+				string arquivoSemCompressao = "LZ77_SemCompressao_Iteracao_" + toString(v+1) + ".txt";
+				salvarTxt(comprime, arquivoSemCompressao);
+
+				cout << "[4] Codificando a string." << endl;
+				/*Comprime a string*/
+				saida_lz77 = lz->comprimirPalavra(comprime);
+
+				cout << "[5] Salvando string codificada em um novo arquivo de texto." << endl;
+				string arquivoCompresso = "LZ77_Compresso_Iteracao_" + toString(v+1) + ".txt";
+				lz->salvaArquivo(saida_lz77, arquivoCompresso);
+
+				cout << "Compressao de tweets usando metodo LZ77 completa." << endl;
+				saida += "Compressao de tweets usando metodo LZ77 completa.\n";
+				cout << "Tamanho ocupado antes da compressao: " << comprime.size() << " bytes." << endl;
+				saida += "Tamanho ocupado antes da compressao: " + toString(comprime.size()) + " bytes.\n";
+				cout << "Tamanho ocupado apos a compressao: " << lz->tuplaToString(saida_lz77).size() / 8 << " bytes." << endl; //Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.
+				saida += "Tamanho ocupado apos a compressao: " + toString(lz->tuplaToString(saida_lz77).size()/8) + " bytes.\n"; //Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.
+				cout << "Tempo gasto pela compressao: " << lz->getTempoGasto() << endl;
+				saida += "Tempo gasto pela compressao: " + toString(lz->getTempoGasto());
+				cout << endl;
+				saida += "\n================================================================================\n";
+				comprime.clear();
+				saida_lz77.clear();
+				delete lz;
+			}
 		}
+
 
 		if (code == "3") {
 			cout << "Fazendo a compressao de tweets usando metodo LZ78..." << endl;
