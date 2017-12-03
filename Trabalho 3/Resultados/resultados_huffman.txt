@@ -1,0 +1,64 @@
+
+================================================================================
+Metodo Huffman - Iteracao 1 de 7.
+Fazendo a compressao de 1000 tweets.
+Compressao de tweets usando metodo Huffman completa.
+Tamanho ocupado antes da compressao: 69187 bytes.
+Tamanho ocupado apos a compressao: 31349 bytes.
+Tempo gasto pela compressao: 0.147
+================================================================================
+
+================================================================================
+Metodo Huffman - Iteracao 2 de 7.
+Fazendo a compressao de 5000 tweets.
+Compressao de tweets usando metodo Huffman completa.
+Tamanho ocupado antes da compressao: 350247 bytes.
+Tamanho ocupado apos a compressao: 158903 bytes.
+Tempo gasto pela compressao: 0.749
+================================================================================
+
+================================================================================
+Metodo Huffman - Iteracao 3 de 7.
+Fazendo a compressao de 10000 tweets.
+Compressao de tweets usando metodo Huffman completa.
+Tamanho ocupado antes da compressao: 696590 bytes.
+Tamanho ocupado apos a compressao: 315921 bytes.
+Tempo gasto pela compressao: 1.677
+================================================================================
+
+================================================================================
+Metodo Huffman - Iteracao 4 de 7.
+Fazendo a compressao de 50000 tweets.
+Compressao de tweets usando metodo Huffman completa.
+Tamanho ocupado antes da compressao: 3.53075e+06 bytes.
+Tamanho ocupado apos a compressao: 1.59891e+06 bytes.
+Tempo gasto pela compressao: 7.435
+================================================================================
+
+================================================================================
+Metodo Huffman - Iteracao 5 de 7.
+Fazendo a compressao de 100000 tweets.
+Compressao de tweets usando metodo Huffman completa.
+Tamanho ocupado antes da compressao: 7.025e+06 bytes.
+Tamanho ocupado apos a compressao: 3.18249e+06 bytes.
+Tempo gasto pela compressao: 14.354
+================================================================================
+
+================================================================================
+Metodo Huffman - Iteracao 6 de 7.
+Fazendo a compressao de 500000 tweets.
+Compressao de tweets usando metodo Huffman completa.
+Tamanho ocupado antes da compressao: 3.58332e+07 bytes.
+Tamanho ocupado apos a compressao: 1.62447e+07 bytes.
+Tempo gasto pela compressao: 74.357
+================================================================================
+
+================================================================================
+Metodo Huffman - Iteracao 7 de 7.
+Fazendo a compressao de 1e+06 tweets.
+Compressao de tweets usando metodo Huffman completa.
+Tamanho ocupado antes da compressao: 7.12859e+07 bytes.
+Tamanho ocupado apos a compressao: 3.23142e+07 bytes.
+Tempo gasto pela compressao: 144.259
+================================================================================
+

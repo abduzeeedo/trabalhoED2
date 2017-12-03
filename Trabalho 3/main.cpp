@@ -15,6 +15,7 @@ Pedro Bellotti
 #include <algorithm>
 #include "Tweet.h"
 #include "GerTexto.h"
+#include "Huffman.h"
 
 string saida = "";
 using namespace std;
@@ -52,7 +53,7 @@ void salvarTxt(string salvar, string file) {
 	ofstream arquivo;
 	arquivo.open(file);
 	arquivo << salvar << endl;
-	//arquivo.close();
+	arquivo.close();
 }
 
 //fun��o para converter um int para String, usada na escrita de dados em arquivo txt
@@ -107,7 +108,7 @@ void randomiza(Tweet** vetor, int tam) {
 	for (int i = 0; i < tam; i++)
 	{
 		srand(2 * i + tam); //Troca a seed do rand a cada iteraçao
-		swap(vetor[rand() % tam], vetor[rand()*(i + 2) % tam]);
+		swap(vetor[rand() % tam], vetor[rand() % tam]);
 	}
 }
 
@@ -216,6 +217,11 @@ string limpaString(string original)
 //SAIDA: Chamada de funcoes de acordo com o codigo inserido pelo usuario
 void codigoFuncao(Tweet* vet[], int tam) {
 	string code;
+	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
+	que indica o numero de tweets aleatorios que devem ser importados e instanciados
+	para serem comprimidos*/
+	vector<int> vEntrada = importaEntrada("entrada.txt");
+
 	while (true) {
 		cout << endl << "Insira o Codigo de Funcao: (-1 para Encerrar Execucao, 0 Para imprimir Menu)" << endl;
 		cin >> code;
@@ -228,19 +234,74 @@ void codigoFuncao(Tweet* vet[], int tam) {
 		}
 
 		if (code == "1") {
-			cout << "Fazendo a compressao de tweets usando metodo Huffman." << endl;
+			cout << "Fazendo a compressao de tweets usando metodo Huffman..." << endl;
+			string comprime;
+			string saida_Huf = "";
+			for (int v = 0; v < vEntrada.size(); v++)
+			{
+				Huffman* huf = new Huffman();
+
+				/*Exibindo e salvando dados de entrada*/
+				cout << endl;
+				saida += "\n================================================================================\n";
+				cout << "Iteracao " << v+1 << " de " << vEntrada.size() << "." << endl;
+				saida += "Metodo Huffman - Iteracao " + toString(v+1) + " de " + toString(vEntrada.size()) + ".\n";
+				cout << "Fazendo a compressao de " << vEntrada[v] << " tweets." << endl;
+				saida += "Fazendo a compressao de " + toString(vEntrada[v]) + " tweets.\n";
+
+				/*Randomizando o vetor de entrada a cada iteracao*/
+				cout << "[1] Randomizando o vetor de tweets." << endl;
+				randomiza(vet, tam);
+
+				cout << "[2] Criando string com " << vEntrada[v] << " tweets." << endl;
+				/*Cria uma string com todos os tweets que foram passados*/
+				for (int h = 0; h < vEntrada[v]; h++)
+				{
+					comprime += vet[h]->getTweetText();
+					comprime += "\n"; //Pula uma linha a cada tweet
+				}
+
+				cout << "[3] Salvando string em arquivo de texto." << endl;
+				/*Salva a string sem estar comprimida num TXT para comprar os tamanhos depois*/
+				string arquivoSemCompressao = "Huffman_SemCompressao_Iteracao_" + toString(v+1) + ".txt";
+				salvarTxt(comprime, arquivoSemCompressao);
+
+				cout << "[4] Codificando a string." << endl;
+				/*Comprime a string*/
+				saida_Huf = huf->codifica(comprime);
+
+				cout << "[5] Salvando string codificada em um novo arquivo de texto." << endl;
+				/*Salva a string comprimida bit por bit em um novo TXT*/
+				string arquivoCompresso = "Huffman_Compresso_Iteracao_" + toString(v+1) + ".txt";
+				huf->salvaBinario(arquivoCompresso, saida_Huf);
+
+				/*Exibindo e salvando dados de saida*/
+				cout << "Compressao de tweets usando metodo Huffman completa." << endl;
+				saida += "Compressao de tweets usando metodo Huffman completa.\n";
+				cout << "Tamanho ocupado antes da compressao: " << comprime.size() << " bytes." << endl;
+				saida += "Tamanho ocupado antes da compressao: " + toString(comprime.size()) + " bytes.\n";
+				cout << "Tamanho ocupado apos a compressao: " << saida_Huf.size() / 8 << " bytes." << endl; //Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.
+				saida += "Tamanho ocupado apos a compressao: " + toString(saida_Huf.size()/8) + " bytes.\n"; //Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.
+				cout << "Tempo gasto pela compressao: " << huf->getTempoGasto() << endl;
+				saida += "Tempo gasto pela compressao: " + toString(huf->getTempoGasto());
+				cout << endl;
+				saida += "\n================================================================================\n";
+				comprime.clear();
+				saida_Huf.clear();
+				delete huf;
+			}
 		}
 
 		if (code == "2") {
-			cout << "Fazendo a compressao de tweets usando metodo LZ77." << endl;
+			cout << "Fazendo a compressao de tweets usando metodo LZ77..." << endl;
 		}
 
 		if (code == "3") {
-			cout << "Fazendo a compressao de tweets usando metodo LZ78." << endl;
+			cout << "Fazendo a compressao de tweets usando metodo LZ78..." << endl;
 		}
 
 		if (code == "4") {
-			cout << "Fazendo a compressao de tweets usando metodo LZW." << endl;
+			cout << "Fazendo a compressao de tweets usando metodo LZW..." << endl;
 		}
 	}
 }
@@ -250,27 +311,18 @@ int main()
 	int i; //Variavel para controle de iteracoes
 	imprimeMenu(); // Funcao para imprimir o Menu no Console
 
-	/*Essa funcao sera usada para importar os tweets, cada posicao do vetor contem um numero
-	que indica o numero de tweets aleatorios que devem ser importados e instanciados
-	para serem comprimidos*/
-	vector<int> vEntrada = importaEntrada("entrada.txt");
-
 	//Importando tweets do arquivo TXT-------------------------------------------
-	int tamVet = 100; //Quantidade de Tweets que serao lidos do arquivo txt
+	int tamVet = 1500000; //Quantidade de Tweets que serao lidos do arquivo txt
 	GerTexto* ger = new GerTexto();
 	cout << "[1] Instanciando " << tamVet << " tweets para realizar os testes, aguarde." << endl;
 	Tweet** vTweet = ger->carregaTweets("test_set_tweets.txt", tamVet);
 	//---------------------------------------------------------------------------
 
-	//Randomizando o vetor de entrada para fazer o calculo da frequencia de N tweets aleatorios
-	randomiza(vTweet, tamVet);
-
-	/* Para facilitar na compressao, removemos todos os caracteres que nao sao letras ou numeros das strings
+	/* Para facilitar em algumas compressoes, removemos todos os caracteres que nao sao letras ou numeros das strings
 	e tambem colocamos todas as letras em minusculo */
 	cout << "[2] Retirando todos os caracteres especiais, sinais de pontuacao e colocando todos os caracteres em minusculo." << endl;
 	for (i = 0; i < tamVet; i++)
 		vTweet[i]->setTweetText(limpaString(vTweet[i]->getTweetText()));
-
 
 	codigoFuncao(vTweet, tamVet);//Seleciona a funcao ou encerra a execucao;
 	salvarTxt(saida, "saidas.txt");
