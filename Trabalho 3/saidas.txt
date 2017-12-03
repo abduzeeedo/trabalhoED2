@@ -1,0 +1,46 @@
+
+================================================================================
+Metodo LZ77 - Iteracao 1 de 5.
+Fazendo a compressao de 20 tweets.
+Compressao de tweets usando metodo LZ77 completa.
+Tamanho ocupado antes da compressao: 1707 bytes.
+Tamanho ocupado apos a compressao: 37 bytes.
+Tempo gasto pela compressao: 0.366
+================================================================================
+
+================================================================================
+Metodo LZ77 - Iteracao 2 de 5.
+Fazendo a compressao de 30 tweets.
+Compressao de tweets usando metodo LZ77 completa.
+Tamanho ocupado antes da compressao: 2131 bytes.
+Tamanho ocupado apos a compressao: 42 bytes.
+Tempo gasto pela compressao: 0.319
+================================================================================
+
+================================================================================
+Metodo LZ77 - Iteracao 3 de 5.
+Fazendo a compressao de 40 tweets.
+Compressao de tweets usando metodo LZ77 completa.
+Tamanho ocupado antes da compressao: 2644 bytes.
+Tamanho ocupado apos a compressao: 52 bytes.
+Tempo gasto pela compressao: 0.397
+================================================================================
+
+================================================================================
+Metodo LZ77 - Iteracao 4 de 5.
+Fazendo a compressao de 50 tweets.
+Compressao de tweets usando metodo LZ77 completa.
+Tamanho ocupado antes da compressao: 3071 bytes.
+Tamanho ocupado apos a compressao: 57 bytes.
+Tempo gasto pela compressao: 0.397
+================================================================================
+
+================================================================================
+Metodo LZ77 - Iteracao 5 de 5.
+Fazendo a compressao de 90 tweets.
+Compressao de tweets usando metodo LZ77 completa.
+Tamanho ocupado antes da compressao: 5511 bytes.
+Tamanho ocupado apos a compressao: 96 bytes.
+Tempo gasto pela compressao: 0.429
+================================================================================
+
