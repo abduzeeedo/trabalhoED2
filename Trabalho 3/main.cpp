@@ -347,11 +347,11 @@ void codigoFuncao(Tweet* vet[], int tam) {
 
 
 		if (code == "3") {
-			cout << "Fazendo a compressao de tweets usando metodo LZ78..." << endl;
+			cout << "Metodo nao implementado!" << endl;
 		}
 
 		if (code == "4") {
-			cout << "Fazendo a compressao de tweets usando metodo LZW..." << endl;
+			cout << "Metodo nao implementado!" << endl;
 		}
 	}
 }
