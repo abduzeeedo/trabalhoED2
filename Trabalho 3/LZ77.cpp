@@ -1,3 +1,11 @@
+/*---------------------------------------
+TRABALHO DE ESTRUTURA DE DADOS 2
+GRUPO:
+Bruno Carvalho
+Diogo Destefano
+Rafael Terra
+Pedro Bellotti
+--------------------------------------*/
 #include "LZ77.h"
 
 LZ77::LZ77(int tamDic, int tamBuffer)
