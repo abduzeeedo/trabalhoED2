@@ -333,8 +333,8 @@ void codigoFuncao(Tweet* vet[], int tam) {
 				saida += "Compressao de tweets usando metodo LZ77 completa.\n";
 				cout << "Tamanho ocupado antes da compressao: " << comprime.size() << " bytes." << endl;
 				saida += "Tamanho ocupado antes da compressao: " + toString(comprime.size()) + " bytes.\n";
-				cout << "Tamanho ocupado apos a compressao: " << lz->tuplaToString(saida_lz77).size() / 8 << " bytes." << endl; //Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.
-				saida += "Tamanho ocupado apos a compressao: " + toString(lz->tuplaToString(saida_lz77).size()/8) + " bytes.\n"; //Divide por 8 pois como eh uma string, cada 1 e 0 tem 8 bits e nao 1.
+				cout << "Tamanho ocupado apos a compressao: " << lz->tuplaToString(saida_lz77).size() << " bytes." << endl;
+				saida += "Tamanho ocupado apos a compressao: " + toString(lz->tuplaToString(saida_lz77).size()) + " bytes.\n";
 				cout << "Tempo gasto pela compressao: " << lz->getTempoGasto() << endl;
 				saida += "Tempo gasto pela compressao: " + toString(lz->getTempoGasto());
 				cout << endl;
